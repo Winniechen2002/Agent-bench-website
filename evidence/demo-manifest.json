@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "generated_utc": "2026-10-09T17:23:02Z",
+  "storage_policy": "Raw trajectories and native experiment outputs remain in local archives or sharpa_4090. The GitHub Pages site contains only compressed web derivatives, posters, and this manifest.",
+  "rerender_policy": "Create a new run directory and replay the recorded command; do not overwrite the original run. Update hashes and the web_derivative fields after re-encoding.",
+  "artifacts": [
+    {
+      "id": "rubiks-franka-reference-cycle",
+      "task": "rubiks-franka-3x3",
+      "embodiment": "Franka Panda",
+      "mode": "reference cycle",
+      "case_id": "U×4",
+      "claim_status": "reference-execution",
+      "web_asset": {
+        "path": "assets/media/rubiks-franka-reference-cycle.mp4",
+        "size_bytes": 2080431,
+        "sha256": "111a4a2884303559e5f1f6b361c9243b0434eae18813bc2d53f897a2e378ea72",
+        "poster": {
+          "path": "assets/posters/rubiks-franka-reference-cycle.jpg",
+          "size_bytes": 55967,
+          "sha256": "a580bdcef734d7519e255c07c5f6aae76d84b11f983bbed6e46302b97bf71058"
+        }
+      },
+      "source_checkout": "sharpa_4090:$HOME/projects/agentbench-rubiks-platform",
+      "source_video": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-rubiks-platform/runs/reference-cycle-video-20261005-72/entry/video/native.mp4",
+        "sha256": "1e4d4e774432ba734efbd9662fd3152cdcbcedb8cf1d18dc41f13cb81554c8d3",
+        "note": "Native 1280×720 reference recording; the remote audit reported approximately 33.46 MB."
+      },
+      "trajectory": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-rubiks-platform/runs/reference-cycle-video-20261005-72/entry/private/trace.jsonl.gz",
+        "sha256": "a234cf30fb14072f79326eac6008cb37802911a959e629830a765a6f0252241c",
+        "kind": "private trace jsonl.gz"
+      },
+      "result_paths": [
+        "sharpa_4090:$HOME/projects/agentbench-rubiks-platform/runs/reference-cycle-video-20261005-72/entry/result.json",
+        "sharpa_4090:$HOME/projects/agentbench-rubiks-platform/runs/reference-cycle-video-20261005-72/entry/video/native.mp4"
+      ],
+      "command": "python -B ops/reference-cycle-video-072/launch.py",
+      "export_command": "python ops/video-delivery-078/audit-v3.py --run runs/reference-cycle-video-20261005-72 --output ops/video-delivery-078/finalize-072 --export-4x",
+      "web_derivative": "Re-encoded remote accelerated-4x export, scaled for web; no raw trajectory is copied into the site.",
+      "notes": "Privileged/reference execution of U×4. This is not an external-agent success score and does not claim a full six-face solve."
+    },
+    {
+      "id": "rubiks-floating-sharpa-a3",
+      "task": "rubiks-floating-sharpa-3x3",
+      "embodiment": "Floating Sharpa",
+      "mode": "calibration / reorientation",
+      "case_id": "A3 / six-face route calibration",
+      "claim_status": "experimental-calibration-preview",
+      "web_asset": {
+        "path": "assets/media/sharpa-rubiks-a3.mp4",
+        "size_bytes": 693373,
+        "sha256": "0e96ece1069016dd7c331c6dd684e120cc23585de02d07c9a9f5224e15a2cd5b",
+        "poster": {
+          "path": "assets/posters/sharpa-rubiks-a3.jpg",
+          "size_bytes": 42639,
+          "sha256": "5a6fab0b5f6acdedd99f406dacc224f786ee000bfd90ec8fe041345f924c16d0"
+        }
+      },
+      "source_checkout": "local worktree Agent-bench/.worktrees/floating-sharpa-4090",
+      "source_video": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/sequence.mp4",
+        "size_bytes": 588625505,
+        "sha256": "5ab8439677c5ad0770ae5248ef1a9730eb3e41711539072c4d750f2881ecd398"
+      },
+      "trajectory": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/native-evidence/events.jsonl",
+        "size_bytes": 862701,
+        "sha256": "fd80a58ab3ade3c52c7a083e409add1eaa39a3d6044cb0128ecdb119349ec9ec",
+        "kind": "native event jsonl; frame traces are stored beside events.jsonl"
+      },
+      "trajectory_auxiliary_paths": [
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/sequence.frames.jsonl",
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/sequence.recording.json",
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/calibration-result.json",
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/controller-result.json"
+      ],
+      "result_paths": [
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/calibration-result.json",
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/controller-result.json",
+        "Agent-bench/.worktrees/floating-sharpa-4090/.codex-local/experiments/data8014-repro-20260929/archives/sharpa-cal-sixfaces-middlemargin-20261002-01/entry/entry-result.json"
+      ],
+      "command": "/home/winnie/pzhou/projects/agentbench-rubiks/envs/isaaclab-4.5/bin/python -B scripts/rubiks_cube_agent.py calibrate-sharpa --stage route --grasp-profile /home/winnie/pzhou/projects/agentbench-rubiks/runs/sharpa-candidate-middlemargin-20261001-01/grasp-profile.json --output-dir /home/winnie/pzhou/projects/agentbench-rubiks/runs/sharpa-cal-sixfaces-middlemargin-20261002-01/entry --device cuda:0 --action-sim-budget-s 8400 --initialization-sim-budget-s 120 --wall-budget-s 199200 --startup-wall-budget-s 600 --seed 7 --sequence B B-prime D D-prime L L-prime F F-prime F2 R R-prime U U-prime --repeats 1",
+      "web_derivative": "Existing compact A3 preview retained as an experimental visual; it is not presented as a qualified full solve.",
+      "notes": "The archived run reports controller_failed / qualification_complete=false / solved_claim=false. Keep the caveat visible when swapping backgrounds or re-rendering."
+    },
+    {
+      "id": "kongming-dual-franka-assemble",
+      "task": "kongming-dual-franka-assemble",
+      "embodiment": "Dual Franka",
+      "mode": "assemble",
+      "case_id": "full shared 099",
+      "claim_status": "reference-execution",
+      "web_asset": {
+        "path": "assets/media/kongming-assembly.mp4",
+        "size_bytes": 1477466,
+        "sha256": "17cfe7ff053f1fdb16380b0639afee0e27f7f2fed3d33ed8a15c4642bb8fc1cb",
+        "poster": {
+          "path": "assets/posters/kongming-assembly.jpg",
+          "size_bytes": 31196,
+          "sha256": "8739181791119d9e5a40d83b1e0a53ad50282b26044140995993f26914d36c85"
+        }
+      },
+      "source_checkout": "local archive Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly",
+      "source_video": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/assemble-full-shared-099/entry/demo.mp4",
+        "size_bytes": 907988,
+        "sha256": "b4f7ab55c9b8f6d1ccdfef4a4c923b34caba440a770e83e871778cbd0f5a2cfa"
+      },
+      "trajectory": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/assemble-full-shared-099/entry/trajectory.jsonl.gz",
+        "size_bytes": 92484730,
+        "sha256": "0c978e69726109c70373ae495d91e325e5a8ebe17e6d72d2c3ddc35a4aa5eb0e",
+        "kind": "gzipped 30 Hz trajectory jsonl"
+      },
+      "result_paths": [
+        "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/assemble-full-shared-099/entry/result.json",
+        "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/assemble-full-shared-099/entry/independent_evaluation.json"
+      ],
+      "command": "python -B scripts/kongming_lock_demo.py --headless --device cpu --output <run>/entry --task assemble --video",
+      "web_derivative": "Re-encoded web delivery derivative from the native reference run; source duration 278 s at 640×480/15 fps.",
+      "notes": "Result status succeeded; max penetration 1.064 mm; 84 waypoints. Privileged/native reference execution, not an external-agent score."
+    },
+    {
+      "id": "kongming-dual-franka-disassemble-reference",
+      "task": "kongming-dual-franka-disassemble",
+      "embodiment": "Dual Franka",
+      "mode": "disassemble",
+      "case_id": "regression shared 003",
+      "claim_status": "reference-execution",
+      "web_asset": {
+        "path": "assets/media/kongming-disassembly.mp4",
+        "size_bytes": 1170572,
+        "sha256": "dc946e1147671e385f84b312b1591b7419fcc4549572b26a7e3d54ac303247c9",
+        "poster": {
+          "path": "assets/posters/kongming-disassembly.jpg",
+          "size_bytes": 57969,
+          "sha256": "84d0ca390f844d776ea8a4ec7fff56742bc7eda1d6f5ece115b8836d5a612121"
+        }
+      },
+      "source_checkout": "local archive Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly",
+      "source_video": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/disassemble-regression-shared-003/entry/demo.mp4",
+        "size_bytes": 632143,
+        "sha256": "e52716e46ec6bf246b27c3d03e6de722e93b287ead4aaa92a699c61dc42a7a28"
+      },
+      "trajectory": {
+        "path": "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/disassemble-regression-shared-003/entry/trajectory.jsonl.gz",
+        "size_bytes": 40833861,
+        "sha256": "f1264d2ad47d0972b684cdb1d01f7cf86a7b68c6c7bd6ecd5da1d95200546b6f",
+        "kind": "gzipped 30 Hz trajectory jsonl"
+      },
+      "result_paths": [
+        "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/disassemble-regression-shared-003/entry/result.json",
+        "/Users/peizhou/Desktop/project_code/agentbench/Agent-bench/.codex-local/archives/worktree-closeout-20261004/kongming-lock-assembly/.codex-local/kongming-runs/disassemble-regression-shared-003/entry/independent_evaluation.json"
+      ],
+      "command": "python -B scripts/kongming_lock_demo.py --headless --device cpu --output <run>/entry --task disassemble --video",
+      "web_derivative": "Speed-up 6×, scaled to 960×720/30 fps for a short web preview; native source remains in the archive.",
+      "notes": "Result status succeeded; max penetration 1.817 mm; 62 waypoints. Privileged/native reference execution, not an external-agent score."
+    },
+    {
+      "id": "kongming-floating-sharpa-a06-reference",
+      "task": "kongming-floating-sharpa",
+      "embodiment": "Floating Sharpa / dual Sharpa",
+      "mode": "assemble",
+      "case_id": "A06",
+      "claim_status": "reference-acceptance-preview",
+      "web_asset": {
+        "path": "assets/media/sharpa-kongming-a06-native.mp4",
+        "size_bytes": 421927,
+        "sha256": "16963ae916a3332792f53085f2cd1ad465de66efca43e758c501c8e8ff7da3cc",
+        "poster": {
+          "path": "assets/posters/sharpa-kongming-a06-native.jpg",
+          "size_bytes": 53242,
+          "sha256": "4f831e7e44e6e16bfe21867dc9ee4dfe7dc9f4c815700948b8acd8296a440ae0"
+        }
+      },
+      "source_checkout": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14",
+      "source_video": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/A06/episode/video/native.mp4",
+        "sha256": "d2a447b8da6823dba53cb260a743832a73bf09d970ade05a9b772389a8e827af",
+        "note": "Native fixed-camera recording."
+      },
+      "trajectory": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/A06/episode/trajectory.jsonl.gz",
+        "sha256": "2f57c4779745eb6e0f3c1c6def6171f05c900a1b9a76d0446c1e4ab9f1fb3465",
+        "kind": "gzipped native trajectory jsonl"
+      },
+      "result_paths": [
+        "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/A06/episode/demo_result.json"
+      ],
+      "command": "ops/sharpa_4090/run_kongming_dual_sharpa.sh demo <absolute-output> A06 D06",
+      "web_derivative": "Native fixed-camera recording scaled to 960 px wide for web delivery.",
+      "notes": "demo_result reports success=true, physical_success=true, stable_controls=60, step_count=1467. The launcher exit code was 2; retain acceptance-preview caveat."
+    },
+    {
+      "id": "kongming-floating-sharpa-d06-reference",
+      "task": "kongming-floating-sharpa",
+      "embodiment": "Floating Sharpa / dual Sharpa",
+      "mode": "disassemble",
+      "case_id": "D06",
+      "claim_status": "reference-acceptance-preview",
+      "web_asset": {
+        "path": "assets/media/sharpa-kongming-d06-native.mp4",
+        "size_bytes": 273038,
+        "sha256": "017e4f42ab9b6d5031c086a25f6866b39c1f89f0fd6109619dc09fe3dda4f9e5",
+        "poster": {
+          "path": "assets/posters/sharpa-kongming-d06-native.jpg",
+          "size_bytes": 53980,
+          "sha256": "a7a020453c0bdfa2114b27b90e82e2412d3c9af3a5b8f139130e5162165c1f27"
+        }
+      },
+      "source_checkout": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14",
+      "source_video": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/D06/episode/video/native.mp4",
+        "sha256": "a06fe9875bc0e8bc67defa90aa3092a218369e0de1fa1b4e7611c9c4328e4bad",
+        "note": "Native fixed-camera recording."
+      },
+      "trajectory": {
+        "path": "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/D06/episode/trajectory.jsonl.gz",
+        "sha256": "d8d0afee9fcd68d5caa2da2f65f64120907b0647e8b31420ccc397ae78ac4d28",
+        "kind": "gzipped native trajectory jsonl"
+      },
+      "result_paths": [
+        "sharpa_4090:$HOME/projects/agentbench-kongming-dual-20261008-v14/.codex-local/native-runs/v50-video2/D06/episode/demo_result.json"
+      ],
+      "command": "ops/sharpa_4090/run_kongming_dual_sharpa.sh demo <absolute-output> A06 D06",
+      "web_derivative": "Native fixed-camera recording scaled to 960 px wide for web delivery.",
+      "notes": "demo_result reports success=true, physical_success=true, stable_controls=30, step_count=833. The launcher exit code was 2; retain acceptance-preview caveat."
+    }
+  ]
+}
