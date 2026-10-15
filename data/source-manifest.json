@@ -1,0 +1,1685 @@
+{
+  "captured_on": "2026-10-09",
+  "repository": "https://github.com/Winniechen2002/Agent-bench",
+  "checkout_head": "067b6fe47a3e13ebf91900b24f8c52fcd8cf1dbd",
+  "note": "Working-tree snapshot includes local atlas/status edits. HEAD alone does not identify those bytes. Historical evidence retains its own source versions.",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "9836cef72565c50c71e47bc73e5d70a8fcbbaf183118efe53bdc07e5d9b17344",
+      "matches_head": true
+    },
+    {
+      "path": "rules.md",
+      "sha256": "c1de09e32b5625513a0ee008f125471e7a11a6d3e781a3c158685115a6662693",
+      "matches_head": true
+    },
+    {
+      "path": "Vision_rules.md",
+      "sha256": "f657604f09a1b179d4b0eebddb02089325ef37d8cb695df8c70390662c1cf26e",
+      "matches_head": true
+    },
+    {
+      "path": "report.en.md",
+      "sha256": "42b0da59ae0e0b7751a4c04bb24eee22ff19d0e67a3a2c93eda953d10b4ad322",
+      "matches_head": true
+    },
+    {
+      "path": "docs/task_atlas_200/task_index.en.json",
+      "sha256": "7e6f9af3da6e8a825f1fbbb22c280d3ae0255ac763ceb0d1dcd5b704dcc58f50",
+      "matches_head": false
+    },
+    {
+      "path": "docs/task_atlas_200/task_index.zh-CN.json",
+      "sha256": "04ff0e1ed6e004f9a571802bd860d9e3495fadf615940bc3ded1389c2e40bfa4",
+      "matches_head": false
+    },
+    {
+      "path": "docs/task_status_index.json",
+      "sha256": "717babef639f8d7be8e715d7341a52585195b36825fc6ecdae3900bd2cd6b7b5",
+      "matches_head": false
+    },
+    {
+      "path": "docs/task_status.en.md",
+      "sha256": "55ec8cffc626992e89b7271dca6187165cfab80f46da8ea0806f9b291f235372",
+      "matches_head": false
+    },
+    {
+      "path": "docs/benchmark-platform.md",
+      "sha256": "a4664a9c713dfb0c24ebc26b4cc18bd4639d0ef19470df13adf4e1909e2d7faf",
+      "matches_head": true
+    },
+    {
+      "path": "docs/benchmark-platform-evidence.md",
+      "sha256": "40761cfe7e76d4c0bdc1eaa02ef3bbd808c271d3df5fbab52a203ccb92ba3314",
+      "matches_head": true
+    },
+    {
+      "path": "docs/rubiks-benchmark-platform.md",
+      "sha256": "3869b9765d7396fd690f6ab52c4bc6f278857a62201fcbec4490fdf8436d7196",
+      "matches_head": true
+    },
+    {
+      "path": "docs/rubiks_cube_milestone_v0.1.md",
+      "sha256": "a959f6a0317764bcf045aa59ef2a9d75339024df1f24488855ab48e1e424c3da",
+      "matches_head": true
+    },
+    {
+      "path": "docs/rubiks_platform_native_acceptance.json",
+      "sha256": "4a0811fdb7c6b5574a07fd829f801017fdf356dbb90076453f05823b714f1e38",
+      "matches_head": true
+    },
+    {
+      "path": "env/franka_marble/ENVIRONMENT_CATALOG.md",
+      "sha256": "e1cb43b6a4fda48a9d6f848167d2aad70df1b0150f963d91aeb78eaf44929088",
+      "matches_head": true
+    },
+    {
+      "path": "env/franka_marble/TEST_PROTOCOL.en.md",
+      "sha256": "2e891465004c491b6725cd70cd6758c01a7885c2a167e6b2752a3e5d14540d6c",
+      "matches_head": true
+    }
+  ],
+  "media": [
+    {
+      "id": "C01-AL",
+      "source": "docs/task_atlas_200/background_images/C01-AL.png",
+      "source_sha256": "85cf5b06f85bc01cf6932c52a7df59c15d0c56bb93cf10d26ebb39d9eb97a9f8",
+      "output": "assets/tasks/C01-AL.webp",
+      "output_sha256": "8f0d221b4ba1f1039a0d6b8f094316a996b526ae9eb5f7517e60c58d2ae83425",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C01-SH",
+      "source": "docs/task_atlas_200/background_images/C01-SH.png",
+      "source_sha256": "37a8e62aff8a2de4704125fd02adc49d6e1b71083020b0f3b3962e9764ffa265",
+      "output": "assets/tasks/C01-SH.webp",
+      "output_sha256": "03c66a13871d667c25fa6e6a7e48e49decf8ed076b4bc617e3064c7c75e8fc2e",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C03-AL",
+      "source": "docs/task_atlas_200/background_images/C03-AL.png",
+      "source_sha256": "ead20b659653ba5cc02112e011efe95972f91ec53f975bd284c70f13f621595a",
+      "output": "assets/tasks/C03-AL.webp",
+      "output_sha256": "b40c76f09eff78056fe588e0a025463a05e154d44e7546509b14b4c0c4b5eb39",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C03-SH",
+      "source": "docs/task_atlas_200/background_images/C03-SH.png",
+      "source_sha256": "d0729b2af6be95ab1212e02626f5ab6f4a8b164b64a54680616a16d51a3c5886",
+      "output": "assets/tasks/C03-SH.webp",
+      "output_sha256": "95c675eddefb0b7d60f341e37b52ee722054af51af64a86b88d331d14b0454a6",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C07-AL",
+      "source": "docs/task_atlas_200/background_images/C07-AL.png",
+      "source_sha256": "1bfd08dfdad996b92608babafa0c977255a3426f79643e0b296a3ae39ee4068f",
+      "output": "assets/tasks/C07-AL.webp",
+      "output_sha256": "e0f85c556ef6ae1e92dd1be5c89f1f63b9106ea93f76b675f9ce1b0eb0672bbe",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C07-SH",
+      "source": "docs/task_atlas_200/background_images/C07-SH.png",
+      "source_sha256": "3c83822d7a5de4e98a4a7424f7db20b3e06bde28d60678affc48741f1fd7d912",
+      "output": "assets/tasks/C07-SH.webp",
+      "output_sha256": "4f41d17f38c8ef4942d396b6669d46f0bc25dd49a0f9c209ea819e2d07ab5304",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C08-AL",
+      "source": "docs/task_atlas_200/background_images/C08-AL.png",
+      "source_sha256": "12bcb90409f0245c7813478d46d7a152036f1740fdb8da59029ae014256b5fd2",
+      "output": "assets/tasks/C08-AL.webp",
+      "output_sha256": "d5ca0c838735b59837c9d327c3eca96219c4d0ea02e0454602aaeb3197a7b4f9",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C08-SH",
+      "source": "docs/task_atlas_200/background_images/C08-SH.png",
+      "source_sha256": "acf575b0e3d9970eccde50961fb2d61ff2e0237324a4cff1d8f7425395efe179",
+      "output": "assets/tasks/C08-SH.webp",
+      "output_sha256": "5977f661c20dd73b3680ec40c4ce78e88db9b26f3bdc9bf98c655d6c8b7cc7ef",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C09-AL",
+      "source": "docs/task_atlas_200/background_images/C09-AL.png",
+      "source_sha256": "744025b496c6189b7d31acd8e7cc6bd3eaab8145998836bd20d6804e6cfee32d",
+      "output": "assets/tasks/C09-AL.webp",
+      "output_sha256": "94c561c19bc81ec0256111b4313fc3ec34618ebab11839f7263f3f02f20fc2f7",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C09-SH",
+      "source": "docs/task_atlas_200/background_images/C09-SH.png",
+      "source_sha256": "d31ef4a662864b8bed339a3918426438efdb9fe3dbeee66a3bf34f454badfab4",
+      "output": "assets/tasks/C09-SH.webp",
+      "output_sha256": "d150a9dcddb1914af9bc6491d630ed7f6db50dbf82e3346e7d54bca0203fed74",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C10-AL",
+      "source": "docs/task_atlas_200/background_images/C10-AL.png",
+      "source_sha256": "7f622340bf8a4ed82aa52feb8ad69f29f56fc465d223ad236f69482c9d655599",
+      "output": "assets/tasks/C10-AL.webp",
+      "output_sha256": "834a14cc2967ba3378128c4f09a3f68898b376b5bc0d905f57a96be8cc4d7ed5",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C10-SH",
+      "source": "docs/task_atlas_200/background_images/C10-SH.png",
+      "source_sha256": "a2bcac0bac4d35706b850c283bcc6c33b1b367d9a25d65c01f1a9f8b50bcf0b9",
+      "output": "assets/tasks/C10-SH.webp",
+      "output_sha256": "3298e3564e4a93f4aa1ad4662bae08183b07a6c438e420932d6894499997c028",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C14-AL",
+      "source": "docs/task_atlas_200/background_images/C14-AL.png",
+      "source_sha256": "54355231bb2f78e0d21661149fe658900d06ddd8c7ae77bf649721c0256f73d3",
+      "output": "assets/tasks/C14-AL.webp",
+      "output_sha256": "e20586f0de79c6b81d87c8a4b5632503438fe45865cdd5c71bd2aa8e04a51ef3",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C14-SH",
+      "source": "docs/task_atlas_200/background_images/C14-SH.png",
+      "source_sha256": "ca82944613a3437dbdb04fc80e8b99b6966ca612340bee9f57b4e747ac48efde",
+      "output": "assets/tasks/C14-SH.webp",
+      "output_sha256": "9e5657d0cc67683187147f15549fc231c0ec9e2d6baff61e5ce86a9fb2b5c843",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C15-AL",
+      "source": "docs/task_atlas_200/background_images/C15-AL.png",
+      "source_sha256": "e47e67f725c3e7ed2f9c6c9452c5d105af7118f5143031f2f2664519c06d7126",
+      "output": "assets/tasks/C15-AL.webp",
+      "output_sha256": "05f7fbdafac777746c22c7bd7db36b6a202cdee0821b9cb4accf8bbfd32febf9",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C15-SH",
+      "source": "docs/task_atlas_200/background_images/C15-SH.png",
+      "source_sha256": "4730d8fc884d3421ee058cee01c5b83e1fed5060755d0c9822859a8b8d930369",
+      "output": "assets/tasks/C15-SH.webp",
+      "output_sha256": "87a606175203eb267947e2b7ed11f727813d452509444d5f31f126de1de36766",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C17-AL",
+      "source": "docs/task_atlas_200/background_images/C17-AL.png",
+      "source_sha256": "d46bc5db8e173c5ec69a282a602e289902019b7001d092f3b15f9da6ff694895",
+      "output": "assets/tasks/C17-AL.webp",
+      "output_sha256": "0c4272e9a2176f603e22bdde684609f48183ba0a3a2f36bdc794c1b8d2cfeb48",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C17-SH",
+      "source": "docs/task_atlas_200/background_images/C17-SH.png",
+      "source_sha256": "4a5938edb34e60802d5c8043ef52cedfdf0a9975daadcd293e9f731ff3674534",
+      "output": "assets/tasks/C17-SH.webp",
+      "output_sha256": "a7b1b61bf8dd427d8bba25883bb42eb3b7cd4c3f7a00cad997dcdf83d26138c1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C20-AL",
+      "source": "docs/task_atlas_200/background_images/C20-AL.png",
+      "source_sha256": "7df670442529efca2021d6b829622667ddeb4f186b1e7dc7208733ab56dda855",
+      "output": "assets/tasks/C20-AL.webp",
+      "output_sha256": "0e2744f3ca401465786d6a19341ee7bc7901392443ca216d4a0a6072ba96bcf1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "C20-SH",
+      "source": "docs/task_atlas_200/background_images/C20-SH.png",
+      "source_sha256": "e2469efcec7a7ca5d56d7719f426b997ba034c0b5b4e2d72f4aac049c2c5eb98",
+      "output": "assets/tasks/C20-SH.webp",
+      "output_sha256": "47614f037068aa2f389bed8b90d08e97674f90e971a4196e59fb008f455da436",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A001",
+      "source": "docs/task_atlas_200/background_images/A001.png",
+      "source_sha256": "680695ae74cee3cc7ba2098bfb2cdadf297535f511f1abc06c0dbd839b048847",
+      "output": "assets/tasks/A001.webp",
+      "output_sha256": "f9fd89ac1be1547eee85bbed16092949d8c864a7ebcad1dde5a338b7437b672d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A002",
+      "source": "docs/task_atlas_200/background_images/A002.png",
+      "source_sha256": "c7f85831807110519d4366d9f7086ab40aee0d2f400d68cd70cbc81a18452ee4",
+      "output": "assets/tasks/A002.webp",
+      "output_sha256": "76cb321583d0ff2d37449084a6c0ff012bf2b5d8e694a025ef5daa049d715125",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A003",
+      "source": "docs/task_atlas_200/background_images/A003.png",
+      "source_sha256": "f2a9ec025dac7893a082c28d5f1e97e89a29f4fdd12cc2bb8e216289e6bed03c",
+      "output": "assets/tasks/A003.webp",
+      "output_sha256": "319c406f24d769845af2c53b0aec551db6527168ba75b23d5248cf43c621574c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A004",
+      "source": "docs/task_atlas_200/background_images/A004.png",
+      "source_sha256": "fc2f31d93c0b7c55d2610fb61aefd51ee1266d2e773add4d161b54de80de5ae0",
+      "output": "assets/tasks/A004.webp",
+      "output_sha256": "d8c2eed796b79af9ab01767cb9387c676a4fd44b0212e4106ac866dffb87fa36",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A005",
+      "source": "docs/task_atlas_200/background_images/A005.png",
+      "source_sha256": "c9511ff63b4f3f834fdd07ddb6c5551a5267fe79daf34165f0b5fbba00943652",
+      "output": "assets/tasks/A005.webp",
+      "output_sha256": "b3ad62efe900560a452c7f2a665c67f262dc1b169686049943cc6601ccb6acad",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A006",
+      "source": "docs/task_atlas_200/background_images/A006.png",
+      "source_sha256": "535c5e30f975a4ef7eac0eb28f20893b5eb352a6e7362f3659f06ff2971ea661",
+      "output": "assets/tasks/A006.webp",
+      "output_sha256": "f67f74edec5b08e7c3def0ccf4845915a34e7707d29fd772eb747646b742b7e2",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A007",
+      "source": "docs/task_atlas_200/background_images/A007.png",
+      "source_sha256": "77789eca52c781ce7900a84b794ff8edaaa15546c95722f0c6e6b9949fd49793",
+      "output": "assets/tasks/A007.webp",
+      "output_sha256": "c96d2d82badf6aa1b2dff9a2e8ec376dd24339022c9d170540053b7f638258e7",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A008",
+      "source": "docs/task_atlas_200/background_images/A008.png",
+      "source_sha256": "8303259636c1fc9ff60d347008417039b439482bee3136a0c8d8b42270bdadec",
+      "output": "assets/tasks/A008.webp",
+      "output_sha256": "452724d5470b930219a95fb5340c814167fcde326fcf871a069ec0a238556113",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A009",
+      "source": "docs/task_atlas_200/background_images/A009.png",
+      "source_sha256": "0eb017415bfef95024f61e574ad781f44e7d18b3f3fcac49a0fc9bd0dfcd21c6",
+      "output": "assets/tasks/A009.webp",
+      "output_sha256": "00b831a35b522571ab4158f013ea4385c686739ff764844409d2a19011fbcd29",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A010",
+      "source": "docs/task_atlas_200/background_images/A010.png",
+      "source_sha256": "e7a415278181371c759c924143eeaefe8a0db78d481ce55dff66caf0a890a983",
+      "output": "assets/tasks/A010.webp",
+      "output_sha256": "d0f1b79a81519fe872b2646f2c80c9919633bb7ca7345a7fb5c2259cccd12730",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A011",
+      "source": "docs/task_atlas_200/background_images/A011.png",
+      "source_sha256": "cecc2ed3b7a05c9c7e8fd77b2d7d721ac1aa166d0b8850cb53a0c42e5d176e36",
+      "output": "assets/tasks/A011.webp",
+      "output_sha256": "7df0fa983dcd05c214b0ca0309ea3f428da360b1dad9849a57f01b4a20972934",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A012",
+      "source": "docs/task_atlas_200/background_images/A012.png",
+      "source_sha256": "d40af28fdf83a2d912e0c2983bd8c0d41a47f08bf456cb7413d878107e59d053",
+      "output": "assets/tasks/A012.webp",
+      "output_sha256": "eaac3607d996db1de81af6bcc37634dfadfc138e98ea189fcf321d5b7d1df55f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A013",
+      "source": "docs/task_atlas_200/background_images/A013.png",
+      "source_sha256": "ad1cfe00968ea441f67f9378a8f9c9eef1eef8d50761b90f92bf030188da4db0",
+      "output": "assets/tasks/A013.webp",
+      "output_sha256": "88a6d7268c1ef5fd88db12422d8a111296cdd579787f02711c99b67c26e79936",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A014",
+      "source": "docs/task_atlas_200/background_images/A014.png",
+      "source_sha256": "b736a8505200fca34d2e7074116b51236d8ff2eb6ec292a2de18f5a4e40d5480",
+      "output": "assets/tasks/A014.webp",
+      "output_sha256": "00ab30cfcda1f7a4c0cc6380c4db45115660e08764e8c712bc6716da3702b2df",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A015",
+      "source": "docs/task_atlas_200/background_images/A015.png",
+      "source_sha256": "98f1b3e914d76773bbde4724e8a21989a88ae6f8019576e95ad45c83fb840d72",
+      "output": "assets/tasks/A015.webp",
+      "output_sha256": "52510c381068740886cebaf5a96c18c37233e6910c2ec8ff03668f75c56d8ce1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A016",
+      "source": "docs/task_atlas_200/background_images/A016.png",
+      "source_sha256": "c90070cbb2ac691ef7d1a969d067e956054a7b8bd511311dda3535f3dca10413",
+      "output": "assets/tasks/A016.webp",
+      "output_sha256": "62891041aeb3868c2defca99fb8c8e05bdf813eea28dfe417a253f9a51142a0c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A017",
+      "source": "docs/task_atlas_200/background_images/A017.png",
+      "source_sha256": "2f70cf2817682d878326ee8bf62778cf31480b2dc36fc591d358bc8d85e907c1",
+      "output": "assets/tasks/A017.webp",
+      "output_sha256": "d90beafaf2187debc6589d9ab750b6d9c4dea4ecb69044f906786c3bf5d18077",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A018",
+      "source": "docs/task_atlas_200/background_images/A018.png",
+      "source_sha256": "45a9cb1595fddc46628f6d7044a7f67b151231b32501be3c3658bdfed4a36c4e",
+      "output": "assets/tasks/A018.webp",
+      "output_sha256": "3c5696bd8877e399dbdeda09bf93aa8781a2372ef063f36b49aa8f5fbc0974af",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A019",
+      "source": "docs/task_atlas_200/background_images/A019.png",
+      "source_sha256": "9d62be7adae5ac51822d8ab178d401fef8f766f76ccc74ba60c5efdcd639fae7",
+      "output": "assets/tasks/A019.webp",
+      "output_sha256": "68f813d07e7a5744f896d1fbc06bd81737e12fc144bc49162ddb60443fe7b235",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A020",
+      "source": "docs/task_atlas_200/background_images/A020.png",
+      "source_sha256": "2abfef2634fc95c7cd1a45217774983379de789168b62530058ae36e0fc0a20c",
+      "output": "assets/tasks/A020.webp",
+      "output_sha256": "f0458862619ce081e07828a2124bce1fee57bb98524c1cb4306d40cd59b4d4da",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A021",
+      "source": "docs/task_atlas_200/background_images/A021.png",
+      "source_sha256": "5cdf84fa74eeb404794eabff1f76df25e219e6737d1988d8e044fe95468b33af",
+      "output": "assets/tasks/A021.webp",
+      "output_sha256": "346b51f07ba166eb7f3bdaebe8226766ef270ade29dfa2c86bb1a558468068ea",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A022",
+      "source": "docs/task_atlas_200/background_images/A022.png",
+      "source_sha256": "212f98304220da9e54262b94926aab1e9380cb169bd92fd6b092916bda4e1a70",
+      "output": "assets/tasks/A022.webp",
+      "output_sha256": "656cd1368f5ed3841f0ab849e0f179d8bfe64d223ab7e30a135b63500e5f5577",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A023",
+      "source": "docs/task_atlas_200/background_images/A023.png",
+      "source_sha256": "e904d92bea50be86c1cc7c6a23a55ea3b2829d7a07a645ca44e76dbe7189b575",
+      "output": "assets/tasks/A023.webp",
+      "output_sha256": "8971a6aa2d6646fd62b39bc90a874a7bde085d0c9391e23c26fd2778c6da376c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A024",
+      "source": "docs/task_atlas_200/background_images/A024.png",
+      "source_sha256": "89108a017eaee4b06f3e67b86c6192e9c31830655a1bfcbc25001d8b92e60c3c",
+      "output": "assets/tasks/A024.webp",
+      "output_sha256": "6e28b55b143d52a383950e82bdd1fd52cb705b529da6106bad34ee0d23c9d118",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A025",
+      "source": "docs/task_atlas_200/background_images/A025.png",
+      "source_sha256": "7482272dc92bf5ec751b186fc46530510d4b40941c3c47bfc13033c7d9c0268d",
+      "output": "assets/tasks/A025.webp",
+      "output_sha256": "410476a345a8a70a0ec24826784d6360d483f30d7f3001377a692b34779230ae",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A026",
+      "source": "docs/task_atlas_200/background_images/A026.png",
+      "source_sha256": "b2036e1c71206834fea68e5c03bbb99f869f3be4ac35c0369107dc2f9b9a9361",
+      "output": "assets/tasks/A026.webp",
+      "output_sha256": "20c0cf3457c825c82bd22014c3168738445b5f14399721831f9674382a72cc57",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A027",
+      "source": "docs/task_atlas_200/background_images/A027.png",
+      "source_sha256": "253df63dcd7b234c276b8350146259d37a83e19b536721cdcca486579f106d10",
+      "output": "assets/tasks/A027.webp",
+      "output_sha256": "525c35ad94d64e2eb991e968b255de3cac0702f8524f5a60e7b675c62a95ce9d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A028",
+      "source": "docs/task_atlas_200/background_images/A028.png",
+      "source_sha256": "d52fbc84e8db57c795e599953ca2c28175376de39351f7cb52bb623233dafe0a",
+      "output": "assets/tasks/A028.webp",
+      "output_sha256": "049c93eb91882b29971615d720928b385036f5fbc099accc42d968e13a44f68d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A029",
+      "source": "docs/task_atlas_200/background_images/A029.png",
+      "source_sha256": "27559a971d54db48569e058fdd93cc06e6bc6352faa5d06644ab47aa70fd220c",
+      "output": "assets/tasks/A029.webp",
+      "output_sha256": "ebaa7669b7523eb9d58064f1fcb1602c669fe8f9cd9896c146e75c7d3e86ec1b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A030",
+      "source": "docs/task_atlas_200/background_images/A030.png",
+      "source_sha256": "ef72b257323da0fde40d5d550884671501ade339c0926c424e62899e9f44d2a2",
+      "output": "assets/tasks/A030.webp",
+      "output_sha256": "63a49b36402f8991b231746a602cb5f2d2bacab1bd761b2498a20354196d8603",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A031",
+      "source": "docs/task_atlas_200/background_images/A031.png",
+      "source_sha256": "2c912377d6f70203a6b7a696718d7f44c5e9ec9a3b0580c4b4ee08757db48784",
+      "output": "assets/tasks/A031.webp",
+      "output_sha256": "7b49fe08123af184e6853e55ef4a5f56c83a13a451780bf014a33ccc0f91de85",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A032",
+      "source": "docs/task_atlas_200/background_images/A032.png",
+      "source_sha256": "c86e6b47a34cf4018c824e23cb9532231538f8dfea89dda39647c97f0f5a96f8",
+      "output": "assets/tasks/A032.webp",
+      "output_sha256": "530130ad7f1342c32ec7afedffbd6b9d2b06683de15463a0e6acf662fa62574d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A033",
+      "source": "docs/task_atlas_200/background_images/A033.png",
+      "source_sha256": "c14437cacbe42eba1c05fefa4eadca664220625bac0d8f00e8ace176938dd8e1",
+      "output": "assets/tasks/A033.webp",
+      "output_sha256": "0f1492182a1832988812ac74feb9c702c637093cf6178af9febd13237ee13813",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A034",
+      "source": "docs/task_atlas_200/background_images/A034.png",
+      "source_sha256": "bfa124a06abdda5a065c1800de86c3cb5346bed0c9da77ae28d623a4d4abf161",
+      "output": "assets/tasks/A034.webp",
+      "output_sha256": "8fbf4ed034f61f1585f7b0145c3b8baf52d3d48c8e7f785c32eeae857b5111fd",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A035",
+      "source": "docs/task_atlas_200/background_images/A035.png",
+      "source_sha256": "cdc474d43edea4b7ae94c9c83ea624f95598f90dc26bb4029d8a8ed0409eb559",
+      "output": "assets/tasks/A035.webp",
+      "output_sha256": "27bbe31a53886db58941b116a0d5c576ee7fc96c7948ef6cf25ef860265af524",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A036",
+      "source": "docs/task_atlas_200/background_images/A036.png",
+      "source_sha256": "36bdeec01d6dd46cbe10528c6cca3360ec99c8946ac968115d69bf196aad87a8",
+      "output": "assets/tasks/A036.webp",
+      "output_sha256": "a9f8a9d3b7e4eef9dfdf8c219b51a29a097f36ac38a3192cfb33a82eae4a5bae",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A037",
+      "source": "docs/task_atlas_200/background_images/A037.png",
+      "source_sha256": "4a90d55590e5b7540350180cc43133c5b85bffdede4a58966e052b0c4094ead8",
+      "output": "assets/tasks/A037.webp",
+      "output_sha256": "3e114b8ab4bc8d05932545c3204099a066de0910dc5ffcb124968a6268aea1eb",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A038",
+      "source": "docs/task_atlas_200/background_images/A038.png",
+      "source_sha256": "7a20470ad920d346e1b2f86e7909933477a002342c1a986028418261e32d1d78",
+      "output": "assets/tasks/A038.webp",
+      "output_sha256": "7d98f4b794e6985464815ac2feb34828e28c2651849ae331dc0a535d91a24a5d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A039",
+      "source": "docs/task_atlas_200/background_images/A039.png",
+      "source_sha256": "2cc4bad4d2bd881e5d4a4ee59c3835e36914c893cbddb030cbb2cc4f5911aed7",
+      "output": "assets/tasks/A039.webp",
+      "output_sha256": "e08f3990459bbd648f84606e11a5cae8e21543b9d9a6dd03bf6a46e377b2881d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A040",
+      "source": "docs/task_atlas_200/background_images/A040.png",
+      "source_sha256": "23698ad7f9daffb8d731790d4af853410f78ba33b3d340e846fc50e5a2cffc4e",
+      "output": "assets/tasks/A040.webp",
+      "output_sha256": "3598e8b2aade26460d7425d8dec84bb54ae84ff2d27c689e991a8154b60e1234",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A041",
+      "source": "docs/task_atlas_200/background_images/A041.png",
+      "source_sha256": "bc0691c16e1ec06248db35b0e524f9518836e719debea1e08d81398891103e72",
+      "output": "assets/tasks/A041.webp",
+      "output_sha256": "53d759ac014683b5599f7a94882b94e3884b604bf59b0746627ddde3955766c0",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A042",
+      "source": "docs/task_atlas_200/background_images/A042.png",
+      "source_sha256": "57ef1f19ac1d3570a4029aa4a49ab3542898b621e8433639b7c7e147ffd300f8",
+      "output": "assets/tasks/A042.webp",
+      "output_sha256": "0498bb05485966553013003a8a5b242df2a51e49f627a456b10fcc286cc6dc9b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A043",
+      "source": "docs/task_atlas_200/background_images/A043.png",
+      "source_sha256": "97f4fc8b83f2d9a2658ab294c9baebd0a135baf865e237641a4e6bfe87e05d9f",
+      "output": "assets/tasks/A043.webp",
+      "output_sha256": "62c10a402b9f57bf6f562a3c9beb3b24486c8eb048870785e0ef92c95beb4fbf",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A044",
+      "source": "docs/task_atlas_200/background_images/A044.png",
+      "source_sha256": "5c836108df7d3b7723b5929abc7a67a0c3544ce871ac368e7cb6de9181e2381d",
+      "output": "assets/tasks/A044.webp",
+      "output_sha256": "1f17f11353e5added22969315a3c5c4655398950650072fbb34c57b5295a59e7",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A045",
+      "source": "docs/task_atlas_200/background_images/A045.png",
+      "source_sha256": "2988a9f1634058ac006e18acb0c0bb7aba966a3b24f5c97df1e80ec5d42c2ff7",
+      "output": "assets/tasks/A045.webp",
+      "output_sha256": "0a04717bff69c5bf9eda216ff88ff0b78eb5d9daf86beb9d7e85547df39bca61",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A046",
+      "source": "docs/task_atlas_200/background_images/A046.png",
+      "source_sha256": "be61ec1bd5eabc85b40f208d3e68a72af8a7c0502ab5ce34040b74bf58173659",
+      "output": "assets/tasks/A046.webp",
+      "output_sha256": "b2ab3515aa7f35a4de88d1a0c43deb8fc33e4cb895d48739635af3848aa38c51",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A047",
+      "source": "docs/task_atlas_200/background_images/A047.png",
+      "source_sha256": "cfa6a05848297186cd0bd7099b3ceabd1bbfe8b6e1c6f33dae70e8e3d3648cff",
+      "output": "assets/tasks/A047.webp",
+      "output_sha256": "cade46b2e6ad91a92243107459a3c0381da265e361f2f02d92ea672159968595",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A048",
+      "source": "docs/task_atlas_200/background_images/A048.png",
+      "source_sha256": "be41819c994d05047f4890c953727e03cce65881d9e4025303b076f9cc6ebb94",
+      "output": "assets/tasks/A048.webp",
+      "output_sha256": "2838af0816d782f9c269c385b637e18de2803f037cac0ed05e72cd903c10d0a3",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A049",
+      "source": "docs/task_atlas_200/background_images/A049.png",
+      "source_sha256": "aaa571aece92b4098941cb30000f84bf7f4f338c25aee7d12854c11c7c6195d4",
+      "output": "assets/tasks/A049.webp",
+      "output_sha256": "b6a5f9ee9dc27177f9d8e233dfec8a0d3268f2e00779717c882868d35f3eea94",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A050",
+      "source": "docs/task_atlas_200/background_images/A050.png",
+      "source_sha256": "773a992605fd18629935b20a4b28d453a1d3c728aef02ee5db3bbae98284c749",
+      "output": "assets/tasks/A050.webp",
+      "output_sha256": "84f03b5560944108f3e7d0c71e4df87f62233521692461ac59439fa50111ea13",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A051",
+      "source": "docs/task_atlas_200/background_images/A051.png",
+      "source_sha256": "ecbc2b5754b347a6e65d7c0011e9c9c411e3c0f2e938407e1207bef5ec700983",
+      "output": "assets/tasks/A051.webp",
+      "output_sha256": "8d6d4009c00962abe82c35779d6925af045b4865b2c62d1815d7da6708f29844",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A052",
+      "source": "docs/task_atlas_200/background_images/A052.png",
+      "source_sha256": "d60bf3a4aeb1cd84f3f5a6f4cbe23d9179777dcf6b428a91ecf0ddf6c46cb0ea",
+      "output": "assets/tasks/A052.webp",
+      "output_sha256": "94b5748f5722b28a7990b2028962ac4f2eac6f74fa7804a246494d6051cb1653",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A053",
+      "source": "docs/task_atlas_200/background_images/A053.png",
+      "source_sha256": "8fadbb9e64ac50c75ee6a3e62e407e4643c205771744d0673092f34e0a7d244f",
+      "output": "assets/tasks/A053.webp",
+      "output_sha256": "ec3e075d165db4bfba08d06e9a4ef9c2736a444411d50f74d221649ba718e664",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A054",
+      "source": "docs/task_atlas_200/background_images/A054.png",
+      "source_sha256": "8793ac5032975bbc54d82eb245ff21a013cefb3733f620cdb61f3c86f8e5b622",
+      "output": "assets/tasks/A054.webp",
+      "output_sha256": "20b1202f6ef307098e7e0d6baac7a1d97ff9875fc39de4262c6bcf013632f3be",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A055",
+      "source": "docs/task_atlas_200/background_images/A055.png",
+      "source_sha256": "347e9fd3c131055306727776de1a150ba20480782f6744a7a2a7e7238163a676",
+      "output": "assets/tasks/A055.webp",
+      "output_sha256": "7dcafafd26fc97a1337b885a3d2b3b954a666a7a7d4e128ffa74e9f00ec1cf34",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A056",
+      "source": "docs/task_atlas_200/background_images/A056.png",
+      "source_sha256": "7ec0a24488c007b49b6186592e4c034fe7984df8da7afc5b6c9ea5606b1c14c1",
+      "output": "assets/tasks/A056.webp",
+      "output_sha256": "50ba604b037446c3de6a218a04cefeb07b83519f46e7c9c29349b8f6b27ea462",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A057",
+      "source": "docs/task_atlas_200/background_images/A057.png",
+      "source_sha256": "d03864207951390dc9a273d46e14d3db6dd6b42be175359285987bd80a7bc2ca",
+      "output": "assets/tasks/A057.webp",
+      "output_sha256": "d38c654d2ac00b35171fa32119a88f7a83c844fa479a7b36ce167d4ea1381cfe",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A058",
+      "source": "docs/task_atlas_200/background_images/A058.png",
+      "source_sha256": "676932bdd7766538c399f53cfbd735ddc42d74908ff9f1012b23662a9d15c7f1",
+      "output": "assets/tasks/A058.webp",
+      "output_sha256": "5601f621160c5780eb9643ccbf5bd308c2004b1231b79212a628a048f00c7787",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A059",
+      "source": "docs/task_atlas_200/background_images/A059.png",
+      "source_sha256": "46f17bf1f5a0c07bebf25e2e0ae55bdea100be77cd73e0e3a43d83e9882cc5ef",
+      "output": "assets/tasks/A059.webp",
+      "output_sha256": "0db5424ef4c494c1a0dad011e67e8695fbf3c4cc79a3eee0c2cbf5c1675e887e",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A060",
+      "source": "docs/task_atlas_200/background_images/A060.png",
+      "source_sha256": "2072b9afd562de5d5aac723726bb18b3436a852d8685a743d9808b855669f595",
+      "output": "assets/tasks/A060.webp",
+      "output_sha256": "413d6a457c6ee6f10cfae581a893c00663b224a2d99b61aaffbb94cc435ed8a4",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A061",
+      "source": "docs/task_atlas_200/background_images/A061.png",
+      "source_sha256": "ca41a9f31eac84cf7df93235058e2163f9e08fb5425db439a0fb756c0e913d0c",
+      "output": "assets/tasks/A061.webp",
+      "output_sha256": "19d8b3066e0364fffebfa0dbadf1ee6b5b2ff5909e2b9f65acee86c6eefad532",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A062",
+      "source": "docs/task_atlas_200/background_images/A062.png",
+      "source_sha256": "3708dc143bf48ceca1523a10bec7fa11c7a5fed7677a2478df5f2cd1c8c6f876",
+      "output": "assets/tasks/A062.webp",
+      "output_sha256": "d0770c329fa3ae8aa525df66fb05a9ffc844d0ec1aaf57b6b699aafa26616025",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A063",
+      "source": "docs/task_atlas_200/background_images/A063.png",
+      "source_sha256": "cf8e7c8b00e0e718abae1ed6811a0744754b4e50a7296671993cc8698f4f16b4",
+      "output": "assets/tasks/A063.webp",
+      "output_sha256": "5c9d110bcbc651a14250eff383e6b05e92ef77b6bc087c40bea344abd7d861bb",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A064",
+      "source": "docs/task_atlas_200/background_images/A064.png",
+      "source_sha256": "edaac9f4b45aa92c7f807196e41ee6292bef0bf6bcee889fbdd86456e2af8c60",
+      "output": "assets/tasks/A064.webp",
+      "output_sha256": "e681e4a1a043cf69cf1080a0d1373cb582806f94c6c9c0b817cfcd7f5ef35811",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A065",
+      "source": "docs/task_atlas_200/background_images/A065.png",
+      "source_sha256": "748450d8ee9e626103fd6a53173a2a78ab8c120a7854d8600b6ac991f6e54a31",
+      "output": "assets/tasks/A065.webp",
+      "output_sha256": "1638a776a9765979e9c3f6b9469a7da3804c72e7d6aa9fb4c14c6eb4f17db5aa",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A066",
+      "source": "docs/task_atlas_200/background_images/A066.png",
+      "source_sha256": "6ebf19ac21fb79d2bfc0ed09b13d9e05d88e38b1a5eba9bc98f99557e40d37f0",
+      "output": "assets/tasks/A066.webp",
+      "output_sha256": "2dd4da0e0b42a45139251342ae5b03bbcabab828336d5dc1f10589655442ad00",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A067",
+      "source": "docs/task_atlas_200/background_images/A067.png",
+      "source_sha256": "1a72e6358854f150481124faf3e873d3a4ba1648501ecb686fbfc04267da3e70",
+      "output": "assets/tasks/A067.webp",
+      "output_sha256": "48a5f11404b9b78c7205f6ee19883f878dbc13b5662d4033a02fe982d5465e7c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A068",
+      "source": "docs/task_atlas_200/background_images/A068.png",
+      "source_sha256": "434296b501363ba909b959b50f9e3bea73a2b85706dec7863872050c4769d1f2",
+      "output": "assets/tasks/A068.webp",
+      "output_sha256": "3cf7caa5bacf9a369e9b74eeebc49a53638b342350057337856a80682c344ae9",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A069",
+      "source": "docs/task_atlas_200/background_images/A069.png",
+      "source_sha256": "937c1692b0a82d3c2a629af91e71c9cf56c60a69f21fbc104246ef970ae475de",
+      "output": "assets/tasks/A069.webp",
+      "output_sha256": "e16f96daf843798ee43422cd80a129434fd147bc47c15aede645ec9a2afeb7c9",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A070",
+      "source": "docs/task_atlas_200/background_images/A070.png",
+      "source_sha256": "0202c5356564de2078a0337a94649282c912f9ca901119e4ce38ea20804fd484",
+      "output": "assets/tasks/A070.webp",
+      "output_sha256": "a9a1b4377984e3b9969301d41bc8ea3da88a7e39f9826c83c646dedcb27d5056",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A071",
+      "source": "docs/task_atlas_200/background_images/A071.png",
+      "source_sha256": "c9d4ef5c3ac2ef434bd0b0dc52c6518fce7a13e1aa0b5a392c6f641f1af037c8",
+      "output": "assets/tasks/A071.webp",
+      "output_sha256": "737fc487bab1e104dd7bd181836785f1b2968806a0b53e775337aa5a35445d0c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A072",
+      "source": "docs/task_atlas_200/background_images/A072.png",
+      "source_sha256": "b5c99ac2d072f425a7aed217f0046ea358ce4f4e2a7fb8b24a3386b6e6356298",
+      "output": "assets/tasks/A072.webp",
+      "output_sha256": "3c73cedc3cee6abd148b3d3a1c4729ee786b3615e73f94274a76c0ea0f8ff092",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A073",
+      "source": "docs/task_atlas_200/background_images/A073.png",
+      "source_sha256": "d3130d361dc81fd46157e98848bb6c3de8d789ad3306124c83a6b4db254b3c84",
+      "output": "assets/tasks/A073.webp",
+      "output_sha256": "df64ed1be1599c8326a3e8b8e7ae0f03e9fc446f803b744f3abe1999a59d5dd0",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A074",
+      "source": "docs/task_atlas_200/background_images/A074.png",
+      "source_sha256": "10c38a7e939e5f88b2d710ebf240d2f12af82c05da3b514de547f12271ad4ee5",
+      "output": "assets/tasks/A074.webp",
+      "output_sha256": "328df5bf64f6574ca963678c2db7caeb73374173b6b733e6ffa51706d19c7549",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A075",
+      "source": "docs/task_atlas_200/background_images/A075.png",
+      "source_sha256": "f63ddaa65b3e4d5f5df5d48a817e416284185285508dbd1948452f1484a60dc9",
+      "output": "assets/tasks/A075.webp",
+      "output_sha256": "2a123c905954b5292a196929e86c4323bdd5bf53560cd980732293df9bcea477",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A076",
+      "source": "docs/task_atlas_200/background_images/A076.png",
+      "source_sha256": "59b5f91a5594528426a76b6d43fb1a2a59eeebb766ba0035e857602d2ac7384e",
+      "output": "assets/tasks/A076.webp",
+      "output_sha256": "9b4ad79fbb6f353a51f41c2c7666ab3ecc6aafccdc5ca67db8d32699b5233a80",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A077",
+      "source": "docs/task_atlas_200/background_images/A077.png",
+      "source_sha256": "57852a86a26f1cc5fe0481fe5e038b7d6ce32c8fe79470f2e15fe50a6f3534b1",
+      "output": "assets/tasks/A077.webp",
+      "output_sha256": "78a6303a418e5ecd096d84f6500b5d328f994d2e6ca95ab575f5eee0b5afe236",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A078",
+      "source": "docs/task_atlas_200/background_images/A078.png",
+      "source_sha256": "b0a1817e9500aa685c8a01f9cf8ce9999c0c5dbca033d248edc97cf54d2cee31",
+      "output": "assets/tasks/A078.webp",
+      "output_sha256": "c74a864d5325b5a491cd4ff2f57fc48d7a8b1e65c96e0eb9aaaaedc5a833068f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A079",
+      "source": "docs/task_atlas_200/background_images/A079.png",
+      "source_sha256": "d3e29c78ab585198170b12f07e9c1fcaa8dc6acb3283cf33a81bd751add4cd5b",
+      "output": "assets/tasks/A079.webp",
+      "output_sha256": "e1c0b73fc66062d075b00d9d0e5f814480113e012419604fafe5e90a392e91a4",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A080",
+      "source": "docs/task_atlas_200/background_images/A080.png",
+      "source_sha256": "21533886beab31a07722207603663c0336f0eeda1c8a25f6e0f7e3900057b14b",
+      "output": "assets/tasks/A080.webp",
+      "output_sha256": "8ddbda19ace7811e21dc84c6f548cb68a10584cbfcbe17379c3d39f138edb24a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A081",
+      "source": "docs/task_atlas_200/background_images/A081.png",
+      "source_sha256": "c168a973f34e1584765175ae53e788fbcd29778035a94ed8d6da9610d641119b",
+      "output": "assets/tasks/A081.webp",
+      "output_sha256": "610fe9383a17d0c66c5e625209b94acc258ec95046585f39acb49ca688ec768d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A082",
+      "source": "docs/task_atlas_200/background_images/A082.png",
+      "source_sha256": "986bfd97f25c1e15e14f389f0956d616625fa393593962f0ae4779a6525f2785",
+      "output": "assets/tasks/A082.webp",
+      "output_sha256": "f8d7c814699ac7472ca9c328958608a47ef86866ae7a4f69e62e317bee5a1701",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A083",
+      "source": "docs/task_atlas_200/background_images/A083.png",
+      "source_sha256": "7b8c05680d5f242ac8e9e421377d8ef547f971011538890be752cef39476cdfd",
+      "output": "assets/tasks/A083.webp",
+      "output_sha256": "92ccb6cfd26106116c959d24e208f3bdf27735603cb3a2be620db1ec6fb9d9d2",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A084",
+      "source": "docs/task_atlas_200/background_images/A084.png",
+      "source_sha256": "ebc31a7dfa326e8bd230d124093bab2003618b98d8c676985620fe95e68daeb6",
+      "output": "assets/tasks/A084.webp",
+      "output_sha256": "59db14de47e6fce93d85981de52797f158959cc4f830753240014508f76d158e",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A085",
+      "source": "docs/task_atlas_200/background_images/A085.png",
+      "source_sha256": "464f601f1902aa77fd74d510ed060f8814f90b1465d6f4c695d7ad3f55f5ba69",
+      "output": "assets/tasks/A085.webp",
+      "output_sha256": "de46bb2085f99824baa7504a428f92736c0d4e8993db7931e8fd8877bb5ae53a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A086",
+      "source": "docs/task_atlas_200/background_images/A086.png",
+      "source_sha256": "03c1df9caa81bcf19c1feb2b2e8b5a206d9d8959de0add43fb9e0f749867cde5",
+      "output": "assets/tasks/A086.webp",
+      "output_sha256": "2f3718f3edc76e14be0c2acec5726832b0ca9ee44302ba607eb516fcb45de45d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A087",
+      "source": "docs/task_atlas_200/background_images/A087.png",
+      "source_sha256": "f7c63718c7a48b8ed8e3f4f84ca8d186dc9c8bc9800de9503ffe1ba0b6f4cc1d",
+      "output": "assets/tasks/A087.webp",
+      "output_sha256": "ce989f9aac4bb43bffff3bd2cf02b7889a231a72a75d832e1fbfc1228ef18eec",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A088",
+      "source": "docs/task_atlas_200/background_images/A088.png",
+      "source_sha256": "7725834d16300030641b15fdcb2105703bb86270e7bf713737c0c419fe07d9af",
+      "output": "assets/tasks/A088.webp",
+      "output_sha256": "4dc647e178640b004561a723bd340a0e07bf53708af8c63432bfb4fb8a150bdf",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A089",
+      "source": "docs/task_atlas_200/background_images/A089.png",
+      "source_sha256": "ebd870ddc62fb7d68c54db01fcf60b6c21d9e8d5229d58a7669c499f9619d1c7",
+      "output": "assets/tasks/A089.webp",
+      "output_sha256": "d090cc7c6b1578286596acbe97bcecaa5113768d9f1ac5011665cc74c32cfa4b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A090",
+      "source": "docs/task_atlas_200/background_images/A090.png",
+      "source_sha256": "a11db6e110e0d3273adc9b416013f893bea2f5b7c6f23690023d30a20a7eb892",
+      "output": "assets/tasks/A090.webp",
+      "output_sha256": "8cd1b8eb54f118065e1ebf9c1ae8a3cbb742a27b8d19401b98801c6f6633fe1d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A091",
+      "source": "docs/task_atlas_200/background_images/A091.png",
+      "source_sha256": "1e3edcb27ccb2c08544d489a96c5769bef0c8bd544c7abd346e870545e258912",
+      "output": "assets/tasks/A091.webp",
+      "output_sha256": "11f794af6ec8ae325c07ba49294b587ebb3f1600233f45f3d73f692de69ad484",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A092",
+      "source": "docs/task_atlas_200/background_images/A092.png",
+      "source_sha256": "dcf147e37236cc8d854834b8f33fd9b61b3992ead14569e33750dd9ef2f5ded4",
+      "output": "assets/tasks/A092.webp",
+      "output_sha256": "b95ca6add54349e895e897c7e909ce70f379d2008faf2b6ccb5e60b18064817a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A093",
+      "source": "docs/task_atlas_200/background_images/A093.png",
+      "source_sha256": "092cbf153da77339c74e1c9e1a983f1dba9fb379272da8eab842fe55efb63d36",
+      "output": "assets/tasks/A093.webp",
+      "output_sha256": "ec44dc2903a91b667a8de01d746a3c7aba8e1e7868691a335fbe99244e552e95",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A094",
+      "source": "docs/task_atlas_200/background_images/A094.png",
+      "source_sha256": "c65f1b851464933c960af362e9fde102740398f7f121a23e12bbfbf9425c58ff",
+      "output": "assets/tasks/A094.webp",
+      "output_sha256": "01daca1d5b7dd1c460e395b75c3c8e2377db404ad71b5cd066662180c2feb72f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A095",
+      "source": "docs/task_atlas_200/background_images/A095.png",
+      "source_sha256": "8e932567c3f757525bc0f77c83e11c81707fbd94653b73a1998e54167cbae113",
+      "output": "assets/tasks/A095.webp",
+      "output_sha256": "6a6ac6043651bce5689c0aa4332abff7c5851da2fed38e8d02664cd5f5a787c5",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A096",
+      "source": "docs/task_atlas_200/background_images/A096.png",
+      "source_sha256": "9ea1d888b1a560b7ebe95b5962d433fd70f70aa5caf9c7529a1286883cbd6033",
+      "output": "assets/tasks/A096.webp",
+      "output_sha256": "9f553e8c3f0602428ef97255324fa66cc468f2431a6331f714b33987158bade4",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A097",
+      "source": "docs/task_atlas_200/background_images/A097.png",
+      "source_sha256": "53ca19f7dd4ff0dfbc3bb124c0eb76aaaa20d6b7582ca9772fbe3d4d8063b073",
+      "output": "assets/tasks/A097.webp",
+      "output_sha256": "786d69edbf9270b716d68ee587ff5a770ee5b507fc43c78c85caf4b1e228c4f9",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A098",
+      "source": "docs/task_atlas_200/background_images/A098.png",
+      "source_sha256": "39466b713c63391cb242e1129d060254c490b5dd8e6ca1249cbe3d2ea582a334",
+      "output": "assets/tasks/A098.webp",
+      "output_sha256": "2d23322adeae7efe746c30f41ee0d057548c4138365e1be505bee9312e7a5106",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A099",
+      "source": "docs/task_atlas_200/background_images/A099.png",
+      "source_sha256": "8c92225e2750cc0157b07409a47c23dff43f7d12fd4467c6a11e62cc8ffb3cf2",
+      "output": "assets/tasks/A099.webp",
+      "output_sha256": "60d55c2cba9bda1f9355a692234f16874edfeb2e7d5d13dd1ba815d63e8bd84a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "A100",
+      "source": "docs/task_atlas_200/background_images/A100.png",
+      "source_sha256": "7d88b46aae8cce85f61cf985e39ac36a02266dfa0bf7bdb9267796a2cf5b29e6",
+      "output": "assets/tasks/A100.webp",
+      "output_sha256": "d9a0cf6708873895215f8558ae640c71518c70c5c3e46d1aafd66b8788fea94f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H01",
+      "source": "docs/task_atlas_200/background_images/HP-H01.png",
+      "source_sha256": "75782a28b9c3fa8e05ffd77867df22b06e9d89aa345f7c7afbc90234aa9384f1",
+      "output": "assets/tasks/HP-H01.webp",
+      "output_sha256": "88d792a259c35aa8b9a8383d0b666b86daa7ea72ab76b6cf89b28c89f51790a1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H02",
+      "source": "docs/task_atlas_200/background_images/HP-H02.png",
+      "source_sha256": "1eb6059a67867063e74eb14e6e8d127737bfa511784c002a7bd9ea7a9d7ce428",
+      "output": "assets/tasks/HP-H02.webp",
+      "output_sha256": "377e47ac4cc397955956e1c6a39f50b17873fce291befb3d4548d810df1cbf66",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H03",
+      "source": "docs/task_atlas_200/background_images/HP-H03.png",
+      "source_sha256": "3284bc1dbd85b14b77697f90af6ec293e2831a2f5a958b46eed22a86bdce3c53",
+      "output": "assets/tasks/HP-H03.webp",
+      "output_sha256": "c6a6643f509180baafe04e9aaeb87d9da8f2e07bd7d5cb6bc5d64ea511d2c342",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H04",
+      "source": "docs/task_atlas_200/background_images/HP-H04.png",
+      "source_sha256": "7e2cf2229773b0924a7959c975309bdfa21dc9d8cc8d1e38ed632d0a3fecc2a1",
+      "output": "assets/tasks/HP-H04.webp",
+      "output_sha256": "2ed7407d432da7a185bf615255d893d54d8b0bd7b912de24f983b8e5eee7f957",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H05",
+      "source": "docs/task_atlas_200/background_images/HP-H05.png",
+      "source_sha256": "67f1ee6b5227494bd1d427ec60383a3dea1f0d74d47d0f14fbb55285efa4dac7",
+      "output": "assets/tasks/HP-H05.webp",
+      "output_sha256": "8dc3248b50fa4afdc55ac3320d7274c8655b4a36375a3bec022a81061b098809",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H06",
+      "source": "docs/task_atlas_200/background_images/HP-H06.png",
+      "source_sha256": "9dff9b0102ab9d906dd297451cc922f5598712e5467208f11e7e272754613bac",
+      "output": "assets/tasks/HP-H06.webp",
+      "output_sha256": "10b014be00357b21bab0668dcca376c6595fea3f760cf3a45f67234e2d0d472d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H07",
+      "source": "docs/task_atlas_200/background_images/HP-H07.png",
+      "source_sha256": "925fad229a4b27d0b043718b654c917f849f77b0ce6426dc4ed8797659e89240",
+      "output": "assets/tasks/HP-H07.webp",
+      "output_sha256": "157d2706a1a570b242005a2a6075c1d53ad4a384b91fbd8ea682375c0443c521",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H08",
+      "source": "docs/task_atlas_200/background_images/HP-H08.png",
+      "source_sha256": "bb3581738dc38c349a2ca50ba0950ca9a44a15edafa24ff0e319c21761fa8623",
+      "output": "assets/tasks/HP-H08.webp",
+      "output_sha256": "06e93511cbd95c54cc8f160c8e793992961b7ebb0695ab76d062483d2b606c0b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H09",
+      "source": "docs/task_atlas_200/background_images/HP-H09.png",
+      "source_sha256": "1250b6a02483e573692934267d1ee8e2c71413b849fcecaf3a8f672ece3d71c1",
+      "output": "assets/tasks/HP-H09.webp",
+      "output_sha256": "a08426f4f1ae3fb74ec4437392f6f9b7eda653451741c0bfcbee4ef074d6d7b4",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H10",
+      "source": "docs/task_atlas_200/background_images/HP-H10.png",
+      "source_sha256": "4814af5ecfde8bf14ba24ea245126111716963af4d7d809b775350b9b407685e",
+      "output": "assets/tasks/HP-H10.webp",
+      "output_sha256": "498af1a0c08fda77374ce621e4fdfebcf2c8455be27e6094f783089d654e54d6",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H11",
+      "source": "docs/task_atlas_200/background_images/HP-H11.png",
+      "source_sha256": "d542d2395341153c53bf45bd47d10ac545248e59c9dcf337102f37bb2fbb6d70",
+      "output": "assets/tasks/HP-H11.webp",
+      "output_sha256": "85e33bb97ee8af4fea11f871605217e6b5666f32311756bee208c1fbcaa5228c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H12",
+      "source": "docs/task_atlas_200/background_images/HP-H12.png",
+      "source_sha256": "c06565eba68a7f6ff7e50830f4f57f35a818fe0d86bb198dd29a1eac745c628a",
+      "output": "assets/tasks/HP-H12.webp",
+      "output_sha256": "82cf9b8ace80496b2e2bee589a9f26a516220d05814f17e76973821b6579ed40",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H13",
+      "source": "docs/task_atlas_200/background_images/HP-H13.png",
+      "source_sha256": "8370b25e9ed1a2160dfa7efa90afff857c74835a5eae6ece66a1439b368bf317",
+      "output": "assets/tasks/HP-H13.webp",
+      "output_sha256": "c8e856d2b7c18b69781bb8b22b818377c510964cd221b8bd62bba2eac1a7c67c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H14",
+      "source": "docs/task_atlas_200/background_images/HP-H14.png",
+      "source_sha256": "654671410eafa2c9f638a3390c3da4f14a96498372fe9dd49ad9b2bb46253d1b",
+      "output": "assets/tasks/HP-H14.webp",
+      "output_sha256": "8ddfdde83dc7eed808e15e9da7c0315ab91ded94b2d926250a051540a6d97c05",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H15",
+      "source": "docs/task_atlas_200/background_images/HP-H15.png",
+      "source_sha256": "054f139e1dc5d1cb5032d26c03bc4da008f01d3cd4fff1b57751fe664e29ada8",
+      "output": "assets/tasks/HP-H15.webp",
+      "output_sha256": "45b99d28e073c4ff0ce25ccff9454556e1f1133db0ba80481899bd748e4775e7",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H16",
+      "source": "docs/task_atlas_200/background_images/HP-H16.png",
+      "source_sha256": "522f6d50ef105ff5de0fe56219efcc53b571f64dbaf93c45596b1b70952835a2",
+      "output": "assets/tasks/HP-H16.webp",
+      "output_sha256": "288435a3cc5d10feb7daa368ec9ccac2176fd0ca3a6d86a1a6b240f4f9f45b9a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H17",
+      "source": "docs/task_atlas_200/background_images/HP-H17.png",
+      "source_sha256": "0fad127c39ce63961d626c835ae3cbebb34353afe41a2130dcb21af4c0413531",
+      "output": "assets/tasks/HP-H17.webp",
+      "output_sha256": "66ce79e0ff5d2a13be25a4acb748cfdff80f623aae4556cceaeb0e891e80d0d0",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H18",
+      "source": "docs/task_atlas_200/background_images/HP-H18.png",
+      "source_sha256": "883c71285b83b9a54e04d1ee9d36e76a147b0d43d641d064f5ddcfe1114e351f",
+      "output": "assets/tasks/HP-H18.webp",
+      "output_sha256": "fb95afdd72b0d4aeeb4e52b53a328d9f0c6cf22ed20cea68e0103d6a40a32bd1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H19",
+      "source": "docs/task_atlas_200/background_images/HP-H19.png",
+      "source_sha256": "00bc8dd443b12094f2d223427d4b48f76486a6d3680f21e29d079df14c1b1bac",
+      "output": "assets/tasks/HP-H19.webp",
+      "output_sha256": "6749b7ebfac1a6de5b49f0a2b4344cee22833f75e760dcfe210460323dbf5d22",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H20",
+      "source": "docs/task_atlas_200/background_images/HP-H20.png",
+      "source_sha256": "0e340b24328c084ec19bd915868866232beec8f989e9ea969b52e022448dfbb4",
+      "output": "assets/tasks/HP-H20.webp",
+      "output_sha256": "ae846399b0893c22aa0974580bdd4cc2bc7755f9bf62a9d53a8aa524b8297794",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H21",
+      "source": "docs/task_atlas_200/background_images/HP-H21.png",
+      "source_sha256": "1b517bba7b2c132cb0cd71c8cdfaedaec26f7b3a17890a572918e32e0ecfe0b4",
+      "output": "assets/tasks/HP-H21.webp",
+      "output_sha256": "320f00922f291ddb26f2aaafc06e427ecc90e9502f6445f2c1da7ac3d2cf7347",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H22",
+      "source": "docs/task_atlas_200/background_images/HP-H22.png",
+      "source_sha256": "00b27b895047bdc0413ee8ebb30e2edef9663c3ca4827df7ff98478f628ccc3d",
+      "output": "assets/tasks/HP-H22.webp",
+      "output_sha256": "b77ffa0bd60b3d2e363a7af27ef7158302ae9dd90b1e6df69d2619d0fd2eda78",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H23",
+      "source": "docs/task_atlas_200/background_images/HP-H23.png",
+      "source_sha256": "41dc10c92309ad2caec1f98267c2c64cc5c0ac24831ffabd851e6f43d630ebe5",
+      "output": "assets/tasks/HP-H23.webp",
+      "output_sha256": "57bdf3774700466bbc1a8a868c7b8316d1e6249a4cb92bc8122130386cf751cf",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H24",
+      "source": "docs/task_atlas_200/background_images/HP-H24.png",
+      "source_sha256": "a08b62bd4871bbfa08225cc4b586f9bc70fde7af84646c851a66ef054da37d1f",
+      "output": "assets/tasks/HP-H24.webp",
+      "output_sha256": "3ee05b263f16dd12bc6384394e5ca45fabb84ccf0bb4656fa297388cb9a40482",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H25",
+      "source": "docs/task_atlas_200/background_images/HP-H25.png",
+      "source_sha256": "a9dbb2f957c36f0181a64cead7926555823804b62ccbeb95a1b90032ccf68998",
+      "output": "assets/tasks/HP-H25.webp",
+      "output_sha256": "e24e52d4b001692cf2f8d26220c8aaf7188f56117b046f9fb96ceefc7401ba7c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H26",
+      "source": "docs/task_atlas_200/background_images/HP-H26.png",
+      "source_sha256": "430f30f813269633071a21afa3dd16d2972490498ffcc056175f48c92ae0eb3a",
+      "output": "assets/tasks/HP-H26.webp",
+      "output_sha256": "18df9aaef47934e7fa852b1ae29cc8bd6551db6ca2dda8153c88f48ff6a04213",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H27",
+      "source": "docs/task_atlas_200/background_images/HP-H27.png",
+      "source_sha256": "65c897ad9c44fb7bdf31dc4625685e68e42c8ea97e263ce02ca0a577e06b92a3",
+      "output": "assets/tasks/HP-H27.webp",
+      "output_sha256": "c3198ef295a269a0429e77a1f9798d79cffb46a0384a6aaf16010d3f4e1925f5",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H28",
+      "source": "docs/task_atlas_200/background_images/HP-H28.png",
+      "source_sha256": "dcc846b2042d99d749e384ec82c5b5879656f255eb3a2568ef80434985d0a342",
+      "output": "assets/tasks/HP-H28.webp",
+      "output_sha256": "690acbec6e2b2486b631769146c35382cb477afb18c331df3686bdf2542badbd",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H29",
+      "source": "docs/task_atlas_200/background_images/HP-H29.png",
+      "source_sha256": "9140d1ef440ebe9c082ecf89918c243826143fae9ce6a9750158a8dc90a48aab",
+      "output": "assets/tasks/HP-H29.webp",
+      "output_sha256": "398b0e19efd698721720d26158865896a1c1891399f11da69cc6d54c35416ca6",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H30",
+      "source": "docs/task_atlas_200/background_images/HP-H30.png",
+      "source_sha256": "c967968555cf6577984a8cbdc539c5867c26009b8b3adb3c951296c17b5a188e",
+      "output": "assets/tasks/HP-H30.webp",
+      "output_sha256": "c569579058222141010623109db8c12c89db6e57aea4edd2fd351669084291f3",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H31",
+      "source": "docs/task_atlas_200/background_images/HP-H31.png",
+      "source_sha256": "0aed46255c2e26ebd77305e34d7139522f5be22c7a533d4db086a3b4a23949fd",
+      "output": "assets/tasks/HP-H31.webp",
+      "output_sha256": "56b22ddc271ebfb121d92f9e9f5094b7eb5a36827097807a0863777cc98abaf8",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H32",
+      "source": "docs/task_atlas_200/background_images/HP-H32.png",
+      "source_sha256": "e67927dec1b16cd60675a8b06ed2282a234d7271ec87c9d1838b30d343c602a0",
+      "output": "assets/tasks/HP-H32.webp",
+      "output_sha256": "254e15917eaca6e8af9fcc5b04248bd8ca3fd61e15a31c24d026fb045c17f50e",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H33",
+      "source": "docs/task_atlas_200/background_images/HP-H33.png",
+      "source_sha256": "382d3440758516b030d239943522126c04c6d5a1f8d84fc9a138a57cf6530c28",
+      "output": "assets/tasks/HP-H33.webp",
+      "output_sha256": "1ae2d38c8a2276929f45bcd86c61503dee95054e67a4b23b984c93c2c578df6b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H34",
+      "source": "docs/task_atlas_200/background_images/HP-H34.png",
+      "source_sha256": "dc09a9b741e88f8bfd79009c94e41a91f37a8882be7f928d58d4df28642929aa",
+      "output": "assets/tasks/HP-H34.webp",
+      "output_sha256": "d3a8a894e93e3f71a8351738445a01d86b79158200629b6ebfe3e3a52fb84bc0",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H35",
+      "source": "docs/task_atlas_200/background_images/HP-H35.png",
+      "source_sha256": "81cc05fad19dfe6f29efe8afea10a1ae16406ac6cdef5ff39c60b95d89d6fdb3",
+      "output": "assets/tasks/HP-H35.webp",
+      "output_sha256": "4bd89d85741b5a42b3e0336f95c9f753c5b871c2bac2a1307a58186209e52bb5",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H36",
+      "source": "docs/task_atlas_200/background_images/HP-H36.png",
+      "source_sha256": "69d65d30a177526a7ffa5c298aa0cf66252b0b852ea794dc53cc594dfe5fd6f9",
+      "output": "assets/tasks/HP-H36.webp",
+      "output_sha256": "6a97134a84487b0d7f6a4716776c44ca54d2d296277239a3f0e233fa51c0ff58",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H37",
+      "source": "docs/task_atlas_200/background_images/HP-H37.png",
+      "source_sha256": "bfcb55a87847174aa9bdccbc330e0551b4ff4b557419992c6cb0851e2f920f51",
+      "output": "assets/tasks/HP-H37.webp",
+      "output_sha256": "a5ded195afb7310fa298c8f0ef0d9853f21848902cebfa17fb436f0b11160445",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H38",
+      "source": "docs/task_atlas_200/background_images/HP-H38.png",
+      "source_sha256": "b1f53c0702e2c7bd7f90fe801fcc656efdb0c87204056e31ff8afb0ff4b89f3e",
+      "output": "assets/tasks/HP-H38.webp",
+      "output_sha256": "fe3594d770dac0b630e5a3e5c16d300da9e9897a311679136b1f028d1220c643",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H39",
+      "source": "docs/task_atlas_200/background_images/HP-H39.png",
+      "source_sha256": "b0bc1f253b2382110fee6b681a0ab9cd8f5e14837373fd264c2b78bc051ce2e2",
+      "output": "assets/tasks/HP-H39.webp",
+      "output_sha256": "4e0973393a4d6ed5dc8a6536df6dfeb96b75d31637b05bb3d356304878a9541f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HP-H40",
+      "source": "docs/task_atlas_200/background_images/HP-H40.png",
+      "source_sha256": "97b738c9a1b89fb022b5779bb27b5e4e404957914c4fee979a0f7b649648e6cd",
+      "output": "assets/tasks/HP-H40.webp",
+      "output_sha256": "c06877ad55e14233c223b69f7ef38b8ee48196966f9ca2335653f63395154535",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H01",
+      "source": "docs/task_atlas_200/background_images/HN-H01.png",
+      "source_sha256": "8256ab9b53ff162f868f93500fe5e8aa91181b73d0833f7a47cd90de09497f79",
+      "output": "assets/tasks/HN-H01.webp",
+      "output_sha256": "b958d31857c644c99dd5a94092d1f8674e510feb93828fd15da8ab1bd24fe052",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H02",
+      "source": "docs/task_atlas_200/background_images/HN-H02.png",
+      "source_sha256": "80abf91e6573e53bf6f080aa2050a1a9e6697c8bda3947208f6bec5eca1aaa28",
+      "output": "assets/tasks/HN-H02.webp",
+      "output_sha256": "6637617cade28d725138f63c7f38d33c2d9514fe4495fd5c563f1929eccc56ee",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H03",
+      "source": "docs/task_atlas_200/background_images/HN-H03.png",
+      "source_sha256": "f1ffc48e6ae24aaf67e73d120cb79b169971f02f73ed7199f9798ca8902c9ae7",
+      "output": "assets/tasks/HN-H03.webp",
+      "output_sha256": "a5ee900a3253ca5e63d515f06093b9680d00d0df52b851e8d43dfb262dedd8d3",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H04",
+      "source": "docs/task_atlas_200/background_images/HN-H04.png",
+      "source_sha256": "8d1cdf1c321489257c54e39be3af6202eaa1f7e6301072f5333e47d435030b8e",
+      "output": "assets/tasks/HN-H04.webp",
+      "output_sha256": "deb1ae98abeea23e36931e71e06cafec81cbfbe1d33ae1507354134d30625af1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H05",
+      "source": "docs/task_atlas_200/background_images/HN-H05.png",
+      "source_sha256": "f0774dc0df077ec8d1d8163e89fa0c00a53f20febd8779d4c4831f5ead7086a4",
+      "output": "assets/tasks/HN-H05.webp",
+      "output_sha256": "df555373ae1e67b1ebc34deaab15403bf1ea8e22cdedb25372993d57a718722d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H06",
+      "source": "docs/task_atlas_200/background_images/HN-H06.png",
+      "source_sha256": "1581c3670fb4b48413b4d638aea6b8841d731f136017f40ae8e5ba5d6577a572",
+      "output": "assets/tasks/HN-H06.webp",
+      "output_sha256": "45b6109596a2cb7715a1a8efbfa774bb9b822877c0e15a40a378e4889f2e7a8f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H07",
+      "source": "docs/task_atlas_200/background_images/HN-H07.png",
+      "source_sha256": "61bbbdcf3add71db8c517e0f80258bacadc092a3481ef63e5b56e6acb28a3cb8",
+      "output": "assets/tasks/HN-H07.webp",
+      "output_sha256": "ded315a439eefeca1fa8220d3f8a0e8825f399c7c3bdcc0a32779ac32431bd86",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H08",
+      "source": "docs/task_atlas_200/background_images/HN-H08.png",
+      "source_sha256": "a57c7a2d272871992600d363982714c67f3608bee29611855a376751a654e833",
+      "output": "assets/tasks/HN-H08.webp",
+      "output_sha256": "46053f9c71e48ff46f561c7f5364f049eaa0e7da1e0a505d20fdb39fb45f21ac",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H09",
+      "source": "docs/task_atlas_200/background_images/HN-H09.png",
+      "source_sha256": "d27895fa9fab9385ba405ff7fa443cf4ef4438ad093310821b7c36d955149a24",
+      "output": "assets/tasks/HN-H09.webp",
+      "output_sha256": "d172e02e8a8a05d9dd21a23af89b13cdc7a1db9d3a19fd3320212ac2d9ae91cd",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H10",
+      "source": "docs/task_atlas_200/background_images/HN-H10.png",
+      "source_sha256": "d8f1c15cf2aab55c818b245ec28a0f12f86567a78f605b0aa04c18f0a4f9db31",
+      "output": "assets/tasks/HN-H10.webp",
+      "output_sha256": "dff22eafe612ce101d29faadf99c1c60a7252430579dfa801612c187fa7c5b76",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H11",
+      "source": "docs/task_atlas_200/background_images/HN-H11.png",
+      "source_sha256": "1d6a1f02b537129f0f046ca75a983f6f33711c8f047d168e505bf415f55853f9",
+      "output": "assets/tasks/HN-H11.webp",
+      "output_sha256": "3bc3f676bcadc90b202ab090fb430cc52c85e3f92dbfd5dd8ca005be7b1fde39",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H12",
+      "source": "docs/task_atlas_200/background_images/HN-H12.png",
+      "source_sha256": "3addf39f190bc8180c0b91ed09b6ef681ceb2f73bd244dc77767fae3582b4bdb",
+      "output": "assets/tasks/HN-H12.webp",
+      "output_sha256": "ee0115fcae6e2e6f36cb16c572df4d4faa4fa6a7a0b854706c7195aa126cc59c",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H13",
+      "source": "docs/task_atlas_200/background_images/HN-H13.png",
+      "source_sha256": "d6117e034a1f90248c3b81d2de868c68bbb3e47ef7e9f83d328156197362e343",
+      "output": "assets/tasks/HN-H13.webp",
+      "output_sha256": "4c295afe4a6c8a27f21f07598ccd67c8781583d2fa03f1a0a4365ee35bbb8bd3",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H14",
+      "source": "docs/task_atlas_200/background_images/HN-H14.png",
+      "source_sha256": "b280059b406728a017e6bd1d2003fd7e8f95e2ba939ecda128d3e789f6e087ea",
+      "output": "assets/tasks/HN-H14.webp",
+      "output_sha256": "b1a5645537bdba75aaac6a276d53c6f2cd48b016a7f40ccb99c347e7cc49d106",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H15",
+      "source": "docs/task_atlas_200/background_images/HN-H15.png",
+      "source_sha256": "3b8016c7908a2191727feaf0d0d3cde046544be0791edfb377655ed810fa002a",
+      "output": "assets/tasks/HN-H15.webp",
+      "output_sha256": "ca038fb9304ea068abe317beab3131e5e8ba730710d610ab7386ef9d6aed4535",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H16",
+      "source": "docs/task_atlas_200/background_images/HN-H16.png",
+      "source_sha256": "ceccf886971bccb6041062b2f955d054da16cd82240890ac975f2e09c33c8646",
+      "output": "assets/tasks/HN-H16.webp",
+      "output_sha256": "05a339d701d671baea99af991f0f07b503a3f7278679c76acb2640d9bb05358e",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H17",
+      "source": "docs/task_atlas_200/background_images/HN-H17.png",
+      "source_sha256": "0ee30220fd21b3043099c70b6cc5804e3400dd9cf0a970fedb89abc9ac016493",
+      "output": "assets/tasks/HN-H17.webp",
+      "output_sha256": "e895e38f961f69c7f41e01278e823d11b92a4cf7572e984c1544d1f0e8e2d99d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H18",
+      "source": "docs/task_atlas_200/background_images/HN-H18.png",
+      "source_sha256": "bfe68b38d23430818cb5c7a718cd34f6a92ea186e10c0079169c9e00a589f2dc",
+      "output": "assets/tasks/HN-H18.webp",
+      "output_sha256": "28fc90ee84c680505a72354b25af4bf44b561ad42a75180e4c1f0bc355b32209",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H19",
+      "source": "docs/task_atlas_200/background_images/HN-H19.png",
+      "source_sha256": "0603c65350a7f02459965c6dcf14107a9e54f94408577ab9ca8ca64c16b33b2d",
+      "output": "assets/tasks/HN-H19.webp",
+      "output_sha256": "d280fa5964a9d52c972b0ee2d9839681a48d41296ab5adac782c757d50b9a166",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H20",
+      "source": "docs/task_atlas_200/background_images/HN-H20.png",
+      "source_sha256": "b53cb65be05503150840b7079b49b6e6a86deb2444771c70ce884ed90b7c4dae",
+      "output": "assets/tasks/HN-H20.webp",
+      "output_sha256": "841fa85ac6a8a5c790f635ef0c438e564e88fa9b71ab754e6cdc2c2ea9a2ec43",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H21",
+      "source": "docs/task_atlas_200/background_images/HN-H21.png",
+      "source_sha256": "13b4eb96dad93ef01e75d2fa38207e4ea8dc1a9fcd9336976c57eec82269af0d",
+      "output": "assets/tasks/HN-H21.webp",
+      "output_sha256": "33c10be5167a85775e72f15a733858228125e42fbfa7c8426c04beb118d43872",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H22",
+      "source": "docs/task_atlas_200/background_images/HN-H22.png",
+      "source_sha256": "5081ba520a2a1418b4d40ae1b7880da503018cc951c9daae280b986fd9abc23a",
+      "output": "assets/tasks/HN-H22.webp",
+      "output_sha256": "18ef2c99ef68dbfa1714be9fad92fdf11069a6de55081ba3b457dd1709f81034",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H23",
+      "source": "docs/task_atlas_200/background_images/HN-H23.png",
+      "source_sha256": "223fb3e4cc2bf7d5ae501815e2a4c104595cfcedbbce1ae602197f232d6661c5",
+      "output": "assets/tasks/HN-H23.webp",
+      "output_sha256": "fb7646a0652315939fcf9d9040aaaeccbf84eec431cf328b2cf052bcf0fa5339",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H24",
+      "source": "docs/task_atlas_200/background_images/HN-H24.png",
+      "source_sha256": "df0300b788b02c298470efd01cca442ffe43e80336d2983d847c6e7fdd7e441d",
+      "output": "assets/tasks/HN-H24.webp",
+      "output_sha256": "2b0bbb61d0260054f1ca3973552e1436d1749bde2a82669d64f2b7dd2d709e7b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H25",
+      "source": "docs/task_atlas_200/background_images/HN-H25.png",
+      "source_sha256": "8a7a6ab29e02be586611c2a02dd895458717215e5e8b6cbf1698306e42eed4c8",
+      "output": "assets/tasks/HN-H25.webp",
+      "output_sha256": "2f1f1b736a78ceca1c020316b1aa1d76ef126746f2a27a89a7d7ba07f85d59a2",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H26",
+      "source": "docs/task_atlas_200/background_images/HN-H26.png",
+      "source_sha256": "d9ad4f91de834ba326de36814d6958c70506f145e1273b739e13dfe0876013a2",
+      "output": "assets/tasks/HN-H26.webp",
+      "output_sha256": "9b7697696667427571e10af922fb2d3df8d1d2bcdbe442f8b11fa45d9c274618",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H27",
+      "source": "docs/task_atlas_200/background_images/HN-H27.png",
+      "source_sha256": "d6add21370ae2f0e708128454aa4637425bb10095c6d0c0162e568832e3e699a",
+      "output": "assets/tasks/HN-H27.webp",
+      "output_sha256": "13528a09003b100fefc6a610f151b863118db6a6d1ff3fd193c4c8688711fa0a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H28",
+      "source": "docs/task_atlas_200/background_images/HN-H28.png",
+      "source_sha256": "32c3dcdf0ea82518f1235c5a2e662419c5a3cd12125b9229356826d9e90f9f6a",
+      "output": "assets/tasks/HN-H28.webp",
+      "output_sha256": "f4be3e565188522afdb63cfc0ba90e52d2425c67a1596a8b64fd903fae56349f",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H29",
+      "source": "docs/task_atlas_200/background_images/HN-H29.png",
+      "source_sha256": "e5aa1e68e7128cdc3109514c8fc7b427cbac23103f418d93675ed818e2d811fa",
+      "output": "assets/tasks/HN-H29.webp",
+      "output_sha256": "4f0f7836b2d9b324a8cd00670a3b4684663ba66dde563ce09c334db2f41217cc",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H30",
+      "source": "docs/task_atlas_200/background_images/HN-H30.png",
+      "source_sha256": "1acd5b39b36a5efca3623c2eb3d0fa689448fff88bf569109dba86ecee5643f7",
+      "output": "assets/tasks/HN-H30.webp",
+      "output_sha256": "4aa03c63e07241c10335cd0ad2cdf091996dc53ea364d391a2ee38595e136633",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H31",
+      "source": "docs/task_atlas_200/background_images/HN-H31.png",
+      "source_sha256": "018ee7438376034fe20c6093228e56314435b78d1a6f39a46586bffa22354e5c",
+      "output": "assets/tasks/HN-H31.webp",
+      "output_sha256": "37e548a41b693c39549cfeffdbe54520657d22624a1162001019597e8010ce8b",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H32",
+      "source": "docs/task_atlas_200/background_images/HN-H32.png",
+      "source_sha256": "a88cddf7eeefc8a2607cfebe4e6c15a43876a86e6544cb0269aa9f9d420fde34",
+      "output": "assets/tasks/HN-H32.webp",
+      "output_sha256": "1a9f9e7aed9cf37162bd9690405cdc89cfa5d88753bfec9cd5a0bc57e8e55980",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H33",
+      "source": "docs/task_atlas_200/background_images/HN-H33.png",
+      "source_sha256": "df21ae99f6c5f278f0e629836023d0ac0bf44ed2268ffcb83cbecc575235d5cb",
+      "output": "assets/tasks/HN-H33.webp",
+      "output_sha256": "0de085c5da2a0994ef21440f8d905ae76a5653b6bd68839f4ebb1af3e566828a",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H34",
+      "source": "docs/task_atlas_200/background_images/HN-H34.png",
+      "source_sha256": "6eb956c2d5ea2fb0b544266233a1bf314c3bbda8af79a9bd40433310e3370ffd",
+      "output": "assets/tasks/HN-H34.webp",
+      "output_sha256": "e1a697724a32f98ae6b7f0559ba6f88f87088e1bfb848a44d40c06df21180784",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H35",
+      "source": "docs/task_atlas_200/background_images/HN-H35.png",
+      "source_sha256": "34f7880d7c7756d4e0a54c8516b99c0f88ac2851d58cb9b38e6fe2b495296a0e",
+      "output": "assets/tasks/HN-H35.webp",
+      "output_sha256": "0c1a27184bc9e8b20909b31689aa636911d35e9cde153a83db64f0d7f908d0a1",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H36",
+      "source": "docs/task_atlas_200/background_images/HN-H36.png",
+      "source_sha256": "b7ed282928b11bfd92a0e57563943d763cc2b12e0a39338561ffb1b0d312acf2",
+      "output": "assets/tasks/HN-H36.webp",
+      "output_sha256": "97b1dd9086d1054f4235a38c5fadaaabb765fdf05bace65c91c644fe76264800",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H37",
+      "source": "docs/task_atlas_200/background_images/HN-H37.png",
+      "source_sha256": "597efe292ca72176eeffc68dbf7ecd643681f15cb652b1190f694c60c5489354",
+      "output": "assets/tasks/HN-H37.webp",
+      "output_sha256": "8cf4c83736f5c3779297f5af6e6a9a3f6190f20cf83c4ec4cee22c41f62172c5",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H38",
+      "source": "docs/task_atlas_200/background_images/HN-H38.png",
+      "source_sha256": "1d51c1d4e967dbf67f01eaf625889c097f4f8e229a3d3a78fb7d0b89b163f0fa",
+      "output": "assets/tasks/HN-H38.webp",
+      "output_sha256": "17a562257e3cec31be4f700e73fa777fcb6005848e1c76123f695f79e4d3cc79",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H39",
+      "source": "docs/task_atlas_200/background_images/HN-H39.png",
+      "source_sha256": "7efd1e05d5819e2400474727b399e03ae4f286604934fe4908a7c0974b90518c",
+      "output": "assets/tasks/HN-H39.webp",
+      "output_sha256": "c574f5536d7b938036afa4068fcf7d50a22006132dd9f80e46f656352b17c4fb",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    },
+    {
+      "id": "HN-H40",
+      "source": "docs/task_atlas_200/background_images/HN-H40.png",
+      "source_sha256": "78ebf58732a7fa920396250a00b8fea39e0ebc3de9f5fc686df86c188eb545f9",
+      "output": "assets/tasks/HN-H40.webp",
+      "output_sha256": "f31d4e20183acbc0ac7eeb34df91916afa493de5b0c5670f0cf7bf991f74ca2d",
+      "transform": "Aspect-preserving resize and WebP encoding; no generative edits."
+    }
+  ]
+}

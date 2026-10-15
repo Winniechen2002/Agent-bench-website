@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Embodied Playground: An Agentic Robotics Benchmark for Physics, Strategic, and Spatial Reasoning" />
     <meta name="twitter:description" content="Measure how agents reason about physics, plan under constraints, and understand spatial relationships through robotic interaction." />
-    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="site.css?v=20261011-hero-large" />
   </head>
   <body>
     <div class="site-progress" aria-hidden="true"><span></span></div>
@@ -30,7 +30,7 @@
         <a href="#playground">Playground</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#tasks">Tasks</a>
-        <a href="#results">Results</a>
+        <a href="#results">Scope</a>
         <a href="#evidence">Evidence</a>
         <a class="nav-code" href="https://github.com/Winniechen2002/Agent-bench" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
@@ -41,7 +41,7 @@
         <a href="#playground">Playground</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#tasks">Tasks</a>
-        <a href="#results">Results</a>
+        <a href="#results">Scope</a>
         <a href="#evidence">Evidence</a>
         <a href="https://github.com/Winniechen2002/Agent-bench" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
@@ -65,19 +65,19 @@
           <div class="stage-corner corner-tr" aria-hidden="true"></div>
           <div class="stage-corner corner-bl" aria-hidden="true"></div>
           <div class="stage-corner corner-br" aria-hidden="true"></div>
-          <img id="hero-poster" class="hero-poster" src="assets/images/hanoi-franka-panda.png" alt="Franka Panda in a Tower of Hanoi scene" />
-          <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata" poster="assets/images/hanoi-franka-panda.png" aria-label="Benchmark rollout preview"></video>
+          <img id="hero-poster" class="hero-poster" src="assets/posters/marble-a099-initial.png" alt="Angry Birds · A099 bank-shot corridor" />
+          <video id="hero-video" class="hero-video" muted loop playsinline preload="metadata" poster="assets/posters/marble-a099-initial.png" aria-label="Angry Birds · A099 bank-shot corridor"></video>
           <div class="stage-scanline" aria-hidden="true"></div>
-          <div class="stage-meta meta-top"><span>LIVE TRACE / 01</span><span>RGB · CLOSED LOOP</span></div>
-          <div class="stage-meta meta-bottom"><span>FRANKA PANDA</span><span class="meta-accent">PLAYGROUND</span></div>
+          <div class="stage-meta meta-top"><span>ANGRY BIRDS / A099</span><span>HISTORICAL DEMO</span></div>
+          <div class="stage-meta meta-bottom"><span>DUAL FRANKA · BANK SHOT</span></div>
           <button class="stage-play" type="button" aria-label="Play selected benchmark video"><span class="play-icon">▶</span><span>PLAY ROLLOUT</span></button>
         </div>
         <div class="hero-side-note" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i></i></div>
         <div class="hero-statline reveal delay-2">
-          <div><strong>6+</strong><span>task families</span></div>
-          <div><strong>40</strong><span>Hanoi cases</span></div>
-          <div><strong>100</strong><span>Marble scenes</span></div>
-          <div><strong>∞</strong><span>agent strategies</span></div>
+          <div><strong id="hero-task-count">410</strong><span>task entries</span></div>
+          <div><strong id="hero-hanoi-count">120</strong><span>Hanoi entries · 3 robots</span></div>
+          <div><strong id="hero-marble-count">100</strong><span>Angry Birds scenes</span></div>
+          <div><strong>L0–3</strong><span>permission levels</span></div>
         </div>
       </section>
 
@@ -91,8 +91,8 @@
           <div class="intro-copy reveal delay-1">
             <p>Embodied Playground tests three connected forms of reasoning through robotic interaction: physics reasoning about motion, contact, and cause and effect; strategic reasoning about subgoals, rules, and recovery; and spatial reasoning about geometry, poses, and reachability.</p>
             <p>Long tasks connect all three: can an agent keep track of state, choose the next action, detect a bad contact, and revise its plan?</p>
-            <p>Every environment exposes a bounded interface. The agent receives a goal, observations, tools, memory, and a budget. An independent evaluator decides success, rule violations, and physical hard failures.</p>
-            <a class="text-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/report.md" target="_blank" rel="noreferrer">Read the benchmark framing <span aria-hidden="true">↗</span></a>
+            <p>The current AgentBench scope contains 410 environment task entries with native actions, observations and trusted scoring. Clients use describe / observe / step / finish; initialization and reset belong to the environment owner. Full engineering qualification remains incomplete.</p>
+            <a class="text-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/README.en.md" target="_blank" rel="noreferrer">Read the benchmark framing <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div class="metric-rail reveal">
@@ -148,54 +148,47 @@
         <div class="section-heading wide-heading reveal">
           <p class="section-label">One interface. Many worlds.</p>
           <h2>Explore the task families.</h2>
-          <p class="heading-note">Hanoi probes strategic planning; cubes and locks demand spatial reasoning and contact control; marble scenes test predictions about physical cause and effect.</p>
+          <p class="heading-note">Hanoi probes strategic planning; cubes, locks and bookshelf tasks demand spatial reasoning and contact control; Angry Birds and ManiSkill test physical interaction. Task entries include their declared embodiments. Development-only appliance and grasping examples are outside this 410-entry scope.</p>
         </div>
         <div class="task-controls reveal">
           <div class="filter-group" role="group" aria-label="Filter by task family">
             <span class="filter-label">FAMILY</span>
-            <button class="filter-button active" data-filter-group="family" data-filter="all">All</button>
-            <button class="filter-button" data-filter-group="family" data-filter="hanoi">Hanoi</button>
-            <button class="filter-button" data-filter-group="family" data-filter="cube">Cube</button>
-            <button class="filter-button" data-filter-group="family" data-filter="marble">Marble</button>
-            <button class="filter-button" data-filter-group="family" data-filter="kongming">Kongming</button>
-            <button class="filter-button" data-filter-group="family" data-filter="tabletop">Tabletop</button>
+            <button class="filter-button active" aria-pressed="true" data-filter-group="family" data-filter="all">All</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="hanoi">Hanoi</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="cube">Cube</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="marble">Marble</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="kongming">Kongming</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="bookshelf">Bookshelf</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="family" data-filter="maniskill">ManiSkill</button>
           </div>
           <div class="filter-group" role="group" aria-label="Filter by embodiment">
             <span class="filter-label">EMBODIMENT</span>
-            <button class="filter-button active" data-filter-group="embodiment" data-filter="all">All</button>
-            <button class="filter-button" data-filter-group="embodiment" data-filter="franka">Franka</button>
-            <button class="filter-button" data-filter-group="embodiment" data-filter="sharpa">Sharpa</button>
-            <button class="filter-button" data-filter-group="embodiment" data-filter="aloha">ALOHA</button>
+            <button class="filter-button active" aria-pressed="true" data-filter-group="embodiment" data-filter="all">All</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="embodiment" data-filter="franka">Franka</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="embodiment" data-filter="sharpa">Sharpa</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="embodiment" data-filter="aloha">ALOHA</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="embodiment" data-filter="fetch">Fetch</button>
+            <button class="filter-button" aria-pressed="false" data-filter-group="embodiment" data-filter="everyday">Everyday Robot</button>
           </div>
-          <div class="filter-group" role="group" aria-label="Filter by status">
-            <span class="filter-label">STATUS</span>
-            <button class="filter-button active" data-filter-group="status" data-filter="all">All</button>
-            <button class="filter-button" data-filter-group="status" data-filter="validated">Validated</button>
-            <button class="filter-button" data-filter-group="status" data-filter="experimental">Experimental</button>
-            <button class="filter-button" data-filter-group="status" data-filter="planned">Planned</button>
-          </div>
+
         </div>
+        <p id="task-count" class="heading-note" aria-live="polite">Loading current catalog…</p>
         <div id="task-grid" class="task-grid" aria-live="polite"></div>
         <p id="task-empty" class="empty-state" hidden>No tasks match these filters. Try another combination.</p>
       </section>
 
       <section id="results" class="section results-section dark-panel-section">
-        <div class="section-kicker">04 / EARLY RESULTS</div>
+        <div class="section-kicker">04 / CURRENT SCOPE</div>
         <div class="section-heading wide-heading reveal">
-          <p class="section-label">A first look at agent performance</p>
-          <h2>Different worlds expose different failure modes.</h2>
-          <p class="heading-note">These are early Opus 5.5 evaluations and reference traces. They are shown with their protocol and caveats; scores from incompatible task families are never merged into one leaderboard.</p>
+          <p class="section-label">Environment inventory and evaluation plan</p>
+          <h2>410 tasks. A declared protocol.</h2>
+          <p class="heading-note">The current environment source scope publishes no model results or leaderboard. These counts describe the planned evaluation, not completed runs. Historical demonstrations below do not establish performance under the current protocol.</p>
         </div>
         <div id="result-highlights" class="result-highlights reveal"></div>
-        <div class="results-console reveal delay-1">
-          <div class="console-tabs" role="tablist" aria-label="Results task family">
-            <button class="console-tab active" role="tab" aria-selected="true" data-result-tab="hanoi">Franka Hanoi</button>
-            <button class="console-tab" role="tab" aria-selected="false" data-result-tab="marble">Franka Marble</button>
-            <button class="console-tab" role="tab" aria-selected="false" data-result-tab="kongming">Kongming Lock</button>
-            <button class="console-tab" role="tab" aria-selected="false" data-result-tab="rubik">3×3 Rubik</button>
-          </div>
-          <div class="console-meta"><span>CLAIM STATUS</span><span class="status-key"><i class="dot dot-preliminary"></i> preliminary</span><span class="status-key"><i class="dot dot-reference"></i> reference execution</span></div>
-          <div id="result-table-wrap" class="result-table-wrap"></div>
+        <div class="guardrail-strip reveal"><span class="guardrail-icon">⌁</span><div><strong id="scope-status">Full engineering qualification remains incomplete; source release readiness is false.</strong><p>Code integration, historical demonstrations and complete qualification are separate. Missing checks are not passes.</p></div></div>
+        <div class="evidence-links reveal">
+          <a class="evidence-link" href="data/environment-catalog.json" download><span>01</span><div><strong>410-entry catalog</strong><small>Task IDs, embodiments and per-task budgets</small></div><span>↓</span></a>
+          <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/environment_validation.en.md" target="_blank" rel="noreferrer"><span>02</span><div><strong>Engineering qualification</strong><small>Required checks and their limits</small></div><span>↗</span></a>
         </div>
       </section>
 
@@ -203,37 +196,42 @@
         <div class="section-kicker">05 / PROTOCOL</div>
         <div class="protocol-layout">
           <div class="section-heading reveal"><p class="section-label">Comparable by design, honest by default.</p><h2>Every result carries its <span class="text-gradient">boundary.</span></h2></div>
-          <div class="protocol-copy reveal delay-1"><p>The benchmark separates what an agent can observe from what the evaluator knows. A run is scored against hidden physical state, legal constraints, termination rules, and resource budgets.</p><a class="text-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/rules.md" target="_blank" rel="noreferrer">Read the capability rules <span aria-hidden="true">↗</span></a></div>
+          <div class="protocol-copy reveal delay-1"><p>The benchmark separates what an agent can observe from what the evaluator knows. A run is scored against hidden physical state, legal constraints, termination rules, and resource budgets.</p><a class="text-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/README.en.md#permissions" target="_blank" rel="noreferrer">Read the capability rules <span aria-hidden="true">↗</span></a></div>
         </div>
+        <p class="heading-note reveal">Protocol: <code id="protocol-version">environment-four-trial-v2</code> · Permissions: <code id="capability-version">2026-10-09-environment-l0-l3</code></p>
         <div class="protocol-cards reveal">
-          <article class="protocol-card"><span class="protocol-index">L1</span><h3>RGB</h3><p>Vision, geometry, IK, planning, and proxy reconstruction from legal observations.</p><span class="protocol-chip">observation-bound</span></article>
-          <article class="protocol-card"><span class="protocol-index">L2</span><h3>RGB-D + tools</h3><p>Level 1 plus pretrained grasp and contact-generation models.</p><span class="protocol-chip">tool-assisted</span></article>
-          <article class="protocol-card"><span class="protocol-index">L3</span><h3>Privileged</h3><p>Levels 1–2 plus the original simulator’s permitted state access.</p><span class="protocol-chip">state-aware</span></article>
-          <article class="protocol-card"><span class="protocol-index">L4</span><h3>Policy</h3><p>Levels 1–3 plus a locally available pretrained or fine-tuned policy.</p><span class="protocol-chip">policy-enabled</span></article>
+          <article class="protocol-card"><span class="protocol-index">L0</span><h3>Self-written algorithms</h3><p>Python standard library, NumPy and Pillow. RGB and proprioception; no prebuilt dynamics, IK, planning or external vision/grasp tools.</p><span class="protocol-chip">base access</span></article>
+          <article class="protocol-card"><span class="protocol-index">L1</span><h3>Granted domain tools</h3><p>Adds specifically granted and installed vision, geometry, IK, planning and proxy tools. Observations follow the declared profile.</p><span class="protocol-chip">explicit grants</span></article>
+          <article class="protocol-card"><span class="protocol-index">L2</span><h3>Grasp &amp; contact tools</h3><p>Adds specifically granted and installed pretrained grasp/contact tools. Permission level and observation profile remain distinct.</p><span class="protocol-chip">tool-assisted</span></article>
+          <article class="protocol-card"><span class="protocol-index">L3</span><h3>Privileged reads</h3><p>Adds explicitly declared privileged read-only fields. No level permits writing simulator state.</p><span class="protocol-chip">read-only state</span></article>
         </div>
+        <div class="protocol-copy reveal"><p>Every group has four independent trials. Angry Birds has loaded and ground groups; other tasks have one default group. Rubik, Kongming and ManiSkill preserve fixed cases with light factors 0.85 / 0.95 / 1.05 / 1.15. Formal ManiSkill trials use default physics only.</p><p>A complete group reports successful episodes / 4. Any invalid or missing trial makes the group partial, with a null final success rate. Normal task timeout is a valid failure; initialization errors, rejected actions and wall-clock expiry are invalid attempts. Tokens and image reads are not environment qualification gates.</p><a class="text-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer">Read the four-trial protocol ↗</a></div>
         <div class="guardrail-strip reveal"><span class="guardrail-icon">⌁</span><div><strong>Hard constraints stay hard.</strong><p>Rule violations, visible penetration, forbidden contact, falls, and budget overruns remain separate from task reward.</p></div><span class="guardrail-code">C · F · B</span></div>
       </section>
 
       <section id="evidence" class="section evidence-section dark-panel-section">
         <div class="section-kicker">06 / ROLLOUTS &amp; EVIDENCE</div>
-        <div class="section-heading wide-heading reveal"><p class="section-label">See the world respond.</p><h2>Videos are evidence, not decoration.</h2><p class="heading-note">Every clip is labelled by embodiment, source, and claim status. When the media is not ready, the card tells you exactly what is missing.</p></div>
+        <div class="section-heading wide-heading reveal"><p class="section-label">See the world respond.</p><h2>Videos are evidence, not decoration.</h2><p class="heading-note">Browse native scene previews, the three ManiSkill ten-scene atlases, the native bookshelf scene, and historical reference recordings. Images and recordings retain their source content. They do not establish current four-trial results or complete engineering qualification.</p></div>
+        <div class="media-controls reveal"><label for="media-family">TASK GROUP</label><select id="media-family"><option value="all">All task groups</option></select><p id="media-count" aria-live="polite">Loading media…</p></div>
         <div id="media-grid" class="media-grid reveal"></div>
+        <p class="media-provenance reveal">Browse <a href="data/media-sources.json" target="_blank" rel="noreferrer">source files and hashes for the added media ↗</a> or the <a href="evidence/demo-manifest.json" target="_blank" rel="noreferrer">existing demo provenance ↗</a>. Bookshelf includes a newly rendered native scene. A robot rollout remains unavailable.</p>
         <div class="evidence-links reveal delay-1">
           <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench" target="_blank" rel="noreferrer"><span>01</span><div><strong>GitHub repository</strong><small>Code, environments, and task contracts</small></div><span aria-hidden="true">↗</span></a>
           <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/env/README.md" target="_blank" rel="noreferrer"><span>02</span><div><strong>Environment atlas</strong><small>Available families and evaluation entry points</small></div><span aria-hidden="true">↗</span></a>
-          <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluating-agents.md" target="_blank" rel="noreferrer"><span>03</span><div><strong>Evaluate an agent</strong><small>Protocol, tools, and external-agent workflow</small></div><span aria-hidden="true">↗</span></a>
-          <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/tree/main/output/pdf" target="_blank" rel="noreferrer"><span>04</span><div><strong>Static catalogs</strong><small>Rendered cases and machine-readable evidence</small></div><span aria-hidden="true">↗</span></a>
+          <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer"><span>03</span><div><strong>Evaluate an agent</strong><small>Protocol, tools, and external-agent workflow</small></div><span aria-hidden="true">↗</span></a>
+          <a class="evidence-link" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluation/index.en.md" target="_blank" rel="noreferrer"><span>04</span><div><strong>Per-family protocols</strong><small>Current tasks, seeds, budgets and scoring contracts</small></div><span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
       <section id="code" class="section closing-section">
         <div class="closing-grid reveal">
           <div><p class="eyebrow"><span class="live-dot"></span> BUILD WITH US</p><h2>The next agent is yours.</h2></div>
-          <div class="closing-copy"><p>Bring a new model, a new tool stack, or a new embodiment. The playground is designed to make the interface explicit and the failure legible.</p><div class="hero-actions"><a class="button button-primary" href="https://github.com/Winniechen2002/Agent-bench" target="_blank" rel="noreferrer">Open the repository <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluating-agents.md" target="_blank" rel="noreferrer">Read the protocol <span aria-hidden="true">↗</span></a></div></div>
+          <div class="closing-copy"><p>Bring a new model, a new tool stack, or a new embodiment. The playground is designed to make the interface explicit and the failure legible.</p><div class="hero-actions"><a class="button button-primary" href="https://github.com/Winniechen2002/Agent-bench" target="_blank" rel="noreferrer">Open the repository <span aria-hidden="true">↗</span></a><a class="button button-quiet" href="https://github.com/Winniechen2002/Agent-bench/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer">Read the protocol <span aria-hidden="true">↗</span></a></div></div>
         </div>
         <footer class="site-footer"><span>EMBODIED PLAYGROUND</span><span>AGENT-BENCH · 2026</span><a href="https://github.com/Winniechen2002/Agent-bench-website" target="_blank" rel="noreferrer">WEBSITE SOURCE ↗</a><a href="#top">BACK TO TOP ↑</a></footer>
       </section>
     </main>
-    <script src="site.js" defer></script>
+    <noscript><p class="section">Enable JavaScript to load the task catalog, or <a href="https://github.com/Winniechen2002/Agent-bench">read the AgentBench repository</a>.</p></noscript>
+    <script src="site.js?v=20261011-a099-2" defer></script>
   </body>
 </html>

@@ -186,3 +186,66 @@ body { background: var(--bg); color: var(--text); }
 @media (prefers-reduced-motion: reduce) {
   .stage-scanline { animation: none; }
 }
+
+/* Current environment inventory */
+.task-count { display: block; margin: 0.5rem 0; color: var(--text); font-weight: 650; }
+.task-footer a { color: inherit; white-space: nowrap; }
+.protocol-copy code, .heading-note code { overflow-wrap: anywhere; }
+
+/* Source-preserving media browser: captions never cover the evidence. */
+.media-browse, .media-open { align-self: flex-start; margin-top: 16px; padding: 0; border: 0; background: transparent; color: var(--cyan); font: 600 12px/1.5 var(--sans); cursor: pointer; text-align: left; }
+.media-browse:hover, .media-open:hover, .media-provenance a:hover { text-decoration: underline; }
+.media-browse:focus-visible, .media-open:focus-visible, .media-visual a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+.task-media.contact-sheet img { object-position: center top; }
+.task-media.diagram img { object-fit: contain; background: white; opacity: 1; filter: none; }
+.task-media.diagram::after { background: none; }
+.media-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.media-controls label { color: var(--muted); font: 10px var(--mono); letter-spacing: .12em; }
+.media-controls select { max-width: 100%; min-height: 42px; padding: 8px 32px 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--text); font: 14px var(--sans); }
+.media-controls p, .media-provenance { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.media-provenance { margin-top: 24px; }
+.media-provenance a { color: var(--cyan); text-decoration: underline; }
+.media-grid .media-card.media-entry { grid-column: span 4; min-height: 0; background: var(--panel); display: flex; flex-direction: column; }
+.media-card.media-entry::after { display: none; }
+.media-entry .media-visual { position: relative; width: 100%; height: 220px; overflow: hidden; background: #e4ece8; }
+.media-entry .media-visual a { display: block; height: 100%; }
+.media-entry .media-visual img, .media-entry .media-visual video { position: static; width: 100%; height: 100%; object-fit: contain; opacity: 1; transform: none; }
+.media-entry .media-visual.contact-sheet img { object-fit: cover; object-position: center top; }
+.media-entry .media-visual.diagram { background: white; }
+.media-entry .media-info { position: static; padding: 18px; display: flex; flex: 1; flex-direction: column; }
+.media-entry .media-status { position: static; align-self: flex-start; margin-bottom: 12px; color: var(--green); background: var(--bg-soft); border: 1px solid var(--line); line-height: 1.5; overflow-wrap: anywhere; }
+.media-entry .media-info small { line-height: 1.5; }
+.media-entry .media-info h3 { font-size: 20px; line-height: 1.25; }
+.media-entry .media-info p { font-size: 12px; margin-top: 6px; }
+.media-entry .media-open { margin-top: auto; padding-top: 18px; }
+#evidence { scroll-margin-top: 75px; }
+@media (max-width: 900px) and (min-width: 641px) { .media-grid .media-card.media-entry { grid-column: span 6; } }
+@media (max-width: 640px) { .media-controls { align-items: flex-start; flex-direction: column; gap: 8px; } .media-controls select { width: 100%; } .media-entry .media-visual { height: 220px; } }
+
+/* Preserve both arms and the tabletop in the native bookshelf preview. */
+.task-media.full-scene img { object-fit: contain; opacity: 1; filter: none; }
+.task-media.full-scene { background: #83a8bc; }
+.task-media.full-scene::after { background: none; }
+
+/* Keep the full Angry Birds recording, including both targets, in the hero. */
+.hero-stage { min-height: 0; aspect-ratio: 8 / 6; align-self: center; }
+.hero-poster, .hero-video { top: 42px; height: calc(100% - 84px); object-fit: contain; }
+.hero-poster { filter: none; }
+.hero-video.is-ready { opacity: 1; }
+.hero-stage::after { background: none; }
+.hero-stage .stage-meta { color: var(--text); text-shadow: none; }
+@media (max-width: 600px) {
+  .hero-stage { aspect-ratio: 8 / 7; }
+  .hero-stage .stage-meta { letter-spacing: .06em; font-size: 8px; }
+}
+
+.hero-stage .stage-play { top: auto; left: auto; right: 14px; bottom: 12px; transform: none; }
+.hero-stage .stage-play:hover, .hero-stage .stage-play:focus-visible { transform: none; }
+
+/* Give the homepage demonstration more room alongside the introduction. */
+@media (min-width: 981px) {
+  .hero { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 3vw, 56px); padding-inline: max(32px, calc((100vw - 1480px) / 2)); }
+}
+@media (min-width: 701px) and (max-width: 980px) {
+  .hero-stage { max-width: 100%; }
+}

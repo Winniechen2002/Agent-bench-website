@@ -4,3 +4,9 @@
 !.env.example
 *.log
 .codex-local/
+
+# Local build artifacts and preview backups
+__pycache__/
+*.py[cod]
+/tmp/
+/output/
