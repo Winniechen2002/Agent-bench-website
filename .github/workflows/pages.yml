@@ -1,6 +1,8 @@
 name: Deploy audited static release
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

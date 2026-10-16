@@ -34,7 +34,7 @@ node --check environment.js
 | `data/` | Paper results and membership, native catalog, and media metadata |
 | `evidence/demo-manifest.json` | Public artifact IDs, hashes, conditions, and replay limitations |
 | `scripts/` | Validation, public-data projection, import, build, and isolated preview tools |
-| `.github/workflows/pages.yml` | Manual deployment of the audited `dist/` artifact |
+| `.github/workflows/pages.yml` | Deploys the audited `dist/` artifact on pushes to `main` or manual runs |
 | `dist/` (ignored) | Rebuilt release directory; the only upload/preview root |
 | `.nojekyll` | Static GitHub Pages serving |
 
@@ -94,6 +94,6 @@ This reads the exact committed tree without changing Git, exports it to a tempor
 
 ## Hosting
 
-Use **Settings → Pages → Source: GitHub Actions**, not the repository-root branch publishing mode. The included **Deploy audited static release** workflow is manual (`workflow_dispatch`): pushing source does not trigger it. After the reviewed commit is on GitHub, select it in Actions and run the workflow. It checks the exact commit, builds the allowlisted release, and uploads only `dist/` to Pages. No remote settings or deployments are changed by local preview/build commands. Configure the Pages source before triggering the workflow; its configuration step does not enable Pages automatically.
+Use **Settings → Pages → Source: GitHub Actions**, not the repository-root branch publishing mode. The included **Deploy audited static release** workflow runs automatically on pushes to `main`; manual runs remain available through Actions (`workflow_dispatch`). Each run checks the exact commit, builds the allowlisted release, and uploads only `dist/` to Pages after validation succeeds. Check the workflow's build and deploy jobs to confirm publication; pushing alone does not mean deployment has finished. Local preview/build commands do not deploy. Configure the Pages source before triggering the workflow; its configuration step does not enable Pages automatically.
 
 For any other static host, upload only the freshly built `dist/` contents, never the repository directory or a recursively zipped checkout. Relative URLs support both the domain root and `/Agent-bench-website/`. See [GitHub's custom Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
