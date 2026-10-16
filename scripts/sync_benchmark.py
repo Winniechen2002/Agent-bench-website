@@ -1,4 +1,7 @@
-"""Sync public environment metadata, without simulator imports or model results.
+"""Sync public environment metadata, without simulator imports or paper model results.
+
+Native outputs are namespaced so syncing never overwrites the paper task types
+or audited EP-100 results.
 
 python3 scripts/sync_benchmark.py ../Agent-bench [--check]
 The checked-in evaluation export is the source of task IDs, budgets and counts.
@@ -9,6 +12,7 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+from public_data import validate_document
 
 ROOT = Path(__file__).resolve().parents[1]
 FAMILIES = {
@@ -83,7 +87,7 @@ def snapshot(source):
     for card in cards:
         assert (source / card['source']).is_file()
         tracked.add(card['source'])
-    metadata = dict(schema_version='website-environments-v1', repository='https://github.com/Winniechen2002/Agent-bench',
+    metadata = dict(schema_version='website-environments-v1', repository='https://github.com/Winniechen2002/Embodied-Playgroud',
         source_scope='Local working tree, including uncommitted source changes.',
         protocol_version=protocol['version'], capability_version=assignment(source / profile_source, 'CAPABILITY_VERSION'),
         base_seed=protocol['base_seed'], task_count=protocol['task_count'], counts=dict(counts),
@@ -95,8 +99,8 @@ def snapshot(source):
     inventory = [dict(id=t['task_id'], family=t['task_id'].split('/')[0],
         embodiment=t['task_id'].split('/')[1], configuration_sha256=t['configuration_sha256'],
         budgets=t['budgets'], groups=[g['variant'] for g in t['groups']]) for t in protocol['tasks']]
-    return {'tasks.json': cards, 'benchmark.json': metadata, 'environment-catalog.json': inventory,
-        'results.json': dict(schema_version='2.0', protocol=protocol['version'], results=[], summary=[],
+    return {'environment-groups.json': cards, 'benchmark.json': metadata, 'environment-catalog.json': inventory,
+        'environment-results.json': dict(schema_version='2.0', protocol=protocol['version'], results=[], summary=[],
             source_note='The current environment source scope publishes no model results. Historical website scores are archived separately and do not establish performance under this protocol.')}
 
 
@@ -105,7 +109,10 @@ def main():
     parser.add_argument('source', nargs='?', type=Path, default=ROOT.parent / 'Agent-bench')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    for name, value in snapshot(args.source.resolve()).items():
+    outputs = snapshot(args.source.resolve())
+    for name, value in outputs.items():
+        validate_document(value, name)
+    for name, value in outputs.items():
         path = ROOT / 'data' / name
         content = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
         if args.check:

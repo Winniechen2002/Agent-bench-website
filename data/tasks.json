@@ -1,754 +1,1055 @@
 [
   {
-    "id": "marble",
-    "title": "Angry Birds / Marble",
-    "family": "marble",
-    "family_label": "Physics & recovery",
-    "count": 100,
-    "counts_by_embodiment": {
-      "Dual Franka Panda": 100
-    },
+    "id": "launch-aim",
+    "title": "Launch · Aim",
+    "family": "Launch",
+    "suite": "Launch",
+    "type": "Aim",
+    "task_count": 7,
     "embodiments": [
       "Dual Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "100 authored scenes with finite ammunition, protected targets and scene-specific physical objectives. Loaded and ground modes are separate evaluation groups.",
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 7
+    },
     "skills": [
-      "physics",
-      "planning",
-      "recovery"
+      "aiming",
+      "energy_budgeting",
+      "azimuth_control"
     ],
-    "source": "docs/evaluation/marble.en.md",
+    "summary": "Direct shots at single or paired targets, including azimuth aiming.",
     "media": [
-      "marble-a007-scene",
-      "marble-a057-historical",
-      "marble-a099-historical"
+      "launch-a007-preview"
     ],
+    "success_criteria": "Clear required targets within the shot budget while respecting launcher interlocks, physical limits, and any target rules.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Launch / Angry Birds contract",
+        "path": "docs/evaluation/marble.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Native A007 single-target scene, included in the EP-100 Aim selection. Scene preview only; not a scored trial.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Hard": 3,
+      "Easy": 4
+    },
+    "ep20_count": 1,
     "task_ids": [
       "marble/dual-panda/A001",
-      "marble/dual-panda/A002",
-      "marble/dual-panda/A003",
-      "marble/dual-panda/A004",
-      "marble/dual-panda/A005",
-      "marble/dual-panda/A006",
       "marble/dual-panda/A007",
       "marble/dual-panda/A008",
       "marble/dual-panda/A009",
       "marble/dual-panda/A010",
-      "marble/dual-panda/A011",
-      "marble/dual-panda/A012",
-      "marble/dual-panda/A013",
-      "marble/dual-panda/A014",
-      "marble/dual-panda/A015",
-      "marble/dual-panda/A016",
-      "marble/dual-panda/A017",
-      "marble/dual-panda/A018",
-      "marble/dual-panda/A019",
-      "marble/dual-panda/A020",
-      "marble/dual-panda/A021",
-      "marble/dual-panda/A022",
-      "marble/dual-panda/A023",
-      "marble/dual-panda/A024",
-      "marble/dual-panda/A025",
-      "marble/dual-panda/A026",
-      "marble/dual-panda/A027",
-      "marble/dual-panda/A028",
-      "marble/dual-panda/A029",
-      "marble/dual-panda/A030",
-      "marble/dual-panda/A031",
-      "marble/dual-panda/A032",
-      "marble/dual-panda/A033",
-      "marble/dual-panda/A034",
-      "marble/dual-panda/A035",
-      "marble/dual-panda/A036",
-      "marble/dual-panda/A037",
-      "marble/dual-panda/A038",
-      "marble/dual-panda/A039",
-      "marble/dual-panda/A040",
-      "marble/dual-panda/A041",
-      "marble/dual-panda/A042",
-      "marble/dual-panda/A043",
-      "marble/dual-panda/A044",
-      "marble/dual-panda/A045",
-      "marble/dual-panda/A046",
-      "marble/dual-panda/A047",
-      "marble/dual-panda/A048",
-      "marble/dual-panda/A049",
-      "marble/dual-panda/A050",
-      "marble/dual-panda/A051",
-      "marble/dual-panda/A052",
-      "marble/dual-panda/A053",
-      "marble/dual-panda/A054",
-      "marble/dual-panda/A055",
-      "marble/dual-panda/A056",
-      "marble/dual-panda/A057",
-      "marble/dual-panda/A058",
-      "marble/dual-panda/A059",
-      "marble/dual-panda/A060",
-      "marble/dual-panda/A061",
-      "marble/dual-panda/A062",
-      "marble/dual-panda/A063",
-      "marble/dual-panda/A064",
-      "marble/dual-panda/A065",
-      "marble/dual-panda/A066",
-      "marble/dual-panda/A067",
-      "marble/dual-panda/A068",
-      "marble/dual-panda/A069",
-      "marble/dual-panda/A070",
-      "marble/dual-panda/A071",
-      "marble/dual-panda/A072",
-      "marble/dual-panda/A073",
-      "marble/dual-panda/A074",
       "marble/dual-panda/A075",
-      "marble/dual-panda/A076",
-      "marble/dual-panda/A077",
-      "marble/dual-panda/A078",
-      "marble/dual-panda/A079",
-      "marble/dual-panda/A080",
-      "marble/dual-panda/A081",
-      "marble/dual-panda/A082",
-      "marble/dual-panda/A083",
-      "marble/dual-panda/A084",
-      "marble/dual-panda/A085",
-      "marble/dual-panda/A086",
-      "marble/dual-panda/A087",
-      "marble/dual-panda/A088",
-      "marble/dual-panda/A089",
-      "marble/dual-panda/A090",
-      "marble/dual-panda/A091",
-      "marble/dual-panda/A092",
-      "marble/dual-panda/A093",
-      "marble/dual-panda/A094",
-      "marble/dual-panda/A095",
-      "marble/dual-panda/A096",
-      "marble/dual-panda/A097",
-      "marble/dual-panda/A098",
-      "marble/dual-panda/A099",
-      "marble/dual-panda/A100"
-    ]
+      "marble/dual-panda/A031"
+    ],
+    "indices": [
+      "Launch-01",
+      "Launch-02",
+      "Launch-03",
+      "Launch-04",
+      "Launch-05",
+      "Launch-06",
+      "Launch-07"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "hanoi_panda",
-    "title": "Hanoi · Franka Panda",
-    "family": "hanoi",
-    "family_label": "Strategic planning",
-    "count": 40,
+    "id": "launch-causal",
+    "title": "Launch · Causal",
+    "family": "Launch",
+    "suite": "Launch",
+    "type": "Causal",
+    "task_count": 13,
+    "embodiments": [
+      "Dual Franka Panda"
+    ],
     "counts_by_embodiment": {
-      "Franka Panda": 40
+      "Dual Franka Panda": 13
     },
+    "skills": [
+      "causal_reasoning",
+      "trajectory_planning",
+      "physical_prediction"
+    ],
+    "summary": "Indirect hits through rolling bodies, dominoes, and collapsing structures.",
+    "media": [
+      "launch-roof-cascade-reference"
+    ],
+    "success_criteria": "Clear required targets through the declared damage or causal path within the shot budget and task rules.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Launch / Angry Birds contract",
+        "path": "docs/evaluation/marble.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 6,
+      "Hard": 7
+    },
+    "ep20_count": 2,
+    "task_ids": [
+      "marble/dual-panda/A017",
+      "marble/dual-panda/A004",
+      "marble/dual-panda/A039",
+      "marble/dual-panda/A044",
+      "marble/dual-panda/A071",
+      "marble/dual-panda/A006",
+      "marble/dual-panda/A015",
+      "marble/dual-panda/A029",
+      "marble/dual-panda/A034",
+      "marble/dual-panda/A055",
+      "marble/dual-panda/A063",
+      "marble/dual-panda/A072",
+      "marble/dual-panda/A073"
+    ],
+    "indices": [
+      "Launch-08",
+      "Launch-09",
+      "Launch-10",
+      "Launch-11",
+      "Launch-12",
+      "Launch-13",
+      "Launch-14",
+      "Launch-15",
+      "Launch-16",
+      "Launch-17",
+      "Launch-18",
+      "Launch-19",
+      "Launch-20"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "launch-glass",
+    "title": "Launch · Glass",
+    "family": "Launch",
+    "suite": "Launch",
+    "type": "Glass",
+    "task_count": 5,
+    "embodiments": [
+      "Dual Franka Panda"
+    ],
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 5
+    },
+    "skills": [
+      "material_reasoning",
+      "fracture_thresholds",
+      "energy_budgeting"
+    ],
+    "summary": "Breakable glass panes with fracture thresholds.",
+    "media": [
+      "launch-glass-preview"
+    ],
+    "success_criteria": "Clear targets and satisfy the required glass fracture predicates without violating the launcher contract.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Launch / Angry Birds contract",
+        "path": "docs/evaluation/marble.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Generic Launch glass scene: A045 glass gatehouse, outside the EP-100 Glass selection; not a scored trial.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 3,
+      "Hard": 2
+    },
+    "ep20_count": 1,
+    "task_ids": [
+      "marble/dual-panda/A018",
+      "marble/dual-panda/A025",
+      "marble/dual-panda/A064",
+      "marble/dual-panda/A027",
+      "marble/dual-panda/A035"
+    ],
+    "indices": [
+      "Launch-21",
+      "Launch-22",
+      "Launch-23",
+      "Launch-24",
+      "Launch-25"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "launch-rules",
+    "title": "Launch · Rules",
+    "family": "Launch",
+    "suite": "Launch",
+    "type": "Rules",
+    "task_count": 9,
+    "embodiments": [
+      "Dual Franka Panda"
+    ],
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 9
+    },
+    "skills": [
+      "constraint_tracking",
+      "ordered_actions",
+      "recovery"
+    ],
+    "summary": "Ordered or protected targets and recovery after a miss.",
+    "media": [
+      "launch-recovery-reference"
+    ],
+    "success_criteria": "Clear targets in the required order, preserve protected targets, and satisfy the required post-hit observation period.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Launch / Angry Birds contract",
+        "path": "docs/evaluation/marble.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 4,
+      "Hard": 5
+    },
+    "ep20_count": 2,
+    "task_ids": [
+      "marble/dual-panda/A026",
+      "marble/dual-panda/A028",
+      "marble/dual-panda/A030",
+      "marble/dual-panda/A036",
+      "marble/dual-panda/A047",
+      "marble/dual-panda/A068",
+      "marble/dual-panda/A091",
+      "marble/dual-panda/A092",
+      "marble/dual-panda/A093"
+    ],
+    "indices": [
+      "Launch-26",
+      "Launch-27",
+      "Launch-28",
+      "Launch-29",
+      "Launch-30",
+      "Launch-31",
+      "Launch-32",
+      "Launch-33",
+      "Launch-34"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "tower-plan",
+    "title": "Tower · Plan",
+    "family": "Tower",
+    "suite": "Tower",
+    "type": "Plan",
+    "task_count": 5,
     "embodiments": [
       "Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "40 authored start/goal configurations. Legal moves, seating checks and one second of stable completion.",
+    "counts_by_embodiment": {
+      "Franka Panda": 5
+    },
     "skills": [
-      "planning",
-      "rules",
-      "contact"
+      "hierarchical_planning",
+      "symbolic_state_tracking",
+      "contact_control"
     ],
-    "source": "docs/evaluation/hanoi_panda.en.md",
+    "summary": "Planning depth from 1 to 31 moves on a standard Hanoi board.",
     "media": [
-      "hanoi-franka-preview",
-      "hanoi-4090-demo"
+      "hanoi-4090-demo",
+      "hanoi-franka-preview"
     ],
+    "success_criteria": "Reach the exact ring arrangement through legal moves, valid seating, and one second of stability.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Franka Hanoi contract",
+        "path": "docs/evaluation/hanoi_panda.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 3,
+      "Hard": 2
+    },
+    "ep20_count": 1,
     "task_ids": [
       "hanoi_panda/panda/H01",
       "hanoi_panda/panda/H02",
       "hanoi_panda/panda/H03",
       "hanoi_panda/panda/H04",
-      "hanoi_panda/panda/H05",
-      "hanoi_panda/panda/H06",
-      "hanoi_panda/panda/H07",
-      "hanoi_panda/panda/H08",
-      "hanoi_panda/panda/H09",
-      "hanoi_panda/panda/H10",
-      "hanoi_panda/panda/H11",
-      "hanoi_panda/panda/H12",
-      "hanoi_panda/panda/H13",
-      "hanoi_panda/panda/H14",
-      "hanoi_panda/panda/H15",
-      "hanoi_panda/panda/H16",
-      "hanoi_panda/panda/H17",
-      "hanoi_panda/panda/H18",
-      "hanoi_panda/panda/H19",
-      "hanoi_panda/panda/H20",
-      "hanoi_panda/panda/H21",
-      "hanoi_panda/panda/H22",
-      "hanoi_panda/panda/H23",
-      "hanoi_panda/panda/H24",
-      "hanoi_panda/panda/H25",
-      "hanoi_panda/panda/H26",
-      "hanoi_panda/panda/H27",
-      "hanoi_panda/panda/H28",
-      "hanoi_panda/panda/H29",
-      "hanoi_panda/panda/H30",
-      "hanoi_panda/panda/H31",
-      "hanoi_panda/panda/H32",
-      "hanoi_panda/panda/H33",
-      "hanoi_panda/panda/H34",
-      "hanoi_panda/panda/H35",
-      "hanoi_panda/panda/H36",
-      "hanoi_panda/panda/H37",
-      "hanoi_panda/panda/H38",
-      "hanoi_panda/panda/H39",
       "hanoi_panda/panda/H40"
-    ]
+    ],
+    "indices": [
+      "Tower-01",
+      "Tower-02",
+      "Tower-03",
+      "Tower-04",
+      "Tower-05"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "hanoi_sharpa",
-    "title": "Hanoi · FR3 + Sharpa",
-    "family": "hanoi",
-    "family_label": "Dexterous planning",
-    "count": 40,
-    "counts_by_embodiment": {
-      "Franka FR3 + Sharpa": 40
-    },
-    "embodiments": [
-      "Franka FR3 + Sharpa"
-    ],
-    "status": "qualification-pending",
-    "summary": "The 40-case Hanoi suite with an arm-mounted Sharpa hand.",
-    "skills": [
-      "planning",
-      "dexterity",
-      "contact"
-    ],
-    "source": "docs/evaluation/hanoi_sharpa.en.md",
-    "media": [
-      "hanoi-sharpa-preview"
-    ],
-    "task_ids": [
-      "hanoi_sharpa/fr3-sharpa/H01",
-      "hanoi_sharpa/fr3-sharpa/H02",
-      "hanoi_sharpa/fr3-sharpa/H03",
-      "hanoi_sharpa/fr3-sharpa/H04",
-      "hanoi_sharpa/fr3-sharpa/H05",
-      "hanoi_sharpa/fr3-sharpa/H06",
-      "hanoi_sharpa/fr3-sharpa/H07",
-      "hanoi_sharpa/fr3-sharpa/H08",
-      "hanoi_sharpa/fr3-sharpa/H09",
-      "hanoi_sharpa/fr3-sharpa/H10",
-      "hanoi_sharpa/fr3-sharpa/H11",
-      "hanoi_sharpa/fr3-sharpa/H12",
-      "hanoi_sharpa/fr3-sharpa/H13",
-      "hanoi_sharpa/fr3-sharpa/H14",
-      "hanoi_sharpa/fr3-sharpa/H15",
-      "hanoi_sharpa/fr3-sharpa/H16",
-      "hanoi_sharpa/fr3-sharpa/H17",
-      "hanoi_sharpa/fr3-sharpa/H18",
-      "hanoi_sharpa/fr3-sharpa/H19",
-      "hanoi_sharpa/fr3-sharpa/H20",
-      "hanoi_sharpa/fr3-sharpa/H21",
-      "hanoi_sharpa/fr3-sharpa/H22",
-      "hanoi_sharpa/fr3-sharpa/H23",
-      "hanoi_sharpa/fr3-sharpa/H24",
-      "hanoi_sharpa/fr3-sharpa/H25",
-      "hanoi_sharpa/fr3-sharpa/H26",
-      "hanoi_sharpa/fr3-sharpa/H27",
-      "hanoi_sharpa/fr3-sharpa/H28",
-      "hanoi_sharpa/fr3-sharpa/H29",
-      "hanoi_sharpa/fr3-sharpa/H30",
-      "hanoi_sharpa/fr3-sharpa/H31",
-      "hanoi_sharpa/fr3-sharpa/H32",
-      "hanoi_sharpa/fr3-sharpa/H33",
-      "hanoi_sharpa/fr3-sharpa/H34",
-      "hanoi_sharpa/fr3-sharpa/H35",
-      "hanoi_sharpa/fr3-sharpa/H36",
-      "hanoi_sharpa/fr3-sharpa/H37",
-      "hanoi_sharpa/fr3-sharpa/H38",
-      "hanoi_sharpa/fr3-sharpa/H39",
-      "hanoi_sharpa/fr3-sharpa/H40"
-    ]
-  },
-  {
-    "id": "hanoi_floating",
-    "title": "Hanoi · Floating Sharpa",
-    "family": "hanoi",
-    "family_label": "Dexterous planning",
-    "count": 40,
-    "counts_by_embodiment": {
-      "Floating Sharpa": 40
-    },
-    "embodiments": [
-      "Floating Sharpa"
-    ],
-    "status": "qualification-pending",
-    "summary": "The 40-case Hanoi suite with a floating Sharpa hand.",
-    "skills": [
-      "planning",
-      "dexterity",
-      "state_tracking"
-    ],
-    "source": "docs/evaluation/hanoi_floating.en.md",
-    "media": [
-      "hanoi-floating-h29-scene"
-    ],
-    "task_ids": [
-      "hanoi_floating/floating-sharpa/H01",
-      "hanoi_floating/floating-sharpa/H02",
-      "hanoi_floating/floating-sharpa/H03",
-      "hanoi_floating/floating-sharpa/H04",
-      "hanoi_floating/floating-sharpa/H05",
-      "hanoi_floating/floating-sharpa/H06",
-      "hanoi_floating/floating-sharpa/H07",
-      "hanoi_floating/floating-sharpa/H08",
-      "hanoi_floating/floating-sharpa/H09",
-      "hanoi_floating/floating-sharpa/H10",
-      "hanoi_floating/floating-sharpa/H11",
-      "hanoi_floating/floating-sharpa/H12",
-      "hanoi_floating/floating-sharpa/H13",
-      "hanoi_floating/floating-sharpa/H14",
-      "hanoi_floating/floating-sharpa/H15",
-      "hanoi_floating/floating-sharpa/H16",
-      "hanoi_floating/floating-sharpa/H17",
-      "hanoi_floating/floating-sharpa/H18",
-      "hanoi_floating/floating-sharpa/H19",
-      "hanoi_floating/floating-sharpa/H20",
-      "hanoi_floating/floating-sharpa/H21",
-      "hanoi_floating/floating-sharpa/H22",
-      "hanoi_floating/floating-sharpa/H23",
-      "hanoi_floating/floating-sharpa/H24",
-      "hanoi_floating/floating-sharpa/H25",
-      "hanoi_floating/floating-sharpa/H26",
-      "hanoi_floating/floating-sharpa/H27",
-      "hanoi_floating/floating-sharpa/H28",
-      "hanoi_floating/floating-sharpa/H29",
-      "hanoi_floating/floating-sharpa/H30",
-      "hanoi_floating/floating-sharpa/H31",
-      "hanoi_floating/floating-sharpa/H32",
-      "hanoi_floating/floating-sharpa/H33",
-      "hanoi_floating/floating-sharpa/H34",
-      "hanoi_floating/floating-sharpa/H35",
-      "hanoi_floating/floating-sharpa/H36",
-      "hanoi_floating/floating-sharpa/H37",
-      "hanoi_floating/floating-sharpa/H38",
-      "hanoi_floating/floating-sharpa/H39",
-      "hanoi_floating/floating-sharpa/H40"
-    ]
-  },
-  {
-    "id": "pocket_cube",
-    "title": "2×2 Pocket Cube",
-    "family": "cube",
-    "family_label": "Bimanual state tracking",
-    "count": 20,
-    "counts_by_embodiment": {
-      "Dual ALOHA": 10,
-      "Dual Floating Sharpa": 10
-    },
-    "embodiments": [
-      "Dual ALOHA",
-      "Dual Floating Sharpa"
-    ],
-    "status": "qualification-pending",
-    "summary": "10 authored cases per embodiment, 20 entries total. Exact target state and committed quarter-turn count are scored.",
-    "skills": [
-      "state_tracking",
-      "bimanual",
-      "contact"
-    ],
-    "source": "docs/evaluation/pocket_cube.en.md",
-    "media": [
-      "pocket-cube-dual-aloha-preview",
-      "pocket-cube-dual-sharpa-preview"
-    ],
-    "task_ids": [
-      "pocket_cube/aloha/C01",
-      "pocket_cube/dual-sharpa/C01",
-      "pocket_cube/aloha/C03",
-      "pocket_cube/dual-sharpa/C03",
-      "pocket_cube/aloha/C07",
-      "pocket_cube/dual-sharpa/C07",
-      "pocket_cube/aloha/C08",
-      "pocket_cube/dual-sharpa/C08",
-      "pocket_cube/aloha/C09",
-      "pocket_cube/dual-sharpa/C09",
-      "pocket_cube/aloha/C10",
-      "pocket_cube/dual-sharpa/C10",
-      "pocket_cube/aloha/C14",
-      "pocket_cube/dual-sharpa/C14",
-      "pocket_cube/aloha/C15",
-      "pocket_cube/dual-sharpa/C15",
-      "pocket_cube/aloha/C17",
-      "pocket_cube/dual-sharpa/C17",
-      "pocket_cube/aloha/C20",
-      "pocket_cube/dual-sharpa/C20"
-    ]
-  },
-  {
-    "id": "rubiks_panda",
-    "title": "3×3 Rubik · Franka Panda",
-    "family": "cube",
-    "family_label": "Spatial reasoning",
-    "count": 30,
-    "counts_by_embodiment": {
-      "Franka Panda": 30
-    },
+    "id": "tower-physics",
+    "title": "Tower · Physics",
+    "family": "Tower",
+    "suite": "Tower",
+    "type": "Physics",
+    "task_count": 8,
     "embodiments": [
       "Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "30 fixed public cases using the declared hybrid_fixture_v1 auxiliary mechanism, with legal release and return rules.",
+    "counts_by_embodiment": {
+      "Franka Panda": 8
+    },
     "skills": [
-      "state_tracking",
-      "dexterity",
-      "spatial"
+      "physical_reasoning",
+      "contact_control",
+      "adaptation"
     ],
-    "source": "docs/evaluation/rubiks_panda.en.md",
+    "summary": "Physical Hanoi board variations under the same legal-move rule.",
+    "media": [
+      "hanoi-franka-preview"
+    ],
+    "success_criteria": "Reach the specified arrangement under the configured geometry, mass, or friction variation with legal moves and stable seating.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Franka Hanoi contract",
+        "path": "docs/evaluation/hanoi_panda.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Generic Hanoi scene illustration; not a demonstration of all physical board variants or a scored Codex trial.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 4,
+      "Hard": 4
+    },
+    "ep20_count": 1,
+    "task_ids": [
+      "hanoi_panda/panda/H06",
+      "hanoi_panda/panda/H09",
+      "hanoi_panda/panda/H14",
+      "hanoi_panda/panda/H17",
+      "hanoi_panda/panda/H22",
+      "hanoi_panda/panda/H25",
+      "hanoi_panda/panda/H34",
+      "hanoi_panda/panda/H31"
+    ],
+    "indices": [
+      "Tower-06",
+      "Tower-07",
+      "Tower-08",
+      "Tower-09",
+      "Tower-10",
+      "Tower-11",
+      "Tower-12",
+      "Tower-13"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "tower-dex",
+    "title": "Tower · Dex",
+    "family": "Tower",
+    "suite": "Tower",
+    "type": "Dex",
+    "task_count": 8,
+    "embodiments": [
+      "Floating Sharpa hand",
+      "FR3 + Sharpa hand"
+    ],
+    "counts_by_embodiment": {
+      "Floating Sharpa hand": 4,
+      "FR3 + Sharpa hand": 4
+    },
+    "skills": [
+      "dexterous_grasping",
+      "finger_coordination",
+      "planning"
+    ],
+    "summary": "Representative Hanoi boards with an FR3–Sharpa or floating Sharpa hand.",
+    "media": [
+      "hanoi-sharpa-two-ring-reference",
+      "hanoi-floating-h29-scene"
+    ],
+    "success_criteria": "Complete the board goal through legal ring transfers with the declared hand embodiment and required stability.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Floating Sharpa Hanoi contract",
+        "path": "docs/evaluation/hanoi_floating.en.md"
+      },
+      {
+        "label": "FR3–Sharpa Hanoi contract",
+        "path": "docs/evaluation/hanoi_sharpa.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 4,
+      "Hard": 4
+    },
+    "ep20_count": 2,
+    "task_ids": [
+      "hanoi_floating/floating-sharpa/H01",
+      "hanoi_floating/floating-sharpa/H02",
+      "hanoi_floating/floating-sharpa/H09",
+      "hanoi_floating/floating-sharpa/H25",
+      "hanoi_sharpa/fr3-sharpa/H01",
+      "hanoi_sharpa/fr3-sharpa/H02",
+      "hanoi_sharpa/fr3-sharpa/H09",
+      "hanoi_sharpa/fr3-sharpa/H25"
+    ],
+    "indices": [
+      "Tower-14",
+      "Tower-15",
+      "Tower-16",
+      "Tower-17",
+      "Tower-18",
+      "Tower-19",
+      "Tower-20",
+      "Tower-21"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "lock-assemble",
+    "title": "Lock · Assemble",
+    "family": "Lock",
+    "suite": "Lock",
+    "type": "Assemble",
+    "task_count": 6,
+    "embodiments": [
+      "Dual Franka Panda"
+    ],
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 6
+    },
+    "skills": [
+      "geometric_reasoning",
+      "bimanual_coordination",
+      "insertion"
+    ],
+    "summary": "Insert the key, key and bar, or full Kongming lock with two Panda arms.",
+    "media": [
+      "kongming-dual-franka-reference"
+    ],
+    "success_criteria": "Reach the case-specific assembled arrangement, release the pieces, and maintain two seconds of stability under native contact checks.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Kongming lock contract",
+        "path": "docs/evaluation/kongming_lock.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Hard": 3,
+      "Easy": 3
+    },
+    "ep20_count": 1,
+    "task_ids": [
+      "kongming_lock/dual-panda/A01",
+      "kongming_lock/dual-panda/A06",
+      "kongming_lock/dual-panda/A11",
+      "kongming_lock/dual-panda/A04",
+      "kongming_lock/dual-panda/A09",
+      "kongming_lock/dual-panda/A14"
+    ],
+    "indices": [
+      "Lock-01",
+      "Lock-02",
+      "Lock-03",
+      "Lock-04",
+      "Lock-05",
+      "Lock-06"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "lock-disassemble",
+    "title": "Lock · Disassemble",
+    "family": "Lock",
+    "suite": "Lock",
+    "type": "Disassemble",
+    "task_count": 6,
+    "embodiments": [
+      "Dual Franka Panda"
+    ],
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 6
+    },
+    "skills": [
+      "geometric_reasoning",
+      "bimanual_coordination",
+      "extraction"
+    ],
+    "summary": "Remove the key, key and bar, or all six pieces with two Panda arms.",
+    "media": [
+      "kongming-dual-franka-disassemble-reference"
+    ],
+    "success_criteria": "Reach the case-specific disassembled arrangement, release the pieces, and maintain one second of stability under native contact checks.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Kongming lock contract",
+        "path": "docs/evaluation/kongming_lock.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Hard": 3,
+      "Easy": 3
+    },
+    "ep20_count": 1,
+    "task_ids": [
+      "kongming_lock/dual-panda/D01",
+      "kongming_lock/dual-panda/D06",
+      "kongming_lock/dual-panda/D11",
+      "kongming_lock/dual-panda/D04",
+      "kongming_lock/dual-panda/D09",
+      "kongming_lock/dual-panda/D14"
+    ],
+    "indices": [
+      "Lock-07",
+      "Lock-08",
+      "Lock-09",
+      "Lock-10",
+      "Lock-11",
+      "Lock-12"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "lock-dex",
+    "title": "Lock · Dex",
+    "family": "Lock",
+    "suite": "Lock",
+    "type": "Dex",
+    "task_count": 4,
+    "embodiments": [
+      "Dual floating Sharpa hands"
+    ],
+    "counts_by_embodiment": {
+      "Dual floating Sharpa hands": 4
+    },
+    "skills": [
+      "dexterous_grasping",
+      "bimanual_coordination",
+      "geometric_reasoning"
+    ],
+    "summary": "Kongming assembly and disassembly with two floating Sharpa hands.",
+    "media": [
+      "kongming-floating-sharpa-a06-reference",
+      "kongming-floating-sharpa-d06-reference"
+    ],
+    "success_criteria": "Satisfy the native assembly or disassembly goal, release, stability, and contact predicates using two floating hands.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Kongming lock contract",
+        "path": "docs/evaluation/kongming_lock.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Hard": 2,
+      "Easy": 2
+    },
+    "ep20_count": 1,
+    "task_ids": [
+      "kongming_lock/dual-floating-sharpa/A01",
+      "kongming_lock/dual-floating-sharpa/A06",
+      "kongming_lock/dual-floating-sharpa/D01",
+      "kongming_lock/dual-floating-sharpa/D06"
+    ],
+    "indices": [
+      "Lock-13",
+      "Lock-14",
+      "Lock-15",
+      "Lock-16"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
+  },
+  {
+    "id": "cube-rubik",
+    "title": "Cube · Rubik",
+    "family": "Cube",
+    "suite": "Cube",
+    "type": "Rubik",
+    "task_count": 8,
+    "embodiments": [
+      "Franka Panda",
+      "Floating Sharpa hand"
+    ],
+    "counts_by_embodiment": {
+      "Franka Panda": 6,
+      "Floating Sharpa hand": 2
+    },
+    "skills": [
+      "symbolic_planning",
+      "fixture_control",
+      "state_tracking"
+    ],
+    "summary": "Solve scrambles of 5, 10, or 15 tokens through the auxiliary fixture.",
     "media": [
       "rubiks-franka-three-step",
-      "rubiks-franka-reference-cycle"
+      "rubiks-franka-reference-cycle",
+      "rubiks-floating-sharpa-preview",
+      "rubiks-floating-sharpa-u3"
     ],
+    "success_criteria": "Solve the physical cube with legal fixture use, return and release it, and satisfy a fresh 0.5-second stable window.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Franka Rubik’s cube contract",
+        "path": "docs/evaluation/rubiks_panda.en.md"
+      },
+      {
+        "label": "Floating Sharpa Rubik’s cube contract",
+        "path": "docs/evaluation/rubiks_sharpa.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate. Short turn sequences illustrate manipulation; they do not establish completion of the benchmark scrambles.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 4,
+      "Hard": 4
+    },
+    "ep20_count": 1,
     "task_ids": [
       "rubiks_panda/panda/C01",
       "rubiks_panda/panda/C02",
       "rubiks_panda/panda/C03",
-      "rubiks_panda/panda/C04",
-      "rubiks_panda/panda/C05",
-      "rubiks_panda/panda/C06",
-      "rubiks_panda/panda/C07",
-      "rubiks_panda/panda/C08",
-      "rubiks_panda/panda/C09",
-      "rubiks_panda/panda/C10",
-      "rubiks_panda/panda/C11",
-      "rubiks_panda/panda/C12",
-      "rubiks_panda/panda/C13",
-      "rubiks_panda/panda/C14",
-      "rubiks_panda/panda/C15",
-      "rubiks_panda/panda/C16",
-      "rubiks_panda/panda/C17",
-      "rubiks_panda/panda/C18",
-      "rubiks_panda/panda/C19",
-      "rubiks_panda/panda/C20",
-      "rubiks_panda/panda/C21",
-      "rubiks_panda/panda/C22",
-      "rubiks_panda/panda/C23",
-      "rubiks_panda/panda/C24",
-      "rubiks_panda/panda/C25",
-      "rubiks_panda/panda/C26",
-      "rubiks_panda/panda/C27",
-      "rubiks_panda/panda/C28",
-      "rubiks_panda/panda/C29",
-      "rubiks_panda/panda/C30"
-    ]
-  },
-  {
-    "id": "rubiks_sharpa",
-    "title": "3×3 Rubik · Floating Sharpa",
-    "family": "cube",
-    "family_label": "Spatial reasoning",
-    "count": 30,
-    "counts_by_embodiment": {
-      "Floating Sharpa": 30
-    },
-    "embodiments": [
-      "Floating Sharpa"
-    ],
-    "status": "qualification-pending",
-    "summary": "30 fixed public cases using hybrid_fixture_v1. Four lighting conditions preserve the authored scramble and physical layout.",
-    "skills": [
-      "state_tracking",
-      "dexterity",
-      "spatial"
-    ],
-    "source": "docs/evaluation/rubiks_sharpa.en.md",
-    "media": [
-      "rubiks-floating-sharpa-preview"
-    ],
-    "task_ids": [
       "rubiks_sharpa/floating-sharpa/C01",
       "rubiks_sharpa/floating-sharpa/C02",
-      "rubiks_sharpa/floating-sharpa/C03",
-      "rubiks_sharpa/floating-sharpa/C04",
-      "rubiks_sharpa/floating-sharpa/C05",
-      "rubiks_sharpa/floating-sharpa/C06",
-      "rubiks_sharpa/floating-sharpa/C07",
-      "rubiks_sharpa/floating-sharpa/C08",
-      "rubiks_sharpa/floating-sharpa/C09",
-      "rubiks_sharpa/floating-sharpa/C10",
-      "rubiks_sharpa/floating-sharpa/C11",
-      "rubiks_sharpa/floating-sharpa/C12",
-      "rubiks_sharpa/floating-sharpa/C13",
-      "rubiks_sharpa/floating-sharpa/C14",
-      "rubiks_sharpa/floating-sharpa/C15",
-      "rubiks_sharpa/floating-sharpa/C16",
-      "rubiks_sharpa/floating-sharpa/C17",
-      "rubiks_sharpa/floating-sharpa/C18",
-      "rubiks_sharpa/floating-sharpa/C19",
-      "rubiks_sharpa/floating-sharpa/C20",
-      "rubiks_sharpa/floating-sharpa/C21",
-      "rubiks_sharpa/floating-sharpa/C22",
-      "rubiks_sharpa/floating-sharpa/C23",
-      "rubiks_sharpa/floating-sharpa/C24",
-      "rubiks_sharpa/floating-sharpa/C25",
-      "rubiks_sharpa/floating-sharpa/C26",
-      "rubiks_sharpa/floating-sharpa/C27",
-      "rubiks_sharpa/floating-sharpa/C28",
-      "rubiks_sharpa/floating-sharpa/C29",
-      "rubiks_sharpa/floating-sharpa/C30"
-    ]
+      "rubiks_panda/panda/C11",
+      "rubiks_panda/panda/C12",
+      "rubiks_panda/panda/C21"
+    ],
+    "indices": [
+      "Cube-01",
+      "Cube-02",
+      "Cube-03",
+      "Cube-04",
+      "Cube-05",
+      "Cube-06",
+      "Cube-07",
+      "Cube-08"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "kongming_lock",
-    "title": "Kongming Lock",
-    "family": "kongming",
-    "family_label": "Assembly & disassembly",
-    "count": 60,
-    "counts_by_embodiment": {
-      "Dual Franka Panda": 30,
-      "Dual Floating Sharpa": 30
-    },
+    "id": "cube-pocket",
+    "title": "Cube · Pocket",
+    "family": "Cube",
+    "suite": "Cube",
+    "type": "Pocket",
+    "task_count": 4,
     "embodiments": [
-      "Dual Floating Sharpa",
-      "Dual Franka Panda"
+      "Dual ALOHA grippers",
+      "Dual floating Sharpa hands"
     ],
-    "status": "qualification-pending",
-    "summary": "30 assembly/disassembly cases per embodiment, 60 entries total. Case-specific goals, release and continuous physical audits determine success.",
+    "counts_by_embodiment": {
+      "Dual ALOHA grippers": 2,
+      "Dual floating Sharpa hands": 2
+    },
     "skills": [
-      "bimanual",
-      "contact",
-      "recovery"
+      "bimanual_coordination",
+      "regrasping",
+      "layer_control"
     ],
-    "source": "docs/evaluation/kongming_lock.en.md",
+    "summary": "Prescribed layer turns with ALOHA grippers or two floating Sharpa hands.",
     "media": [
-      "kongming-dual-franka-reference",
-      "kongming-floating-sharpa-a06-reference",
-      "kongming-floating-sharpa-d06-reference",
-      "kongming-dual-franka-disassemble-reference"
+      "pocket-cube-dual-aloha-preview",
+      "pocket-cube-dual-sharpa-preview"
     ],
+    "success_criteria": "Reach the target state with the prescribed committed quarter turns, aligned detents, no active layer, and one second of stability.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Pocket cube contract",
+        "path": "docs/evaluation/pocket_cube.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 2,
+      "Hard": 2
+    },
+    "ep20_count": 2,
     "task_ids": [
-      "kongming_lock/dual-panda/A01",
-      "kongming_lock/dual-panda/A02",
-      "kongming_lock/dual-panda/A03",
-      "kongming_lock/dual-panda/A04",
-      "kongming_lock/dual-panda/A05",
-      "kongming_lock/dual-panda/A06",
-      "kongming_lock/dual-panda/A07",
-      "kongming_lock/dual-panda/A08",
-      "kongming_lock/dual-panda/A09",
-      "kongming_lock/dual-panda/A10",
-      "kongming_lock/dual-panda/A11",
-      "kongming_lock/dual-panda/A12",
-      "kongming_lock/dual-panda/A13",
-      "kongming_lock/dual-panda/A14",
-      "kongming_lock/dual-panda/A15",
-      "kongming_lock/dual-panda/D01",
-      "kongming_lock/dual-panda/D02",
-      "kongming_lock/dual-panda/D03",
-      "kongming_lock/dual-panda/D04",
-      "kongming_lock/dual-panda/D05",
-      "kongming_lock/dual-panda/D06",
-      "kongming_lock/dual-panda/D07",
-      "kongming_lock/dual-panda/D08",
-      "kongming_lock/dual-panda/D09",
-      "kongming_lock/dual-panda/D10",
-      "kongming_lock/dual-panda/D11",
-      "kongming_lock/dual-panda/D12",
-      "kongming_lock/dual-panda/D13",
-      "kongming_lock/dual-panda/D14",
-      "kongming_lock/dual-panda/D15",
-      "kongming_lock/dual-floating-sharpa/A01",
-      "kongming_lock/dual-floating-sharpa/A02",
-      "kongming_lock/dual-floating-sharpa/A03",
-      "kongming_lock/dual-floating-sharpa/A04",
-      "kongming_lock/dual-floating-sharpa/A05",
-      "kongming_lock/dual-floating-sharpa/A06",
-      "kongming_lock/dual-floating-sharpa/A07",
-      "kongming_lock/dual-floating-sharpa/A08",
-      "kongming_lock/dual-floating-sharpa/A09",
-      "kongming_lock/dual-floating-sharpa/A10",
-      "kongming_lock/dual-floating-sharpa/A11",
-      "kongming_lock/dual-floating-sharpa/A12",
-      "kongming_lock/dual-floating-sharpa/A13",
-      "kongming_lock/dual-floating-sharpa/A14",
-      "kongming_lock/dual-floating-sharpa/A15",
-      "kongming_lock/dual-floating-sharpa/D01",
-      "kongming_lock/dual-floating-sharpa/D02",
-      "kongming_lock/dual-floating-sharpa/D03",
-      "kongming_lock/dual-floating-sharpa/D04",
-      "kongming_lock/dual-floating-sharpa/D05",
-      "kongming_lock/dual-floating-sharpa/D06",
-      "kongming_lock/dual-floating-sharpa/D07",
-      "kongming_lock/dual-floating-sharpa/D08",
-      "kongming_lock/dual-floating-sharpa/D09",
-      "kongming_lock/dual-floating-sharpa/D10",
-      "kongming_lock/dual-floating-sharpa/D11",
-      "kongming_lock/dual-floating-sharpa/D12",
-      "kongming_lock/dual-floating-sharpa/D13",
-      "kongming_lock/dual-floating-sharpa/D14",
-      "kongming_lock/dual-floating-sharpa/D15"
-    ]
+      "pocket_cube/aloha/C01",
+      "pocket_cube/dual-sharpa/C01",
+      "pocket_cube/aloha/C08",
+      "pocket_cube/dual-sharpa/C08"
+    ],
+    "indices": [
+      "Cube-09",
+      "Cube-10",
+      "Cube-11",
+      "Cube-12"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "bookshelf",
-    "title": "Bookshelf Organization",
-    "family": "bookshelf",
-    "family_label": "Constrained placement",
-    "count": 20,
-    "counts_by_embodiment": {
-      "Dual Franka Panda": 20
-    },
+    "id": "home-tidy",
+    "title": "Home · Tidy",
+    "family": "Home",
+    "suite": "Home",
+    "type": "Tidy",
+    "task_count": 5,
     "embodiments": [
       "Dual Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "20 dual-Panda variants with native layout sampling. Object destinations, support, wall constraints and stable placement are task-specific.",
+    "counts_by_embodiment": {
+      "Dual Franka Panda": 5
+    },
     "skills": [
-      "perception",
-      "planning",
+      "scene_understanding",
+      "multi_object_planning",
       "placement"
     ],
-    "source": "docs/evaluation/bookshelf.en.md",
+    "summary": "Organize a bookshelf and correct misplaced objects.",
     "media": [
-      "bookshelf-native-preview"
+      "bookshelf-overview"
     ],
+    "success_criteria": "Satisfy all task placement and protection rules continuously for 0.5 seconds.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Bookshelf contract",
+        "path": "docs/evaluation/bookshelf.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 2,
+      "Hard": 3
+    },
+    "ep20_count": 1,
     "task_ids": [
       "bookshelf/dual-panda/BooksTableD1",
-      "bookshelf/dual-panda/BooksTableD2",
-      "bookshelf/dual-panda/BooksTableD3",
-      "bookshelf/dual-panda/BooksTableD4",
-      "bookshelf/dual-panda/ShelfTableD1",
-      "bookshelf/dual-panda/ShelfTableD2",
-      "bookshelf/dual-panda/ShelfTableD3",
-      "bookshelf/dual-panda/ShelfTableD4",
       "bookshelf/dual-panda/ShelfCrateD1",
-      "bookshelf/dual-panda/ShelfCrateD2",
-      "bookshelf/dual-panda/ShelfCrateD3",
-      "bookshelf/dual-panda/ShelfCrateD4",
       "bookshelf/dual-panda/ShelfCrateFixD1",
-      "bookshelf/dual-panda/ShelfCrateFixD2",
-      "bookshelf/dual-panda/ShelfCrateFixD3",
-      "bookshelf/dual-panda/ShelfCrateFixD4",
-      "bookshelf/dual-panda/TableCleanD1",
-      "bookshelf/dual-panda/TableCleanD2",
-      "bookshelf/dual-panda/TableCleanD3",
-      "bookshelf/dual-panda/TableCleanD4"
-    ]
+      "bookshelf/dual-panda/ShelfTableD1",
+      "bookshelf/dual-panda/TableCleanD1"
+    ],
+    "indices": [
+      "Home-01",
+      "Home-02",
+      "Home-03",
+      "Home-04",
+      "Home-05"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "maniskill_long_horizon",
-    "title": "ManiSkill · Long horizon",
-    "family": "maniskill",
-    "family_label": "Sequential manipulation",
-    "count": 10,
-    "counts_by_embodiment": {
-      "Fetch": 6,
-      "Everyday Robot 09": 2,
-      "Everyday Robot 03": 1,
-      "Everyday Robot 01": 1
-    },
+    "id": "home-long",
+    "title": "Home · Long",
+    "family": "Home",
+    "suite": "Home",
+    "type": "Long",
+    "task_count": 4,
     "embodiments": [
-      "Everyday Robot 01",
-      "Everyday Robot 03",
-      "Everyday Robot 09",
-      "Fetch"
+      "Fetch mobile manipulator"
     ],
-    "status": "qualification-pending",
-    "summary": "10 tasks with fixed authored layouts, native robot controllers and a 300-second simulation budget. L1–L10 are task codes, not permission levels.",
+    "counts_by_embodiment": {
+      "Fetch mobile manipulator": 4
+    },
     "skills": [
-      "planning",
-      "memory",
-      "control"
+      "long_horizon_planning",
+      "mobile_manipulation",
+      "milestone_tracking"
     ],
-    "source": "docs/evaluation/maniskill_long_horizon.en.md",
+    "summary": "Multi-step household sequences with a mobile Fetch robot.",
     "media": [
-      "maniskill-long-horizon-scenes"
+      "home-long-preview"
     ],
+    "success_criteria": "Complete ordered milestones and final predicates, preserve protected objects, and sustain one second of successful dwell.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Home long-horizon contract",
+        "path": "docs/evaluation/maniskill_long_horizon.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 2,
+      "Hard": 2
+    },
+    "ep20_count": 1,
     "task_ids": [
       "maniskill_long_horizon/fetch/L1",
-      "maniskill_long_horizon/everyday_robot_09/L2",
       "maniskill_long_horizon/fetch/L3",
-      "maniskill_long_horizon/everyday_robot_03/L4",
       "maniskill_long_horizon/fetch/L5",
-      "maniskill_long_horizon/fetch/L6",
-      "maniskill_long_horizon/fetch/L7",
-      "maniskill_long_horizon/fetch/L8",
-      "maniskill_long_horizon/everyday_robot_01/L9",
-      "maniskill_long_horizon/everyday_robot_09/L10"
-    ]
+      "maniskill_long_horizon/fetch/L6"
+    ],
+    "indices": [
+      "Home-06",
+      "Home-07",
+      "Home-08",
+      "Home-09"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "maniskill_geometry",
-    "title": "ManiSkill · Geometry",
-    "family": "maniskill",
-    "family_label": "Spatial reasoning",
-    "count": 10,
-    "counts_by_embodiment": {
-      "Franka Panda": 5,
-      "Everyday Robot 09": 3,
-      "Everyday Robot 03": 1,
-      "Everyday Robot 01": 1
-    },
+    "id": "home-precise",
+    "title": "Home · Precise",
+    "family": "Home",
+    "suite": "Home",
+    "type": "Precise",
+    "task_count": 4,
     "embodiments": [
-      "Everyday Robot 01",
-      "Everyday Robot 03",
-      "Everyday Robot 09",
       "Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "10 geometry tasks with fixed layouts, four lighting factors and a 120-second simulation budget.",
+    "counts_by_embodiment": {
+      "Franka Panda": 4
+    },
     "skills": [
-      "geometry",
-      "placement",
-      "control"
+      "insertion",
+      "geometry_reasoning",
+      "contact_control"
     ],
-    "source": "docs/evaluation/maniskill_geometry.en.md",
+    "summary": "Insertion, hooking, and narrow-gap placement with a Panda arm.",
     "media": [
-      "maniskill-geometry-scenes"
+      "home-precise-preview"
     ],
+    "success_criteria": "Complete ordered milestones and final geometric predicates within contact limits and one second of successful dwell.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Home precision contract",
+        "path": "docs/evaluation/maniskill_geometry.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Hard": 2,
+      "Easy": 2
+    },
+    "ep20_count": 1,
     "task_ids": [
       "maniskill_geometry/panda/P1",
-      "maniskill_geometry/everyday_robot_09/P2",
       "maniskill_geometry/panda/P3",
-      "maniskill_geometry/everyday_robot_03/P4",
       "maniskill_geometry/panda/P5",
-      "maniskill_geometry/everyday_robot_09/P6",
-      "maniskill_geometry/panda/P7",
-      "maniskill_geometry/everyday_robot_01/P8",
-      "maniskill_geometry/everyday_robot_09/P9",
-      "maniskill_geometry/panda/P10"
-    ]
+      "maniskill_geometry/panda/P7"
+    ],
+    "indices": [
+      "Home-10",
+      "Home-11",
+      "Home-12",
+      "Home-13"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   },
   {
-    "id": "maniskill_dynamics",
-    "title": "ManiSkill · Dynamics",
-    "family": "maniskill",
-    "family_label": "Physical reasoning",
-    "count": 10,
-    "counts_by_embodiment": {
-      "Franka Panda": 6,
-      "Everyday Robot 01": 2,
-      "Everyday Robot 03": 1,
-      "Fetch": 1
-    },
+    "id": "home-dynamic",
+    "title": "Home · Dynamic",
+    "family": "Home",
+    "suite": "Home",
+    "type": "Dynamic",
+    "task_count": 4,
     "embodiments": [
-      "Everyday Robot 01",
-      "Everyday Robot 03",
-      "Fetch",
       "Franka Panda"
     ],
-    "status": "qualification-pending",
-    "summary": "10 dynamics tasks. Formal trials use physics_variant=0; additional physics variants are engineering checks. Task deadlines remain separate from the episode budget.",
+    "counts_by_embodiment": {
+      "Franka Panda": 4
+    },
     "skills": [
-      "physics",
+      "motion_prediction",
       "timing",
-      "control"
+      "dynamic_control"
     ],
-    "source": "docs/evaluation/maniskill_dynamics.en.md",
+    "summary": "Intercept, push, and close objects in motion with a Panda arm.",
     "media": [
-      "maniskill-dynamics-scenes"
+      "home-dynamic-preview"
     ],
+    "success_criteria": "Complete motion and final predicates before event deadlines, preserve protected objects, and sustain one second of successful dwell.",
+    "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
+    "documentation": [
+      {
+        "label": "Home dynamics contract",
+        "path": "docs/evaluation/maniskill_dynamics.en.md"
+      }
+    ],
+    "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+    "status": "paper-indexed",
+    "claim_status": "representative-task-type",
+    "demo_scope": "Representative task media and reference behavior; not the scored Codex trials or evidence of a success rate.",
+    "access_levels": [
+      "L0",
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "split_counts": {
+      "Easy": 2,
+      "Hard": 2
+    },
+    "ep20_count": 1,
     "task_ids": [
       "maniskill_dynamics/panda/D1",
-      "maniskill_dynamics/panda/D2",
-      "maniskill_dynamics/panda/D3",
-      "maniskill_dynamics/everyday_robot_01/D4",
       "maniskill_dynamics/panda/D5",
       "maniskill_dynamics/panda/D6",
-      "maniskill_dynamics/everyday_robot_03/D7",
-      "maniskill_dynamics/panda/D8",
-      "maniskill_dynamics/everyday_robot_01/D9",
-      "maniskill_dynamics/fetch/D10"
-    ]
+      "maniskill_dynamics/panda/D3"
+    ],
+    "indices": [
+      "Home-14",
+      "Home-15",
+      "Home-16",
+      "Home-17"
+    ],
+    "score_source": "data/ep100-index.json",
+    "score_scope": "Four registered conditions per task; final audited Codex gpt-6-astra high L3 experiment."
   }
 ]

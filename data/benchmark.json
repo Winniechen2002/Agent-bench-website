@@ -1,6 +1,6 @@
 {
   "schema_version": "website-environments-v1",
-  "repository": "https://github.com/Winniechen2002/Agent-bench",
+  "repository": "https://github.com/Winniechen2002/Embodied-Playgroud",
   "source_scope": "Local working tree, including uncommitted source changes.",
   "protocol_version": "environment-four-trial-v2",
   "capability_version": "2026-10-09-environment-l0-l3",

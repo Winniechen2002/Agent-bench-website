@@ -1,225 +1,236 @@
 (() => {
-  "use strict";
-
-  const state = {
-    tasks: [],
-    benchmark: null,
-    media: [],
-    mediaFilter: "all",
-    filters: { family: "all", embodiment: "all" },
-  };
-
-  const $ = (selector, scope = document) => scope.querySelector(selector);
-  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
-  const escapeHTML = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
-  const slug = (value) => String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  'use strict';
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const escape = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const percent = (value) => Number.isFinite(value) ? `${(value * 100).toFixed(2)}%` : 'Not reported';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const canHover = window.matchMedia('(hover: hover)');
+  const suites = ['Launch', 'Tower', 'Lock', 'Cube', 'Home'];
+  const state = { tasks: [], media: [], experiment: null, subset: 'EP-100', suite: 'all', embodiment: 'all', mediaSuite: 'all', mediaTask: 'all' };
+  const mediaById = (id) => state.media.find((item) => item.id === id);
+  const isVideo = (item) => /\.(mp4|webm)(?:$|\?)/i.test(item?.path || '');
+  const suiteFor = (item) => item.suite || ({marble:'Launch',hanoi:'Tower',kongming:'Lock',cube:'Cube',rubik:'Cube',tabletop:'Home',bookshelf:'Home',maniskill:'Home'}[item.family]) || '';
 
   async function loadJSON(path) {
-    const response = await fetch(path, { cache: "no-store" });
-    if (!response.ok) throw new Error(`${response.status} ${path}`);
+    const response = await fetch(path);
+    if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
     return response.json();
   }
 
-  function setMediaSource(video, media) {
-    if (!video || !media?.path) return false;
-    video.poster = media.poster || media.fallback || "";
-    video.src = media.path;
-    video.addEventListener("loadeddata", () => {
-      video.classList.add("is-ready");
-      const poster = video.previousElementSibling;
-      if (poster?.classList.contains("hero-poster")) poster.style.opacity = "0";
-    }, { once: true });
-    video.addEventListener("error", () => {
-      video.removeAttribute("src");
-      video.load();
-    }, { once: true });
-    return true;
+  function mediaMarkup(item, context) {
+    if (!item?.path) return '<div class="media-unavailable">Scene preview unavailable</div>';
+    const poster = item.poster || item.fallback || '';
+    if (!isVideo(item)) return `<a class="media-image-link" href="${escape(item.path)}" target="_blank" rel="noopener" aria-label="Open full image: ${escape(item.title)}"><img src="${escape(item.path)}" alt="${escape(item.title)}" loading="lazy" data-fallback="${escape(item.fallback || '')}" /><span>View full image ↗</span></a>`;
+    return `<video muted loop playsinline preload="none" poster="${escape(poster)}" data-video-src="${escape(item.path)}" aria-label="${escape(item.title)}" data-context="${escape(context)}"></video><button class="preview-play" type="button" aria-label="Play ${escape(item.title)}"><span aria-hidden="true">▶</span> Play demo</button>`;
   }
 
-  function mediaById(id) { return state.media.find((item) => item.id === id); }
-
-  function mediaIsVideo(item) {
-    return Boolean(item?.path && /\.(mp4|webm|mov|m4v)$/i.test(item.path));
+  async function playVideo(video) {
+    if (!video.src) { video.src = video.dataset.videoSrc; video.load(); }
+    video.controls = true;
+    try { await video.play(); video.parentElement.querySelector('.preview-play')?.setAttribute('hidden', ''); }
+    catch { /* Native controls remain available when autoplay is blocked. */ }
   }
 
-  function renderTaskCards() {
-    const grid = $("#task-grid");
-    const empty = $("#task-empty");
-    if (!grid) return;
-    const filtered = state.tasks.filter((task) => {
-      const familyMatch = state.filters.family === "all" || task.family === state.filters.family;
-      const embodimentMatch = state.filters.embodiment === "all" || (task.embodiments || []).some((item) => slug(item).includes(state.filters.embodiment));
-      return familyMatch && embodimentMatch;
-    }).map((task) => {
-      if (state.filters.embodiment === "all") return task;
-      const robots = Object.entries(task.counts_by_embodiment).filter(([name]) => slug(name).includes(state.filters.embodiment));
-      return { ...task, count: robots.reduce((n, [, count]) => n + count, 0), embodiments: robots.map(([name]) => name) };
+  const videoObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    entries.forEach(({target, isIntersecting}) => { if (!isIntersecting) target.pause(); });
+  }) : null;
+
+  function bindMedia(root) {
+    $$('img', root).forEach((img) => img.addEventListener('error', () => {
+      const fallback = img.dataset.fallback;
+      if (fallback && !img.dataset.fallbackUsed && img.getAttribute('src') !== fallback) { img.dataset.fallbackUsed = 'true'; img.src = fallback; const link = img.closest('.media-image-link'); if (link) link.href = fallback; return; }
+      const target = img.closest('.media-image-link') || img;
+      target.replaceWith(Object.assign(document.createElement('div'), {className:'media-unavailable',textContent:'Scene preview unavailable'}));
+    }));
+    $$('video[data-video-src]', root).forEach((video) => {
+      video.muted = true;
+      videoObserver?.observe(video);
+      const frame = video.parentElement;
+      $('.preview-play', frame)?.addEventListener('click', () => playVideo(video));
+      frame.addEventListener('pointerenter', () => { if (canHover.matches && !reduced.matches) playVideo(video); });
+      frame.addEventListener('pointerleave', () => video.pause());
+      video.addEventListener('error', () => {
+        video.pause(); video.controls = false;
+        const button = $('.preview-play', frame);
+        if (button) { button.hidden = false; button.textContent = 'Video unavailable'; button.disabled = true; }
+      });
     });
+  }
+
+  function clearVideos(root) {
+    $$('video', root).forEach((video) => { video.pause(); videoObserver?.unobserve(video); video.removeAttribute('src'); video.load(); });
+  }
+
+  function renderTasks() {
+    const grid = $('#task-grid');
+    clearVideos(grid);
+    const filtered = state.tasks.filter((task) => (state.suite === 'all' || task.suite === state.suite) && (state.embodiment === 'all' || task.embodiments.some((name) => name.toLowerCase().includes(state.embodiment)))).map((task) => {
+      if (state.embodiment === 'all') return task;
+      const robots = Object.entries(task.counts_by_embodiment).filter(([name]) => name.toLowerCase().includes(state.embodiment));
+      return {...task, task_count: robots.reduce((sum,[,count]) => sum + count,0), embodiments: robots.map(([name]) => name)};
+    });
+    $('#task-count').textContent = `${filtered.length} of ${state.tasks.length} task types · ${filtered.reduce((sum,t) => sum + t.task_count, 0)} ${state.embodiment === 'all' ? '' : 'matching '}EP-100 tasks`;
+    $('#task-empty').hidden = filtered.length > 0;
     grid.innerHTML = filtered.map((task) => {
-      const media = (task.media || []).map(mediaById).find(Boolean);
-      const image = media?.poster || media?.fallback || "";
-      const video = mediaIsVideo(media) ? `<video muted loop playsinline preload="none" poster="${escapeHTML(image)}" data-lazy-video="${escapeHTML(media.path)}"></video>` : image ? `<img src="${escapeHTML(media.path || image)}" alt="${escapeHTML(media.title)}" loading="lazy" />` : "";
-      const skills = (task.skills || []).slice(0, 3).map((item) => `<span>${escapeHTML(item.replaceAll("_", " "))}</span>`).join("");
-      const badgeClass = "experimental";
-      return `<article class="task-card reveal is-visible" data-family="${escapeHTML(task.family)}" data-status="${escapeHTML(task.status)}">
-        <div class="task-media ${escapeHTML(media?.display || "scene")}">${video}<span class="task-badge ${badgeClass}">qualification pending</span></div>
-        <div class="task-body"><span class="task-family">${escapeHTML(task.family_label || task.family)}</span><h3>${escapeHTML(task.title)}</h3><span class="task-count">${escapeHTML(task.count)} ${state.filters.embodiment === "all" ? "task entries" : "matching task entries"}</span><p>${escapeHTML(task.summary)}</p><div class="task-meta">${skills}</div><button class="media-browse" type="button" data-media-task="${escapeHTML(task.id)}">View ${(task.media || []).length} media ${(task.media || []).length === 1 ? "item" : "items"} ↗</button><div class="task-footer"><span class="task-embodiment">${escapeHTML((task.embodiments || []).join(" · "))}</span><a href="https://github.com/Winniechen2002/Agent-bench/blob/main/${escapeHTML(task.source)}" target="_blank" rel="noreferrer">Task protocol ↗</a></div></div>
-      </article>`;
-    }).join("");
-    empty.hidden = filtered.length > 0;
-    $("#task-count").textContent = `${filtered.reduce((total, task) => total + task.count, 0)} task entries in ${filtered.length} catalog groups`;
-
-    activateLazyVideos(grid);
-  }
-
-  function renderScope() {
-    const data = state.benchmark;
-    const cards = [
-      ["TASK ENTRIES", data.task_count, "Aliases, seeds and initial modes do not add tasks."],
-      ["EVALUATION GROUPS", data.group_count, "Loaded and ground groups are separate for Angry Birds."],
-      ["PLANNED EPISODES", data.planned_episodes, "Per base seed and fixed access/observation combination."],
-      ["TRIALS PER GROUP", data.trials_per_group, "Fresh environment and client session for every trial."],
-    ];
-    $("#result-highlights").innerHTML = cards.map(([label, value, copy]) => `<article class="highlight-card"><span class="highlight-label">${escapeHTML(label)}</span><strong>${escapeHTML(value)}</strong><p>${escapeHTML(copy)}</p></article>`).join("");
-    $("#protocol-version").textContent = data.protocol_version;
-    $("#capability-version").textContent = data.capability_version;
-    $("#scope-status").textContent = data.qualification === "not_established" && data.release_ready === false
-      ? "Full engineering qualification remains incomplete; source release readiness is false."
-      : "Consult the repository’s current engineering and release status.";
-    $("#hero-task-count").textContent = data.task_count;
-    $("#hero-hanoi-count").textContent = data.counts.hanoi_panda + data.counts.hanoi_sharpa + data.counts.hanoi_floating;
-    $("#hero-marble-count").textContent = data.counts.marble;
-  }
-
-  function renderMedia() {
-    const target = $("#media-grid");
-    if (!target) return;
-    const items = state.media.filter((item) => state.mediaFilter === "all" || item.task === state.mediaFilter);
-    $("#media-count").textContent = `${items.length} media ${items.length === 1 ? "item" : "items"} · previews, diagrams and historical recordings`;
-    target.innerHTML = items.map((item) => {
-      const poster = item.poster || item.fallback || "";
-      const isVideo = mediaIsVideo(item);
-      const visual = isVideo
-        ? `<video controls muted loop playsinline preload="none" poster="${escapeHTML(poster)}" data-lazy-video="${escapeHTML(item.path)}" aria-label="${escapeHTML(item.title)}"></video>`
-        : `<a href="${escapeHTML(item.path)}" target="_blank" rel="noreferrer" aria-label="View full image: ${escapeHTML(item.title)}"><img src="${escapeHTML(item.path)}" alt="${escapeHTML(item.title)}" loading="lazy" /></a>`;
-      const statusLabel = item.claim_status.replaceAll("-", " ");
-      return `<article class="media-card media-entry">
-        <div class="media-visual ${escapeHTML(item.display || "scene")}">${visual}</div>
-        <div class="media-info"><span class="media-status">${escapeHTML(statusLabel)}</span><small>${escapeHTML(item.source_type || "repository media")}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.caption)}</p>
-        <a class="media-open" href="${escapeHTML(item.path)}" target="_blank" rel="noreferrer">${isVideo ? "Open video" : item.display === "contact-sheet" ? "View all 10 scenes" : "View full image"} ↗</a></div>
-      </article>`;
-    }).join("");
-    activateLazyVideos(target);
-  }
-
-  function setupMedia() {
-    const select = $("#media-family");
-    select.innerHTML = `<option value="all">All task groups</option>` + state.tasks.map((task) => `<option value="${escapeHTML(task.id)}">${escapeHTML(task.title)}</option>`).join("");
-    select.addEventListener("change", () => { state.mediaFilter = select.value; renderMedia(); });
-    $("#task-grid").addEventListener("click", (event) => {
-      const button = event.target.closest("[data-media-task]");
-      if (!button) return;
-      state.mediaFilter = button.dataset.mediaTask;
-      select.value = state.mediaFilter;
-      renderMedia();
-      $("#evidence").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
-      select.focus({ preventScroll: true });
-    });
-  }
-
-  function activateLazyVideos(scope = document) {
-    const videos = $$('[data-lazy-video]', scope);
-    if (!videos.length) return;
-    const load = (video) => {
-      if (video.dataset.loaded) return;
-      video.dataset.loaded = "true";
-      video.src = video.dataset.lazyVideo;
-      video.addEventListener("loadeddata", () => {
-        video.classList.add("is-ready");
-        if (!video.controls && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.play().catch(() => {});
-      }, { once: true });
-    };
-    if (!("IntersectionObserver" in window)) { videos.forEach(load); return; }
-    const observer = new IntersectionObserver((entries, obs) => entries.forEach((entry) => { if (entry.isIntersecting) { load(entry.target); obs.unobserve(entry.target); } }), { rootMargin: "180px 0px" });
-    videos.forEach((video) => observer.observe(video));
-  }
-
-  function setupFilters() {
-    $$(".filter-button").forEach((button) => button.addEventListener("click", () => {
-      const group = button.dataset.filterGroup;
-      state.filters[group] = button.dataset.filter;
-      $$(`.filter-button[data-filter-group="${group}"]`).forEach((candidate) => { candidate.classList.toggle("active", candidate === button); candidate.setAttribute("aria-pressed", String(candidate === button)); });
-      renderTaskCards();
+      const media = task.media.map(mediaById).filter(Boolean);
+      const selected = media.find((item) => state.embodiment !== 'all' && String(item.embodiment).toLowerCase().includes(state.embodiment)) || media[0];
+      return `<article class="task-card" data-task="${escape(task.id)}"><div class="task-media">${mediaMarkup(selected, 'task')}<span class="task-badge">${escape(task.task_count)} ${state.embodiment === 'all' ? '' : 'matching '}EP-100 tasks</span></div><div class="task-body"><span class="task-family">${escape(task.suite)} / ${escape(task.type)}</span><h3>${escape(task.title.replace(/^.*? · /,''))}</h3><p>${escape(task.summary)}</p><div class="task-meta">${task.skills.slice(0,3).map((skill) => `<span>${escape(skill.replaceAll('_',' '))}</span>`).join('')}</div><div class="task-footer"><span class="task-embodiment">${escape(task.embodiments.join(' · '))}</span></div>${media.length > 1 ? `<label class="media-select-label">Visual example<select data-task-media="${escape(task.id)}">${media.map((item) => `<option value="${escape(item.id)}"${item.id === selected.id ? ' selected' : ''}>${escape(item.title)}</option>`).join('')}</select></label>` : ''}<p class="selected-media-caption">${escape(selected?.caption || '')}</p><div class="task-documentation">${(task.documentation || []).map((doc) => `<a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/${escape(doc.path)}" target="_blank" rel="noreferrer">${escape(doc.label)} protocol ↗</a>`).join('')}</div><button class="media-browse" type="button" data-media-task="${escape(task.id)}">View ${media.length} ${media.length === 1 ? 'example' : 'examples'} ↓</button><details class="task-scope"><summary>Task &amp; visual scope</summary><p>${escape(task.success_criteria)}</p><p class="demo-scope">${escape(task.demo_scope)}</p><p>Complete type: ${escape(task.split_counts.Easy || 0)} Easy · ${escape(task.split_counts.Hard || 0)} Hard · ${escape(task.ep20_count)} in EP-20</p></details></div></article>`;
+    }).join('');
+    bindMedia(grid);
+    $$('[data-task-media]',grid).forEach((select) => select.addEventListener('change', () => {
+      const card = select.closest('.task-card');
+      const frame = $('.task-media',card);
+      const badge = $('.task-badge',frame).outerHTML;
+      const selected = mediaById(select.value);
+      clearVideos(frame); frame.innerHTML = mediaMarkup(selected,'task') + badge;
+      $('.selected-media-caption',card).textContent = selected.caption;
+      bindMedia(frame);
     }));
   }
 
+  function renderIndex(index) {
+    if (!Array.isArray(index.task_results) || index.task_results.length !== 100) throw new Error('Incomplete task index');
+    $('#ep100-table').innerHTML = `<table class="result-table index-table"><thead><tr><th>Index</th><th>Type / task</th><th>Embodiment</th><th>Split</th><th>EP-20</th></tr></thead><tbody>${index.task_results.map((task) => `<tr><td>${escape(task.index)}</td><td><strong>${escape(task.type)} · ${escape(task.title)}</strong><code>${escape(task.task_id)}</code></td><td>${escape(task.embodiment)}</td><td>${escape(task.split)}</td><td>${task.ep20 ? 'Included' : '—'}</td></tr>`).join('')}</tbody></table>`;
+  }
+
+  function renderResults() {
+    const experiment = state.experiment;
+    const subset = experiment.subsets[state.subset];
+    const cards = [['SUITE-BALANCED PASS@1', percent(subset.suite_balanced_pass_at_1), 'First valid opportunity'],['SUITE-BALANCED PASS@2',percent(subset.suite_balanced_pass_at_2),'Within two valid opportunities'],['TASKS / CONDITIONS',`${subset.tasks} / ${subset.conditions}`,'Four prescribed conditions per task'],['SCORED ATTEMPTS',String(subset.valid_attempts),'Stop at first success; at most two']];
+    $('#result-highlights').innerHTML = cards.map(([label,value,note]) => `<article class="highlight-card"><span class="highlight-label">${label}</span><strong>${value}</strong><p>${note}</p></article>`).join('');
+    $('#suite-chart').innerHTML = `<div class="chart-axis"><span>Suite / success rate</span><span>0</span><span>100%</span></div>${suites.map((name) => {
+      const result = subset.suites[name];
+      return `<details class="suite-result"><summary><span class="suite-result-name">${name}<small>${result.tasks} tasks · ${result.conditions} conditions</small></span><span class="bar-pair"><span class="bar-track"><span class="bar-fill first" style="width:${result.pass_at_1*100}%"></span><span class="bar-number">${percent(result.pass_at_1)}<span class="sr-only"> Pass@1</span></span></span><span class="bar-track"><span class="bar-fill second" style="width:${result.pass_at_2*100}%"></span><span class="bar-number">${percent(result.pass_at_2)}<span class="sr-only"> Pass@2</span></span></span></span><span class="suite-expand" aria-hidden="true">+</span></summary><div class="suite-result-detail"><p><strong>${result.first_successes} / ${result.conditions}</strong> conditions succeed on attempt one; <strong>${result.within_two_successes} / ${result.conditions}</strong> succeed within two. ${result.valid_attempts} valid opportunities were used.</p><p>Tasks and their four conditions carry equal weight within ${name}. The headline ${state.subset} score then averages the five suites equally.</p></div></details>`;
+    }).join('')}`;
+    $('#subset-detail').innerHTML = `<p><strong>${state.subset}</strong> · Pooled condition rates: ${percent(subset.pooled_pass_at_1)} Pass@1 (${subset.first_successes}/${subset.conditions}) and ${percent(subset.pooled_pass_at_2)} Pass@2 (${subset.within_two_successes}/${subset.conditions}). These pooled rates are not the suite-balanced headline scores.</p>${state.subset === 'EP-20' ? '<p>EP-20 reuses records from ten Easy and ten Hard tasks. Its pilot-informed selection supports compact diagnosis, not an unbiased estimate of full-set performance.</p>' : ''}`;
+  }
+
+  function renderAudit() {
+    const ex = state.experiment;
+    const audit = ex.audit_counts;
+    $('#audit-content').innerHTML = `<div class="evaluation-summary"><section><h4>Setting</h4><p>Codex / ${escape(ex.model)} · ${escape(ex.reasoning)} reasoning · ${escape(ex.access_level)} access with privileged observations. The agent uses the public SDK without reference solutions or pretrained action controllers.</p><p>Each attempt allows ${(ex.protocol.token_budget/1e6).toFixed(0)}M tokens, including cached input, and ${ex.protocol.image_budget} images. These are budgets, not measured consumption; execution limits vary by task.</p></section><section><h4>Scoring</h4><p>EP-100 covers 400 prescribed conditions and ${audit.valid} scored attempts. Pass@1 uses the first valid opportunity; Pass@2 uses the first two, stopping after success. Ordinary failures and budget exhaustion count.</p><p>The audit excludes ${audit.excluded} confirmed infrastructure incidents; ${audit.superseded} extra attempts outside the scoring window are unscored.</p></section><section><h4>Scope</h4><p>One model and agent configuration. Attempts use separate agent sessions; complete simulator and host-cache isolation has not been certified. These results do not establish a model ranking or token-efficiency comparison.</p></section></div>`;
+  }
+
+  function renderMedia() {
+    const root = $('#media-grid'); clearVideos(root);
+    const task = state.tasks.find((entry) => entry.id === state.mediaTask);
+    const items = state.media.filter((item) => item.path && (task ? task.media.includes(item.id) : item.showcase !== false) && (state.mediaSuite === 'all' || suiteFor(item) === state.mediaSuite));
+    $('#media-count').textContent = `${items.length} examples · ${task ? task.title : state.mediaSuite === 'all' ? 'All suites' : state.mediaSuite} · references and scene previews`;
+    root.innerHTML = items.map((item) => `<article class="media-card" data-media-id="${escape(item.id)}"><div class="evidence-frame">${mediaMarkup(item, 'evidence')}</div><div class="media-info"><small>${escape(suiteFor(item))} · ${escape(item.display_status || item.claim_status?.replaceAll('-',' ') || 'reference')}</small><h3>${escape(item.title)}</h3><p>${escape(item.caption)}</p><span class="media-embodiment">${escape(item.embodiment || '')}</span><span class="media-source-type">${escape(item.source_type || '')}</span>${isVideo(item) ? `<a class="media-open" href="${escape(item.path)}" target="_blank" rel="noopener">Open video ↗</a>` : ''}</div></article>`).join('');
+    if (!items.length) root.innerHTML = '<p class="empty-state">No demonstrations are available for this selection.</p>';
+    bindMedia(root);
+  }
+
   function setupHero() {
-    const video = $("#hero-video");
-    const media = mediaById("marble-a099-historical");
-    if (media) {
-      setMediaSource(video, media);
-      $("#hero-poster").src = media.poster;
-      $("#hero-poster").alt = media.title;
-      video.setAttribute("aria-label", media.title);
-    }
-    const play = $(".stage-play");
-    play?.addEventListener("click", () => {
-      if (!video?.src) return;
-      if (video.paused) { video.play().then(() => { video.classList.add("is-playing"); play.querySelector("span:last-child").textContent = "PAUSE ROLLOUT"; play.setAttribute("aria-label", "Pause selected benchmark video"); }).catch(() => {}); }
-      else { video.pause(); video.classList.remove("is-playing"); play.querySelector("span:last-child").textContent = "PLAY ROLLOUT"; play.setAttribute("aria-label", "Play selected benchmark video"); }
+    const media = mediaById('marble-a099-historical');
+    const video = $('#hero-video'); const button = $('.stage-play');
+    if (!media?.path) { button.textContent = 'Preview image'; button.disabled = true; return; }
+    video.dataset.videoSrc = media.path;
+    video.poster = media.poster || '';
+    $('#hero-poster').src = media.poster || media.fallback;
+    button.addEventListener('click', async () => { if (video.paused) await playVideo(video); else video.pause(); });
+    const update = () => {
+      if (!video.paused) video.classList.add('is-ready');
+      button.querySelector('span:last-child').textContent = video.paused ? 'PLAY ROLLOUT' : 'PAUSE ROLLOUT';
+      button.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} A099 historical rollout`);
+      button.setAttribute('aria-pressed', String(!video.paused));
+    };
+    video.addEventListener('play', update); video.addEventListener('pause', update); update();
+    video.addEventListener('error', () => { button.hidden = false; button.textContent = 'Video unavailable'; button.disabled = true; });
+    videoObserver?.observe(video);
+  }
+
+  function selectSuite(suite) {
+    state.suite = suite;
+    $$('[data-filter-group="suite"]').forEach((button) => { const active = button.dataset.filter === suite; button.classList.toggle('active',active); button.setAttribute('aria-pressed',String(active)); });
+    renderTasks();
+  }
+
+  function setupInteractions() {
+    $$('[data-filter-group]').forEach((button) => button.addEventListener('click', () => {
+      const group = button.dataset.filterGroup; state[group] = button.dataset.filter;
+      $$(`[data-filter-group="${group}"]`).forEach((other) => { const active = other === button; other.classList.toggle('active',active); other.setAttribute('aria-pressed',String(active)); }); renderTasks();
+    }));
+    $$('[data-suite-link]').forEach((link) => link.addEventListener('click', () => selectSuite(link.dataset.suiteLink)));
+    const tabs = $$('[data-subset]');
+    const activate = (tab, focus = false) => {
+      if (!state.experiment) return;
+      state.subset = tab.dataset.subset;
+      tabs.forEach((button) => { const selected = button === tab; button.classList.toggle('active',selected); button.setAttribute('aria-selected',String(selected)); button.tabIndex = selected ? 0 : -1; });
+      $('#subset-panel').setAttribute('aria-labelledby',tab.id); renderResults(); if (focus) tab.focus();
+    };
+    tabs.forEach((tab,index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => { let target; if (event.key === 'ArrowRight') target = (index+1)%tabs.length; if (event.key === 'ArrowLeft') target=(index+tabs.length-1)%tabs.length; if(event.key==='Home')target=0;if(event.key==='End')target=tabs.length-1;if(target!==undefined){event.preventDefault();activate(tabs[target],true);} });
     });
+    const selectMedia = (suite, task = 'all') => {
+      state.mediaSuite = suite; state.mediaTask = task; $('#media-task').value = task;
+      $$('[data-media-suite]').forEach((other) => {const active=other.dataset.mediaSuite===suite;other.classList.toggle('active',active);other.setAttribute('aria-pressed',String(active));}); renderMedia();
+    };
+    $$('[data-media-suite]').forEach((button) => button.addEventListener('click', () => selectMedia(button.dataset.mediaSuite)));
+    $('#media-task').addEventListener('change', (event) => { const task=state.tasks.find((entry)=>entry.id===event.target.value);selectMedia(task?.suite || 'all',task?.id || 'all'); });
+    $('#task-grid').addEventListener('click', (event) => {
+      const button=event.target.closest('[data-media-task]');if(!button)return;
+      const task=state.tasks.find((entry)=>entry.id===button.dataset.mediaTask);selectMedia(task.suite,task.id);
+      $('#evidence').scrollIntoView({behavior: reduced.matches ? 'instant' : 'smooth'});$('#media-task').focus({preventScroll:true});
+    });
+    reduced.addEventListener('change', () => { if (reduced.matches) $$('video').forEach((video) => video.pause()); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) $$('video').forEach((video) => video.pause()); });
   }
 
   function setupChrome() {
-    const topbar = $("[data-topbar]");
-    const progress = $(".site-progress span");
+    const topbar=$('[data-topbar]'); const progress=$('.site-progress span');
+    const navLinks = $$('.main-nav a[href^="#"], .mobile-nav a[href^="#"]');
+    const sectionIds = [...new Set(navLinks.map((link) => link.hash.slice(1)))];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
     const update = () => {
-      topbar?.classList.toggle("is-scrolled", window.scrollY > 20);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (progress) progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+      topbar.classList.toggle('is-scrolled', window.scrollY > 20);
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${total > 0 ? window.scrollY / total * 100 : 0}%`;
+      const readingLine = topbar.getBoundingClientRect().bottom + Math.min(innerHeight * .18, 150);
+      let active = sections[0]?.id;
+      for (const section of sections) { if (section.getBoundingClientRect().top <= readingLine) active = section.id; }
+      navLinks.forEach((link) => {
+        const current = link.hash === `#${active}`;
+        if (current) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+      });
+    };
+    let pendingFrame = false;
+    const scheduleUpdate = () => {
+      if (pendingFrame) return;
+      pendingFrame = true;
+      requestAnimationFrame(() => { pendingFrame = false; update(); });
     };
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    const toggle = $(".menu-toggle");
-    const mobile = $(".mobile-nav");
-    toggle?.addEventListener("click", () => { const open = mobile.classList.toggle("is-open"); toggle.setAttribute("aria-expanded", open ? "true" : "false"); });
-    $$(".mobile-nav a").forEach((link) => link.addEventListener("click", () => { mobile.classList.remove("is-open"); toggle?.setAttribute("aria-expanded", "false"); }));
-  }
-
-  function setupReveal() {
-    const items = $$(".reveal");
-    if (!("IntersectionObserver" in window)) { items.forEach((item) => item.classList.add("is-visible")); return; }
-    const observer = new IntersectionObserver((entries, obs) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); obs.unobserve(entry.target); } }), { threshold: .12 });
-    items.forEach((item) => observer.observe(item));
+    window.addEventListener('scroll', scheduleUpdate, {passive:true});
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('hashchange', scheduleUpdate);
+    window.addEventListener('load', scheduleUpdate);
+    if ('ResizeObserver' in window) new ResizeObserver(scheduleUpdate).observe(document.querySelector('main'));
+    const menu=$('#mobile-nav'); const toggle=$('.menu-toggle');
+    const close=()=>{menu.classList.remove('is-open');menu.inert=true;toggle.setAttribute('aria-expanded','false');};
+    toggle.addEventListener('click',()=>{const open=!menu.classList.contains('is-open');menu.classList.toggle('is-open',open);menu.inert=!open;toggle.setAttribute('aria-expanded',String(open));});
+    $$('a',menu).forEach((link)=>link.addEventListener('click',close));
+    document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&menu.classList.contains('is-open')){close();toggle.focus();}});
+    if('IntersectionObserver' in window){const observer=new IntersectionObserver((entries)=>entries.forEach(({target,isIntersecting})=>{if(isIntersecting){target.classList.add('is-visible');observer.unobserve(target);}}),{threshold:.08});$$('.reveal').forEach((el)=>observer.observe(el));}else{$$('.reveal').forEach((el)=>el.classList.add('is-visible'));}
   }
 
   async function init() {
-    setupFilters();
+    setupChrome(); setupInteractions();
+    const [tasks,media,results,index]=await Promise.allSettled([loadJSON('data/tasks.json'),loadJSON('data/media.json'),loadJSON('data/results.json'),loadJSON('data/ep100-index.json')]);
+    if(media.status==='fulfilled'&&Array.isArray(media.value))state.media=media.value;
+    if(tasks.status==='fulfilled'&&Array.isArray(tasks.value)){state.tasks=tasks.value;renderTasks();}else{$('#task-grid').innerHTML='<p class="empty-state">Task data could not be loaded. Please reload the page or open the task index.</p>';}
+    $('#media-task').innerHTML = '<option value="all">All task types</option>' + state.tasks.map((task) => `<option value="${escape(task.id)}">${escape(task.title)}</option>`).join('');
+    if(media.status==='fulfilled')renderMedia();else $('#media-grid').innerHTML='<p class="empty-state">Demonstration metadata could not be loaded. Please reload the page.</p>';
     try {
-      const [tasks, benchmark, media] = await Promise.all([
-        loadJSON("data/tasks.json"), loadJSON("data/benchmark.json"), loadJSON("data/media.json"),
-      ]);
-      if (!Array.isArray(tasks) || !Array.isArray(media) || tasks.reduce((n, t) => n + t.count, 0) !== benchmark.task_count) {
-        throw new Error("Inconsistent benchmark snapshot");
-      }
-      state.tasks = tasks;
-      state.benchmark = benchmark;
-      state.media = media;
-      renderTaskCards();
-      renderScope();
-      renderMedia();
-      setupMedia();
-      setupHero();
-    } catch (error) {
-      console.error("Benchmark data could not be loaded", error);
-      $("#task-empty").hidden = false;
-      $("#task-empty").textContent = "Benchmark data could not be loaded. Reload the page or open the repository for the current catalog.";
-      $("#task-count").textContent = "Catalog unavailable";
-      $("#scope-status").textContent = "The current snapshot could not be loaded. Consult the repository for status.";
-    }
-    setupChrome();
-    setupReveal();
+      if(results.status!=='fulfilled'||results.value.schema_version!==2)throw new Error('Result data unavailable');
+      const experiment=results.value.experiments.find((item)=>item.id===results.value.default_experiment);
+      if(!experiment||!['EP-100','EP-Easy','EP-Hard','EP-20'].every((name)=>Number.isFinite(experiment.subsets?.[name]?.suite_balanced_pass_at_1)&&Number.isFinite(experiment.subsets?.[name]?.suite_balanced_pass_at_2)))throw new Error('Incomplete result data');
+      state.experiment=experiment;renderResults();renderAudit();
+    } catch { state.experiment=null;$('#audited-results').hidden=true;const message=$('#results-unavailable');message.hidden=false;message.textContent='Audited result data could not be loaded. No scores are substituted. Reload the page or open the result JSON in Resources.'; }
+    try { if(index.status!=='fulfilled')throw new Error('No index');renderIndex(index.value); } catch { $('#ep100-table').textContent='The task index could not be loaded. Please use the JSON download above.'; }
+    setupHero();document.body.dataset.ready='true';
   }
-
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener('DOMContentLoaded',init);
 })();

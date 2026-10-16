@@ -4,12 +4,12 @@
   "private": true,
   "description": "Embodied Playground / AgentBench environment website",
   "scripts": {
-    "dev": "python3 -m http.server 4174 --bind 127.0.0.1",
-    "start": "python3 -m http.server 4174 --bind 127.0.0.1",
-    "build": "python3 scripts/check_site.py",
-    "check": "python3 scripts/check_site.py",
+    "dev": "npm run build && python3 scripts/serve_site.py",
+    "start": "npm run dev",
+    "build": "python3 scripts/build_site.py",
+    "check": "python3 scripts/check_public.py && python3 scripts/check_site.py && python3 scripts/validate-site.py && python3 scripts/test_public.py && npm test",
+    "test": "python3 scripts/test_release.py",
     "sync": "python3 scripts/sync_benchmark.py && python3 scripts/sync_media.py",
-    "check:sync": "python3 scripts/sync_benchmark.py --check && python3 scripts/sync_media.py --check",
-    "build:outlines": "python3 scripts/build_framework.py"
+    "check:sync": "python3 scripts/sync_benchmark.py --check && python3 scripts/sync_media.py --check"
   }
 }

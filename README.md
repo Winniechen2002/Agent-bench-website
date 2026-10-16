@@ -1,96 +1,96 @@
-# Embodied Playground / AgentBench website
+# Embodied Playground
 
-A dependency-free static website for the AgentBench environment scope. Benchmark
-code, environments and evaluation contracts live in
-[Agent-bench](https://github.com/Winniechen2002/Agent-bench). This repository contains
-the website, a portable public metadata snapshot and selected historical previews.
+**Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning**
 
-## Preview and check
+Standalone light website for [Embodied Playground](https://github.com/Winniechen2002/Embodied-Playgroud). It uses static HTML, CSS, and vanilla JavaScript with relative URLs suitable for a GitHub Pages project subpath. [Website repository](https://github.com/Winniechen2002/Agent-bench-website).
 
-```bash
-python3 -m http.server 4174 --bind 127.0.0.1
+## Preview and validate
+
+From this directory:
+
+```sh
+npm run dev
 ```
 
-Open [the local preview](http://127.0.0.1:4174/). Serve over HTTP so the page can
-load JSON. `npm run dev` and `npm start` run the same command when Node is installed.
+Open [the local preview](http://127.0.0.1:4174/). This first builds `dist/`, then serves only its reviewed files on IPv4 loopback. The same preview supports `/Agent-bench-website/`. Do not serve or upload the repository root: `.gitignore` does not restrict HTTP access. JSON loading is not designed for `file://` URLs.
 
-```bash
-python3 scripts/check_site.py          # npm run check / npm run build
-python3 scripts/sync_benchmark.py ../Agent-bench --check  # npm run check:sync
+```sh
+npm run check
+npm run build
+node --check site.js
+node --check environment.js
 ```
 
-Build validates the existing static site; it never overwrites the homepage.
-There are no runtime package dependencies. The portable check does not require
-a sibling checkout; the synchronization check does.
+`npm run check` validates public data, page/data consistency, and isolation regression tests. `npm run build` recreates `dist/` from an explicit allowlist and validates both source and output. Only current pages, approved JSON, and referenced web assets are copied. Git metadata, source scripts, README, archives, unknown files, and symlinks are excluded or rejected. Python 3.10+ and Node/npm are used; there are no third-party runtime packages.
 
-## Source of truth and updates
+## Repository layout
 
-The current scope is **410 task entries**, **510 evaluation groups** and **2040
-planned episodes** per base seed and fixed access/observation combination. These
-are schedule counts, not completed evaluations. The protocol is
-`environment-four-trial-v2`; permissions are `2026-10-09-environment-l0-l3`.
-Full engineering qualification remains incomplete and release readiness is false.
+| Path | Purpose |
+| --- | --- |
+| `index.html`, `site.css`, `site.js` | Paper narrative, EP-100 results, and demonstrations |
+| `environment.html`, `environment.css`, `environment.js` | Compact, filterable directory of all 410 environments |
+| `assets/` | Web videos, posters, scene images, fallbacks, and favicon |
+| `data/` | Paper results and membership, native catalog, and media metadata |
+| `evidence/demo-manifest.json` | Public artifact IDs, hashes, conditions, and replay limitations |
+| `scripts/` | Validation, public-data projection, import, build, and isolated preview tools |
+| `.github/workflows/pages.yml` | Manual deployment of the audited `dist/` artifact |
+| `dist/` (ignored) | Rebuilt release directory; the only upload/preview root |
+| `.nojekyll` | Static GitHub Pages serving |
 
-```bash
-python3 scripts/sync_benchmark.py ../Agent-bench
-python3 scripts/sync_media.py ../Agent-bench
+The paper presents 100 tasks in 16 task types and five suites. `data/tasks.json` drives those task cards; `data/ep100-index.json` records exact membership, Easy/Hard splits, EP-20 inclusion, and per-task results. `data/results.json` contains versioned experiments; headline Pass@1 and Pass@2 use five-suite macro averages, with pooled condition rates reported separately. Unfinished exploratory evaluations are not published.
+
+The full directory counts 410 task–embodiment combinations in 12 implementation groups. Its native schedule includes loaded and ground Launch modes: 510 evaluation groups and 2,040 planned episodes per fixed access/observation setting. The paper uses loaded-only Launch and 400 EP-100 conditions. Schedule sizes are not scored results.
+
+## Refresh data
+
+Regenerate the paper exports from a local manuscript directory:
+
+```sh
+python3 scripts/refresh-paper-data.py /path/to/manuscript
+python3 scripts/refresh-paper-data.py /path/to/manuscript --check
 ```
 
-This standard-library-only importer reads the benchmark's generated
-`docs/evaluation/tasks.json`, verifies its source hashes, checks counts against
-`environment_catalog.py`, and writes:
+This reads `data/codex_experiments.json` from the manuscript and writes only `data/results.json`, `data/ep100-index.json`, and `data/tasks.json`. It verifies membership, subset metrics, and source hashes. No local archive is required. Add future models as separate experiments with explicit observation/tool settings, protocols, and budgets; compare only compatible settings.
 
-- `data/tasks.json`: 12 catalog groups with exact task IDs and embodiment counts.
-- `data/environment-catalog.json`: all 410 IDs, public budgets and group names.
-- `data/benchmark.json`: versions, scope, qualification state and source hashes.
-- `data/results.json`: an explicitly empty current-protocol result set.
+Native exports use the `data/environment-*.json` names and `data/benchmark.json`, so native sync cannot overwrite paper results:
 
-The snapshot includes the source working tree, including uncommitted changes;
-it is not a claim that those changes are already available on GitHub. If the
-source export is stale, regenerate it in Agent-bench using its configured Python
-runtime and `scripts/export_evaluation_protocol.py`, then sync again. Never
-silently fall back to an older catalog or model score after a failed fetch.
+```sh
+python3 scripts/sync_benchmark.py ../Agent-bench --check
+python3 scripts/sync_media.py ../Agent-bench --check
+```
 
-## Historical material
+`--check` performs no writes. Remove it to import from the benchmark checkout. Native sync requires matching source hashes and original media, and refuses stale exports or missing recordings. Imported media metadata passes through the same public projection and private-data guard before it is written. The shipped website is self-contained and passes portable validation without that checkout. Do not bypass source checks or regenerate benchmark evidence to make a website sync pass.
 
-`data/media.json` supplies scene previews and historical reference/calibration
-clips. Videos are explicitly outside the current four-trial results and do not
-establish full engineering qualification. Original videos/trajectories remain in
-their experiment locations; `evidence/demo-manifest.json` retains their provenance.
+## Media and evidence
 
-All 12 catalog groups now have media. Eight additions are selected in Agent-bench's
-`docs/website_media_catalog.json`: Angry Birds scene/recordings, floating Sharpa
-Hanoi, a native bookshelf render, and three ManiSkill contact sheets covering 30 tasks.
-`sync_media.py` copies original bytes and records provenance in
-`data/media-sources.json`; `--check` verifies source and destination hashes. The bookshelf cover is a 1600 × 1000 native Isaac Sim RTX render of
-ShelfTableD3 (seed 7), produced by `scripts/render_bookshelf_preview.py` in
-Agent-bench. It shows the initial scene after neutral hold controls; no policy
-success is claimed. The layout schematic stays in repository documentation; a rollout is still missing. See [the media inventory](docs/media-inventory.md).
+The A099 bank-shot corridor is the hero recording. Demonstrations are reference behavior or scene previews, separate from scored Codex attempts. Preserve embodiment, task scope, playback-speed labels, and source hashes when replacing media.
 
-The homepage cover features A099, a two-target Angry Birds bank-shot corridor,
-with its matching native poster and historical reference recording.
+`data/media.json` and `data/environment-media.json` describe presentation assets. The public provenance files retain artifact IDs, content hashes, relative web paths, experimental conditions, playback transformations, and replay limitations. Full source locations, server/account details, and exact execution/encoding commands are private maintainer records stored outside this repository. Opaque source IDs identify those records; they are not downloadable links or content hashes. A trace or event log alone does not establish exact replay. To rerender, resolve the artifact ID in the private location map and use its original manifest/commands while preserving the stated conditions.
 
-The gallery supports per-task filtering, task-card navigation, full-image links,
-and user-controlled video playback. Captions stay below images rather than
-covering scene details. `npm run sync` runs both metadata and media importers;
-`npm run check:sync` checks both.
+Only web derivatives and posters belong in `assets/`. Keep raw recordings and trajectories outside the published tree. New videos should remain below 5 MB each; the collaborator's existing 5.37 MB A099 recording is preserved unchanged. All assets must remain below the 40 MB budget.
 
-The previous task metadata and model scores are preserved in
-`archive/pre-alignment-20261011/`. The old 200-task `data/catalog.json`,
-`data/evidence.json`, `data/source-manifest.json`, `app.js` and their atlas images
-belong to an earlier site version and are not loaded by the current homepage.
-`scripts/import_sources.py` only refreshes that historical atlas.
+Home execution videos, a qualified full Sharpa cube solve, and full six-piece Sharpa lock demos remain gaps. Existing Sharpa lock videos show key-only A06/D06 assembly/disassembly. Cube calibration clips are not complete benchmark solves.
 
-`docs/website-outline.md`, `docs/technical-report.md`, and `report.html` are
-historical planning documents. `npm run build:outlines` generates `outline.html`
-and `report.html`; it cannot overwrite `index.html`. This optional legacy renderer
-requires the packages in `requirements-report.txt`.
+## Private working material
+
+Keep private backups, full provenance, raw recordings, and trajectories outside the website repository. The local cleanup archive and the unsanitized provenance snapshot are preserved in the sibling `../.codex-local/website-private-20261016/` directory, including an artifact-ID location map. They are not required to run, validate, or deploy a fresh checkout. `.gitignore` also excludes local artifacts and caches as a fallback; it is not an access-control mechanism.
+
+The public projection lives in `scripts/public_data.py`. Media imports remove source locators, and every import/build checks for prohibited paths, private account fields, and run commands before writing or publishing. The guard is a regression check, not a claim that arbitrary new material is safe without review. Keep source snapshots before making public projections; never replace the only copy of a trajectory manifest with its public export.
+
+## Check the actual publication commit
+
+After reviewing and committing the cleanup, but before pushing, run:
+
+```sh
+python3 scripts/check_release_commit.py --ref HEAD
+```
+
+This reads the exact committed tree without changing Git, exports it to a temporary directory, checks the source/release allowlists, and runs the current validators. It catches forgotten additions/deletions and private public-data fields that a clean working-tree preview could hide. The Pages workflow runs the same gate against its selected commit. It intentionally rejects the old pre-cleanup commit. A passing check certifies the selected tree, not its ancestors.
+
+**History policy: retain existing history and publish only the cleaned new version.** Old report files, exploratory results, archives, and source locations remain accessible in earlier commits after a normal deletion commit. Cleaning the new tree and deploying `dist/` do not erase that history. Do not describe a normal push as historical removal. If the repository itself must have no such historical content, coordinate a separate history cleanup with collaborators before pushing; commit IDs and other clones are affected. This change does not rewrite history, force-push, delete repositories, or change remote visibility. See [GitHub's history-removal guidance](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
 
 ## Hosting
 
-Serve this directory as a static site. Relative asset paths support a GitHub
-Pages project subpath and `.nojekyll` preserves static files. This alignment does
-not configure hosting, push commits or publish a deployment.
+Use **Settings → Pages → Source: GitHub Actions**, not the repository-root branch publishing mode. The included **Deploy audited static release** workflow is manual (`workflow_dispatch`): pushing source does not trigger it. After the reviewed commit is on GitHub, select it in Actions and run the workflow. It checks the exact commit, builds the allowlisted release, and uploads only `dist/` to Pages. No remote settings or deployments are changed by local preview/build commands. Configure the Pages source before triggering the workflow; its configuration step does not enable Pages automatically.
 
-See [the alignment notes](docs/alignment-audit.md) for the corrected differences
-and verification scope.
+For any other static host, upload only the freshly built `dist/` contents, never the repository directory or a recursively zipped checkout. Relative URLs support both the domain root and `/Agent-bench-website/`. See [GitHub's custom Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

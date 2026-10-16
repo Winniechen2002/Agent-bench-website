@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f8f5" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Browse all 410 Embodied Playground task environments by family and robot, with task details, scene previews, reference demonstrations and protocols." />
+  <title>Task directory · Embodied Playground</title>
+  <meta property="og:title" content="Task directory · Embodied Playground" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="environment.css" />
+</head>
+<body class="catalog-page">
+  <a class="skip-link" href="#tasks">Skip to task directory</a>
+  <header class="topbar" data-topbar>
+    <a class="brand" href="index.html" aria-label="Embodied Playground home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>EMBODIED<span class="brand-dot">.</span>PLAYGROUND</span></a>
+    <nav class="main-nav" aria-label="Primary navigation"><a href="index.html#playground">Playground</a><a href="index.html#ep100">EP-100</a><a href="index.html#tasks" class="active" aria-current="page">Tasks</a><a href="index.html#results">Results</a><a href="index.html#protocol">Protocol</a><a href="index.html#evidence">Demos</a><a class="nav-code" href="https://github.com/Winniechen2002/Embodied-Playgroud" target="_blank" rel="noreferrer">Code ↗</a></nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert><a href="index.html#playground">Playground</a><a href="index.html#ep100">EP-100</a><a href="index.html#tasks" class="active" aria-current="page">Tasks</a><a href="index.html#results">Results</a><a href="index.html#protocol">Protocol</a><a href="index.html#evidence">Demos</a><a href="https://github.com/Winniechen2002/Embodied-Playgroud" target="_blank" rel="noreferrer">Code ↗</a></nav>
+  </header>
+  <main id="tasks" class="catalog-main">
+    <div class="catalog-heading">
+      <a class="text-link catalog-back" href="index.html#tasks">← Back to task overview</a>
+      <p class="section-label">THE COMPLETE PLAYGROUND</p>
+      <h1>Task directory.</h1>
+      <p>Explore all 410 task–embodiment combinations. Filter by family or robot, view the available media, and open each group for task IDs and execution limits.</p>
+    </div>
+    <div class="task-controls">
+      <div class="filter-group" role="group" aria-label="Filter by task family">
+        <span class="filter-label">FAMILY</span>
+        <button class="filter-button active" type="button" aria-pressed="true" data-filter-group="family" data-filter="all">All</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="hanoi">Hanoi</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="cube">Cube</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="marble">Angry Birds</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="kongming">Kongming</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="bookshelf">Bookshelf</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="maniskill">ManiSkill</button>
+      </div>
+      <div class="filter-group" role="group" aria-label="Filter by embodiment">
+        <span class="filter-label">ROBOT</span>
+        <button class="filter-button active" type="button" aria-pressed="true" data-filter-group="embodiment" data-filter="all">All</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="franka">Franka</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="sharpa">Sharpa</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="aloha">ALOHA</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="fetch">Fetch</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="everyday">Everyday Robot</button>
+      </div>
+    </div>
+    <p id="task-count" class="catalog-count" role="status">Loading task directory…</p>
+    <div id="task-grid" class="task-grid"></div>
+    <p id="task-empty" class="empty-state" hidden>No tasks match these filters. Try another combination.</p>
+    <aside class="catalog-notes" aria-label="Catalog scope and resources">
+      <p><strong>Catalog scope.</strong> Native Launch tasks include loaded and ground modes. Across the full directory, this gives <span id="native-schedule">510 evaluation groups and 2,040 planned episodes</span> per base seed and fixed access/observation setting. These schedule counts are separate from the paper’s loaded-only EP-100 evaluation. Previews and historical references are not scored agent results; engineering qualification remains in progress.</p>
+      <div class="catalog-resource-links"><a href="data/environment-catalog.json" download>Download task directory ↓</a><a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer">Native evaluation protocol ↗</a><a href="index.html#ep100">EP-100 subset ↗</a></div>
+    </aside>
+    <footer class="site-footer"><span>EMBODIED PLAYGROUND</span><a href="index.html#tasks">BACK TO TASK OVERVIEW ↑</a></footer>
+  </main>
+  <noscript><p class="catalog-noscript">Enable JavaScript to browse the directory, or <a href="data/environment-catalog.json">download all task entries</a>.</p></noscript>
+  <script src="environment.js" defer></script>
+</body>
+</html>

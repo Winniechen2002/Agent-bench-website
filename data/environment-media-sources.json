@@ -1,0 +1,277 @@
+{
+  "version": "website-media-selection-v1",
+  "reviewed_on": "2026-10-11",
+  "scope": "Curated additions for missing website media. Original files stay in their existing locations; source bytes are copied unchanged.",
+  "qualification": "Scene previews, diagrams and historical recordings do not establish current protocol scores or complete environment qualification.",
+  "entries": [
+    {
+      "id": "marble-a007-scene",
+      "task": "marble",
+      "title": "Angry Birds · A007",
+      "path": "assets/images/marble-a007.png",
+      "poster": "assets/images/marble-a007.png",
+      "caption": "A007 single-target warm-up with dual Franka Panda. Native MuJoCo atlas scene, not an agent result.",
+      "media_kind": "image",
+      "claim_status": "environment-preview",
+      "source_type": "native scene preview",
+      "case_ids": [
+        "marble/dual-panda/A007"
+      ],
+      "display": "scene",
+      "documentation": "docs/evaluation/marble.en.md",
+      "files": [
+        {
+          "path": "assets/images/marble-a007.png",
+          "sha256": "77789eca52c781ce7900a84b794ff8edaaa15546c95722f0c6e6b9949fd49793",
+          "bytes": 153089,
+          "source_artifact_id": "source-cf405ed5d9e8081094a9dce7"
+        }
+      ],
+      "source_artifact_id": "source-cf405ed5d9e8081094a9dce7"
+    },
+    {
+      "id": "marble-a057-historical",
+      "task": "marble",
+      "title": "Angry Birds · A057 reference rollout",
+      "path": "assets/media/marble-a057-reference.mp4",
+      "poster": "assets/posters/marble-a057-initial.png",
+      "caption": "A057 shared push across two lanes, loaded mode, seed 0. Historical privileged engineering-controller recording matched by the repository evidence index. Not evaluated under environment-four-trial-v2.",
+      "media_kind": "video",
+      "claim_status": "historical-engineering-reference",
+      "source_type": "native MuJoCo recording",
+      "case_ids": [
+        "marble/dual-panda/A057"
+      ],
+      "display": "scene",
+      "documentation": "docs/evaluation/marble.en.md",
+      "files": [
+        {
+          "path": "assets/media/marble-a057-reference.mp4",
+          "sha256": "4b73b52ee9229d6ea5f99af26113a232498682933a70b6118b38e6402ef7fd3f",
+          "bytes": 1876179,
+          "source_artifact_id": "source-b5241a5c1a01b120b0849618"
+        },
+        {
+          "path": "assets/posters/marble-a057-initial.png",
+          "sha256": "50ee0a184e8097d6d58cd7de05ff2d47418bab7295f0f6cf96dd02a487864e48",
+          "bytes": 308188,
+          "source_artifact_id": "source-0723c590fc92884afaf4177d"
+        }
+      ],
+      "source_artifact_id": "source-b5241a5c1a01b120b0849618"
+    },
+    {
+      "id": "marble-a099-historical",
+      "task": "marble",
+      "title": "Angry Birds · A099 bank-shot corridor",
+      "path": "assets/media/marble-a099-reference.mp4",
+      "poster": "assets/posters/marble-a099-initial.png",
+      "caption": "A099 two-target bank-shot corridor: a return bank and overhead beams constrain the shots. Dual Franka Panda, loaded mode, seed 0. Historical privileged engineering-controller recording. Not evaluated under environment-four-trial-v2.",
+      "media_kind": "video",
+      "claim_status": "historical-engineering-reference",
+      "source_type": "native MuJoCo recording",
+      "case_ids": [
+        "marble/dual-panda/A099"
+      ],
+      "display": "scene",
+      "documentation": "docs/evaluation/marble.en.md",
+      "files": [
+        {
+          "path": "assets/media/marble-a099-reference.mp4",
+          "sha256": "c1a3278515f40c631f7c4aabbabc65d4ccbef480939a1af9e484fd9d7ec8b6bc",
+          "bytes": 5365722,
+          "source_artifact_id": "source-71f3259d246c96a58d861648"
+        },
+        {
+          "path": "assets/posters/marble-a099-initial.png",
+          "sha256": "7c5102aecf123e4098a535655ab2f4255f4254fb260fcefc9826f1dc65fce9c0",
+          "bytes": 315258,
+          "source_artifact_id": "source-8d997d09ccf7aadd30828614"
+        }
+      ],
+      "source_artifact_id": "source-71f3259d246c96a58d861648"
+    },
+    {
+      "id": "hanoi-floating-h29-scene",
+      "task": "hanoi_floating",
+      "title": "Floating Sharpa Hanoi · H29",
+      "path": "assets/images/hanoi-floating-h29.png",
+      "poster": "assets/images/hanoi-floating-h29.png",
+      "caption": "H29 low-wall clearance with a floating Sharpa hand. Native Isaac scene preview; no completed policy trajectory is claimed.",
+      "media_kind": "image",
+      "claim_status": "environment-preview",
+      "source_type": "native scene preview",
+      "case_ids": [
+        "hanoi_floating/floating-sharpa/H29"
+      ],
+      "display": "scene",
+      "documentation": "docs/evaluation/hanoi_floating.en.md",
+      "files": [
+        {
+          "path": "assets/images/hanoi-floating-h29.png",
+          "sha256": "de1165d1d2b752b01df4599f910e445019f0ff3d0522708093697b285998f9ea",
+          "bytes": 299411,
+          "source_artifact_id": "source-7fac8ba446cd9b52de96f688"
+        }
+      ],
+      "source_artifact_id": "source-7fac8ba446cd9b52de96f688"
+    },
+    {
+      "id": "bookshelf-native-preview",
+      "task": "bookshelf",
+      "title": "Bookshelf · Dual Panda native scene",
+      "path": "assets/images/bookshelf-native-shelftable-d3.png",
+      "poster": "assets/images/bookshelf-native-shelftable-d3.png",
+      "caption": "ShelfTableD3 with dual Panda arms, a three-level bookshelf, books and tabletop objects. Native Isaac Sim RTX render, seed 7, after 30 neutral hold controls. Initial scene preview; no policy execution or task success is claimed.",
+      "media_kind": "image",
+      "claim_status": "environment-preview",
+      "source_type": "native Isaac Sim RTX render",
+      "case_ids": [
+        "bookshelf/dual-panda/ShelfTableD3"
+      ],
+      "display": "full-scene",
+      "documentation": "docs/evaluation/bookshelf.en.md",
+      "files": [
+        {
+          "path": "assets/images/bookshelf-native-shelftable-d3.png",
+          "sha256": "a31e4977393afc400126e93c3984467d774054e88e0d7637ca5754678007dda2",
+          "bytes": 1093835,
+          "source_artifact_id": "source-adac830c4cdbd4e487775067"
+        }
+      ],
+      "source_artifact_id": "source-adac830c4cdbd4e487775067"
+    },
+    {
+      "id": "maniskill-long-horizon-scenes",
+      "task": "maniskill_long_horizon",
+      "title": "ManiSkill · Long horizon scene atlas",
+      "path": "assets/images/maniskill-category1.jpg",
+      "poster": "assets/images/maniskill-category1.jpg",
+      "caption": "L1–L10 from the package’s original native simulator render runs. Full ten-scene contact sheet; historical appearance may differ from current runtime renders. These are scene previews, not policy-executed successes.",
+      "media_kind": "image",
+      "claim_status": "historical-scene-preview",
+      "source_type": "native SAPIEN contact sheet",
+      "case_ids": [
+        "maniskill_long_horizon/fetch/L1",
+        "maniskill_long_horizon/everyday_robot_09/L2",
+        "maniskill_long_horizon/fetch/L3",
+        "maniskill_long_horizon/everyday_robot_03/L4",
+        "maniskill_long_horizon/fetch/L5",
+        "maniskill_long_horizon/fetch/L6",
+        "maniskill_long_horizon/fetch/L7",
+        "maniskill_long_horizon/fetch/L8",
+        "maniskill_long_horizon/everyday_robot_01/L9",
+        "maniskill_long_horizon/everyday_robot_09/L10"
+      ],
+      "display": "contact-sheet",
+      "documentation": "env/maniskill_lgd/README.md",
+      "files": [
+        {
+          "path": "assets/images/maniskill-category1.jpg",
+          "sha256": "50d4955a5b57e0f7f9a38384190dc9d74608e46fed5fa99dffde47c735ffccb9",
+          "bytes": 386637,
+          "source_artifact_id": "source-4332c98158905a462d99f1b1"
+        }
+      ],
+      "source_artifact_id": "source-4332c98158905a462d99f1b1"
+    },
+    {
+      "id": "maniskill-geometry-scenes",
+      "task": "maniskill_geometry",
+      "title": "ManiSkill · Geometry scene atlas",
+      "path": "assets/images/maniskill-category2.jpg",
+      "poster": "assets/images/maniskill-category2.jpg",
+      "caption": "P1–P10 from the package’s original native simulator render runs. Full ten-scene contact sheet; historical appearance may differ from current runtime renders. These are scene previews, not policy-executed successes.",
+      "media_kind": "image",
+      "claim_status": "historical-scene-preview",
+      "source_type": "native SAPIEN contact sheet",
+      "case_ids": [
+        "maniskill_geometry/panda/P1",
+        "maniskill_geometry/everyday_robot_09/P2",
+        "maniskill_geometry/panda/P3",
+        "maniskill_geometry/everyday_robot_03/P4",
+        "maniskill_geometry/panda/P5",
+        "maniskill_geometry/everyday_robot_09/P6",
+        "maniskill_geometry/panda/P7",
+        "maniskill_geometry/everyday_robot_01/P8",
+        "maniskill_geometry/everyday_robot_09/P9",
+        "maniskill_geometry/panda/P10"
+      ],
+      "display": "contact-sheet",
+      "documentation": "env/maniskill_lgd/README.md",
+      "files": [
+        {
+          "path": "assets/images/maniskill-category2.jpg",
+          "sha256": "38ef86d82e74b83d386e1cec55379c309d6525e97d83a6b7777ebe3f28a96379",
+          "bytes": 350666,
+          "source_artifact_id": "source-d5e87af40b08ea4d104e6bb8"
+        }
+      ],
+      "source_artifact_id": "source-d5e87af40b08ea4d104e6bb8"
+    },
+    {
+      "id": "maniskill-dynamics-scenes",
+      "task": "maniskill_dynamics",
+      "title": "ManiSkill · Dynamics scene atlas",
+      "path": "assets/images/maniskill-category3.jpg",
+      "poster": "assets/images/maniskill-category3.jpg",
+      "caption": "D1–D10 from the package’s original native simulator render runs. Full ten-scene contact sheet; historical appearance may differ from current runtime renders. These are scene previews, not policy-executed successes.",
+      "media_kind": "image",
+      "claim_status": "historical-scene-preview",
+      "source_type": "native SAPIEN contact sheet",
+      "case_ids": [
+        "maniskill_dynamics/panda/D1",
+        "maniskill_dynamics/panda/D2",
+        "maniskill_dynamics/panda/D3",
+        "maniskill_dynamics/everyday_robot_01/D4",
+        "maniskill_dynamics/panda/D5",
+        "maniskill_dynamics/panda/D6",
+        "maniskill_dynamics/everyday_robot_03/D7",
+        "maniskill_dynamics/panda/D8",
+        "maniskill_dynamics/everyday_robot_01/D9",
+        "maniskill_dynamics/fetch/D10"
+      ],
+      "display": "contact-sheet",
+      "documentation": "env/maniskill_lgd/README.md",
+      "files": [
+        {
+          "path": "assets/images/maniskill-category3.jpg",
+          "sha256": "41402d5a48610f927b6d1c6874bc8b9d3eccb444b5cca1ef98f04009c7767eed",
+          "bytes": 338457,
+          "source_artifact_id": "source-82699a83f8890b0a523bf4de"
+        }
+      ],
+      "source_artifact_id": "source-82699a83f8890b0a523bf4de"
+    }
+  ],
+  "evidence_sources": {
+    "docs/task_status_index.json": "717babef639f8d7be8e715d7341a52585195b36825fc6ecdae3900bd2cd6b7b5",
+    "outputs/franka_marble/atlas_validation/paired_rollers_witness/run_20260930T214544_92ac5ed1/cases.jsonl": "6026cb541b1fd4dc42a8ad10883744c0d371e25b95a93f857e5d3b035b3daa70",
+    "env/maniskill_lgd/README.md": "4a949cf7fe714ca662eb022a17bc267ccbd6f61895a1b854f7d986162e5d1979",
+    "output/pdf/sharpa_hanoi_no_arm40/catalog.json": "4eb57796892757cddd8aa0d4b8f88f4df4a48b148257514ff60d07f98c05fc94",
+    "env/organize_bookshelf/README.en.md": "b4ee1667d8556452ece8fb83fbf2e3fbca88367ab5fa1986d514f43783526db8",
+    "output/website-media/bookshelf-20261011-v2/render-manifest.json": "6f43212e3d21515a94f8abe78f6801fe4b37ee7b995a2e9bf638140be0c0b62f",
+    "scripts/render_bookshelf_preview.py": "6b61c11ab6076054e721ae8c78d6119f7d531bc8103b6301e60bbba3e746c0e6",
+    "outputs/franka_marble/atlas_validation/bank_reflection_witness/run_20260930T210501_8ca4f058/cases.jsonl": "592503bf462ac2bf6dbd151dd244552d3a564ec1d1c11bbd79151b7f44fd8516"
+  },
+  "gaps": [
+    {
+      "task": "bookshelf",
+      "available": "native ShelfTableD3 scene render",
+      "missing": [
+        "robot rollout"
+      ],
+      "search_scope": "Local media inventory plus native Isaac Sim 5.1 render on 2026-10-11; initial scene only."
+    },
+    {
+      "task": "maniskill",
+      "available": "three native contact sheets covering 30 task codes",
+      "missing": [
+        "policy-executed rollout"
+      ],
+      "search_scope": "Packaged previews and local output media."
+    }
+  ],
+  "source_catalog": "docs/website_media_catalog.json",
+  "source_catalog_sha256": "588cbd15f28d23500778b6262f564f86059e344a9af9fd23991bef9596680f59"
+}

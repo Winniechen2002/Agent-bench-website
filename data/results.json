@@ -1,7 +1,759 @@
 {
-  "schema_version": "2.0",
-  "protocol": "environment-four-trial-v2",
-  "results": [],
-  "summary": [],
-  "source_note": "The current environment source scope publishes no model results. Historical website scores are archived separately and do not establish performance under this protocol."
+  "schema_version": 2,
+  "default_experiment": "codex-gpt-6-astra-l3-paper",
+  "experiments": [
+    {
+      "id": "codex-gpt-6-astra-l3-paper",
+      "title": "Final audited Codex evaluation",
+      "model": "gpt-6-astra",
+      "reasoning": "high",
+      "access_level": "L3",
+      "source": {
+        "filename": "data/codex_experiments.json",
+        "revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
+        "sha256": "05405cc7a15ee5468ef6cd6e316bb674182849870184067867cb70fcb9c6e245",
+        "environment_revision": "a58a288",
+        "selection": "agentbench-curated-v2; index version 1.4; paper-loaded-only-v1",
+        "report_audit_created_at": "2026-10-16T00:33:42.351328+00:00",
+        "publication_verified_at": "2026-10-16T00:36:44.704545+00:00",
+        "supporting_sources": [
+          {
+            "filename": "appendices/ep100_index.tex",
+            "sha256": "7d9d6ac77c39fa6ff5d2851496255f32c86206c5751f9ee886dbc4fc1ab737d8"
+          },
+          {
+            "filename": "sections/ep100.tex",
+            "sha256": "b179df48da9f291f5f581d32b22e597a2df768c442284c35b5345de108bbade9"
+          },
+          {
+            "filename": "sections/evaluation_protocol.tex",
+            "sha256": "7018efd6767f29eab21ecf14649661700210b2e9d5130a9f133ab05ef816f383"
+          },
+          {
+            "filename": "sections/experiments.tex",
+            "sha256": "656773603a0a8104acd70a3cd01df861a17f2bb3397061c0e6896a4980e18603"
+          }
+        ],
+        "upstream_audit_sources": [
+          {
+            "filename": "results.audited.json",
+            "sha256": "46ab88db06ef1248c050b627d8671a7d19841c72062f149149d978c4dc7ba971"
+          },
+          {
+            "filename": "final-publication-independent-review.json",
+            "sha256": "4602664cbe35bdf631db3023d1e68da33bf043b48d3be0a5ab24a75e89ae431c"
+          },
+          {
+            "filename": "cold-start-protocol-review.json",
+            "sha256": "5f2845bf534d924a45ba603d473ad6e65799cc35fc3e7b8462bc1b598d733638"
+          },
+          {
+            "filename": "budget-observation-review.json",
+            "sha256": "652b8932c7cf1f32e694fa4c2b64170bcc41c2c780389fafbd5ae008c392d7dd"
+          },
+          {
+            "filename": "contract-disclosure.json",
+            "sha256": "77a6626792f9bd1a378d183caf39ddeaed4c19d7b05edd0494053eef4825a6f6"
+          },
+          {
+            "filename": "publication.json",
+            "sha256": "32618bf4f699b4ed95473c31e482807caa03f2c2dfc2b7c82d75cd2e002806a9"
+          },
+          {
+            "filename": "completion-audit.json",
+            "sha256": "8ba39219748baa8fd0ec7dc83e1c0d301f8c86f07d059a5c9cad36ce07d12197"
+          },
+          {
+            "filename": "reviewed-eligibility-ledger.json",
+            "sha256": "cb934f2aab9f4dfdb040d8017f2e036914c91367060883332af7920306f6e086"
+          },
+          {
+            "filename": "plan.json",
+            "sha256": "032045ae773af64a043c426c924744f463bb2925e7c9df13516cd7354ce19242"
+          },
+          {
+            "filename": "ep100_index.tex",
+            "sha256": "7d9d6ac77c39fa6ff5d2851496255f32c86206c5751f9ee886dbc4fc1ab737d8"
+          },
+          {
+            "filename": "ep20_index.tex",
+            "sha256": "526119198eb22d3a30b04a21e6fd5d532d5fa549fd14debf60f59bcd07fcb2ca"
+          },
+          {
+            "filename": "task_index.en.json",
+            "sha256": "7e6f9af3da6e8a825f1fbbb22c280d3ae0255ac763ceb0d1dcd5b704dcc58f50"
+          }
+        ]
+      },
+      "protocol": {
+        "access_level": "L3",
+        "observation_profile": "privileged",
+        "token_budget": 30000000,
+        "token_budget_includes_cached_input": true,
+        "image_budget": 100,
+        "conditions_per_task": 4,
+        "base_seed": 0,
+        "launcher_mode": "loaded-only",
+        "scoring": "Loaded-only; four conditions/task; chronological first two valid opportunities, stop at first success; excluded infrastructure incidents and superseded extras are unscored; five-suite macro average.",
+        "aggregation": "Conditions averaged within tasks, tasks within suites, and the five suites equally.",
+        "attempt_selection": "First two valid attempts chronologically per condition, stopping at first success.",
+        "exclusions": "69 confirmed infrastructure incidents excluded; 41 superseded extras unscored, including two native successes.",
+        "agent_tools": [
+          "Python standard library",
+          "NumPy",
+          "Pillow",
+          "Public environment SDK"
+        ],
+        "auxiliary_tool_grants": [],
+        "pretrained_action_controllers": false,
+        "reference_solutions_provided": false
+      },
+      "subsets": {
+        "EP-100": {
+          "tasks": 100,
+          "conditions": 400,
+          "valid_attempts": 736,
+          "first_successes": 64,
+          "within_two_successes": 91,
+          "pooled_pass_at_1": 0.16,
+          "suite_balanced_pass_at_1": 0.13795518207282914,
+          "pooled_pass_at_2": 0.2275,
+          "suite_balanced_pass_at_2": 0.19944852941176472,
+          "suites": {
+            "Launch": {
+              "tasks": 34,
+              "conditions": 136,
+              "valid_attempts": 246,
+              "first_successes": 26,
+              "within_two_successes": 35,
+              "pass_at_1": 0.19117647058823528,
+              "pass_at_2": 0.25735294117647056
+            },
+            "Tower": {
+              "tasks": 21,
+              "conditions": 84,
+              "valid_attempts": 143,
+              "first_successes": 25,
+              "within_two_successes": 35,
+              "pass_at_1": 0.2976190476190476,
+              "pass_at_2": 0.4166666666666667
+            },
+            "Lock": {
+              "tasks": 16,
+              "conditions": 64,
+              "valid_attempts": 124,
+              "first_successes": 4,
+              "within_two_successes": 9,
+              "pass_at_1": 0.0625,
+              "pass_at_2": 0.140625
+            },
+            "Cube": {
+              "tasks": 12,
+              "conditions": 48,
+              "valid_attempts": 95,
+              "first_successes": 1,
+              "within_two_successes": 1,
+              "pass_at_1": 0.020833333333333332,
+              "pass_at_2": 0.020833333333333332
+            },
+            "Home": {
+              "tasks": 17,
+              "conditions": 68,
+              "valid_attempts": 128,
+              "first_successes": 8,
+              "within_two_successes": 11,
+              "pass_at_1": 0.11764705882352941,
+              "pass_at_2": 0.16176470588235295
+            }
+          }
+        },
+        "EP-Easy": {
+          "tasks": 50,
+          "conditions": 200,
+          "valid_attempts": 358,
+          "first_successes": 42,
+          "within_two_successes": 62,
+          "pooled_pass_at_1": 0.21,
+          "suite_balanced_pass_at_1": 0.1841688948306595,
+          "pooled_pass_at_2": 0.31,
+          "suite_balanced_pass_at_2": 0.274075311942959,
+          "suites": {
+            "Launch": {
+              "tasks": 17,
+              "conditions": 68,
+              "valid_attempts": 122,
+              "first_successes": 14,
+              "within_two_successes": 21,
+              "pass_at_1": 0.20588235294117646,
+              "pass_at_2": 0.3088235294117647
+            },
+            "Tower": {
+              "tasks": 11,
+              "conditions": 44,
+              "valid_attempts": 68,
+              "first_successes": 20,
+              "within_two_successes": 27,
+              "pass_at_1": 0.45454545454545453,
+              "pass_at_2": 0.6136363636363636
+            },
+            "Lock": {
+              "tasks": 8,
+              "conditions": 32,
+              "valid_attempts": 60,
+              "first_successes": 4,
+              "within_two_successes": 9,
+              "pass_at_1": 0.125,
+              "pass_at_2": 0.28125
+            },
+            "Cube": {
+              "tasks": 6,
+              "conditions": 24,
+              "valid_attempts": 47,
+              "first_successes": 1,
+              "within_two_successes": 1,
+              "pass_at_1": 0.041666666666666664,
+              "pass_at_2": 0.041666666666666664
+            },
+            "Home": {
+              "tasks": 8,
+              "conditions": 32,
+              "valid_attempts": 61,
+              "first_successes": 3,
+              "within_two_successes": 4,
+              "pass_at_1": 0.09375,
+              "pass_at_2": 0.125
+            }
+          }
+        },
+        "EP-Hard": {
+          "tasks": 50,
+          "conditions": 200,
+          "valid_attempts": 378,
+          "first_successes": 22,
+          "within_two_successes": 29,
+          "pooled_pass_at_1": 0.11,
+          "suite_balanced_pass_at_1": 0.08807189542483661,
+          "pooled_pass_at_2": 0.145,
+          "suite_balanced_pass_at_2": 0.12006535947712418,
+          "suites": {
+            "Launch": {
+              "tasks": 17,
+              "conditions": 68,
+              "valid_attempts": 124,
+              "first_successes": 12,
+              "within_two_successes": 14,
+              "pass_at_1": 0.17647058823529413,
+              "pass_at_2": 0.20588235294117646
+            },
+            "Tower": {
+              "tasks": 10,
+              "conditions": 40,
+              "valid_attempts": 75,
+              "first_successes": 5,
+              "within_two_successes": 8,
+              "pass_at_1": 0.125,
+              "pass_at_2": 0.2
+            },
+            "Lock": {
+              "tasks": 8,
+              "conditions": 32,
+              "valid_attempts": 64,
+              "first_successes": 0,
+              "within_two_successes": 0,
+              "pass_at_1": 0.0,
+              "pass_at_2": 0.0
+            },
+            "Cube": {
+              "tasks": 6,
+              "conditions": 24,
+              "valid_attempts": 48,
+              "first_successes": 0,
+              "within_two_successes": 0,
+              "pass_at_1": 0.0,
+              "pass_at_2": 0.0
+            },
+            "Home": {
+              "tasks": 9,
+              "conditions": 36,
+              "valid_attempts": 67,
+              "first_successes": 5,
+              "within_two_successes": 7,
+              "pass_at_1": 0.1388888888888889,
+              "pass_at_2": 0.19444444444444445
+            }
+          }
+        },
+        "EP-20": {
+          "tasks": 20,
+          "conditions": 80,
+          "valid_attempts": 147,
+          "first_successes": 13,
+          "within_two_successes": 16,
+          "pooled_pass_at_1": 0.1625,
+          "suite_balanced_pass_at_1": 0.15416666666666665,
+          "pooled_pass_at_2": 0.2,
+          "suite_balanced_pass_at_2": 0.1875,
+          "suites": {
+            "Launch": {
+              "tasks": 6,
+              "conditions": 24,
+              "valid_attempts": 45,
+              "first_successes": 3,
+              "within_two_successes": 4,
+              "pass_at_1": 0.125,
+              "pass_at_2": 0.16666666666666666
+            },
+            "Tower": {
+              "tasks": 4,
+              "conditions": 16,
+              "valid_attempts": 30,
+              "first_successes": 2,
+              "within_two_successes": 4,
+              "pass_at_1": 0.125,
+              "pass_at_2": 0.25
+            },
+            "Lock": {
+              "tasks": 3,
+              "conditions": 12,
+              "valid_attempts": 24,
+              "first_successes": 0,
+              "within_two_successes": 0,
+              "pass_at_1": 0.0,
+              "pass_at_2": 0.0
+            },
+            "Cube": {
+              "tasks": 3,
+              "conditions": 12,
+              "valid_attempts": 23,
+              "first_successes": 1,
+              "within_two_successes": 1,
+              "pass_at_1": 0.08333333333333333,
+              "pass_at_2": 0.08333333333333333
+            },
+            "Home": {
+              "tasks": 4,
+              "conditions": 16,
+              "valid_attempts": 25,
+              "first_successes": 7,
+              "within_two_successes": 7,
+              "pass_at_1": 0.4375,
+              "pass_at_2": 0.4375
+            }
+          }
+        }
+      },
+      "audit_counts": {
+        "retained": 846,
+        "valid": 736,
+        "success": 91,
+        "failure": 645,
+        "excluded": 69,
+        "superseded": 41,
+        "conditions": 400,
+        "successful_conditions": 91,
+        "html_metric_rows": 22
+      },
+      "disclosure_summary": {
+        "total_failures": 684,
+        "reviewed_records": 684,
+        "affected_records": 613,
+        "remaining_records": 0,
+        "complete": true,
+        "scoring_changes": 0,
+        "current_valid_failures": 645,
+        "affected_current_valid_failures": 574,
+        "retained_superseded_failure_audits": 39
+      },
+      "cold_start_summary": {
+        "valid_attempts": 736,
+        "tasks": 100,
+        "conditions": 400,
+        "launch_valid_attempts": 246,
+        "all_level3": true,
+        "guest_hashes": {
+          "d14db5a890c12674c3f0dd07572d93369feef41182becf6a05f3abda59f1d089": 736
+        },
+        "trial_binding_sources": {
+          "evaluation_trial_manifest": 548,
+          "delegated_native_trace_manifest": 188
+        },
+        "unique_observed_threads": 736,
+        "unique_public_directories": 736,
+        "unique_scratch_directories": 736,
+        "unique_runtime_directories": 736,
+        "missing_derived_physical_run_id": 678,
+        "exact_public_task_ids": 508,
+        "generic_public_task_aliases": 228,
+        "unique_socket_bind_sources": {
+          "native.sock": 736,
+          "model.sock": 736
+        }
+      },
+      "failure_diagnostics": [
+        {
+          "suite": "Launch",
+          "failed_attempts": 211,
+          "fail": [
+            {
+              "code": "LIMIT",
+              "count": 129,
+              "share": 0.6113744075829384
+            },
+            {
+              "code": "RULE",
+              "count": 58,
+              "share": 0.27488151658767773
+            },
+            {
+              "code": "TIME",
+              "count": 12,
+              "share": 0.05687203791469194
+            },
+            {
+              "code": "AMMO",
+              "count": 11,
+              "share": 0.052132701421800945
+            },
+            {
+              "code": "QUIT",
+              "count": 1,
+              "share": 0.004739336492890996
+            }
+          ],
+          "failure_causes": [
+            {
+              "cause": "elevation_limit_violation",
+              "count": 86,
+              "share": 0.4075829383886256
+            },
+            {
+              "cause": "launch_before_aim_cycle_complete",
+              "count": 50,
+              "share": 0.23696682464454977
+            },
+            {
+              "cause": "joint_overspeed_over_10pct_margin",
+              "count": 42,
+              "share": 0.1990521327014218
+            },
+            {
+              "cause": "normal_budget_timeout",
+              "count": 12,
+              "share": 0.05687203791469194
+            },
+            {
+              "cause": "native_physical_failure_no_external_fault_evidence",
+              "count": 11,
+              "share": 0.052132701421800945
+            },
+            {
+              "cause": "protected_target_hit",
+              "count": 5,
+              "share": 0.023696682464454975
+            },
+            {
+              "cause": "target_order_violation",
+              "count": 2,
+              "share": 0.009478672985781991
+            },
+            {
+              "cause": "explicit_agent_policy_stop",
+              "count": 1,
+              "share": 0.004739336492890996
+            },
+            {
+              "cause": "launcher_slide_limit_violation",
+              "count": 1,
+              "share": 0.004739336492890996
+            },
+            {
+              "cause": "launch_before_aim_locked",
+              "count": 1,
+              "share": 0.004739336492890996
+            }
+          ]
+        },
+        {
+          "suite": "Tower",
+          "failed_attempts": 108,
+          "fail": [
+            {
+              "code": "PEN",
+              "count": 35,
+              "share": 0.32407407407407407
+            },
+            {
+              "code": "DROP",
+              "count": 33,
+              "share": 0.3055555555555556
+            },
+            {
+              "code": "LIMIT",
+              "count": 27,
+              "share": 0.25
+            },
+            {
+              "code": "QUIT",
+              "count": 11,
+              "share": 0.10185185185185185
+            },
+            {
+              "code": "RULE",
+              "count": 2,
+              "share": 0.018518518518518517
+            }
+          ],
+          "failure_causes": [
+            {
+              "cause": "visible_shell_penetration",
+              "count": 35,
+              "share": 0.32407407407407407
+            },
+            {
+              "cause": "native_target_validation_abort",
+              "count": 26,
+              "share": 0.24074074074074073
+            },
+            {
+              "cause": "nonactive_ring_unseated",
+              "count": 17,
+              "share": 0.1574074074074074
+            },
+            {
+              "cause": "multiple_rings_unseated",
+              "count": 15,
+              "share": 0.1388888888888889
+            },
+            {
+              "cause": "explicit_agent_policy_stop",
+              "count": 11,
+              "share": 0.10185185185185185
+            },
+            {
+              "cause": "non_top_ring_lifted",
+              "count": 2,
+              "share": 0.018518518518518517
+            },
+            {
+              "cause": "native_physical_failure_no_external_fault_evidence",
+              "count": 1,
+              "share": 0.009259259259259259
+            },
+            {
+              "cause": "object_outside_workspace",
+              "count": 1,
+              "share": 0.009259259259259259
+            }
+          ]
+        },
+        {
+          "suite": "Lock",
+          "failed_attempts": 115,
+          "fail": [
+            {
+              "code": "COLL",
+              "count": 97,
+              "share": 0.8434782608695652
+            },
+            {
+              "code": "PEN",
+              "count": 19,
+              "share": 0.16521739130434782
+            }
+          ],
+          "failure_causes": [
+            {
+              "cause": "native_physical_failure_no_external_fault_evidence",
+              "count": 115,
+              "share": 1.0
+            }
+          ]
+        },
+        {
+          "suite": "Cube",
+          "failed_attempts": 94,
+          "fail": [
+            {
+              "code": "MECH",
+              "count": 64,
+              "share": 0.6808510638297872
+            },
+            {
+              "code": "LIMIT",
+              "count": 16,
+              "share": 0.1702127659574468
+            },
+            {
+              "code": "RULE",
+              "count": 14,
+              "share": 0.14893617021276595
+            },
+            {
+              "code": "PEN",
+              "count": 14,
+              "share": 0.14893617021276595
+            }
+          ],
+          "failure_causes": [
+            {
+              "cause": "fixed_joint_relation",
+              "count": 60,
+              "share": 0.6382978723404256
+            },
+            {
+              "cause": "native_target_validation_abort",
+              "count": 16,
+              "share": 0.1702127659574468
+            },
+            {
+              "cause": "visible_shell_penetration",
+              "count": 14,
+              "share": 0.14893617021276595
+            },
+            {
+              "cause": "excessive_contact_force",
+              "count": 2,
+              "share": 0.02127659574468085
+            },
+            {
+              "cause": "left_contact_missing",
+              "count": 2,
+              "share": 0.02127659574468085
+            }
+          ]
+        },
+        {
+          "suite": "Home",
+          "failed_attempts": 117,
+          "fail": [
+            {
+              "code": "TIME",
+              "count": 40,
+              "share": 0.3418803418803419
+            },
+            {
+              "code": "PEN",
+              "count": 27,
+              "share": 0.23076923076923078
+            },
+            {
+              "code": "DROP",
+              "count": 23,
+              "share": 0.19658119658119658
+            },
+            {
+              "code": "LIMIT",
+              "count": 8,
+              "share": 0.06837606837606838
+            },
+            {
+              "code": "RULE",
+              "count": 7,
+              "share": 0.05982905982905983
+            },
+            {
+              "code": "COLL",
+              "count": 7,
+              "share": 0.05982905982905983
+            },
+            {
+              "code": "QUIT",
+              "count": 5,
+              "share": 0.042735042735042736
+            }
+          ],
+          "failure_causes": [
+            {
+              "cause": "penetration",
+              "count": 27,
+              "share": 0.23076923076923078
+            },
+            {
+              "cause": "dropped_object",
+              "count": 23,
+              "share": 0.19658119658119658
+            },
+            {
+              "cause": "normal_budget_timeout",
+              "count": 22,
+              "share": 0.18803418803418803
+            },
+            {
+              "cause": "time_limit",
+              "count": 18,
+              "share": 0.15384615384615385
+            },
+            {
+              "cause": "joint_speed",
+              "count": 8,
+              "share": 0.06837606837606838
+            },
+            {
+              "cause": "excessive_insertion_force",
+              "count": 7,
+              "share": 0.05982905982905983
+            },
+            {
+              "cause": "explicit_agent_policy_stop",
+              "count": 5,
+              "share": 0.042735042735042736
+            },
+            {
+              "cause": "pushed_too_high",
+              "count": 3,
+              "share": 0.02564102564102564
+            },
+            {
+              "cause": "second_push",
+              "count": 1,
+              "share": 0.008547008547008548
+            },
+            {
+              "cause": "protected:left_book",
+              "count": 1,
+              "share": 0.008547008547008548
+            },
+            {
+              "cause": "protected:colleague_remote",
+              "count": 1,
+              "share": 0.008547008547008548
+            },
+            {
+              "cause": "protected:work_lunch",
+              "count": 1,
+              "share": 0.008547008547008548
+            }
+          ]
+        }
+      ],
+      "failure_labels_note": "Counts are native diagnostic incidences among failed attempts; multiple labels can apply to one failure. Labels alone do not establish agent, controller, or simulator causation.",
+      "task_condition_success_histograms": {
+        "first_success": {
+          "0": 69,
+          "1": 13,
+          "2": 7,
+          "3": 7,
+          "4": 4
+        },
+        "success_within_two": {
+          "0": 60,
+          "1": 16,
+          "2": 6,
+          "3": 9,
+          "4": 9
+        }
+      },
+      "time_at_success_minutes": 6.254162515956404,
+      "time_at_success_note": "Pooled successful-attempt supervisor timing, approximately 0.25-second polling. Measured over 91 successful attempts; prior unsuccessful attempts are excluded.",
+      "task_results_file": "data/ep100-index.json",
+      "limitations": [
+        "One model and agent configuration at L3 privileged access; broader model comparisons and controlled access, controller, and feedback ablations are needed.",
+        "Incomplete rule or threshold disclosure affects 574 of 645 scored failures (88.99%). Native verdicts remain in the scores, with no scoring changes; these failures cannot be attributed solely to agent reasoning or control.",
+        "Separate agent sessions and public, scratch, and runtime directories are evidenced for all 736 scored attempts. Cleared host or service caches and complete simulator-state independence are not certified.",
+        "EP-20 overlaps EP-Easy and EP-Hard and is partly informed by pilot success evidence. It is a compact diagnostic selection, not an unbiased estimate of full-set performance.",
+        "Complete provider token usage is unavailable, so no token efficiency metric is reported.",
+        "Demonstration videos and scene previews illustrate tasks and reference behavior; they are not the scored Codex attempts and do not establish benchmark success."
+      ]
+    }
+  ]
 }
