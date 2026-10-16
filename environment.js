@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const state = { tasks: [], entries: [], media: [], benchmark: null, filters: { family: "all", embodiment: "all" }, selectedMedia: new Map() };
+  const state = { tasks: [], entries: [], media: [], filters: { family: "all", embodiment: "all" }, selectedMedia: new Map() };
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
   const escapeHTML = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
@@ -44,6 +44,11 @@
       : `<a href="${escapeHTML(item.path)}" target="_blank" rel="noreferrer" aria-label="View full image: ${escapeHTML(item.title)}"><img src="${escapeHTML(item.path)}" alt="${escapeHTML(item.title)}" loading="lazy" data-fallback="${escapeHTML(imagePath(item.fallback))}" /></a>`;
   }
 
+  function mediaCaptionHTML(item) {
+    const label = item?.playback_label ? ` <span class="media-playback-label">${escapeHTML(item.playback_label)}</span>` : "";
+    return `${escapeHTML(item?.caption || "An execution recording is not yet available.")}${label}`;
+  }
+
   function pauseVideos(scope = document) {
     $$("video", scope).forEach((video) => video.pause());
   }
@@ -57,7 +62,7 @@
       } else {
         const notice = document.createElement("div");
         notice.className = "catalog-unavailable";
-        notice.textContent = "Preview unavailable";
+        notice.textContent = "Media unavailable";
         (image.closest("a") || image).replaceWith(notice);
       }
     }));
@@ -92,7 +97,7 @@
       const media = mediaFor(task);
       const selected = media.find((item) => item.id === state.selectedMedia.get(task.id)) || media[0];
       const robots = Object.keys(task.counts_by_embodiment).filter((robot) => robotMatches(robot, state.filters.embodiment));
-      const mediaSelector = media.length > 1 ? `<label class="catalog-media-label" for="media-${escapeHTML(task.id)}">Available media<select class="catalog-media-select" id="media-${escapeHTML(task.id)}" data-media-task="${escapeHTML(task.id)}">${media.map((item) => `<option value="${escapeHTML(item.id)}"${item === selected ? " selected" : ""}>${escapeHTML(item.title)}</option>`).join("")}</select></label>` : "";
+      const mediaSelector = media.length > 1 ? `<label class="catalog-media-label" for="media-${escapeHTML(task.id)}">Video<select class="catalog-media-select" id="media-${escapeHTML(task.id)}" data-media-task="${escapeHTML(task.id)}">${media.map((item) => `<option value="${escapeHTML(item.id)}"${item === selected ? " selected" : ""}>${escapeHTML(item.title)}</option>`).join("")}</select></label>` : "";
       const entryHTML = entries.map((entry) => {
         const budget = entry.budgets;
         return `<div class="catalog-entry"><code>${escapeHTML(entry.id)}</code><span>${escapeHTML(entry.groups.join(" / "))} · ${number(budget.simulation_seconds)} s simulation · ${number(budget.max_steps)} steps · ${number(budget.wall_seconds)} s wall limit</span></div>`;
@@ -101,7 +106,7 @@
         <div class="task-media">${mediaHTML(selected)}</div>
         <div class="task-body"><span class="task-family">${escapeHTML(task.family_label || task.family)}</span><h2>${escapeHTML(task.title)}</h2><span class="catalog-task-count">${entries.length} ${state.filters.embodiment === "all" ? "task entries" : "matching task entries"}</span><p>${escapeHTML(task.summary)}</p>
         <div class="task-meta">${(task.skills || []).map((skill) => `<span>${escapeHTML(skill.replaceAll("_", " "))}</span>`).join("")}</div>
-        ${mediaSelector}<p class="catalog-media-caption">${escapeHTML(selected?.caption || "An execution recording is not yet available.")}</p><span class="catalog-media-status">${escapeHTML((selected?.claim_status || "media coming soon").replaceAll("-", " "))}</span><a class="catalog-open-media" href="${escapeHTML(selected?.path || "#tasks")}" target="_blank" rel="noreferrer"${selected ? "" : " hidden"}>${isVideo(selected) ? "Open video" : "View full image"} ↗</a>
+        ${mediaSelector}<p class="catalog-media-caption">${mediaCaptionHTML(selected)}</p><a class="catalog-open-media" href="${escapeHTML(selected?.path || "#tasks")}" target="_blank" rel="noreferrer"${selected ? "" : " hidden"}>${isVideo(selected) ? "Open video" : "View full image"} ↗</a>
         <div class="task-footer"><span class="task-embodiment">${escapeHTML(robots.join(" · "))}</span><a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/${escapeHTML(task.source)}" target="_blank" rel="noreferrer">Task protocol ↗</a></div>
         <details class="catalog-entries"><summary>Browse ${entries.length} task entries</summary><div class="catalog-entry-list" tabindex="0" role="region" aria-label="${escapeHTML(task.title)} task entries">${entryHTML}</div></details></div>
       </article>`;
@@ -130,8 +135,7 @@
       state.selectedMedia.set(select.dataset.mediaTask, item.id);
       pauseVideos(card);
       $(".task-media", card).innerHTML = mediaHTML(item);
-      $(".catalog-media-caption", card).textContent = item.caption;
-      $(".catalog-media-status", card).textContent = item.claim_status.replaceAll("-", " ");
+      $(".catalog-media-caption", card).innerHTML = mediaCaptionHTML(item);
       const link = $(".catalog-open-media", card);
       link.href = item.path;
       link.textContent = `${isVideo(item) ? "Open video" : "View full image"} ↗`;
@@ -163,7 +167,7 @@
     try {
       const [tasks, benchmark, media, entries] = await Promise.all([loadJSON("data/environment-groups.json"), loadJSON("data/benchmark.json"), loadJSON("data/environment-media.json"), loadJSON("data/environment-catalog.json")]);
       if (!Array.isArray(tasks) || !Array.isArray(media) || !Array.isArray(entries) || entries.length !== benchmark.task_count || tasks.reduce((sum, task) => sum + task.count, 0) !== benchmark.task_count) throw new Error("Inconsistent catalog snapshot");
-      Object.assign(state, { tasks, benchmark, media, entries });
+      Object.assign(state, { tasks, media, entries });
       renderTaskCards();
       $("#native-schedule").textContent = `${number(benchmark.group_count)} evaluation groups and ${number(benchmark.planned_episodes)} planned episodes`;
       document.body.dataset.ready = "true";

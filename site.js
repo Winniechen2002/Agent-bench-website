@@ -18,11 +18,16 @@
     return response.json();
   }
 
-  function mediaMarkup(item, context) {
-    if (!item?.path) return '<div class="media-unavailable">Scene preview unavailable</div>';
+  function mediaMarkup(item) {
+    if (!item?.path) return '<div class="media-unavailable">Video unavailable</div>';
     const poster = item.poster || item.fallback || '';
     if (!isVideo(item)) return `<a class="media-image-link" href="${escape(item.path)}" target="_blank" rel="noopener" aria-label="Open full image: ${escape(item.title)}"><img src="${escape(item.path)}" alt="${escape(item.title)}" loading="lazy" data-fallback="${escape(item.fallback || '')}" /><span>View full image ↗</span></a>`;
-    return `<video muted loop playsinline preload="none" poster="${escape(poster)}" data-video-src="${escape(item.path)}" aria-label="${escape(item.title)}" data-context="${escape(context)}"></video><button class="preview-play" type="button" aria-label="Play ${escape(item.title)}"><span aria-hidden="true">▶</span> Play demo</button>`;
+    return `<video muted loop playsinline preload="none" poster="${escape(poster)}" data-video-src="${escape(item.path)}" aria-label="${escape(item.title)}"></video><button class="preview-play" type="button" aria-label="Play ${escape(item.title)}"><span aria-hidden="true">▶</span> Play video</button>`;
+  }
+
+  function mediaCaptionMarkup(item) {
+    const label = item?.playback_label ? ` <span class="media-playback-label">${escape(item.playback_label)}</span>` : '';
+    return `${escape(item?.caption || '')}${label}`;
   }
 
   async function playVideo(video) {
@@ -41,7 +46,7 @@
       const fallback = img.dataset.fallback;
       if (fallback && !img.dataset.fallbackUsed && img.getAttribute('src') !== fallback) { img.dataset.fallbackUsed = 'true'; img.src = fallback; const link = img.closest('.media-image-link'); if (link) link.href = fallback; return; }
       const target = img.closest('.media-image-link') || img;
-      target.replaceWith(Object.assign(document.createElement('div'), {className:'media-unavailable',textContent:'Scene preview unavailable'}));
+      target.replaceWith(Object.assign(document.createElement('div'), {className:'media-unavailable',textContent:'Video unavailable'}));
     }));
     $$('video[data-video-src]', root).forEach((video) => {
       video.muted = true;
@@ -75,7 +80,7 @@
     grid.innerHTML = filtered.map((task) => {
       const media = task.media.map(mediaById).filter(Boolean);
       const selected = media.find((item) => state.embodiment !== 'all' && String(item.embodiment).toLowerCase().includes(state.embodiment)) || media[0];
-      return `<article class="task-card" data-task="${escape(task.id)}"><div class="task-media">${mediaMarkup(selected, 'task')}<span class="task-badge">${escape(task.task_count)} ${state.embodiment === 'all' ? '' : 'matching '}EP-100 tasks</span></div><div class="task-body"><span class="task-family">${escape(task.suite)} / ${escape(task.type)}</span><h3>${escape(task.title.replace(/^.*? · /,''))}</h3><p>${escape(task.summary)}</p><div class="task-meta">${task.skills.slice(0,3).map((skill) => `<span>${escape(skill.replaceAll('_',' '))}</span>`).join('')}</div><div class="task-footer"><span class="task-embodiment">${escape(task.embodiments.join(' · '))}</span></div>${media.length > 1 ? `<label class="media-select-label">Visual example<select data-task-media="${escape(task.id)}">${media.map((item) => `<option value="${escape(item.id)}"${item.id === selected.id ? ' selected' : ''}>${escape(item.title)}</option>`).join('')}</select></label>` : ''}<p class="selected-media-caption">${escape(selected?.caption || '')}</p><div class="task-documentation">${(task.documentation || []).map((doc) => `<a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/${escape(doc.path)}" target="_blank" rel="noreferrer">${escape(doc.label)} protocol ↗</a>`).join('')}</div><button class="media-browse" type="button" data-media-task="${escape(task.id)}">View ${media.length} ${media.length === 1 ? 'example' : 'examples'} ↓</button><details class="task-scope"><summary>Task &amp; visual scope</summary><p>${escape(task.success_criteria)}</p><p class="demo-scope">${escape(task.demo_scope)}</p><p>Complete type: ${escape(task.split_counts.Easy || 0)} Easy · ${escape(task.split_counts.Hard || 0)} Hard · ${escape(task.ep20_count)} in EP-20</p></details></div></article>`;
+      return `<article class="task-card" data-task="${escape(task.id)}"><div class="task-media">${mediaMarkup(selected)}<span class="task-badge">${escape(task.task_count)} ${state.embodiment === 'all' ? '' : 'matching '}EP-100 tasks</span></div><div class="task-body"><span class="task-family">${escape(task.suite)} / ${escape(task.type)}</span><h3>${escape(task.title.replace(/^.*? · /,''))}</h3><p>${escape(task.summary)}</p><div class="task-meta">${task.skills.slice(0,3).map((skill) => `<span>${escape(skill.replaceAll('_',' '))}</span>`).join('')}</div><div class="task-footer"><span class="task-embodiment">${escape(task.embodiments.join(' · '))}</span></div>${media.length > 1 ? `<label class="media-select-label">Video<select data-task-media="${escape(task.id)}">${media.map((item) => `<option value="${escape(item.id)}"${item.id === selected.id ? ' selected' : ''}>${escape(item.title)}</option>`).join('')}</select></label>` : ''}<p class="selected-media-caption">${mediaCaptionMarkup(selected)}</p><div class="task-documentation">${(task.documentation || []).map((doc) => `<a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/${escape(doc.path)}" target="_blank" rel="noreferrer">${escape(doc.label)} protocol ↗</a>`).join('')}</div><button class="media-browse" type="button" data-media-task="${escape(task.id)}">View ${media.length} ${media.length === 1 ? 'video' : 'videos'} ↓</button><details class="task-scope"><summary>Task &amp; video scope</summary><p>${escape(task.success_criteria)}</p><p class="demo-scope">${escape(task.demo_scope)}</p><p>Complete type: ${escape(task.split_counts.Easy || 0)} Easy · ${escape(task.split_counts.Hard || 0)} Hard · ${escape(task.ep20_count)} in EP-20</p></details></div></article>`;
     }).join('');
     bindMedia(grid);
     $$('[data-task-media]',grid).forEach((select) => select.addEventListener('change', () => {
@@ -83,8 +88,8 @@
       const frame = $('.task-media',card);
       const badge = $('.task-badge',frame).outerHTML;
       const selected = mediaById(select.value);
-      clearVideos(frame); frame.innerHTML = mediaMarkup(selected,'task') + badge;
-      $('.selected-media-caption',card).textContent = selected.caption;
+      clearVideos(frame); frame.innerHTML = mediaMarkup(selected) + badge;
+      $('.selected-media-caption',card).innerHTML = mediaCaptionMarkup(selected);
       bindMedia(frame);
     }));
   }
@@ -116,24 +121,29 @@
     const root = $('#media-grid'); clearVideos(root);
     const task = state.tasks.find((entry) => entry.id === state.mediaTask);
     const items = state.media.filter((item) => item.path && (task ? task.media.includes(item.id) : item.showcase !== false) && (state.mediaSuite === 'all' || suiteFor(item) === state.mediaSuite));
-    $('#media-count').textContent = `${items.length} examples · ${task ? task.title : state.mediaSuite === 'all' ? 'All suites' : state.mediaSuite} · references and scene previews`;
-    root.innerHTML = items.map((item) => `<article class="media-card" data-media-id="${escape(item.id)}"><div class="evidence-frame">${mediaMarkup(item, 'evidence')}</div><div class="media-info"><small>${escape(suiteFor(item))} · ${escape(item.display_status || item.claim_status?.replaceAll('-',' ') || 'reference')}</small><h3>${escape(item.title)}</h3><p>${escape(item.caption)}</p><span class="media-embodiment">${escape(item.embodiment || '')}</span><span class="media-source-type">${escape(item.source_type || '')}</span>${isVideo(item) ? `<a class="media-open" href="${escape(item.path)}" target="_blank" rel="noopener">Open video ↗</a>` : ''}</div></article>`).join('');
-    if (!items.length) root.innerHTML = '<p class="empty-state">No demonstrations are available for this selection.</p>';
+    $('#media-count').textContent = `${items.length} videos · ${task ? task.title : state.mediaSuite === 'all' ? 'All suites' : state.mediaSuite}`;
+    root.innerHTML = items.map((item) => `<article class="media-card" data-media-id="${escape(item.id)}"><div class="evidence-frame">${mediaMarkup(item)}</div><div class="media-info"><small>${escape(suiteFor(item))}</small><h3>${escape(item.title)}</h3><p>${mediaCaptionMarkup(item)}</p><span class="media-embodiment">${escape(item.embodiment || '')}</span>${isVideo(item) ? `<a class="media-open" href="${escape(item.path)}" target="_blank" rel="noopener">Open video ↗</a>` : ''}</div></article>`).join('');
+    if (!items.length) root.innerHTML = '<p class="empty-state">No videos are available for this selection.</p>';
     bindMedia(root);
   }
 
   function setupHero() {
-    const media = mediaById('marble-a099-historical');
+    const media = mediaById('embodied-playground-film');
     const video = $('#hero-video'); const button = $('.stage-play');
-    if (!media?.path) { button.textContent = 'Preview image'; button.disabled = true; return; }
+    if (!media?.path) { button.textContent = 'Video unavailable'; button.disabled = true; return; }
+    const title = media.title || $('#hero-media-title').textContent;
+    $('#hero-media-title').textContent = title;
+    $('.hero-stage').setAttribute('aria-label', title);
+    video.setAttribute('aria-label', title);
+    $('#hero-poster').alt = title;
     video.dataset.videoSrc = media.path;
     video.poster = media.poster || '';
     $('#hero-poster').src = media.poster || media.fallback;
     button.addEventListener('click', async () => { if (video.paused) await playVideo(video); else video.pause(); });
     const update = () => {
       if (!video.paused) video.classList.add('is-ready');
-      button.querySelector('span:last-child').textContent = video.paused ? 'PLAY ROLLOUT' : 'PAUSE ROLLOUT';
-      button.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} A099 historical rollout`);
+      button.querySelector('span:last-child').textContent = video.paused ? 'PLAY VIDEO' : 'PAUSE VIDEO';
+      button.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} ${title}`);
       button.setAttribute('aria-pressed', String(!video.paused));
     };
     video.addEventListener('play', update); video.addEventListener('pause', update); update();
@@ -222,7 +232,7 @@
     if(media.status==='fulfilled'&&Array.isArray(media.value))state.media=media.value;
     if(tasks.status==='fulfilled'&&Array.isArray(tasks.value)){state.tasks=tasks.value;renderTasks();}else{$('#task-grid').innerHTML='<p class="empty-state">Task data could not be loaded. Please reload the page or open the task index.</p>';}
     $('#media-task').innerHTML = '<option value="all">All task types</option>' + state.tasks.map((task) => `<option value="${escape(task.id)}">${escape(task.title)}</option>`).join('');
-    if(media.status==='fulfilled')renderMedia();else $('#media-grid').innerHTML='<p class="empty-state">Demonstration metadata could not be loaded. Please reload the page.</p>';
+    if(media.status==='fulfilled')renderMedia();else $('#media-grid').innerHTML='<p class="empty-state">Video metadata could not be loaded. Please reload the page.</p>';
     try {
       if(results.status!=='fulfilled'||results.value.schema_version!==2)throw new Error('Result data unavailable');
       const experiment=results.value.experiments.find((item)=>item.id===results.value.default_experiment);

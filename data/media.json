@@ -1,11 +1,11 @@
 [
   {
     "id": "rubiks-franka-three-step",
-    "title": "Franka 3×3 cube three-step demo",
+    "title": "Rubik's Cube · Franka Panda",
     "task": "rubiks-franka-3x3",
-    "path": "assets/media/rubiks-three-step.mp4",
+    "path": "assets/media/rubiks-three-step-2x.mp4",
     "poster": "assets/posters/rubiks-three-step.jpg",
-    "caption": "Franka Panda three-move reference solve for scramble R U F′, solution F U′ R′; privileged trajectory demonstration, not an external-agent score.",
+    "caption": "Franka Panda three-move reference solve for scramble R U F′, solution F U′ R′; privileged trajectory demonstration, not an external-agent score. Complete prior recording at 2× source playback.",
     "source_type": "trajectory-video",
     "claim_status": "reference-execution",
     "fallback": "assets/images/rubiks-placeholder.svg",
@@ -14,11 +14,23 @@
     "family": "Cube",
     "showcase": true,
     "embodiment": "Franka Panda",
-    "source_artifact_id": "source-4a19ab294b01592a155b4404"
+    "source_artifact_id": "source-4a19ab294b01592a155b4404",
+    "playback_speed": 2,
+    "playback_basis": "source recording with adaptive timing",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-c56e39a61214a7c099e2bd88",
+        "sha256": "7c3b339daffd3a09917cb1a6996151c4a441ede7f027362a534900ed120c1d19",
+        "size_bytes": 2872558,
+        "role": "previous web derivative"
+      }
+    ],
+    "duration_seconds": 45.833333,
+    "playback_label": "2× source playback · 0:46"
   },
   {
     "id": "launch-recovery-reference",
-    "title": "Launch: observe and recover",
+    "title": "Launch: Recovery · Dual Franka Panda",
     "task": "launch-rules",
     "path": "assets/media/launch-recovery-reference.mp4",
     "poster": "assets/posters/launch-recovery-reference.jpg",
@@ -34,15 +46,19 @@
     "family": "Launch",
     "showcase": true,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-2ebf3cece211e952447c2fe4"
+    "source_artifact_id": "source-2ebf3cece211e952447c2fe4",
+    "duration_seconds": 42.0,
+    "playback_speed": 2,
+    "playback_basis": "native simulation time",
+    "playback_label": "2× · 0:42"
   },
   {
     "id": "kongming-dual-franka-reference",
-    "title": "Dual Franka Kongming assembly reference",
+    "title": "Kongming Assembly · Dual Franka Panda",
     "task": "kongming-dual-franka-assemble",
-    "path": "assets/media/kongming-assembly.mp4",
+    "path": "assets/media/kongming-assembly-6x.mp4",
     "poster": "assets/posters/kongming-assembly.jpg",
-    "caption": "Dual Franka reference execution for six-piece assembly; not a scored agent attempt.",
+    "caption": "Dual Franka reference execution for six-piece assembly; not a scored agent attempt. Complete sequence at total 6× playback.",
     "source_type": "reference-trajectory",
     "claim_status": "reference-execution",
     "fallback": "assets/images/kongming-placeholder.svg",
@@ -51,11 +67,23 @@
     "family": "Lock",
     "showcase": true,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-07aa3751ce4d614ec683d3be"
+    "source_artifact_id": "source-07aa3751ce4d614ec683d3be",
+    "playback_speed": 6,
+    "playback_label": "6× · 0:47",
+    "duration_seconds": 46.333333,
+    "playback_basis": "native simulation time",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-bed104291095e604ed15b0a5",
+        "sha256": "a8e657bd3d21d74d92c77290e7ff0befea5ca330077a5f2dd55cd1f8baaa8dab",
+        "size_bytes": 1683566,
+        "role": "previous web derivative"
+      }
+    ]
   },
   {
     "id": "kongming-dual-franka-disassemble-reference",
-    "title": "Kongming lock / Dual Franka disassembly",
+    "title": "Kongming Disassembly · Dual Franka Panda",
     "task": "kongming-dual-franka-disassemble",
     "path": "assets/media/kongming-disassembly.mp4",
     "poster": "assets/posters/kongming-disassembly.jpg",
@@ -68,11 +96,15 @@
     "family": "Lock",
     "showcase": true,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-75e38740abba7ea4cdf5d12c"
+    "source_artifact_id": "source-75e38740abba7ea4cdf5d12c",
+    "duration_seconds": 26.833008,
+    "playback_speed": 6,
+    "playback_basis": "native simulation time",
+    "playback_label": "6× · 0:27"
   },
   {
     "id": "rubiks-floating-sharpa-u3",
-    "title": "Floating Sharpa U×3 turn calibration",
+    "title": "Rubik's Cube: U Turns · Floating Sharpa",
     "task": "rubiks-floating-sharpa-3x3",
     "path": "assets/media/sharpa-rubiks-u3-qualified.mp4",
     "poster": "assets/posters/sharpa-rubiks-u3-qualified.jpg",
@@ -87,11 +119,14 @@
     "family": "Cube",
     "showcase": true,
     "embodiment": "Floating Sharpa hand",
-    "source_artifact_id": "source-5a2b61135cda279332fc6bb0"
+    "source_artifact_id": "source-5a2b61135cda279332fc6bb0",
+    "duration_seconds": 50.4,
+    "playback_basis": "native simulation time",
+    "playback_label": "6× · 0:51"
   },
   {
     "id": "rubiks-floating-sharpa-preview",
-    "title": "Floating Sharpa A×3 reorientation calibration",
+    "title": "Rubik's Cube: Reorientation · Floating Sharpa",
     "task": "rubiks-floating-sharpa-3x3",
     "path": "assets/media/sharpa-rubiks-a3-qualified.mp4",
     "poster": "assets/posters/sharpa-rubiks-a3-qualified.jpg",
@@ -106,11 +141,14 @@
     "family": "Cube",
     "showcase": true,
     "embodiment": "Floating Sharpa hand",
-    "source_artifact_id": "source-ccba069085ebf6cc02f4c39f"
+    "source_artifact_id": "source-ccba069085ebf6cc02f4c39f",
+    "duration_seconds": 57.833333,
+    "playback_basis": "native simulation time",
+    "playback_label": "16× · 0:58"
   },
   {
     "id": "kongming-floating-sharpa-a06-reference",
-    "title": "Floating Sharpa key-only assembly · A06",
+    "title": "Kongming Key Insertion · Dual Floating Sharpa",
     "task": "kongming-floating-sharpa",
     "path": "assets/media/sharpa-kongming-a06-native.mp4",
     "poster": "assets/posters/sharpa-kongming-a06-native.jpg",
@@ -123,11 +161,15 @@
     "family": "Lock",
     "showcase": true,
     "embodiment": "Dual floating Sharpa hands",
-    "source_artifact_id": "source-c6eea75e1509242308d6f637"
+    "source_artifact_id": "source-c6eea75e1509242308d6f637",
+    "duration_seconds": 12.233008,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:13"
   },
   {
     "id": "kongming-floating-sharpa-d06-reference",
-    "title": "Floating Sharpa key-only disassembly · D06",
+    "title": "Kongming Key Removal · Dual Floating Sharpa",
     "task": "kongming-floating-sharpa",
     "path": "assets/media/sharpa-kongming-d06-native.mp4",
     "poster": "assets/posters/sharpa-kongming-d06-native.jpg",
@@ -140,11 +182,15 @@
     "family": "Lock",
     "showcase": true,
     "embodiment": "Dual floating Sharpa hands",
-    "source_artifact_id": "source-967333c6093192e94cef916b"
+    "source_artifact_id": "source-967333c6093192e94cef916b",
+    "duration_seconds": 6.966016,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:07"
   },
   {
     "id": "launch-roof-cascade-reference",
-    "title": "Launch: roof cascade reference",
+    "title": "Launch: Roof Cascade · Dual Franka Panda",
     "task": "launch-causal",
     "path": "assets/media/launch-roof-cascade-reference.mp4",
     "poster": "assets/posters/launch-roof-cascade-reference.jpg",
@@ -160,11 +206,15 @@
     "family": "Launch",
     "showcase": true,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-912ed7e0fea421e034689ee9"
+    "source_artifact_id": "source-912ed7e0fea421e034689ee9",
+    "duration_seconds": 44.04,
+    "playback_speed": 2,
+    "playback_basis": "native simulation time",
+    "playback_label": "2× · 0:45"
   },
   {
     "id": "hanoi-4090-demo",
-    "title": "Hanoi 4090 replay",
+    "title": "Hanoi · Franka Panda",
     "task": "franka-hanoi-5-ring",
     "path": "assets/media/hanoi-strict-4090.mp4",
     "poster": "assets/posters/hanoi-strict-4090.jpg",
@@ -177,11 +227,15 @@
     "family": "Tower",
     "showcase": true,
     "embodiment": "Franka Panda",
-    "source_artifact_id": "source-c0c2d46c27a68cf5b6d572bd"
+    "source_artifact_id": "source-c0c2d46c27a68cf5b6d572bd",
+    "duration_seconds": 37.25,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:38"
   },
   {
     "id": "hanoi-sharpa-two-ring-reference",
-    "title": "Hanoi: floating Sharpa two-ring reference",
+    "title": "Hanoi: Two Rings · Floating Sharpa",
     "task": "tower-dex",
     "path": "assets/media/hanoi-sharpa-two-ring-reference.mp4",
     "poster": "assets/posters/hanoi-sharpa-two-ring-reference.jpg",
@@ -197,53 +251,97 @@
     "family": "Tower",
     "showcase": true,
     "embodiment": "Floating Sharpa hand",
-    "source_artifact_id": "source-7ca9bbbfd660eb76e90fda43"
+    "source_artifact_id": "source-7ca9bbbfd660eb76e90fda43",
+    "duration_seconds": 34.916667,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:35"
   },
   {
     "id": "pocket-cube-dual-aloha-preview",
-    "title": "Dual ALOHA Pocket Cube",
+    "title": "Pocket Cube · Dual ALOHA",
     "task": "pocket-cube-dual-aloha",
-    "path": "assets/images/pocket-cube-dual-aloha.png",
-    "poster": "assets/images/pocket-cube-dual-aloha.png",
-    "caption": "Dual ALOHA scene preview with the 2×2 cube.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/pocket-cube-dual-aloha.png",
-    "media_kind": "image",
+    "path": "assets/media/pocket-aloha-l-turn.mp4",
+    "poster": "assets/posters/pocket-aloha-l-turn.jpg",
+    "caption": "Historical native L-face quarter-turn demonstration with dual ALOHA grippers. Local turn only; this does not establish completion of a benchmark scramble. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "historical-reference-execution",
+    "fallback": "assets/posters/pocket-aloha-l-turn.jpg",
+    "media_kind": "video",
     "suite": "Cube",
     "family": "Cube",
     "showcase": true,
     "embodiment": "Dual ALOHA grippers",
-    "source_artifact_id": "source-56f51bb825b488534ae50a7e"
+    "source_artifact_id": "source-1c9a35c6d14ae9cba1ec3263",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-1c9a35c6d14ae9cba1ec3263",
+        "sha256": "8f4b4779598284645333f550012777cf3601688f71aa66640fb495595d3060d6",
+        "size_bytes": 1841217,
+        "role": "native recording"
+      }
+    ],
+    "case_ids": [],
+    "display": "rollout",
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "duration_seconds": 20.333008,
+    "result_summary": {
+      "scope": "L-face turn demonstration"
+    },
+    "playback_label": "Recorded timing · 0:21"
   },
   {
     "id": "pocket-cube-dual-sharpa-preview",
-    "title": "Dual Sharpa Pocket Cube",
+    "title": "Pocket Cube · Dual Floating Sharpa",
     "task": "pocket-cube-dual-sharpa",
-    "path": "assets/images/pocket-cube-dual-sharpa.png",
-    "poster": "assets/images/pocket-cube-dual-sharpa.png",
-    "caption": "Dual floating Sharpa scene preview with the 2×2 cube.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/pocket-cube-dual-sharpa.png",
-    "media_kind": "image",
+    "path": "assets/media/pocket-sharpa-l-turn-closeup-2x.mp4",
+    "poster": "assets/posters/pocket-sharpa-l-turn-closeup-2x.jpg",
+    "caption": "Historical L-face turn replay with dual floating Sharpa hands. Close-up crop of the complete native recording at 2×; local manipulation only, not a benchmark scramble solve. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "historical-reference-execution",
+    "fallback": "assets/posters/pocket-sharpa-l-turn-closeup-2x.jpg",
+    "media_kind": "video",
     "suite": "Cube",
     "family": "Cube",
     "showcase": true,
     "embodiment": "Dual floating Sharpa hands",
-    "source_artifact_id": "source-298f99d25ed8575f1edd274c"
+    "source_artifact_id": "source-cf2c1c9768abb69929bde622",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-cf2c1c9768abb69929bde622",
+        "sha256": "d455468361dfbd40807a3bc1918c4ef4c094d09db0a57ba5ad1d921d872fdf28",
+        "size_bytes": 7110132,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-c0b6ca77734f417a04d1e480",
+        "sha256": "531ff07593b8038effd9389f82eb5b6f055ac8740ed7160d2ae80246f3e07600",
+        "size_bytes": 1987,
+        "role": "native spatial crop provenance"
+      }
+    ],
+    "case_ids": [],
+    "display": "rollout",
+    "playback_speed": 2,
+    "playback_basis": "source recording",
+    "duration_seconds": 56.816667,
+    "result_summary": {
+      "scope": "L-face turn demonstration; complete spatial close-up"
+    },
+    "playback_label": "2× · 0:57"
   },
   {
     "id": "bookshelf-overview",
-    "title": "Bookshelf: Dual Franka overview",
+    "title": "Bookshelf Organization · Dual Franka Panda",
     "task": "home-tidy",
-    "path": "assets/images/bookshelf-overview.jpg",
-    "poster": "assets/images/bookshelf-overview.jpg",
-    "caption": "Dual Franka Panda bookshelf scene, ShelfTableD3, seed 7, after 30 neutral hold controls. Native scene preview.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/bookshelf-overview.jpg",
-    "media_kind": "image",
+    "path": "assets/media/bookshelf-d3-attempt.mp4",
+    "poster": "assets/posters/bookshelf-d3-attempt.jpg",
+    "caption": "ShelfTableD3, seed 7: native controller attempt shown from two synchronized views. Reaching and staging attempts finish with 0 of 13 objects placed; unsuccessful reproduction. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "scripted-reproduction",
+    "fallback": "assets/posters/bookshelf-d3-attempt.jpg",
+    "media_kind": "video",
     "suite": "Home",
     "task_ids": [
       "home-tidy"
@@ -251,71 +349,226 @@
     "family": "Home",
     "showcase": true,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-db87b496f513ffdf8d64d4ca"
+    "source_artifact_id": "source-c0b77b6299a5e3dd7e683c63",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-c0b77b6299a5e3dd7e683c63",
+        "sha256": "b6d5e73872c07fb1d9d5781220432a003bad46e949c22dcaacc9352d275b0c63",
+        "size_bytes": 2766792,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-f814e3ef7f5c07c02bc76f88",
+        "sha256": "0508caddc78763c84771c98533914430e12309d4e945eacbc2c078e020fababa",
+        "size_bytes": 5194,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-9d662ae82c06894b03e69967",
+        "sha256": "c06745524e6f0764c3a0bca12570b8169fffa4c9c2f31bac51efa62ed6314159",
+        "size_bytes": 451,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-f03466ca759e48e57fa92149",
+        "sha256": "6dbd758a0b58c6d53791df0581c8d489a96c59e8dae1121f6efa5eeb69771c4b",
+        "size_bytes": 4438682,
+        "role": "actions and timing"
+      }
+    ],
+    "case_ids": [
+      "bookshelf/dual-panda/ShelfTableD3"
+    ],
+    "display": "rollout",
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 29.333008,
+    "result_summary": {
+      "success": false,
+      "placed_count": 0,
+      "total_objects": 13,
+      "control_steps": 880
+    },
+    "playback_label": "1× · 0:30"
   },
   {
     "id": "home-long-preview",
-    "title": "Home: long-horizon task scenes",
+    "title": "Home Long · Fetch",
     "task": "home-long",
-    "path": "assets/images/home-long-preview.jpg",
-    "poster": "assets/images/home-long-preview.jpg",
-    "caption": "Ten native Home long-horizon task previews with varied robot embodiments, including Fetch. Scene illustrations only.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/home-long-preview.jpg",
-    "media_kind": "image",
+    "path": "assets/media/home-l1-attempt-2x.mp4",
+    "poster": "assets/posters/home-l1-attempt-2x.jpg",
+    "caption": "L1: prepare a shared writing desk with Fetch. New recording of trial 1, attempt 1 control stages, at 2×. The marker falls to the floor and the native checker ends the attempt with a violation. Unsuccessful; not an exact trajectory replay. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "scripted-reproduction",
+    "fallback": "assets/posters/home-l1-attempt-2x.jpg",
+    "media_kind": "video",
     "suite": "Home",
     "task_ids": [
       "home-long"
     ],
     "family": "Home",
     "showcase": true,
-    "embodiment": "Multiple native embodiments, including Fetch",
-    "source_artifact_id": "source-4cf6f38f9bd1d50efe6b738e"
+    "embodiment": "Fetch mobile manipulator",
+    "source_artifact_id": "source-3522474eaea94cc9d1ff2d16",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-3522474eaea94cc9d1ff2d16",
+        "sha256": "6caeb30464bf6e860ff261b087f73a17d3070819fe6995d02c048a7b13fa9c7d",
+        "size_bytes": 3802187,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-4663c8b8743a86a5f15ae263",
+        "sha256": "0e62a62ad09fcfc5675f318b649de95e92bbab7f105ff0d33a9087ad28b6aca4",
+        "size_bytes": 12166,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-308c4bf3462bf8783f280ff1",
+        "sha256": "9f622e01dc824dbbf7abccbd94d735f2d3c867e75cb4e3d8caae383bcec21e3f",
+        "size_bytes": 405,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-e170e540611c3ad77739fd1c",
+        "sha256": "2e8db8e1f4a735490f9f492d476cc9bcf7258989746052f9427176266a6a0831",
+        "size_bytes": 5770984,
+        "role": "actions and timing"
+      }
+    ],
+    "case_ids": [
+      "maniskill_long_horizon/fetch/L1"
+    ],
+    "display": "rollout",
+    "playback_speed": 2,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 46.125,
+    "result_summary": {
+      "success": false,
+      "reason": "violation",
+      "control_steps": 1844
+    },
+    "playback_label": "2× · 0:47"
   },
   {
     "id": "home-precise-preview",
-    "title": "Home: precision task scenes",
+    "title": "Home Precise · Franka Panda",
     "task": "home-precise",
-    "path": "assets/images/home-precise-preview.jpg",
-    "poster": "assets/images/home-precise-preview.jpg",
-    "caption": "Ten native Home precision task previews with varied robot embodiments. Scene illustrations only.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/home-precise-preview.jpg",
-    "media_kind": "image",
+    "path": "assets/media/home-p5-reproduction.mp4",
+    "poster": "assets/posters/home-p5-reproduction.jpg",
+    "caption": "P5: hang a mug by its handle with Panda. New native recording of trial 1, attempt 1 control stages. The blue mug reaches the hook while the adjacent red mug stays in place; this reproduction succeeds. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "scripted-reproduction",
+    "fallback": "assets/posters/home-p5-reproduction.jpg",
+    "media_kind": "video",
     "suite": "Home",
     "task_ids": [
       "home-precise"
     ],
     "family": "Home",
     "showcase": true,
-    "embodiment": "Multiple native embodiments, including Panda",
-    "source_artifact_id": "source-7840a50a81637c4e9c40a403"
+    "embodiment": "Franka Panda",
+    "source_artifact_id": "source-cf94ca843ae033c9c9f29316",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-cf94ca843ae033c9c9f29316",
+        "sha256": "b8e8443b64dc67ce6dc64326f0d83df18d9a49684482987e9ff2feb211de30fd",
+        "size_bytes": 710176,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-33cbaea43d7a4a6fbfa8d0e8",
+        "sha256": "4a9f7960d94ac670789a3983d2998744cca11630d4366ed3b503c2f798e9cc05",
+        "size_bytes": 5358,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-a88afa9644d88fc3ccf1d098",
+        "sha256": "8dc112b4d0f56112f8dc5c0df844a8cf7d393e553c16ec1dc373dcb8c27e5593",
+        "size_bytes": 398,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-a197f4bc7a9436334f92b575",
+        "sha256": "870bb7779a41c6b160e782466dd785b682fd3ddf2bcd57d716dfebf6a79d2711",
+        "size_bytes": 1384710,
+        "role": "actions and timing"
+      }
+    ],
+    "case_ids": [
+      "maniskill_geometry/panda/P5"
+    ],
+    "display": "rollout",
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 38.25,
+    "result_summary": {
+      "success": true,
+      "control_steps": 764
+    },
+    "playback_label": "1× · 0:39"
   },
   {
     "id": "home-dynamic-preview",
-    "title": "Home: dynamics task scenes",
+    "title": "Home Dynamic · Franka Panda",
     "task": "home-dynamic",
-    "path": "assets/images/home-dynamic-preview.jpg",
-    "poster": "assets/images/home-dynamic-preview.jpg",
-    "caption": "Ten native Home dynamics task previews with varied robot embodiments. Scene illustrations only.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/home-dynamic-preview.jpg",
-    "media_kind": "image",
+    "path": "assets/media/home-d1-reproduction.mp4",
+    "poster": "assets/posters/home-d1-reproduction.jpg",
+    "caption": "D1: stop a rolling orange with Panda. New native recording of trial 1, attempt 1 control stages with real dynamics at physics variant 0. The orange stops in the target area; this reproduction succeeds. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "scripted-reproduction",
+    "fallback": "assets/posters/home-d1-reproduction.jpg",
+    "media_kind": "video",
     "suite": "Home",
     "task_ids": [
       "home-dynamic"
     ],
     "family": "Home",
     "showcase": true,
-    "embodiment": "Multiple native embodiments, including Panda",
-    "source_artifact_id": "source-4a411a1e35867605a4d9de2d"
+    "embodiment": "Franka Panda",
+    "source_artifact_id": "source-89316e99ae8a6fb77230aded",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-89316e99ae8a6fb77230aded",
+        "sha256": "677dabc02decf0f99ac4b993c51de44a7c6b41297c4a10c82ccae8c71f139dc7",
+        "size_bytes": 81829,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-033e8c787ec6d8453fe7a08d",
+        "sha256": "8734b41b790e7bd9a6d350e6dc8121f00846673fd254663d11ce98b23975a5e4",
+        "size_bytes": 5705,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-a3414aa9d6e8a937cf515067",
+        "sha256": "bfe7a3daba13adf5d3bfd92e383c9fc3b91d01bf2a9513d54bb3b14e0711f599",
+        "size_bytes": 394,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-4c3a8de1ac1110584d6bc7fa",
+        "sha256": "b931615218ef0dc420547d2e60e189eb6c028f6247076d60a09f7505a65f7c62",
+        "size_bytes": 129491,
+        "role": "actions and timing"
+      }
+    ],
+    "case_ids": [
+      "maniskill_dynamics/panda/D1"
+    ],
+    "display": "rollout",
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 3.7,
+    "result_summary": {
+      "success": true,
+      "control_steps": 73
+    },
+    "playback_label": "1× · 0:04"
   },
   {
     "id": "rubiks-franka-reference-cycle",
-    "title": "3×3 Rubik / Franka Panda reference cycle",
+    "title": "Rubik's Cube: U Turns · Franka Panda",
     "task": "rubiks-franka-3x3",
     "path": "assets/media/rubiks-franka-reference-cycle.mp4",
     "poster": "assets/posters/rubiks-franka-reference-cycle.jpg",
@@ -328,93 +581,100 @@
     "family": "Cube",
     "showcase": true,
     "embodiment": "Franka Panda",
-    "source_artifact_id": "source-00d858a59edebd91cc5dd073"
+    "source_artifact_id": "source-00d858a59edebd91cc5dd073",
+    "duration_seconds": 51.566667,
+    "playback_speed": 4,
+    "playback_basis": "native simulation time",
+    "playback_label": "4× · 0:52"
   },
   {
     "id": "hanoi-franka-preview",
-    "title": "Franka Hanoi scene preview",
+    "title": "Hanoi · Franka Panda",
     "task": "franka-hanoi-5-ring",
-    "path": "assets/images/hanoi-franka-panda.png",
-    "poster": "assets/images/hanoi-franka-panda.png",
-    "caption": "Franka Panda Hanoi scene; environment preview, not an agent success trace.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
+    "path": "assets/media/hanoi-strict-4090.mp4",
+    "poster": "assets/posters/hanoi-strict-4090.jpg",
+    "caption": "Historical Franka Panda Hanoi reference reproduction. A demonstration of task mechanics, not a scored Codex trial.",
+    "source_type": "trajectory-video",
+    "claim_status": "reference-replay",
     "fallback": "assets/images/hanoi-franka-panda.png",
-    "media_kind": "image",
+    "media_kind": "video",
     "suite": "Tower",
     "family": "Tower",
     "showcase": false,
     "embodiment": "Franka Panda",
-    "source_artifact_id": "source-e32dcd536bf9ed9dc25ee63c"
+    "source_artifact_id": "source-c0c2d46c27a68cf5b6d572bd",
+    "duration_seconds": 37.25,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:38"
   },
   {
     "id": "hanoi-sharpa-preview",
-    "title": "Sharpa Hanoi scene preview",
+    "title": "Hanoi · Franka FR3 + Sharpa",
     "task": "sharpa-hanoi-40",
-    "path": "assets/images/hanoi-sharpa.png",
-    "poster": "assets/images/hanoi-sharpa.png",
-    "caption": "Arm-mounted Sharpa Hanoi preview; validation image only.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/hanoi-sharpa.png",
-    "media_kind": "image",
+    "path": "assets/media/hanoi-h01-reproduction.mp4",
+    "poster": "assets/posters/hanoi-h01-reproduction.jpg",
+    "caption": "H01, seed 0: new native recording of the saved trial 1, attempt 2 control script. The small ring reaches the middle peg; this reproduction succeeds with one legal move. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "scripted-reproduction",
+    "fallback": "assets/posters/hanoi-h01-reproduction.jpg",
+    "media_kind": "video",
     "suite": "Tower",
     "family": "Tower",
     "showcase": false,
-    "embodiment": "FR3 + Sharpa hand",
-    "source_artifact_id": "source-33b9790492ed06f127340bba"
-  },
-  {
-    "id": "home-fetch-repotting-preview",
-    "title": "Home: prepare a repotting workspace",
-    "task": "home-long",
-    "path": "assets/images/home-fetch-repotting-preview.jpg",
-    "poster": "assets/images/home-fetch-repotting-preview.jpg",
-    "caption": "Fetch prepares a repotting workspace (L8): native scene preview.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/home-fetch-repotting-preview.jpg",
-    "media_kind": "image",
-    "suite": "Home",
-    "task_ids": [
-      "home-long"
+    "embodiment": "Franka FR3 + Sharpa hand",
+    "source_artifact_id": "source-3b6016d7665d8ff59ee968b7",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-3b6016d7665d8ff59ee968b7",
+        "sha256": "93998660ef260be7f8e071bb5e533f7a4f24784d5bca6c31b9b6cdc596b25b5d",
+        "size_bytes": 642114,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-d8ade6e01684b9bb0e9af3ec",
+        "sha256": "67c95838433abe6c494e24e6fd3e2d27d5964e4bd6ee572a9c818ef4515e936b",
+        "size_bytes": 735,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-20f4c3a896229f69ebaf3b61",
+        "sha256": "b9d9aefbea4876036983a2eb1dab884d2a325c499ac3cdc18a8f399f22abb771",
+        "size_bytes": 2578,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-851aeca34fa32389680db418",
+        "sha256": "0e07147b4b9c8466fe93d04d11a70f24256dc3fae86bfb205a60c70661b6ea3c",
+        "size_bytes": 3785847,
+        "role": "actions and timing"
+      }
     ],
-    "family": "Home",
-    "showcase": false,
-    "embodiment": "Fetch mobile manipulator",
-    "source_artifact_id": "source-92ae397c468e5f6044e73ae2"
-  },
-  {
-    "id": "home-tilting-maze-preview",
-    "title": "Home: guide a ball through a tilting maze",
-    "task": "home-dynamic",
-    "path": "assets/images/home-tilting-maze-preview.jpg",
-    "poster": "assets/images/home-tilting-maze-preview.jpg",
-    "caption": "Everyday Robot 01 tilting-maze task (D9): native scene preview.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/home-tilting-maze-preview.jpg",
-    "media_kind": "image",
-    "suite": "Home",
-    "task_ids": [
-      "home-dynamic"
+    "case_ids": [
+      "hanoi_sharpa/fr3-sharpa/H01"
     ],
-    "family": "Home",
-    "showcase": false,
-    "embodiment": "Everyday Robot 01",
-    "source_artifact_id": "source-a8c8f2171f0128f7cb0a6525"
+    "display": "rollout",
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 30.1,
+    "result_summary": {
+      "success": true,
+      "completed_moves": 1,
+      "control_steps": 902
+    },
+    "playback_label": "1× · 0:31"
   },
   {
     "id": "launch-glass-preview",
-    "title": "Launch: glass-fronted gatehouse",
+    "title": "Launch: Glass Gatehouse · Dual Franka Panda",
     "task": "launch-glass",
-    "path": "assets/images/launch-glass-preview.jpg",
-    "poster": "assets/images/launch-glass-preview.jpg",
-    "caption": "Dual Franka Panda glass-fronted two-story gatehouse (A045): native scene preview.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/launch-glass-preview.jpg",
-    "media_kind": "image",
+    "path": "assets/media/launch-a045-replay-3x.mp4",
+    "poster": "assets/posters/launch-a045-replay-3x.jpg",
+    "caption": "A045 glass gatehouse, loaded mode, seed 0. All 6,289 saved actions replayed in the native simulator; the new replay succeeds. Complete recording at 3×, including the terminal-image hold. Outside the EP-100 Glass selection. Illustrative recording; does not change reported evaluation scores.",
+    "source_type": "native simulator recording",
+    "claim_status": "action-replay",
+    "fallback": "assets/posters/launch-a045-replay-3x.jpg",
+    "media_kind": "video",
     "suite": "Launch",
     "task_ids": [
       "launch-glass"
@@ -422,55 +682,133 @@
     "family": "Launch",
     "showcase": false,
     "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-d001c79a257dc10b0a78096e"
-  },
-  {
-    "id": "launch-bankshot-preview",
-    "title": "Launch: two-target bank-shot corridor",
-    "task": "launch-scene-illustration",
-    "path": "assets/images/launch-bankshot-preview.jpg",
-    "poster": "assets/images/launch-bankshot-preview.jpg",
-    "caption": "Dual Franka Panda two-target bank-shot corridor (A099): native scene illustration outside the evaluated EP100 task list.",
-    "source_type": "rendered-scene",
-    "claim_status": "environment-preview",
-    "fallback": "assets/images/launch-bankshot-preview.jpg",
-    "media_kind": "image",
-    "suite": "Launch",
-    "task_ids": [],
-    "family": "Launch",
-    "showcase": false,
-    "embodiment": "Dual Franka Panda",
-    "source_artifact_id": "source-b6b45d1af2707242364c3123"
+    "source_artifact_id": "source-102fc3371c9ca1597935daf5",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-102fc3371c9ca1597935daf5",
+        "sha256": "04ce3a920ef09b29bfbb15b80c98e94d0aa4c7623bf22182947a133887d6030e",
+        "size_bytes": 9751749,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-86a5b4ad0cbd72e980fcf4dc",
+        "sha256": "24e395b618122b21bf4ad971c4db0d84c2f2273e254e93f98d0eeb77eae52f40",
+        "size_bytes": 14900,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-ac58438dc5e320950018e9dc",
+        "sha256": "38643aa42e6a7180eea80cdbd6db0305432be807bfb4af3a190777cf2e170d99",
+        "size_bytes": 3113,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-d002703fb59334f3a74abd4e",
+        "sha256": "77070dc555f0b91b972f262e117d2d74fbd1a63e1cf20af87897b93dff8002f7",
+        "size_bytes": 192332,
+        "role": "actions and timing"
+      },
+      {
+        "artifact_id": "source-08a683cb4681292203bb534d",
+        "sha256": "b8bb4af0bdd26921b2be795e34dcdea48f793ed63216cd93e730346a97fe0981",
+        "size_bytes": 326518,
+        "role": "actions and timing"
+      },
+      {
+        "artifact_id": "source-7d4b6b650cd3e1dfcf4ad93f",
+        "sha256": "93a88f30bed862964a225c3bbe38ec84298664ceab903dd91e1a6f23bf087d47",
+        "size_bytes": 12960285,
+        "role": "actions and timing"
+      }
+    ],
+    "case_ids": [
+      "marble/dual-panda/A045"
+    ],
+    "display": "rollout",
+    "playback_speed": 3,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 42.28,
+    "result_summary": {
+      "success": true,
+      "control_steps": 6289
+    },
+    "playback_label": "3× · 0:43"
   },
   {
     "id": "launch-a007-preview",
     "task": "launch-aim",
-    "title": "Launch Aim: A007 single-target scene",
-    "path": "assets/images/marble-a007.png",
-    "poster": "assets/images/marble-a007.png",
-    "caption": "Native A007 single-target warm-up with dual Franka Panda, included in the EP-100 Aim selection. Scene preview only; not an execution recording or scored result.",
-    "media_kind": "image",
-    "claim_status": "environment-preview",
-    "source_type": "native scene preview",
+    "title": "Launch: Single Target · Dual Franka Panda",
+    "path": "assets/media/launch-a007-reproduction.mp4",
+    "poster": "assets/posters/launch-a007-reproduction.jpg",
+    "caption": "A007 warm-up, loaded mode, seed 0. New native recording of the existing engineering controller: the single target is cleared. Successful reproduction; includes a one-second terminal-image hold. Illustrative recording; does not change reported evaluation scores.",
+    "media_kind": "video",
+    "claim_status": "scripted-reproduction",
+    "source_type": "native simulator recording",
     "case_ids": [
       "marble/dual-panda/A007"
     ],
-    "display": "scene",
+    "display": "rollout",
     "documentation": "docs/evaluation/marble.en.md",
     "suite": "Launch",
     "family": "Launch",
     "embodiment": "Dual Franka Panda",
     "showcase": false,
-    "fallback": "assets/images/marble-a007.png",
-    "source_artifact_id": "source-cf405ed5d9e8081094a9dce7"
+    "fallback": "assets/posters/launch-a007-reproduction.jpg",
+    "source_artifact_id": "source-339f0d1b5fe3349fd6257205",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-339f0d1b5fe3349fd6257205",
+        "sha256": "4f4618a1cad4ddbcbe670b6281d229bd8f09846aa2b24b41990337e2aec76c67",
+        "size_bytes": 1162392,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-f8b5e55aceaed60f6683df15",
+        "sha256": "828857fbe1e45e7971197be554cebf8524a4511b0edb18a8108f98a46776ffb2",
+        "size_bytes": 7015,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-7bb99a23bd9fd036e5e8075a",
+        "sha256": "38643aa42e6a7180eea80cdbd6db0305432be807bfb4af3a190777cf2e170d99",
+        "size_bytes": 3113,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-5784d485f7400e348f69f55c",
+        "sha256": "1fdb72901ad40d519ceae2ebd138ca0751b362fcb0d6e12170af4339d8ee51ba",
+        "size_bytes": 25031,
+        "role": "actions and timing"
+      },
+      {
+        "artifact_id": "source-d91e8be06a26bbe49d1f419f",
+        "sha256": "68fce17a355a7aeec29687ff1120f304fdde4f94734da2e89d1f4f8bb223d100",
+        "size_bytes": 40285,
+        "role": "actions and timing"
+      },
+      {
+        "artifact_id": "source-af68f01af4118bde92f82e54",
+        "sha256": "4e3d0357f6d1f422719bf754921a2fb38db04eb70bc0d800e69ab58866c43e10",
+        "size_bytes": 353790,
+        "role": "actions and timing"
+      }
+    ],
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 15.68,
+    "result_summary": {
+      "success": true,
+      "control_steps": 734
+    },
+    "playback_label": "1× · 0:16"
   },
   {
     "id": "marble-a099-historical",
     "task": "marble",
-    "title": "Angry Birds · A099 bank-shot corridor",
-    "path": "assets/media/marble-a099-reference.mp4",
+    "title": "Launch: Bank Shot · Dual Franka Panda",
+    "path": "assets/media/marble-a099-reference-2x.mp4",
     "poster": "assets/posters/marble-a099-initial.png",
-    "caption": "A099 two-target bank-shot corridor: a return bank and overhead beams constrain the shots. Dual Franka Panda, loaded mode, seed 0. Historical privileged engineering-controller recording. Not evaluated under environment-four-trial-v2. This native catalog example is outside the curated EP-100 selection.",
+    "caption": "A099 two-target bank-shot corridor: a return bank and overhead beams constrain the shots. Dual Franka Panda, loaded mode, seed 0. Historical privileged engineering-controller recording. Not evaluated under environment-four-trial-v2. This native catalog example is outside the curated EP-100 selection. Complete prior recording at 2× playback.",
     "media_kind": "video",
     "claim_status": "historical-engineering-reference",
     "source_type": "native MuJoCo recording",
@@ -484,12 +822,24 @@
     "embodiment": "Dual Franka Panda",
     "showcase": true,
     "fallback": "assets/posters/marble-a099-initial.png",
-    "source_artifact_id": "source-71f3259d246c96a58d861648"
+    "source_artifact_id": "source-71f3259d246c96a58d861648",
+    "playback_speed": 2,
+    "playback_basis": "source recording",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-34869791fd9f432f8b8b695e",
+        "sha256": "c1a3278515f40c631f7c4aabbabc65d4ccbef480939a1af9e484fd9d7ec8b6bc",
+        "size_bytes": 5365722,
+        "role": "previous web derivative"
+      }
+    ],
+    "duration_seconds": 33.375,
+    "playback_label": "2× · 0:34"
   },
   {
     "id": "marble-a057-historical",
     "task": "marble",
-    "title": "Angry Birds · A057 reference rollout",
+    "title": "Launch: Shared Push · Dual Franka Panda",
     "path": "assets/media/marble-a057-reference.mp4",
     "poster": "assets/posters/marble-a057-initial.png",
     "caption": "A057 shared push across two lanes, loaded mode, seed 0. Historical privileged engineering-controller recording matched by the repository evidence index. Not evaluated under environment-four-trial-v2. This native catalog example is outside the curated EP-100 selection.",
@@ -506,28 +856,86 @@
     "embodiment": "Dual Franka Panda",
     "showcase": true,
     "fallback": "assets/posters/marble-a057-initial.png",
-    "source_artifact_id": "source-b5241a5c1a01b120b0849618"
+    "source_artifact_id": "source-b5241a5c1a01b120b0849618",
+    "duration_seconds": 25.4375,
+    "playback_speed": 1,
+    "playback_basis": "source recording",
+    "playback_label": "Recorded timing · 0:26"
   },
   {
     "id": "hanoi-floating-h29-scene",
     "task": "hanoi_floating",
-    "title": "Floating Sharpa Hanoi · H29",
-    "path": "assets/images/hanoi-floating-h29.png",
-    "poster": "assets/images/hanoi-floating-h29.png",
-    "caption": "H29 low-wall clearance with a floating Sharpa hand. Native Isaac scene preview; no completed policy trajectory is claimed. Scene preview only; not a recorded agent attempt.",
-    "media_kind": "image",
-    "claim_status": "environment-preview",
-    "source_type": "native scene preview",
+    "title": "Hanoi · Floating Sharpa",
+    "path": "assets/media/hanoi-h29-attempt.mp4",
+    "poster": "assets/posters/hanoi-h29-attempt.jpg",
+    "caption": "H29, seed 0: new native recording of the existing Hanoi controller. The hand reaches and attempts a grasp, then stops without completing a legal move. Unsuccessful attempt. Illustrative recording; does not change reported evaluation scores.",
+    "media_kind": "video",
+    "claim_status": "scripted-reproduction",
+    "source_type": "native simulator recording",
     "case_ids": [
       "hanoi_floating/floating-sharpa/H29"
     ],
-    "display": "scene",
+    "display": "rollout",
     "documentation": "docs/evaluation/hanoi_floating.en.md",
     "suite": "Tower",
     "family": "Tower",
     "embodiment": "Floating Sharpa hand",
     "showcase": true,
-    "fallback": "assets/images/hanoi-floating-h29.png",
-    "source_artifact_id": "source-7fac8ba446cd9b52de96f688"
+    "fallback": "assets/posters/hanoi-h29-attempt.jpg",
+    "source_artifact_id": "source-600c58a8d807662978bee685",
+    "source_artifacts": [
+      {
+        "artifact_id": "source-600c58a8d807662978bee685",
+        "sha256": "cd2cbe9307f929924ff65805bddc58fce11b20a1381f653f0b3092bcbf541cae",
+        "size_bytes": 285103,
+        "role": "native recording"
+      },
+      {
+        "artifact_id": "source-31c3013d66ad9c7981ba87ea",
+        "sha256": "a83ed76bf1a92a1f4ed442574a54fa5bdd09b86fdcdaeb1e852dd1ad9d8626bc",
+        "size_bytes": 725,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-debcea0ccb02db10d94c2f8a",
+        "sha256": "f44207027dca3170fcafbe670b9b2fa4d63d4717e2894a9269d3a6a2e8c2512d",
+        "size_bytes": 2587,
+        "role": "native result and provenance"
+      },
+      {
+        "artifact_id": "source-9fbcab0aae0034e6489af720",
+        "sha256": "49855b6dba6645869d2dbd8b40d5bd5c6b1beb205c6975f7569a96ab2fc564b4",
+        "size_bytes": 2015745,
+        "role": "actions and timing"
+      }
+    ],
+    "playback_speed": 1,
+    "playback_basis": "native simulation time",
+    "duration_seconds": 13.933008,
+    "result_summary": {
+      "success": false,
+      "completed_moves": 0,
+      "control_steps": 417
+    },
+    "playback_label": "1× · 0:14"
+  },
+  {
+    "id": "embodied-playground-film",
+    "title": "Embodied Playground",
+    "task": "project-overview",
+    "path": "assets/media/embodied-playground-film.mp4",
+    "poster": "assets/posters/embodied-playground-film.jpg",
+    "fallback": "assets/posters/embodied-playground-film.jpg",
+    "caption": "A three-minute introduction to the benchmark, its environments, and the agent interaction loop.",
+    "media_kind": "video",
+    "media_usage": "hero-promo",
+    "showcase": false,
+    "source_type": "project-film",
+    "claim_status": "promotional-overview",
+    "source_artifact_id": "source-1554200cd341c1e024e51f26",
+    "duration_seconds": 180.0,
+    "playback_speed": 1,
+    "playback_basis": "original film timing",
+    "playback_label": "3:00"
   }
 ]

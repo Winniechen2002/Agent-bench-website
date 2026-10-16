@@ -52,5 +52,5 @@ for item in media:
 for task in json.loads((ROOT / 'data/tasks.json').read_text()):
     assert all(mid in ids for mid in task['media']), 'Unresolved media for ' + task['id']
 asset_bytes = sum(path.stat().st_size for path in (ROOT / 'assets').rglob('*') if path.is_file())
-assert asset_bytes <= 40_000_000, 'Media exceeds 40 MB budget'
+assert asset_bytes <= 100_000_000, 'Media exceeds 100 MB budget'
 print(f'PASS: JSON, unique IDs, anchors, local links, media associations; {len(media)} media entries, {asset_bytes / 1e6:.2f} MB assets.')

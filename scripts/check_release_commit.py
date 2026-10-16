@@ -16,6 +16,8 @@ SOURCE_FILES = frozenset({
     'scripts/validate-site.py', 'scripts/check_public.py', 'scripts/public_data.py',
     'scripts/check_release_commit.py', 'scripts/test_public.py', 'scripts/test_release.py',
     'scripts/refresh-paper-data.py', 'scripts/sync_benchmark.py', 'scripts/sync_media.py',
+    'scripts/check_media.py', 'scripts/media_overrides.py', 'scripts/media-overrides.json',
+    'scripts/test_media_sync.py', 'scripts/test_media_validation.py',
 })
 
 

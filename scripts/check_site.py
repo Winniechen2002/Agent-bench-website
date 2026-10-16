@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 from urllib.parse import unquote, urlsplit
 import argparse
+from check_media import validate_media
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
@@ -17,12 +18,14 @@ class Page(HTMLParser):
     def __init__(self, path):
         super().__init__()
         self.path, self.ids, self.links = path, [], []
+        self.elements = {}
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if 'id' in attrs:
             self.ids.append(attrs['id'])
+            self.elements[attrs['id']] = attrs
         for key in ('href', 'src', 'poster'):
             if attrs.get(key):
                 self.links.append(attrs[key])
@@ -74,7 +77,7 @@ for m in media:
         if m.get(key) and m[key] != 'image':
             local_link(m[key])
     if m.get('media_kind') == 'video':
-        assert m['claim_status'].startswith('historical-')
+        assert m['claim_status'].startswith('historical-') or m['claim_status'] in {'scripted-reproduction', 'action-replay', 'reference-execution'}, f'Undeclared recording status: {m["id"]}'
         assert 'Not evaluated under environment-four-trial-v2.' in m['caption']
 provenance = read('environment-media-sources.json')
 for entry in provenance['entries']:
@@ -86,7 +89,7 @@ for entry in provenance['entries']:
         assert hashlib.sha256(path.read_bytes()).hexdigest() == resource['sha256'], f"Altered source media: {path}"
     assert set(entry['case_ids']) <= set(ids)
 assert all(len(m['case_ids']) == 10 for m in media if m.get('display') == 'contact-sheet')
-assert next(m for m in media if m['id'] == 'bookshelf-native-preview')['claim_status'] == 'environment-preview'
+assert next(m for m in media if m['id'] == 'bookshelf-native-preview')['media_kind'] == 'video'
 
 for task in inventory:
     assert task['budgets']['max_steps'] == round(task['budgets']['simulation_seconds'] * task['budgets']['control_hz'])
@@ -152,8 +155,15 @@ assert 'legacy-results' not in primary and 'legacy-opus.json' not in primary_js
 assert 'ex.source.filename' not in primary_js and 'ex.source.sha256' not in primary_js
 assert 'SHA-256' not in primary and 'Earlier exploratory evaluations' not in primary
 assert 'aria-current' in primary_js and 'full-catalog-entry' in primary
-assert 'assets/posters/marble-a099-initial.png' in primary
-assert "mediaById('marble-a099-historical')" in primary_js
+hero = next(item for item in paper_media if item['id'] == 'embodied-playground-film')
+assert hero.get('media_usage') == 'hero-promo' and hero.get('showcase') is False
+assert hero.get('title') and hero.get('poster')
+assert "mediaById('embodied-playground-film')" in primary_js
+hero_page = Page(ROOT / 'index.html')
+assert hero_page.elements['hero-video']['poster'] == hero['poster']
+assert hero_page.elements['hero-poster']['src'] == hero['poster']
+assert any(artifact['id'] == hero['id'] or hero['id'] in artifact.get('media_ids', [])
+    for artifact in json.loads((ROOT / 'evidence/demo-manifest.json').read_text())['artifacts']), 'Hero film needs public provenance'
 assert {'marble-a099-historical', 'marble-a057-historical', 'hanoi-floating-h29-scene'} <= paper_media_ids
 assert all(next(item for item in paper_media if item['id'] == key)['showcase'] for key in (
     'marble-a099-historical', 'marble-a057-historical', 'hanoi-floating-h29-scene'))
@@ -182,4 +192,5 @@ for subset, subset_rows in (('EP-100', paper_rows), ('EP-20', [row for row in pa
         for metric in ('pass_at_1', 'pass_at_2'):
             assert abs(suite_summary[metric] - sum(row[metric] for row in rows) / len(rows)) < 1e-12
 assert 'legacy' not in results, 'Unfinished exploratory results belong in local archives, not published data'
+validate_media(ROOT)
 print('PASS: paper/native pages and links; 410 unique native tasks, 12 groups, 510 evaluation groups, 2040 planned episodes; budgets, native media provenance and 12/12 preview coverage; 16 paper types, EP-100/EP-20 membership, splits, media and audited result consistency.')

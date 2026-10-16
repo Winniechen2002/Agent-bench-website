@@ -1,7 +1,7 @@
 [
   {
     "id": "marble",
-    "title": "Angry Birds / Marble",
+    "title": "Launch · Dual Franka Panda",
     "family": "marble",
     "family_label": "Physics & recovery",
     "count": 100,
@@ -21,6 +21,7 @@
     "source": "docs/evaluation/marble.en.md",
     "media": [
       "marble-a007-scene",
+      "marble-a045-replay",
       "marble-a057-historical",
       "marble-a099-historical"
     ],
@@ -148,7 +149,6 @@
     ],
     "source": "docs/evaluation/hanoi_panda.en.md",
     "media": [
-      "hanoi-franka-preview",
       "hanoi-4090-demo"
     ],
     "task_ids": [
@@ -196,7 +196,7 @@
   },
   {
     "id": "hanoi_sharpa",
-    "title": "Hanoi · FR3 + Sharpa",
+    "title": "Hanoi · Franka FR3 + Sharpa",
     "family": "hanoi",
     "family_label": "Dexterous planning",
     "count": 40,
@@ -377,7 +377,7 @@
   },
   {
     "id": "rubiks_panda",
-    "title": "3×3 Rubik · Franka Panda",
+    "title": "Rubik's Cube · Franka Panda",
     "family": "cube",
     "family_label": "Spatial reasoning",
     "count": 30,
@@ -434,7 +434,7 @@
   },
   {
     "id": "rubiks_sharpa",
-    "title": "3×3 Rubik · Floating Sharpa",
+    "title": "Rubik's Cube · Floating Sharpa",
     "family": "cube",
     "family_label": "Spatial reasoning",
     "count": 30,
@@ -627,7 +627,7 @@
   },
   {
     "id": "maniskill_long_horizon",
-    "title": "ManiSkill · Long horizon",
+    "title": "Home · Long",
     "family": "maniskill",
     "family_label": "Sequential manipulation",
     "count": 10,
@@ -669,7 +669,7 @@
   },
   {
     "id": "maniskill_geometry",
-    "title": "ManiSkill · Geometry",
+    "title": "Home · Precise",
     "family": "maniskill",
     "family_label": "Spatial reasoning",
     "count": 10,
@@ -711,7 +711,7 @@
   },
   {
     "id": "maniskill_dynamics",
-    "title": "ManiSkill · Dynamics",
+    "title": "Home · Dynamic",
     "family": "maniskill",
     "family_label": "Physical reasoning",
     "count": 10,

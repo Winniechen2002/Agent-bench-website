@@ -7,9 +7,10 @@
     "dev": "npm run build && python3 scripts/serve_site.py",
     "start": "npm run dev",
     "build": "python3 scripts/build_site.py",
-    "check": "python3 scripts/check_public.py && python3 scripts/check_site.py && python3 scripts/validate-site.py && python3 scripts/test_public.py && npm test",
+    "check": "python3 scripts/check_public.py && python3 scripts/check_site.py && python3 scripts/validate-site.py && python3 scripts/test_public.py && python3 scripts/test_media_sync.py && python3 scripts/test_media_validation.py && npm test",
     "test": "python3 scripts/test_release.py",
     "sync": "python3 scripts/sync_benchmark.py && python3 scripts/sync_media.py",
-    "check:sync": "python3 scripts/sync_benchmark.py --check && python3 scripts/sync_media.py --check"
+    "check:sync": "python3 scripts/sync_benchmark.py --check && python3 scripts/sync_media.py --check",
+    "check:media": "python3 scripts/check_media.py --probe"
   }
 }

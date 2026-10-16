@@ -13,21 +13,22 @@ import hashlib
 import json
 from pathlib import Path
 from public_data import validate_document
+from media_overrides import load_overrides, apply_group_overrides
 
 ROOT = Path(__file__).resolve().parents[1]
 FAMILIES = {
-    'marble': ('Angry Birds / Marble', 'marble', 'Physics & recovery', '100 authored scenes with finite ammunition, protected targets and scene-specific physical objectives. Loaded and ground modes are separate evaluation groups.', ['physics', 'planning', 'recovery']),
+    'marble': ('Launch · Dual Franka Panda', 'marble', 'Physics & recovery', '100 authored scenes with finite ammunition, protected targets and scene-specific physical objectives. Loaded and ground modes are separate evaluation groups.', ['physics', 'planning', 'recovery']),
     'hanoi_panda': ('Hanoi · Franka Panda', 'hanoi', 'Strategic planning', '40 authored start/goal configurations. Legal moves, seating checks and one second of stable completion.', ['planning', 'rules', 'contact']),
-    'hanoi_sharpa': ('Hanoi · FR3 + Sharpa', 'hanoi', 'Dexterous planning', 'The 40-case Hanoi suite with an arm-mounted Sharpa hand.', ['planning', 'dexterity', 'contact']),
+    'hanoi_sharpa': ('Hanoi · Franka FR3 + Sharpa', 'hanoi', 'Dexterous planning', 'The 40-case Hanoi suite with an arm-mounted Sharpa hand.', ['planning', 'dexterity', 'contact']),
     'hanoi_floating': ('Hanoi · Floating Sharpa', 'hanoi', 'Dexterous planning', 'The 40-case Hanoi suite with a floating Sharpa hand.', ['planning', 'dexterity', 'state_tracking']),
     'pocket_cube': ('2×2 Pocket Cube', 'cube', 'Bimanual state tracking', '10 authored cases per embodiment, 20 entries total. Exact target state and committed quarter-turn count are scored.', ['state_tracking', 'bimanual', 'contact']),
-    'rubiks_panda': ('3×3 Rubik · Franka Panda', 'cube', 'Spatial reasoning', '30 fixed public cases using the declared hybrid_fixture_v1 auxiliary mechanism, with legal release and return rules.', ['state_tracking', 'dexterity', 'spatial']),
-    'rubiks_sharpa': ('3×3 Rubik · Floating Sharpa', 'cube', 'Spatial reasoning', '30 fixed public cases using hybrid_fixture_v1. Four lighting conditions preserve the authored scramble and physical layout.', ['state_tracking', 'dexterity', 'spatial']),
+    'rubiks_panda': ("Rubik's Cube · Franka Panda", 'cube', 'Spatial reasoning', '30 fixed public cases using the declared hybrid_fixture_v1 auxiliary mechanism, with legal release and return rules.', ['state_tracking', 'dexterity', 'spatial']),
+    'rubiks_sharpa': ("Rubik's Cube · Floating Sharpa", 'cube', 'Spatial reasoning', '30 fixed public cases using hybrid_fixture_v1. Four lighting conditions preserve the authored scramble and physical layout.', ['state_tracking', 'dexterity', 'spatial']),
     'kongming_lock': ('Kongming Lock', 'kongming', 'Assembly & disassembly', '30 assembly/disassembly cases per embodiment, 60 entries total. Case-specific goals, release and continuous physical audits determine success.', ['bimanual', 'contact', 'recovery']),
     'bookshelf': ('Bookshelf Organization', 'bookshelf', 'Constrained placement', '20 dual-Panda variants with native layout sampling. Object destinations, support, wall constraints and stable placement are task-specific.', ['perception', 'planning', 'placement']),
-    'maniskill_long_horizon': ('ManiSkill · Long horizon', 'maniskill', 'Sequential manipulation', '10 tasks with fixed authored layouts, native robot controllers and a 300-second simulation budget. L1–L10 are task codes, not permission levels.', ['planning', 'memory', 'control']),
-    'maniskill_geometry': ('ManiSkill · Geometry', 'maniskill', 'Spatial reasoning', '10 geometry tasks with fixed layouts, four lighting factors and a 120-second simulation budget.', ['geometry', 'placement', 'control']),
-    'maniskill_dynamics': ('ManiSkill · Dynamics', 'maniskill', 'Physical reasoning', '10 dynamics tasks. Formal trials use physics_variant=0; additional physics variants are engineering checks. Task deadlines remain separate from the episode budget.', ['physics', 'timing', 'control']),
+    'maniskill_long_horizon': ('Home · Long', 'maniskill', 'Sequential manipulation', '10 tasks with fixed authored layouts, native robot controllers and a 300-second simulation budget. L1–L10 are task codes, not permission levels.', ['planning', 'memory', 'control']),
+    'maniskill_geometry': ('Home · Precise', 'maniskill', 'Spatial reasoning', '10 geometry tasks with fixed layouts, four lighting factors and a 120-second simulation budget.', ['geometry', 'placement', 'control']),
+    'maniskill_dynamics': ('Home · Dynamic', 'maniskill', 'Physical reasoning', '10 dynamics tasks. Formal trials use physics_variant=0; additional physics variants are engineering checks. Task deadlines remain separate from the episode budget.', ['physics', 'timing', 'control']),
 }
 ROBOTS = {'dual-panda': 'Dual Franka Panda', 'panda': 'Franka Panda', 'fr3-sharpa': 'Franka FR3 + Sharpa', 'floating-sharpa': 'Floating Sharpa', 'aloha': 'Dual ALOHA', 'dual-sharpa': 'Dual Floating Sharpa', 'dual-floating-sharpa': 'Dual Floating Sharpa', 'fetch': 'Fetch', **{f'everyday_robot_0{i}': f'Everyday Robot 0{i}' for i in (1, 3, 9)}}
 MEDIA = {
@@ -72,6 +73,13 @@ def snapshot(source):
     for entry in media_catalog['entries']:
         assert entry['task'] in FAMILIES
         media_by_family.setdefault(entry['task'], []).append(entry['id'])
+    overlay = load_overrides(ROOT)
+    assert set(overlay['group_media']) <= set(FAMILIES), 'Unknown group media family'
+    current_media = json.loads((ROOT / 'data/environment-media.json').read_text())
+    known_media = {entry['id']: entry for entry in current_media + media_catalog['entries'] + overlay['entries']}
+    for family, media_ids in overlay['group_media'].items():
+        assert all(mid in known_media and known_media[mid]['task'] == family for mid in media_ids), 'Invalid group media association'
+    media_by_family = apply_group_overrides(media_by_family, overlay)
     cards = []
     for family, (title, category, label, summary, skills) in FAMILIES.items():
         rows = [t for t in protocol['tasks'] if t['task_id'].split('/')[0] == family]

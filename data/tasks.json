@@ -32,7 +32,7 @@
     "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
     "status": "paper-indexed",
     "claim_status": "representative-task-type",
-    "demo_scope": "Native A007 single-target scene, included in the EP-100 Aim selection. Scene preview only; not a scored trial.",
+    "demo_scope": "Native A007 single-target controller reproduction, included in the EP-100 Aim selection. This recording succeeds; it is not a scored trial.",
     "access_levels": [
       "L0",
       "L1",
@@ -176,7 +176,7 @@
     "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
     "status": "paper-indexed",
     "claim_status": "representative-task-type",
-    "demo_scope": "Generic Launch glass scene: A045 glass gatehouse, outside the EP-100 Glass selection; not a scored trial.",
+    "demo_scope": "A045 glass gatehouse saved-action replay, outside the EP-100 Glass selection. This replay succeeds; it is not a scored trial.",
     "access_levels": [
       "L0",
       "L1",
@@ -295,8 +295,7 @@
     ],
     "summary": "Planning depth from 1 to 31 moves on a standard Hanoi board.",
     "media": [
-      "hanoi-4090-demo",
-      "hanoi-franka-preview"
+      "hanoi-4090-demo"
     ],
     "success_criteria": "Reach the exact ring arrangement through legal moves, valid seating, and one second of stability.",
     "source": "Paper sections/ep100.tex; appendices/ep100_index.tex; sections/evaluation_protocol.tex",
@@ -371,7 +370,7 @@
     "source_revision": "paper-loaded-only-v1; Launch workload excludes ground-mode grade",
     "status": "paper-indexed",
     "claim_status": "representative-task-type",
-    "demo_scope": "Generic Hanoi scene illustration; not a demonstration of all physical board variants or a scored Codex trial.",
+    "demo_scope": "Representative Franka Hanoi reference replay; not a demonstration of all physical board variants or a scored Codex trial.",
     "access_levels": [
       "L0",
       "L1",
@@ -428,6 +427,7 @@
     ],
     "summary": "Representative Hanoi boards with an FR3–Sharpa or floating Sharpa hand.",
     "media": [
+      "hanoi-sharpa-preview",
       "hanoi-sharpa-two-ring-reference",
       "hanoi-floating-h29-scene"
     ],

@@ -173,13 +173,13 @@ def main():
          'Ordered or protected targets and recovery after a miss.', ['launch-recovery-reference'],
          'Clear targets in the required order, preserve protected targets, and satisfy the required post-hit observation period.'),
         ('Tower', 'Plan', 5, ['hierarchical_planning', 'symbolic_state_tracking', 'contact_control'],
-         'Planning depth from 1 to 31 moves on a standard Hanoi board.', ['hanoi-4090-demo', 'hanoi-franka-preview'],
+         'Planning depth from 1 to 31 moves on a standard Hanoi board.', ['hanoi-4090-demo'],
          'Reach the exact ring arrangement through legal moves, valid seating, and one second of stability.'),
         ('Tower', 'Physics', 8, ['physical_reasoning', 'contact_control', 'adaptation'],
          'Physical Hanoi board variations under the same legal-move rule.', ['hanoi-franka-preview'],
          'Reach the specified arrangement under the configured geometry, mass, or friction variation with legal moves and stable seating.'),
         ('Tower', 'Dex', 8, ['dexterous_grasping', 'finger_coordination', 'planning'],
-         'Representative Hanoi boards with an FR3–Sharpa or floating Sharpa hand.', ['hanoi-sharpa-two-ring-reference', 'hanoi-floating-h29-scene'],
+         'Representative Hanoi boards with an FR3–Sharpa or floating Sharpa hand.', ['hanoi-sharpa-preview', 'hanoi-sharpa-two-ring-reference', 'hanoi-floating-h29-scene'],
          'Complete the board goal through legal ring transfers with the declared hand embodiment and required stability.'),
         ('Lock', 'Assemble', 6, ['geometric_reasoning', 'bimanual_coordination', 'insertion'],
          'Insert the key, key and bar, or full Kongming lock with two Panda arms.', ['kongming-dual-franka-reference'],
@@ -220,11 +220,11 @@ def main():
         if not media:
             demo_scope = 'No matching type-specific demonstration is included. Counts and scores come from the paper index and audited evaluation.'
         if (suite, task_type) == ('Tower', 'Physics'):
-            demo_scope = 'Generic Hanoi scene illustration; not a demonstration of all physical board variants or a scored Codex trial.'
+            demo_scope = 'Representative Franka Hanoi reference replay; not a demonstration of all physical board variants or a scored Codex trial.'
         if (suite, task_type) == ('Launch', 'Aim'):
-            demo_scope = 'Native A007 single-target scene, included in the EP-100 Aim selection. Scene preview only; not a scored trial.'
+            demo_scope = 'Native A007 single-target controller reproduction, included in the EP-100 Aim selection. This recording succeeds; it is not a scored trial.'
         if (suite, task_type) == ('Launch', 'Glass'):
-            demo_scope = 'Generic Launch glass scene: A045 glass gatehouse, outside the EP-100 Glass selection; not a scored trial.'
+            demo_scope = 'A045 glass gatehouse saved-action replay, outside the EP-100 Glass selection. This replay succeeds; it is not a scored trial.'
         if (suite, task_type) == ('Cube', 'Rubik'):
             demo_scope += ' Short turn sequences illustrate manipulation; they do not establish completion of the benchmark scrambles.'
         tasks.append({

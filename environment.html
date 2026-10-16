@@ -26,7 +26,7 @@
       <a class="text-link catalog-back" href="index.html#tasks">← Back to task overview</a>
       <p class="section-label">THE COMPLETE PLAYGROUND</p>
       <h1>Task directory.</h1>
-      <p>Explore all 410 task–embodiment combinations. Filter by family or robot, view the available media, and open each group for task IDs and execution limits.</p>
+      <p>Explore all 410 task–embodiment combinations. Filter by family or robot, watch task videos, and open each group for task IDs and execution limits.</p>
     </div>
     <div class="task-controls">
       <div class="filter-group" role="group" aria-label="Filter by task family">
@@ -34,15 +34,15 @@
         <button class="filter-button active" type="button" aria-pressed="true" data-filter-group="family" data-filter="all">All</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="hanoi">Hanoi</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="cube">Cube</button>
-        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="marble">Angry Birds</button>
-        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="kongming">Kongming</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="marble">Launch</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="kongming">Kongming Lock</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="bookshelf">Bookshelf</button>
-        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="maniskill">ManiSkill</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="family" data-filter="maniskill">Home</button>
       </div>
       <div class="filter-group" role="group" aria-label="Filter by embodiment">
         <span class="filter-label">ROBOT</span>
         <button class="filter-button active" type="button" aria-pressed="true" data-filter-group="embodiment" data-filter="all">All</button>
-        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="franka">Franka</button>
+        <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="franka">Franka (Panda / FR3)</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="sharpa">Sharpa</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="aloha">ALOHA</button>
         <button class="filter-button" type="button" aria-pressed="false" data-filter-group="embodiment" data-filter="fetch">Fetch</button>
@@ -53,8 +53,8 @@
     <div id="task-grid" class="task-grid"></div>
     <p id="task-empty" class="empty-state" hidden>No tasks match these filters. Try another combination.</p>
     <aside class="catalog-notes" aria-label="Catalog scope and resources">
-      <p><strong>Catalog scope.</strong> Native Launch tasks include loaded and ground modes. Across the full directory, this gives <span id="native-schedule">510 evaluation groups and 2,040 planned episodes</span> per base seed and fixed access/observation setting. These schedule counts are separate from the paper’s loaded-only EP-100 evaluation. Previews and historical references are not scored agent results; engineering qualification remains in progress.</p>
-      <div class="catalog-resource-links"><a href="data/environment-catalog.json" download>Download task directory ↓</a><a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer">Native evaluation protocol ↗</a><a href="index.html#ep100">EP-100 subset ↗</a></div>
+      <p><strong>Catalog scope.</strong> Launch tasks include loaded and ground modes. Across the full directory, this gives <span id="native-schedule">510 evaluation groups and 2,040 planned episodes</span> per base seed and fixed access/observation setting. These schedule counts are separate from the paper’s loaded-only EP-100 evaluation. These videos are separate from scored agent results; engineering qualification remains in progress.</p>
+      <div class="catalog-resource-links"><a href="data/environment-catalog.json" download>Download task directory ↓</a><a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/docs/evaluation_protocol.en.md" target="_blank" rel="noreferrer">Evaluation protocol ↗</a><a href="index.html#ep100">EP-100 subset ↗</a></div>
     </aside>
     <footer class="site-footer"><span>EMBODIED PLAYGROUND</span><a href="index.html#tasks">BACK TO TASK OVERVIEW ↑</a></footer>
   </main>

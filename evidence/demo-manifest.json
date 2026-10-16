@@ -66,14 +66,19 @@
       "case_id": "full shared 099",
       "claim_status": "reference-execution",
       "web_asset": {
-        "path": "assets/media/kongming-assembly.mp4",
-        "size_bytes": 1477466,
-        "sha256": "17cfe7ff053f1fdb16380b0639afee0e27f7f2fed3d33ed8a15c4642bb8fc1cb",
+        "path": "assets/media/kongming-assembly-6x.mp4",
+        "size_bytes": 903837,
+        "sha256": "bd9a959d049ea2b10267f29efca78c082a55e75ae1af4e1c4881c7718c6f1270",
         "poster": {
           "path": "assets/posters/kongming-assembly.jpg",
           "size_bytes": 31196,
           "sha256": "8739181791119d9e5a40d83b1e0a53ad50282b26044140995993f26914d36c85"
-        }
+        },
+        "duration_seconds": 46.333333,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
       },
       "source_video": {
         "artifact_id": "source-07aa3751ce4d614ec683d3be",
@@ -94,7 +99,7 @@
           "artifact_id": "source-cd8423bc6990101ea3bfd5f4"
         }
       ],
-      "web_derivative": "Re-encoded web delivery derivative from the native reference run; source duration 278 s at 640×480/15 fps.",
+      "web_derivative": "Complete previous web recording accelerated a further 2×. Cumulative speed is 6×.",
       "notes": "Result status succeeded; max penetration 1.064 mm; 84 waypoints. Privileged/native reference execution, not an external-agent score.",
       "source_results": [
         {
@@ -130,6 +135,50 @@
           "sha256": "e51f2cfe4608b6b89fd7b9f3543f82c8a0f1f54fe31ff624a63c449ae5731be4"
         },
         "note": "Corresponding full six-piece reproduction, separately hashed. The preserved web clip derives from the local archived source above; these distinct source videos are not claimed byte-identical."
+      },
+      "playback_speed": 6,
+      "prior_presentation_transforms": [
+        {
+          "input_artifact_id": "derivative-17cfe7ff053f1fdb16380b06",
+          "input_sha256": "17cfe7ff053f1fdb16380b0639afee0e27f7f2fed3d33ed8a15c4642bb8fc1cb",
+          "input_size_bytes": 1477466,
+          "input_duration_seconds": 278.0,
+          "source_interval_seconds": [
+            0,
+            278.0
+          ],
+          "speed_multiplier": 3,
+          "output_duration_seconds": 92.666667,
+          "coverage": "Full continuous recording; uniform timestamp compression and frame resampling.",
+          "encoding": {
+            "codec": "H.264",
+            "pixel_format": "yuv420p",
+            "width": 640,
+            "height": 480,
+            "fps": 30,
+            "crf": 21,
+            "preset": "slow",
+            "fast_start": true
+          },
+          "original_availability": "Prior web encoding and exact conversion invocation retained by maintainers; original trajectory unchanged."
+        }
+      ],
+      "presentation_transform": {
+        "input_artifact": {
+          "artifact_id": "source-bed104291095e604ed15b0a5",
+          "sha256": "a8e657bd3d21d74d92c77290e7ff0befea5ca330077a5f2dd55cd1f8baaa8dab",
+          "size_bytes": 1683566,
+          "role": "previous web derivative"
+        },
+        "additional_speed_multiplier": 2,
+        "displayed_playback_speed": 6,
+        "playback_basis": "native simulation time",
+        "source_interval_seconds": [
+          0,
+          92.666667
+        ],
+        "output_duration_seconds": 46.333333,
+        "coverage": "Complete previous web recording, uniformly accelerated without segment cuts."
       }
     },
     {
@@ -530,14 +579,19 @@
       "case_id": "R U F′ → F U′ R′",
       "claim_status": "reference-execution",
       "web_asset": {
-        "path": "assets/media/rubiks-three-step.mp4",
-        "size_bytes": 2872558,
-        "sha256": "7c3b339daffd3a09917cb1a6996151c4a441ede7f027362a534900ed120c1d19",
+        "path": "assets/media/rubiks-three-step-2x.mp4",
+        "size_bytes": 1387842,
+        "sha256": "8a4912ce03b6278182deea6f0b81079d3e705a54bc46fe73231582f3aeef4240",
         "poster": {
           "path": "assets/posters/rubiks-three-step.jpg",
           "size_bytes": 86268,
           "sha256": "7e90deee669c23457810e83a2ce6ec447187afcc7ad7c08b2348332499fce541"
-        }
+        },
+        "duration_seconds": 45.833333,
+        "width": 960,
+        "height": 540,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
       },
       "source_video": {
         "artifact_id": "source-4a19ab294b01592a155b4404",
@@ -588,8 +642,26 @@
           "R'"
         ]
       },
-      "web_derivative": "Existing web derivative preserved. Native delivery has an adaptive speed profile; exact prior web re-encoding command was not retained.",
-      "notes": "Fixed three-move privileged reference solve. Native physical trace chunks and frame maps remain at the remote run; the event log is not a complete replay trajectory. No external-agent score."
+      "web_derivative": "Complete previous web recording accelerated a further 2×. The original adaptive source timing is retained.",
+      "notes": "Fixed three-move privileged reference solve. Native physical trace chunks and frame maps remain at the remote run; the event log is not a complete replay trajectory. No external-agent score.",
+      "presentation_transform": {
+        "input_artifact": {
+          "artifact_id": "source-c56e39a61214a7c099e2bd88",
+          "sha256": "7c3b339daffd3a09917cb1a6996151c4a441ede7f027362a534900ed120c1d19",
+          "size_bytes": 2872558,
+          "role": "previous web derivative"
+        },
+        "additional_speed_multiplier": 2,
+        "displayed_playback_speed": 2,
+        "playback_basis": "source recording with adaptive timing",
+        "source_interval_seconds": [
+          0,
+          91.666667
+        ],
+        "output_duration_seconds": 45.833333,
+        "coverage": "Complete previous web recording, uniformly accelerated without segment cuts."
+      },
+      "playback_speed": 2
     },
     {
       "id": "launch-recovery-reference",
@@ -888,572 +960,6 @@
       ]
     },
     {
-      "id": "bookshelf-overview",
-      "task": "home-tidy",
-      "embodiment": "Dual Franka Panda",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "native-render"
-      ],
-      "web_asset": {
-        "path": "assets/images/bookshelf-overview.jpg",
-        "size_bytes": 190613,
-        "sha256": "eeb02a205160e83570a6ec3d5366faafc35288e46cc770a931e6ed1b6a86c515"
-      },
-      "source_image": {
-        "artifact_id": "source-db87b496f513ffdf8d64d4ca",
-        "size_bytes": 1093835,
-        "sha256": "a31e4977393afc400126e93c3984467d774054e88e0d7637ca5754678007dda2"
-      },
-      "trajectory_sidecars": [
-        {
-          "artifact_id": "source-9d69e9bb19277c90846ab92b",
-          "size_bytes": 3692,
-          "sha256": "6f43212e3d21515a94f8abe78f6801fe4b37ee7b995a2e9bf638140be0c0b62f"
-        }
-      ],
-      "details": {
-        "source_task_id": "bookshelf/dual-panda/ShelfTableD3",
-        "seed": 7,
-        "neutral_control_steps": 30,
-        "renderer": "Isaac Sim 5.1 native RTX",
-        "score_scope": "Scene illustration; no policy execution or success claim."
-      },
-      "web_derivative": "JPEG quality 2; bookshelf reduced from 1600×1000 to 1280×800; other selected source dimensions retained.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1280,
-              "height": 800,
-              "pix_fmt": "yuvj444p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "190613"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-tidy"
-      ]
-    },
-    {
-      "id": "home-long-preview",
-      "task": "home-long",
-      "embodiment": "Multiple embodiments",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "contact-sheet"
-      ],
-      "web_asset": {
-        "path": "assets/images/home-long-preview.jpg",
-        "size_bytes": 386637,
-        "sha256": "50d4955a5b57e0f7f9a38384190dc9d74608e46fed5fa99dffde47c735ffccb9"
-      },
-      "source_image": {
-        "artifact_id": "source-4cf6f38f9bd1d50efe6b738e",
-        "size_bytes": 386637,
-        "sha256": "50d4955a5b57e0f7f9a38384190dc9d74608e46fed5fa99dffde47c735ffccb9"
-      },
-      "trajectory_sidecars": [],
-      "details": {
-        "illustrated_tasks": 10,
-        "category": "long_horizon",
-        "score_scope": "Scene illustrations; no policy execution or success claim."
-      },
-      "web_derivative": "Original JPEG retained unchanged.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1200,
-              "height": 2390,
-              "pix_fmt": "yuvj420p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "386637"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-long"
-      ]
-    },
-    {
-      "id": "home-precise-preview",
-      "task": "home-precise",
-      "embodiment": "Multiple embodiments",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "contact-sheet"
-      ],
-      "web_asset": {
-        "path": "assets/images/home-precise-preview.jpg",
-        "size_bytes": 350666,
-        "sha256": "38ef86d82e74b83d386e1cec55379c309d6525e97d83a6b7777ebe3f28a96379"
-      },
-      "source_image": {
-        "artifact_id": "source-7840a50a81637c4e9c40a403",
-        "size_bytes": 350666,
-        "sha256": "38ef86d82e74b83d386e1cec55379c309d6525e97d83a6b7777ebe3f28a96379"
-      },
-      "trajectory_sidecars": [],
-      "details": {
-        "illustrated_tasks": 10,
-        "category": "precision",
-        "score_scope": "Scene illustrations; no policy execution or success claim."
-      },
-      "web_derivative": "Original JPEG retained unchanged.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1200,
-              "height": 2350,
-              "pix_fmt": "yuvj420p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "350666"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-precise"
-      ]
-    },
-    {
-      "id": "home-dynamic-preview",
-      "task": "home-dynamic",
-      "embodiment": "Multiple embodiments",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "contact-sheet"
-      ],
-      "web_asset": {
-        "path": "assets/images/home-dynamic-preview.jpg",
-        "size_bytes": 338457,
-        "sha256": "41402d5a48610f927b6d1c6874bc8b9d3eccb444b5cca1ef98f04009c7767eed"
-      },
-      "source_image": {
-        "artifact_id": "source-4a411a1e35867605a4d9de2d",
-        "size_bytes": 338457,
-        "sha256": "41402d5a48610f927b6d1c6874bc8b9d3eccb444b5cca1ef98f04009c7767eed"
-      },
-      "trajectory_sidecars": [],
-      "details": {
-        "illustrated_tasks": 10,
-        "category": "dynamics",
-        "score_scope": "Scene illustrations; no policy execution or success claim."
-      },
-      "web_derivative": "Original JPEG retained unchanged.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1200,
-              "height": 2350,
-              "pix_fmt": "yuvj420p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "338457"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-dynamic"
-      ]
-    },
-    {
-      "id": "home-fetch-repotting-preview",
-      "task": "home-long",
-      "embodiment": "Fetch",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "native-render"
-      ],
-      "web_asset": {
-        "path": "assets/images/home-fetch-repotting-preview.jpg",
-        "size_bytes": 74555,
-        "sha256": "cec7e158bfeeb50312210c9c49e2628b96ff413e713a916fa09fccfe005df4f8"
-      },
-      "source_image": {
-        "artifact_id": "source-92ae397c468e5f6044e73ae2",
-        "size_bytes": 362295,
-        "sha256": "014c1fde94ba670de5926343b4547c2c60ed47c009023f19ff3bfc4e685d5e5c"
-      },
-      "trajectory_sidecars": [
-        {
-          "artifact_id": "source-fa4b7599640c492105d15024",
-          "size_bytes": 6566,
-          "sha256": "c9c90205426222026c6d20f9fa5bee57aa022b0bb2ffb7902fd263d9b7472594"
-        }
-      ],
-      "details": {
-        "source_task_id": "maniskill_long_horizon/fetch/L8",
-        "score_scope": "Scene illustration; no policy execution or success claim.",
-        "upstream_crop_xywh": [
-          600,
-          1434,
-          600,
-          420
-        ]
-      },
-      "web_derivative": "JPEG quality 2; bookshelf reduced from 1600×1000 to 1280×800; other selected source dimensions retained.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1116,
-              "height": 836,
-              "pix_fmt": "yuvj444p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "74555"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "upstream_selection": {
-        "order": 7,
-        "task_id": "maniskill_long_horizon/fetch/L8",
-        "title": "Prepare a repotting workspace",
-        "title_zh": "准备换盆工作台",
-        "reason_zh": "绿色植株和彩色耗材有生活感，Fetch 整机可见，补充移动操作场景。",
-        "source_artifact_id": "source-3e85e0301796fb9855437e6b",
-        "source_sha256": "50d4955a5b57e0f7f9a38384190dc9d74608e46fed5fa99dffde47c735ffccb9",
-        "crop_xywh": [
-          600,
-          1434,
-          600,
-          420
-        ],
-        "cube_detail_inset": false,
-        "scope": "native scene preview; not a policy success claim",
-        "selected_artifact_id": "source-386cfcc3d5ae3855d016a38e"
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-long"
-      ]
-    },
-    {
-      "id": "home-tilting-maze-preview",
-      "task": "home-dynamic",
-      "embodiment": "Everyday Robot 01",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "native-render"
-      ],
-      "web_asset": {
-        "path": "assets/images/home-tilting-maze-preview.jpg",
-        "size_bytes": 60354,
-        "sha256": "92ffbbe507747eb4de9ccb3ffd3c30b7975e766987cd4fc7f986f1d2edeaad57"
-      },
-      "source_image": {
-        "artifact_id": "source-a8c8f2171f0128f7cb0a6525",
-        "size_bytes": 291074,
-        "sha256": "1d463ef846914cda3243c9728592cfa4365927f884b962aa2737fcc113cf408b"
-      },
-      "trajectory_sidecars": [
-        {
-          "artifact_id": "source-fa4b7599640c492105d15024",
-          "size_bytes": 6566,
-          "sha256": "c9c90205426222026c6d20f9fa5bee57aa022b0bb2ffb7902fd263d9b7472594"
-        }
-      ],
-      "details": {
-        "source_task_id": "maniskill_dynamics/everyday_robot_01/D9",
-        "score_scope": "Scene illustration; no policy execution or success claim.",
-        "upstream_crop_xywh": [
-          0,
-          1880,
-          600,
-          420
-        ]
-      },
-      "web_derivative": "JPEG quality 2; bookshelf reduced from 1600×1000 to 1280×800; other selected source dimensions retained.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1116,
-              "height": 836,
-              "pix_fmt": "yuvj444p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "60354"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "upstream_selection": {
-        "order": 8,
-        "task_id": "maniskill_dynamics/everyday_robot_01/D9",
-        "title": "Guide a ball through a tilting maze",
-        "title_zh": "倾斜迷宫运球",
-        "reason_zh": "蓝黄迷宫与机器人接触关系清楚，比小型连接件和单个球更适合缩略图。",
-        "source_artifact_id": "source-8d10d408a9bdd7bb9cb46ca4",
-        "source_sha256": "41402d5a48610f927b6d1c6874bc8b9d3eccb444b5cca1ef98f04009c7767eed",
-        "crop_xywh": [
-          0,
-          1880,
-          600,
-          420
-        ],
-        "cube_detail_inset": false,
-        "scope": "native scene preview; not a policy success claim",
-        "selected_artifact_id": "source-d7823248df09de33a3647cb6"
-      },
-      "suite": "Home",
-      "task_ids": [
-        "home-dynamic"
-      ]
-    },
-    {
-      "id": "launch-glass-preview",
-      "task": "launch-glass",
-      "embodiment": "Dual Franka Panda",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "native-render"
-      ],
-      "web_asset": {
-        "path": "assets/images/launch-glass-preview.jpg",
-        "size_bytes": 104199,
-        "sha256": "e391fad74e7b5632ece70137a84a850cbde322e89a10a2ced32b9d2edf40cb43"
-      },
-      "source_image": {
-        "artifact_id": "source-d001c79a257dc10b0a78096e",
-        "size_bytes": 407610,
-        "sha256": "b879fcdb8f7cc217d35834a81e6c76960029d0ce43bc5d135a4c3b9a8b495bd0"
-      },
-      "trajectory_sidecars": [
-        {
-          "artifact_id": "source-fa4b7599640c492105d15024",
-          "size_bytes": 6566,
-          "sha256": "c9c90205426222026c6d20f9fa5bee57aa022b0bb2ffb7902fd263d9b7472594"
-        }
-      ],
-      "details": {
-        "source_task_id": "marble/dual-panda/A045",
-        "score_scope": "Scene illustration; no policy execution or success claim.",
-        "assignment_scope": "Glass-fronted scene illustration outside the evaluated EP100 task list; not evidence for an evaluated Glass task."
-      },
-      "web_derivative": "JPEG quality 2; bookshelf reduced from 1600×1000 to 1280×800; other selected source dimensions retained.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1116,
-              "height": 836,
-              "pix_fmt": "yuvj444p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "104199"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "upstream_selection": {
-        "order": 2,
-        "task_id": "marble/dual-panda/A045",
-        "title": "Glass-fronted two-story gatehouse",
-        "title_zh": "晶门双层门楼",
-        "reason_zh": "沙漠暖色、青色玻璃与双层门楼形成鲜明层次，适合暖色主图。",
-        "source_artifact_id": "source-c554818e33cfde249b91ee11",
-        "source_sha256": "2988a9f1634058ac006e18acb0c0bb7aba966a3b24f5c97df1e80ec5d42c2ff7",
-        "crop_xywh": [
-          0,
-          0,
-          800,
-          500
-        ],
-        "cube_detail_inset": false,
-        "scope": "native scene preview; not a policy success claim",
-        "selected_artifact_id": "source-1991ea9b10204cb5dc64f788"
-      },
-      "suite": "Launch",
-      "task_ids": [
-        "launch-glass"
-      ]
-    },
-    {
-      "id": "launch-bankshot-preview",
-      "task": "launch-scene-illustration",
-      "embodiment": "Dual Franka Panda",
-      "mode": "native scene illustration",
-      "claim_status": "environment-preview",
-      "tags": [
-        "scene-preview",
-        "native-render"
-      ],
-      "web_asset": {
-        "path": "assets/images/launch-bankshot-preview.jpg",
-        "size_bytes": 112570,
-        "sha256": "2014551161839dc1a6c7d38018ca0fecd56030a777262bf4fbce74606cc70939"
-      },
-      "source_image": {
-        "artifact_id": "source-b6b45d1af2707242364c3123",
-        "size_bytes": 345602,
-        "sha256": "5006604f9d4b6353a5ce6737cf028009e7b9001aca1687679f1c96963469ef9d"
-      },
-      "trajectory_sidecars": [
-        {
-          "artifact_id": "source-fa4b7599640c492105d15024",
-          "size_bytes": 6566,
-          "sha256": "c9c90205426222026c6d20f9fa5bee57aa022b0bb2ffb7902fd263d9b7472594"
-        }
-      ],
-      "details": {
-        "source_task_id": "marble/dual-panda/A099",
-        "score_scope": "Scene illustration; no policy execution or success claim.",
-        "assignment_scope": "A099 is absent from the paper codex_experiments.json task_results; no Aim task assignment claimed."
-      },
-      "web_derivative": "JPEG quality 2; bookshelf reduced from 1600×1000 to 1280×800; other selected source dimensions retained.",
-      "verification": {
-        "ffprobe": {
-          "programs": [],
-          "stream_groups": [],
-          "streams": [
-            {
-              "codec_name": "mjpeg",
-              "width": 1116,
-              "height": 836,
-              "pix_fmt": "yuvj444p",
-              "r_frame_rate": "25/1",
-              "nb_read_frames": "1"
-            }
-          ],
-          "format": {
-            "duration": "0.040000",
-            "size": "112570"
-          }
-        },
-        "all_frames_decoded": true,
-        "visual_review": "Contact sheets/keyframes and terminal frames inspected; full source images inspected."
-      },
-      "upstream_selection": {
-        "order": 5,
-        "task_id": "marble/dual-panda/A099",
-        "title": "Two-target bank-shot corridor",
-        "title_zh": "双靶回击廊",
-        "reason_zh": "冰蓝雪地和紫色挡板对比强，前景斜面形成纵深，适合冷色视觉锚点。",
-        "source_artifact_id": "source-b20e2218a765f4c11ba7fb3b",
-        "source_sha256": "8c92225e2750cc0157b07409a47c23dff43f7d12fd4467c6a11e62cc8ffb3cf2",
-        "crop_xywh": [
-          0,
-          0,
-          800,
-          500
-        ],
-        "cube_detail_inset": false,
-        "scope": "native scene preview; not a policy success claim",
-        "selected_artifact_id": "source-b53ad4ae7e7b01474182797c"
-      },
-      "suite": "Launch",
-      "task_ids": []
-    },
-    {
-      "id": "launch-a007-preview",
-      "task": "launch-aim",
-      "embodiment": "Dual Franka Panda",
-      "case_id": "marble/dual-panda/A007",
-      "claim_status": "environment-preview",
-      "web_asset": {
-        "path": "assets/images/marble-a007.png",
-        "sha256": "77789eca52c781ce7900a84b794ff8edaaa15546c95722f0c6e6b9949fd49793",
-        "size_bytes": 153089
-      },
-      "source_repository": "https://github.com/Winniechen2002/Agent-bench",
-      "source_artifact_id": "source-cf405ed5d9e8081094a9dce7",
-      "imported_from_website_commit": "427e0b8",
-      "source_manifest": "data/environment-media-sources.json",
-      "transformation": "Unmodified native scene image from the collaborator website update.",
-      "replay": {
-        "kind": "scene-preview",
-        "limitation": "No execution or replay trajectory is claimed for this still image."
-      },
-      "notes": "Native A007 single-target warm-up with dual Franka Panda, included in the EP-100 Aim selection. Scene preview only; not an execution recording or scored result."
-    },
-    {
       "id": "marble-a099-historical",
       "task": "marble",
       "embodiment": "Dual Franka Panda",
@@ -1463,10 +969,9 @@
       "source_manifest": "data/environment-media-sources.json",
       "web_files": [
         {
-          "source_artifact_id": "source-71f3259d246c96a58d861648",
-          "path": "assets/media/marble-a099-reference.mp4",
-          "sha256": "c1a3278515f40c631f7c4aabbabc65d4ccbef480939a1af9e484fd9d7ec8b6bc",
-          "bytes": 5365722
+          "path": "assets/media/marble-a099-reference-2x.mp4",
+          "sha256": "6bcc8594b9b2fe8f62cef9981fe977e8e5b58936ca9b62fc2c6a591e139c91cd",
+          "bytes": 753938
         },
         {
           "source_artifact_id": "source-8d997d09ccf7aadd30828614",
@@ -1475,11 +980,22 @@
           "bytes": 315258
         }
       ],
-      "transformation": "Unmodified source bytes retained from collaborator commit427e0b8.",
-      "notes": "A099 two-target bank-shot corridor: a return bank and overhead beams constrain the shots. Dual Franka Panda, loaded mode, seed 0. Historical privileged engineering-controller recording. Not evaluated under environment-four-trial-v2. This native catalog example is outside the curated EP-100 selection.",
+      "transformation": "Complete previous native recording uniformly accelerated 2×, H.264/yuv420p and faststart; no segment cuts.",
+      "notes": "A099 two-target bank-shot corridor: a return bank and overhead beams constrain the shots. Dual Franka Panda, loaded mode, seed 0. Historical privileged engineering-controller recording. Not evaluated under environment-four-trial-v2. Complete prior recording at 2× playback.",
       "replay": {
         "kind": "historical-recording",
-        "limitation": "This website import preserves the original media and evidence index; it does not add or independently validate a replay trajectory."
+        "limitation": "A web derivative of the archived native recording; no new model evaluation or independently replayed trajectory is claimed."
+      },
+      "source_video": {
+        "sha256": "c1a3278515f40c631f7c4aabbabc65d4ccbef480939a1af9e484fd9d7ec8b6bc",
+        "bytes": 5365722,
+        "artifact_id": "source-71f3259d246c96a58d861648"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 2,
+        "playback_basis": "source recording",
+        "output_duration_seconds": 33.375,
+        "coverage": "Complete source recording."
       }
     },
     {
@@ -1492,9 +1008,8 @@
       "source_manifest": "data/environment-media-sources.json",
       "web_files": [
         {
-          "source_artifact_id": "source-b5241a5c1a01b120b0849618",
           "path": "assets/media/marble-a057-reference.mp4",
-          "sha256": "4b73b52ee9229d6ea5f99af26113a232498682933a70b6118b38e6402ef7fd3f",
+          "sha256": "8a7ba419277db483f141d0f3689049f7fdce8c993ad11239cead83cfd72b5aa1",
           "bytes": 1876179
         },
         {
@@ -1504,34 +1019,22 @@
           "bytes": 308188
         }
       ],
-      "transformation": "Unmodified source bytes retained from collaborator commit427e0b8.",
-      "notes": "A057 shared push across two lanes, loaded mode, seed 0. Historical privileged engineering-controller recording matched by the repository evidence index. Not evaluated under environment-four-trial-v2. This native catalog example is outside the curated EP-100 selection.",
+      "transformation": "Container remux for faststart; encoded video frames and timing preserved without re-encoding.",
+      "notes": "A057 shared push across two lanes, loaded mode, seed 0. Historical privileged engineering-controller recording matched by the repository evidence index. Not evaluated under environment-four-trial-v2.",
       "replay": {
         "kind": "historical-recording",
-        "limitation": "This website import preserves the original media and evidence index; it does not add or independently validate a replay trajectory."
-      }
-    },
-    {
-      "id": "hanoi-floating-h29-scene",
-      "task": "hanoi_floating",
-      "embodiment": "Floating Sharpa hand",
-      "claim_status": "environment-preview",
-      "source_repository": "https://github.com/Winniechen2002/Agent-bench",
-      "source_artifact_id": "source-7fac8ba446cd9b52de96f688",
-      "source_manifest": "data/environment-media-sources.json",
-      "web_files": [
-        {
-          "source_artifact_id": "source-7fac8ba446cd9b52de96f688",
-          "path": "assets/images/hanoi-floating-h29.png",
-          "sha256": "de1165d1d2b752b01df4599f910e445019f0ff3d0522708093697b285998f9ea",
-          "bytes": 299411
-        }
-      ],
-      "transformation": "Unmodified source bytes retained from collaborator commit427e0b8.",
-      "notes": "H29 low-wall clearance with a floating Sharpa hand. Native Isaac scene preview; no completed policy trajectory is claimed. Scene preview only; not a recorded agent attempt.",
-      "replay": {
-        "kind": "scene-preview",
-        "limitation": "This website import preserves the original media and evidence index; it does not add or independently validate a replay trajectory."
+        "limitation": "A web derivative of the archived native recording; no new model evaluation or independently replayed trajectory is claimed."
+      },
+      "source_video": {
+        "sha256": "4b73b52ee9229d6ea5f99af26113a232498682933a70b6118b38e6402ef7fd3f",
+        "bytes": 1876179,
+        "artifact_id": "source-b5241a5c1a01b120b0849618"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "playback_basis": "source recording",
+        "output_duration_seconds": 25.4375,
+        "coverage": "Complete source recording."
       }
     },
     {
@@ -1591,8 +1094,725 @@
       "notes": "The archived run reports controller_failed / qualification_complete=false / solved_claim=false. Keep the caveat visible when swapping backgrounds or re-rendering.",
       "archive_status": "superseded-by-qualified-A3",
       "archive_note": "Historical source record retained from collaborator commit427e0b8. The main and native pages now use the qualified20261006A3 calibration derivative; this old recording is not presented as current qualified evidence."
+    },
+    {
+      "id": "pocket-cube-dual-aloha-preview",
+      "media_ids": [
+        "pocket-cube-dual-aloha-preview"
+      ],
+      "embodiment": "Dual ALOHA grippers",
+      "claim_status": "historical-reference-execution",
+      "case_ids": [],
+      "source_video": {
+        "artifact_id": "source-1c9a35c6d14ae9cba1ec3263",
+        "sha256": "8f4b4779598284645333f550012777cf3601688f71aa66640fb495595d3060d6",
+        "size_bytes": 1841217,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-1c9a35c6d14ae9cba1ec3263",
+          "sha256": "8f4b4779598284645333f550012777cf3601688f71aa66640fb495595d3060d6",
+          "size_bytes": 1841217,
+          "role": "native recording"
+        }
+      ],
+      "result_summary": {
+        "scope": "L-face turn demonstration"
+      },
+      "notes": "Historical native L-face quarter-turn demonstration with dual ALOHA grippers. Local turn only; this does not establish completion of a benchmark scramble.",
+      "web_asset": {
+        "path": "assets/media/pocket-aloha-l-turn.mp4",
+        "size_bytes": 544073,
+        "sha256": "0609dc94259f521f10200f6ac6c0be3a734fdfef92ad0a43bd2282c3759e296c",
+        "poster": {
+          "path": "assets/posters/pocket-aloha-l-turn.jpg",
+          "size_bytes": 31497,
+          "sha256": "fcac78e86c6aabc3683e82f03b065db572f884d49d366a4ad2071e118a20dec9"
+        },
+        "duration_seconds": 20.333008,
+        "width": 960,
+        "height": 544,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 20.333333,
+        "output_duration_seconds": 20.333008
+      }
+    },
+    {
+      "id": "pocket-cube-dual-sharpa-preview",
+      "media_ids": [
+        "pocket-cube-dual-sharpa-preview"
+      ],
+      "embodiment": "Dual floating Sharpa hands",
+      "claim_status": "historical-reference-execution",
+      "case_ids": [],
+      "source_video": {
+        "artifact_id": "source-cf2c1c9768abb69929bde622",
+        "sha256": "d455468361dfbd40807a3bc1918c4ef4c094d09db0a57ba5ad1d921d872fdf28",
+        "size_bytes": 7110132,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-cf2c1c9768abb69929bde622",
+          "sha256": "d455468361dfbd40807a3bc1918c4ef4c094d09db0a57ba5ad1d921d872fdf28",
+          "size_bytes": 7110132,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-c0b6ca77734f417a04d1e480",
+          "sha256": "531ff07593b8038effd9389f82eb5b6f055ac8740ed7160d2ae80246f3e07600",
+          "size_bytes": 1987,
+          "role": "native spatial crop provenance"
+        }
+      ],
+      "result_summary": {
+        "scope": "L-face turn demonstration; complete spatial close-up"
+      },
+      "notes": "Historical L-face turn replay with dual floating Sharpa hands. Close-up crop of the complete native recording at 2×; local manipulation only, not a benchmark scramble solve.",
+      "web_asset": {
+        "path": "assets/media/pocket-sharpa-l-turn-closeup-2x.mp4",
+        "size_bytes": 1759152,
+        "sha256": "d8a715de293b8aa76c87d4d627b977dde2e84e58e6bb52858d760cea10ae07d5",
+        "poster": {
+          "path": "assets/posters/pocket-sharpa-l-turn-closeup-2x.jpg",
+          "size_bytes": 16404,
+          "sha256": "b74505cbeb2ebd5d3989a8376c3effc9f0bd5bddfe5da68bc045ff20c79c3b9e"
+        },
+        "duration_seconds": 56.816667,
+        "width": 960,
+        "height": 720,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 2,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 113.633333,
+        "output_duration_seconds": 56.816667
+      }
+    },
+    {
+      "id": "hanoi-sharpa-preview",
+      "media_ids": [
+        "hanoi-sharpa-preview"
+      ],
+      "embodiment": "Franka FR3 + Sharpa hand",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "hanoi_sharpa/fr3-sharpa/H01"
+      ],
+      "source_video": {
+        "artifact_id": "source-3b6016d7665d8ff59ee968b7",
+        "sha256": "93998660ef260be7f8e071bb5e533f7a4f24784d5bca6c31b9b6cdc596b25b5d",
+        "size_bytes": 642114,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-3b6016d7665d8ff59ee968b7",
+          "sha256": "93998660ef260be7f8e071bb5e533f7a4f24784d5bca6c31b9b6cdc596b25b5d",
+          "size_bytes": 642114,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-d8ade6e01684b9bb0e9af3ec",
+          "sha256": "67c95838433abe6c494e24e6fd3e2d27d5964e4bd6ee572a9c818ef4515e936b",
+          "size_bytes": 735,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-20f4c3a896229f69ebaf3b61",
+          "sha256": "b9d9aefbea4876036983a2eb1dab884d2a325c499ac3cdc18a8f399f22abb771",
+          "size_bytes": 2578,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-851aeca34fa32389680db418",
+          "sha256": "0e07147b4b9c8466fe93d04d11a70f24256dc3fae86bfb205a60c70661b6ea3c",
+          "size_bytes": 3785847,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": true,
+        "completed_moves": 1,
+        "control_steps": 902
+      },
+      "notes": "H01, seed 0: new native recording of the saved trial 1, attempt 2 control script. The small ring reaches the middle peg; this reproduction succeeds with one legal move.",
+      "web_asset": {
+        "path": "assets/media/hanoi-h01-reproduction.mp4",
+        "size_bytes": 307344,
+        "sha256": "571c8ab9ed96432167e5a8c3e5d22e53ee968a8462606d8c377167bf247f26fd",
+        "poster": {
+          "path": "assets/posters/hanoi-h01-reproduction.jpg",
+          "size_bytes": 36225,
+          "sha256": "a0f8017913aa6324d4880884985c1b8a96c62aa7981eb9da04cf490d993faf39"
+        },
+        "duration_seconds": 30.1,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 30.1,
+        "output_duration_seconds": 30.1
+      }
+    },
+    {
+      "id": "hanoi-floating-h29-scene",
+      "media_ids": [
+        "hanoi-floating-h29-scene"
+      ],
+      "embodiment": "Floating Sharpa hand",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "hanoi_floating/floating-sharpa/H29"
+      ],
+      "source_video": {
+        "artifact_id": "source-600c58a8d807662978bee685",
+        "sha256": "cd2cbe9307f929924ff65805bddc58fce11b20a1381f653f0b3092bcbf541cae",
+        "size_bytes": 285103,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-600c58a8d807662978bee685",
+          "sha256": "cd2cbe9307f929924ff65805bddc58fce11b20a1381f653f0b3092bcbf541cae",
+          "size_bytes": 285103,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-31c3013d66ad9c7981ba87ea",
+          "sha256": "a83ed76bf1a92a1f4ed442574a54fa5bdd09b86fdcdaeb1e852dd1ad9d8626bc",
+          "size_bytes": 725,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-debcea0ccb02db10d94c2f8a",
+          "sha256": "f44207027dca3170fcafbe670b9b2fa4d63d4717e2894a9269d3a6a2e8c2512d",
+          "size_bytes": 2587,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-9fbcab0aae0034e6489af720",
+          "sha256": "49855b6dba6645869d2dbd8b40d5bd5c6b1beb205c6975f7569a96ab2fc564b4",
+          "size_bytes": 2015745,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": false,
+        "completed_moves": 0,
+        "control_steps": 417
+      },
+      "notes": "H29, seed 0: new native recording of the existing Hanoi controller. The hand reaches and attempts a grasp, then stops without completing a legal move. Unsuccessful attempt.",
+      "web_asset": {
+        "path": "assets/media/hanoi-h29-attempt.mp4",
+        "size_bytes": 137936,
+        "sha256": "85c03ecf34d408bfff3947cf31f48fe4a473ad4f5c74ad32f3817c87a3516b00",
+        "poster": {
+          "path": "assets/posters/hanoi-h29-attempt.jpg",
+          "size_bytes": 35092,
+          "sha256": "883e7111f12e7b78c5ebf9b1d5a296bbd6e0c2cd900b6d997486c2421f404aac"
+        },
+        "duration_seconds": 13.933008,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 13.933333,
+        "output_duration_seconds": 13.933008
+      }
+    },
+    {
+      "id": "bookshelf-overview",
+      "media_ids": [
+        "bookshelf-overview",
+        "bookshelf-native-preview"
+      ],
+      "embodiment": "Dual Franka Panda",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "bookshelf/dual-panda/ShelfTableD3"
+      ],
+      "source_video": {
+        "artifact_id": "source-c0b77b6299a5e3dd7e683c63",
+        "sha256": "b6d5e73872c07fb1d9d5781220432a003bad46e949c22dcaacc9352d275b0c63",
+        "size_bytes": 2766792,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-c0b77b6299a5e3dd7e683c63",
+          "sha256": "b6d5e73872c07fb1d9d5781220432a003bad46e949c22dcaacc9352d275b0c63",
+          "size_bytes": 2766792,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-f814e3ef7f5c07c02bc76f88",
+          "sha256": "0508caddc78763c84771c98533914430e12309d4e945eacbc2c078e020fababa",
+          "size_bytes": 5194,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-9d662ae82c06894b03e69967",
+          "sha256": "c06745524e6f0764c3a0bca12570b8169fffa4c9c2f31bac51efa62ed6314159",
+          "size_bytes": 451,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-f03466ca759e48e57fa92149",
+          "sha256": "6dbd758a0b58c6d53791df0581c8d489a96c59e8dae1121f6efa5eeb69771c4b",
+          "size_bytes": 4438682,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": false,
+        "placed_count": 0,
+        "total_objects": 13,
+        "control_steps": 880
+      },
+      "notes": "ShelfTableD3, seed 7: native controller attempt shown from two synchronized views. Reaching and staging attempts finish with 0 of 13 objects placed; unsuccessful reproduction.",
+      "web_asset": {
+        "path": "assets/media/bookshelf-d3-attempt.mp4",
+        "size_bytes": 1251730,
+        "sha256": "1c0940dac01af1b022d9df84edcdc4161c2615ff55d12b250825a47623d573e7",
+        "poster": {
+          "path": "assets/posters/bookshelf-d3-attempt.jpg",
+          "size_bytes": 74253,
+          "sha256": "b325de381743866aa4b48efff86de8d6e0be16d8c794dd88603ba4dcd249229e"
+        },
+        "duration_seconds": 29.333008,
+        "width": 1280,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 29.333333,
+        "output_duration_seconds": 29.333008
+      }
+    },
+    {
+      "id": "home-long-preview",
+      "media_ids": [
+        "home-long-preview",
+        "maniskill-long-horizon-scenes"
+      ],
+      "embodiment": "Fetch mobile manipulator",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "maniskill_long_horizon/fetch/L1"
+      ],
+      "source_video": {
+        "artifact_id": "source-3522474eaea94cc9d1ff2d16",
+        "sha256": "6caeb30464bf6e860ff261b087f73a17d3070819fe6995d02c048a7b13fa9c7d",
+        "size_bytes": 3802187,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-3522474eaea94cc9d1ff2d16",
+          "sha256": "6caeb30464bf6e860ff261b087f73a17d3070819fe6995d02c048a7b13fa9c7d",
+          "size_bytes": 3802187,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-4663c8b8743a86a5f15ae263",
+          "sha256": "0e62a62ad09fcfc5675f318b649de95e92bbab7f105ff0d33a9087ad28b6aca4",
+          "size_bytes": 12166,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-308c4bf3462bf8783f280ff1",
+          "sha256": "9f622e01dc824dbbf7abccbd94d735f2d3c867e75cb4e3d8caae383bcec21e3f",
+          "size_bytes": 405,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-e170e540611c3ad77739fd1c",
+          "sha256": "2e8db8e1f4a735490f9f492d476cc9bcf7258989746052f9427176266a6a0831",
+          "size_bytes": 5770984,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": false,
+        "reason": "violation",
+        "control_steps": 1844
+      },
+      "notes": "L1: prepare a shared writing desk with Fetch. New recording of trial 1, attempt 1 control stages, at 2×. The marker falls to the floor and the native checker ends the attempt with a violation. Unsuccessful; not an exact trajectory replay.",
+      "web_asset": {
+        "path": "assets/media/home-l1-attempt-2x.mp4",
+        "size_bytes": 599830,
+        "sha256": "ea7122f8dcdf7990ff731e1cd63614941f3554315d3a47efb8ce2d25fe07cf0b",
+        "poster": {
+          "path": "assets/posters/home-l1-attempt-2x.jpg",
+          "size_bytes": 27093,
+          "sha256": "6bda76939c77c6dd0a3ed07d09131a20c17c4907013db40c963358edebc17271"
+        },
+        "duration_seconds": 46.125,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 2,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 92.25,
+        "output_duration_seconds": 46.125
+      }
+    },
+    {
+      "id": "home-precise-preview",
+      "media_ids": [
+        "home-precise-preview",
+        "maniskill-geometry-scenes"
+      ],
+      "embodiment": "Franka Panda",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "maniskill_geometry/panda/P5"
+      ],
+      "source_video": {
+        "artifact_id": "source-cf94ca843ae033c9c9f29316",
+        "sha256": "b8e8443b64dc67ce6dc64326f0d83df18d9a49684482987e9ff2feb211de30fd",
+        "size_bytes": 710176,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-cf94ca843ae033c9c9f29316",
+          "sha256": "b8e8443b64dc67ce6dc64326f0d83df18d9a49684482987e9ff2feb211de30fd",
+          "size_bytes": 710176,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-33cbaea43d7a4a6fbfa8d0e8",
+          "sha256": "4a9f7960d94ac670789a3983d2998744cca11630d4366ed3b503c2f798e9cc05",
+          "size_bytes": 5358,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-a88afa9644d88fc3ccf1d098",
+          "sha256": "8dc112b4d0f56112f8dc5c0df844a8cf7d393e553c16ec1dc373dcb8c27e5593",
+          "size_bytes": 398,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-a197f4bc7a9436334f92b575",
+          "sha256": "870bb7779a41c6b160e782466dd785b682fd3ddf2bcd57d716dfebf6a79d2711",
+          "size_bytes": 1384710,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": true,
+        "control_steps": 764
+      },
+      "notes": "P5: hang a mug by its handle with Panda. New native recording of trial 1, attempt 1 control stages. The blue mug reaches the hook while the adjacent red mug stays in place; this reproduction succeeds.",
+      "web_asset": {
+        "path": "assets/media/home-p5-reproduction.mp4",
+        "size_bytes": 187989,
+        "sha256": "d8220d740c54e27aaaa1f11a3757162f5243606f4aa179ee0ff49ab9acea1351",
+        "poster": {
+          "path": "assets/posters/home-p5-reproduction.jpg",
+          "size_bytes": 23105,
+          "sha256": "442f5cd72dd48fa1390d5c0b2389772cdcfad3d367babea3f79e4c6fedb82f94"
+        },
+        "duration_seconds": 38.25,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 38.25,
+        "output_duration_seconds": 38.25
+      }
+    },
+    {
+      "id": "home-dynamic-preview",
+      "media_ids": [
+        "home-dynamic-preview",
+        "maniskill-dynamics-scenes"
+      ],
+      "embodiment": "Franka Panda",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "maniskill_dynamics/panda/D1"
+      ],
+      "source_video": {
+        "artifact_id": "source-89316e99ae8a6fb77230aded",
+        "sha256": "677dabc02decf0f99ac4b993c51de44a7c6b41297c4a10c82ccae8c71f139dc7",
+        "size_bytes": 81829,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-89316e99ae8a6fb77230aded",
+          "sha256": "677dabc02decf0f99ac4b993c51de44a7c6b41297c4a10c82ccae8c71f139dc7",
+          "size_bytes": 81829,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-033e8c787ec6d8453fe7a08d",
+          "sha256": "8734b41b790e7bd9a6d350e6dc8121f00846673fd254663d11ce98b23975a5e4",
+          "size_bytes": 5705,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-a3414aa9d6e8a937cf515067",
+          "sha256": "bfe7a3daba13adf5d3bfd92e383c9fc3b91d01bf2a9513d54bb3b14e0711f599",
+          "size_bytes": 394,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-4c3a8de1ac1110584d6bc7fa",
+          "sha256": "b931615218ef0dc420547d2e60e189eb6c028f6247076d60a09f7505a65f7c62",
+          "size_bytes": 129491,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": true,
+        "control_steps": 73
+      },
+      "notes": "D1: stop a rolling orange with Panda. New native recording of trial 1, attempt 1 control stages with real dynamics at physics variant 0. The orange stops in the target area; this reproduction succeeds.",
+      "web_asset": {
+        "path": "assets/media/home-d1-reproduction.mp4",
+        "size_bytes": 34323,
+        "sha256": "c2b1138ad453f9b4faa1813029146166fb2d89fbc48d91c0f5da691804fc6f72",
+        "poster": {
+          "path": "assets/posters/home-d1-reproduction.jpg",
+          "size_bytes": 22406,
+          "sha256": "fa228a0f6ba1cdc6b8bda4973078bab5cb4d01bb522e5807ce277f1c92e77f7c"
+        },
+        "duration_seconds": 3.7,
+        "width": 640,
+        "height": 480,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 3.7,
+        "output_duration_seconds": 3.7
+      }
+    },
+    {
+      "id": "launch-a007-preview",
+      "media_ids": [
+        "launch-a007-preview",
+        "marble-a007-scene"
+      ],
+      "embodiment": "Dual Franka Panda",
+      "claim_status": "scripted-reproduction",
+      "case_ids": [
+        "marble/dual-panda/A007"
+      ],
+      "source_video": {
+        "artifact_id": "source-339f0d1b5fe3349fd6257205",
+        "sha256": "4f4618a1cad4ddbcbe670b6281d229bd8f09846aa2b24b41990337e2aec76c67",
+        "size_bytes": 1162392,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-339f0d1b5fe3349fd6257205",
+          "sha256": "4f4618a1cad4ddbcbe670b6281d229bd8f09846aa2b24b41990337e2aec76c67",
+          "size_bytes": 1162392,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-f8b5e55aceaed60f6683df15",
+          "sha256": "828857fbe1e45e7971197be554cebf8524a4511b0edb18a8108f98a46776ffb2",
+          "size_bytes": 7015,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-7bb99a23bd9fd036e5e8075a",
+          "sha256": "38643aa42e6a7180eea80cdbd6db0305432be807bfb4af3a190777cf2e170d99",
+          "size_bytes": 3113,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-5784d485f7400e348f69f55c",
+          "sha256": "1fdb72901ad40d519ceae2ebd138ca0751b362fcb0d6e12170af4339d8ee51ba",
+          "size_bytes": 25031,
+          "role": "actions and timing"
+        },
+        {
+          "artifact_id": "source-d91e8be06a26bbe49d1f419f",
+          "sha256": "68fce17a355a7aeec29687ff1120f304fdde4f94734da2e89d1f4f8bb223d100",
+          "size_bytes": 40285,
+          "role": "actions and timing"
+        },
+        {
+          "artifact_id": "source-af68f01af4118bde92f82e54",
+          "sha256": "4e3d0357f6d1f422719bf754921a2fb38db04eb70bc0d800e69ab58866c43e10",
+          "size_bytes": 353790,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": true,
+        "control_steps": 734
+      },
+      "notes": "A007 warm-up, loaded mode, seed 0. New native recording of the existing engineering controller: the single target is cleared. Successful reproduction; includes a one-second terminal-image hold.",
+      "web_asset": {
+        "path": "assets/media/launch-a007-reproduction.mp4",
+        "size_bytes": 272556,
+        "sha256": "9449a26aae765cf257e206e9ff09e342f4e9485115a38f8040f3c847bada6a6e",
+        "poster": {
+          "path": "assets/posters/launch-a007-reproduction.jpg",
+          "size_bytes": 62978,
+          "sha256": "ab3095268c63d1f156071c2fa566e8b75ac53a821482ed69350ad8c4e3f26ed5"
+        },
+        "duration_seconds": 15.68,
+        "width": 960,
+        "height": 600,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 15.68,
+        "output_duration_seconds": 15.68
+      }
+    },
+    {
+      "id": "launch-glass-preview",
+      "media_ids": [
+        "launch-glass-preview",
+        "marble-a045-replay"
+      ],
+      "embodiment": "Dual Franka Panda",
+      "claim_status": "action-replay",
+      "case_ids": [
+        "marble/dual-panda/A045"
+      ],
+      "source_video": {
+        "artifact_id": "source-102fc3371c9ca1597935daf5",
+        "sha256": "04ce3a920ef09b29bfbb15b80c98e94d0aa4c7623bf22182947a133887d6030e",
+        "size_bytes": 9751749,
+        "role": "native recording"
+      },
+      "source_artifacts": [
+        {
+          "artifact_id": "source-102fc3371c9ca1597935daf5",
+          "sha256": "04ce3a920ef09b29bfbb15b80c98e94d0aa4c7623bf22182947a133887d6030e",
+          "size_bytes": 9751749,
+          "role": "native recording"
+        },
+        {
+          "artifact_id": "source-86a5b4ad0cbd72e980fcf4dc",
+          "sha256": "24e395b618122b21bf4ad971c4db0d84c2f2273e254e93f98d0eeb77eae52f40",
+          "size_bytes": 14900,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-ac58438dc5e320950018e9dc",
+          "sha256": "38643aa42e6a7180eea80cdbd6db0305432be807bfb4af3a190777cf2e170d99",
+          "size_bytes": 3113,
+          "role": "native result and provenance"
+        },
+        {
+          "artifact_id": "source-d002703fb59334f3a74abd4e",
+          "sha256": "77070dc555f0b91b972f262e117d2d74fbd1a63e1cf20af87897b93dff8002f7",
+          "size_bytes": 192332,
+          "role": "actions and timing"
+        },
+        {
+          "artifact_id": "source-08a683cb4681292203bb534d",
+          "sha256": "b8bb4af0bdd26921b2be795e34dcdea48f793ed63216cd93e730346a97fe0981",
+          "size_bytes": 326518,
+          "role": "actions and timing"
+        },
+        {
+          "artifact_id": "source-7d4b6b650cd3e1dfcf4ad93f",
+          "sha256": "93a88f30bed862964a225c3bbe38ec84298664ceab903dd91e1a6f23bf087d47",
+          "size_bytes": 12960285,
+          "role": "actions and timing"
+        }
+      ],
+      "result_summary": {
+        "success": true,
+        "control_steps": 6289
+      },
+      "notes": "A045 glass gatehouse, loaded mode, seed 0. All 6,289 saved actions replayed in the native simulator; the new replay succeeds. Complete recording at 3×, including the terminal-image hold. Outside the EP-100 Glass selection.",
+      "web_asset": {
+        "path": "assets/media/launch-a045-replay-3x.mp4",
+        "size_bytes": 999860,
+        "sha256": "bd9a8ee620ccc77ac4ce4601a35857cf15fa8e818b083d89ee11796bbf6b2673",
+        "poster": {
+          "path": "assets/posters/launch-a045-replay-3x.jpg",
+          "size_bytes": 72468,
+          "sha256": "fb39ffdf702c419926a33fc95f677fa9aa252c03045de8b74f9e93dbc2da9abf"
+        },
+        "duration_seconds": 42.28,
+        "width": 960,
+        "height": 600,
+        "codec": "h264",
+        "pixel_format": "yuv420p"
+      },
+      "presentation_transform": {
+        "speed_multiplier": 3,
+        "coverage": "Complete recorded sequence; uniform playback acceleration where stated. Posters extracted from actual recording. No generated frames.",
+        "source_duration_seconds": 126.8,
+        "output_duration_seconds": 42.28
+      }
+    },
+    {
+      "id": "embodied-playground-film",
+      "claim_status": "promotional-overview",
+      "source_video": {
+        "artifact_id": "source-1554200cd341c1e024e51f26",
+        "sha256": "d482443dd8f03fd7c5b5cd12e3812e1d9483e3b0fdbd26a78410de1903fc474d",
+        "size_bytes": 21388052
+      },
+      "web_asset": {
+        "path": "assets/media/embodied-playground-film.mp4",
+        "sha256": "d482443dd8f03fd7c5b5cd12e3812e1d9483e3b0fdbd26a78410de1903fc474d",
+        "size_bytes": 21388052,
+        "duration_seconds": 180.0,
+        "width": 1920,
+        "height": 1080,
+        "poster": {
+          "path": "assets/posters/embodied-playground-film.jpg",
+          "sha256": "c6584c3e3e4cb6fbc5ba5cc03546a99fa9a266fe5e2d774b395d9b10dadd8caa",
+          "size_bytes": 97762
+        }
+      },
+      "web_derivative": "Original user-selected project film copied byte-for-byte, including AAC audio; H.264/yuv420p, 1920×1080, faststart. Poster extracted at 2 seconds.",
+      "presentation_transform": {
+        "speed_multiplier": 1,
+        "coverage": "Complete original three-minute film with its original soundtrack."
+      },
+      "notes": "Homepage overview film; separate from individual rollout demonstrations and their duration limits."
     }
   ],
   "updated_date": "2026-10-16",
-  "scope": "Paper-aligned website presentation assets. Reference, calibration and scene evidence are separate from audited Codex scores. No new simulation or agent evaluation was run for this refresh."
+  "scope": "Native recordings and full web derivatives; illustrative results do not alter benchmark or paper evaluation data."
 }

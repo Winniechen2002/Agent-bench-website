@@ -1,12 +1,16 @@
 """Regression tests for release isolation and the local preview HTTP boundary."""
 from contextlib import contextmanager
+from contextlib import redirect_stdout
 import http.client
 import importlib
+import io
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import threading
 import unittest
+from unittest import mock
 
 
 DATA_FILES = (
@@ -209,6 +213,57 @@ class ReleaseTests(unittest.TestCase):
         (output / 'private.txt').write_text('private')
         with self.assertRaises(ValueError):
             preview.create_server(output, port=0)
+
+
+class CommitGateTests(unittest.TestCase):
+    MEDIA_TOOLS = {
+        'scripts/check_media.py', 'scripts/media_overrides.py',
+        'scripts/media-overrides.json', 'scripts/test_media_sync.py',
+        'scripts/test_media_validation.py',
+    }
+
+    def setUp(self):
+        self.gate = importlib.import_module('check_release_commit')
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        fixture(self.root)
+        for name in ('assets/images/unlisted.png', 'data/unlisted.json', '.codex-local/secret.json'):
+            (self.root / name).unlink()
+        for name in self.gate.SOURCE_FILES | self.MEDIA_TOOLS:
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text('source fixture\n')
+        subprocess.run(['git', 'init', '--quiet', str(self.root)], check=True)
+
+    def commit(self):
+        subprocess.run(['git', '-C', str(self.root), 'add', '--all'], check=True)
+        subprocess.run(['git', '-C', str(self.root), '-c', 'user.name=Release Tests',
+            '-c', 'user.email=release-tests@example.invalid', 'commit', '--quiet',
+            '--no-gpg-sign', '-m', 'Release fixture'], check=True)
+
+    def check(self):
+        with mock.patch.object(self.gate, 'ROOT', self.root), \
+                mock.patch.object(self.gate, 'run_checks') as checks, \
+                redirect_stdout(io.StringIO()):
+            self.gate.check_commit('HEAD')
+        checks.assert_called_once()
+
+    def test_complete_media_tooling_is_accepted(self):
+        self.commit()
+        self.check()
+
+    def test_missing_media_dependency_is_rejected(self):
+        (self.root / 'scripts/check_media.py').unlink()
+        self.commit()
+        with self.assertRaisesRegex(ValueError, 'required source/check files'):
+            self.check()
+
+    def test_unknown_source_file_is_still_rejected(self):
+        (self.root / 'scripts/unreviewed.py').write_text('unreviewed source\n')
+        self.commit()
+        with self.assertRaisesRegex(ValueError, 'unreviewed/retired files'):
+            self.check()
 
 
 if __name__ == '__main__':
