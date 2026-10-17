@@ -1,5 +1,6 @@
 """Build an audited static release. Never copy the repository recursively."""
 from html.parser import HTMLParser
+import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -75,6 +76,64 @@ class References(HTMLParser):
         self.urls.extend(value for key, value in attrs if key in ('href', 'src', 'poster') and value)
 
 
+class PageAssets(HTMLParser):
+    """Find executable/style dependencies without rewriting other page content."""
+    def __init__(self, html):
+        super().__init__()
+        self.dependencies, self.icons = [], []
+        self.feed(html)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'svg':
+            self.icons.append(attrs)
+        field = 'src' if tag == 'script' else 'href' if tag == 'link' and 'stylesheet' in attrs.get('rel', '').split() else None
+        if field and attrs.get(field):
+            self.dependencies.append((self.get_starttag_text(), field, attrs[field]))
+
+
+def versioned_url(root, value):
+    url = urlsplit(value)
+    if url.scheme or url.netloc:
+        return value
+    relative = clean_path(url.path)
+    if relative not in STATIC_FILES or PurePosixPath(relative).suffix not in {'.css', '.js'}:
+        raise ValueError('Page styles and scripts must be reviewed local runtime files')
+    digest = hashlib.sha256(source_file(root, relative).read_bytes()).hexdigest()[:16]
+    return relative + '?v=' + digest + ('#' + url.fragment if url.fragment else '')
+
+
+def version_page_assets(root):
+    """A changed CSS/JS file gets a new cache key on every build, on both pages."""
+    for name in ('index.html', 'environment.html'):
+        path = source_file(root, name)
+        html = path.read_text(encoding='utf-8')
+        for tag, field, url in PageAssets(html).dependencies:
+            updated = versioned_url(root, url)
+            if updated == url:
+                continue
+            pattern = rf'(\s{field}\s*=\s*)([\'\"])(.*?)\2'
+            replacement = re.sub(pattern, lambda m: m[1] + m[2] + updated + m[2], tag, count=1, flags=re.IGNORECASE)
+            html = html.replace(tag, replacement)
+        path.write_text(html, encoding='utf-8')
+
+
+def verify_page_assets(root, *, versioned=False):
+    for name in ('index.html', 'environment.html'):
+        page = PageAssets(source_file(root, name).read_text(encoding='utf-8'))
+        for icon in page.icons:
+            for dimension in ('width', 'height'):
+                value = icon.get(dimension, '')
+                if not re.fullmatch(r'[1-9]\d*(?:\.\d+)?', value):
+                    raise ValueError(f'{name}: inline SVG needs an explicit positive {dimension}')
+            if not icon.get('fill') or not icon.get('stroke'):
+                raise ValueError(f'{name}: inline SVG needs fill/stroke fallbacks')
+        if versioned:
+            for _, _, url in page.dependencies:
+                if url != versioned_url(root, url):
+                    raise ValueError(f'{name}: missing or stale CSS/JS content version')
+
+
 def release_files(root):
     """The exact static allowlist plus assets referenced by audited runtime fields."""
     files = set(BASE_FILES)
@@ -136,6 +195,7 @@ def release_files(root):
 
 
 def verify_release(root):
+    verify_page_assets(root, versioned=True)
     expected = release_files(root)
     actual = set()
     expected_dirs = {parent.as_posix() for name in expected for parent in PurePosixPath(name).parents}
@@ -175,6 +235,7 @@ def build_release(root=ROOT, *, checks=run_checks):
             destination = staging / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source_file(root, relative), destination)
+        version_page_assets(staging)
         verify_release(staging)
         checks(staging)
         if output.exists():

@@ -8,10 +8,12 @@ import re
 from urllib.parse import unquote, urlsplit
 import argparse
 from check_media import validate_media
+from build_site import verify_page_assets
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
 ROOT = parser.parse_args().root.resolve()
+verify_page_assets(ROOT)
 
 
 class Page(HTMLParser):
@@ -108,7 +110,7 @@ for script in ('environment.js', 'site.js'):
         local_link(path)
 assert 'data/environment-groups.json' in js and 'data/environment-media.json' in js
 assert 'index.html#tasks' in html and 'loaded and ground' in html
-assert 'href="site.css"' in html, 'Directory must share the primary theme'
+assert any(urlsplit(url).path == 'site.css' for url in Page(ROOT / 'environment.html').links), 'Directory must share the primary theme'
 assert 'id="hero-video"' not in html and 'id="results"' not in html and 'id="protocol"' not in html
 assert 'data/environment-catalog.json' in js
 assert len(cards) == 12

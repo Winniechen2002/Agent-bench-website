@@ -248,7 +248,7 @@
     const robot = document.createElement('div');
     robot.className = 'robot-pointer';
     robot.setAttribute('aria-hidden', 'true');
-    robot.innerHTML = `<svg viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    robot.innerHTML = `<svg width="56" height="63" viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="pointer-shell" x1="18" y1="12" x2="46" y2="59" gradientUnits="userSpaceOnUse">
           <stop stop-color="#fbfcf8"/><stop offset=".6" stop-color="#f6f8f5"/><stop offset="1" stop-color="#dce7dc"/>

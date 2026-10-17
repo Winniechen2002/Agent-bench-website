@@ -5,6 +5,7 @@ import http.client
 import importlib
 import io
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import tempfile
@@ -35,8 +36,8 @@ def fixture(root):
     (root / 'evidence/demo-manifest.json').write_text(json.dumps({
         'artifacts': [{'web_files': [{'path': 'assets/images/evidence.png'}]}]
     }))
-    (root / 'index.html').write_text('<!doctype html><link href="site.css"><script src="site.js"></script><img src="assets/images/icon.svg"><a href="environment.html">Environment</a>')
-    (root / 'environment.html').write_text('<!doctype html><link href="environment.css"><script src="environment.js"></script>')
+    (root / 'index.html').write_text('<!doctype html><link rel="stylesheet" href="site.css"><script src="site.js"></script><img src="assets/images/icon.svg"><a href="environment.html">Environment</a>')
+    (root / 'environment.html').write_text('<!doctype html><link rel="stylesheet" href="environment.css"><script src="environment.js"></script>')
     for name in ('site.css', 'environment.css', 'site.js', 'environment.js', '.nojekyll'):
         (root / name).write_text('')
     for name in ('poster.png', 'evidence.png', 'icon.svg'):
@@ -80,6 +81,56 @@ class ReleaseTests(unittest.TestCase):
         self.build()
         self.assertFalse((output / 'stale.txt').exists())
         self.assertFalse((output / 'assets/images/stale.png').exists())
+
+    def test_runtime_cache_keys_track_content_on_both_pages(self):
+        source_html = (self.root / 'index.html').read_text()
+        first = self.build()
+        before = {name: (first / name).read_text() for name in ('index.html', 'environment.html')}
+        for name, assets in (('index.html', ('site.css', 'site.js')),
+                             ('environment.html', ('environment.css', 'environment.js'))):
+            for asset in assets:
+                digest = hashlib.sha256((first / asset).read_bytes()).hexdigest()[:16]
+                self.assertIn(f'{asset}?v={digest}', before[name])
+                (self.root / asset).write_text('/* updated release */')
+        rebuilt = self.build()
+        for name in before:
+            self.assertNotEqual(before[name], (rebuilt / name).read_text())
+        stable = (rebuilt / 'index.html').read_text()
+        self.build()
+        self.assertEqual(stable, (rebuilt / 'index.html').read_text())
+        self.assertEqual(source_html, (self.root / 'index.html').read_text())
+
+    def test_release_rejects_missing_versions_and_mixed_asset_versions(self):
+        output = self.build()
+        (output / 'index.html').write_text((self.root / 'index.html').read_text())
+        with self.assertRaisesRegex(ValueError, 'missing or stale'):
+            self.builder.verify_release(output)
+        output = self.build()
+        (output / 'site.css').write_text('/* stale cached stylesheet */')
+        with self.assertRaisesRegex(ValueError, 'missing or stale'):
+            self.builder.verify_release(output)
+
+    def test_icon_fallbacks_are_required_even_without_styles(self):
+        page = self.root / 'index.html'
+        original = page.read_text()
+        icon = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>'
+        page.write_text(original + icon)
+        self.build()
+        for attribute in ('width="18"', 'height="18"', 'fill="none"', 'stroke="currentColor"'):
+            with self.subTest(attribute=attribute):
+                page.write_text(original + icon.replace(attribute, ''))
+                with self.assertRaisesRegex(ValueError, 'inline SVG needs'):
+                    self.build()
+
+    def test_versioning_handles_quotes_queries_and_shared_styles(self):
+        page = self.root / 'environment.html'
+        page.write_text("<link rel='stylesheet' href='site.css?v=old'><link rel='stylesheet' href='environment.css'>"
+                        '<script src="environment.js?v=old" defer></script>')
+        output = self.build()
+        html = (output / 'environment.html').read_text()
+        self.assertNotIn('v=old', html)
+        self.assertIn("href='site.css?v=", html)
+        self.builder.verify_release(output)
 
     def test_checks_cover_source_and_staged_release(self):
         seen = []
@@ -159,7 +210,7 @@ class ReleaseTests(unittest.TestCase):
     def test_root_and_project_prefix_assets_are_served(self):
         with self.server() as (server, _):
             for prefix in ('', '/Agent-bench-website'):
-                for path in ('/', '/environment.html', '/site.js', '/data/media.json', '/assets/media/clip.mp4'):
+                for path in ('/', '/environment.html', '/site.js', '/site.css?v=test', '/site.js?v=test', '/data/media.json', '/assets/media/clip.mp4'):
                     with self.subTest(path=prefix + path):
                         self.assertEqual(self.request(server, prefix + path)[0], 200)
 
