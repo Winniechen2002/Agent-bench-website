@@ -1,6 +1,6 @@
 # Embodied Playground
 
-**Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning**
+**A Long-Horizon Agentic Robotics Benchmark for Physical, Strategic, and Spatial Reasoning**
 
 Standalone light website for [Embodied Playground](https://github.com/Winniechen2002/Embodied-Playgroud). It uses static HTML, CSS, and vanilla JavaScript with relative URLs suitable for a GitHub Pages project subpath. [Website repository](https://github.com/Winniechen2002/Agent-bench-website).
 

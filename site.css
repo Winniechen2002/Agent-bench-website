@@ -76,7 +76,34 @@ h1 { margin-bottom: 30px; font-size: clamp(54px, 7.1vw, 105px); line-height: 1.0
 h1 em { color: var(--green); font-style: normal; }
 .hero-lede { max-width: 500px; margin-bottom: 34px; color: var(--muted); font-size: clamp(16px, 1.4vw, 20px); line-height: 1.55; }
 .hero-lede strong { color: var(--text); font-weight: 500; }
+.hero-authors { margin: 0 0 28px; }
+.author-list { display: grid; gap: 8px; }
+.author-row { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; color: var(--text); font-size: 14px; line-height: 1.7; }
+.author-row > span { white-space: nowrap; }
+.hero-authors sup { position: relative; top: -.45em; margin-left: 2px; color: var(--green); font-size: .68em; line-height: 0; vertical-align: baseline; }
+.author-affiliations { display: grid; gap: 4px; margin-top: 15px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.author-affiliations p, .author-contributions { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; }
+.author-affiliations sup, .author-contributions sup { margin: 0 3px 0 0; }
+.author-contributions { margin-top: 10px; color: var(--muted-2); font-size: 10px; line-height: 1.7; }
 .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-resources { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; max-width: 470px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line-soft); }
+.resource-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; min-height: 40px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.5); color: var(--text); font: 11px/1.3 var(--mono); text-decoration: none; }
+.resource-link svg { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.resource-link .resource-icon--filled { fill: currentColor; stroke: none; }
+.resource-link--wechat { color: var(--green); border-color: rgba(60,117,20,.3); background: #edf4e8; }
+a.resource-link:hover, a.resource-link:focus-visible { color: var(--green); border-color: var(--green); background: #e7f0e1; }
+.resource-link:disabled { color: var(--muted-2); background: transparent; border-style: dashed; cursor: default; opacity: .65; }
+.wechat-open { overflow: hidden; }
+.wechat-dialog { width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 22px; border: 1px solid var(--line); border-radius: 18px; color: var(--text); background: var(--bg); box-shadow: 0 24px 80px rgba(23,37,42,.2); }
+.wechat-dialog::backdrop { background: rgba(23,37,42,.45); backdrop-filter: blur(4px); }
+.wechat-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+.wechat-dialog-heading .section-label { margin: 0 0 7px; color: var(--green); font-size: 9px; }
+.wechat-dialog-heading h2 { margin: 0; font: 500 24px/1.2 var(--display); letter-spacing: -.03em; }
+.wechat-close { display: grid; place-items: center; flex-shrink: 0; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: var(--panel); font-size: 24px; line-height: 1; cursor: pointer; }
+.wechat-close:hover { border-color: var(--green); color: var(--green); }
+.wechat-qr { width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 190px); margin: 0 auto; border-radius: 9px; object-fit: contain; }
+.wechat-original { display: block; width: fit-content; margin: 14px auto 0; color: var(--cyan); font: 10px/1.5 var(--mono); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 420px) { .hero-resources { grid-template-columns: repeat(2, minmax(0, 1fr)); }.wechat-dialog { padding: 16px; } }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 17px; min-height: 45px; padding: 0 17px 0 20px; border: 1px solid var(--line); border-radius: 99px; font: 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: var(--cyan); }
 .button-primary { color: var(--bg); background: var(--green); border-color: var(--green); }

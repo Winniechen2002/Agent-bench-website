@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#f6f8f5" />
   <meta name="color-scheme" content="light" />
   <meta name="description" content="Embodied Playground: 410 robotic task environments for physical, strategic and spatial reasoning. Explore EP-100, its five suites, and audited agent evaluations." />
-  <title>Embodied Playground: Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning</title>
-  <meta property="og:title" content="Embodied Playground: Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning" />
+  <title>Embodied Playground: A Long-Horizon Agentic Robotics Benchmark for Physical, Strategic, and Spatial Reasoning</title>
+  <meta property="og:title" content="Embodied Playground: A Long-Horizon Agentic Robotics Benchmark for Physical, Strategic, and Spatial Reasoning" />
   <meta property="og:description" content="From reasoning to robot actions. 410 task environments, 100 curated tasks, five suites, and independent physical success checks." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Embodied Playground" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Embodied Playground: Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning" />
+  <meta name="twitter:title" content="Embodied Playground: A Long-Horizon Agentic Robotics Benchmark for Physical, Strategic, and Spatial Reasoning" />
   <meta name="twitter:description" content="A playground for evaluating foundation-model agents through closed-loop robotic interaction." />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="site.css" />
@@ -26,14 +26,43 @@
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert><a href="#playground">Playground</a><a href="#ep100">EP-100</a><a href="#tasks">Tasks</a><a href="#results">Results</a><a href="#protocol">Protocol</a><a href="#evidence">Demos</a><a href="https://github.com/Winniechen2002/Embodied-Playgroud" target="_blank" rel="noreferrer">Code ↗</a></nav>
   </header>
+  <dialog id="wechat-dialog" class="wechat-dialog" aria-labelledby="wechat-dialog-title">
+    <div class="wechat-dialog-heading"><div><p class="section-label">JOIN THE CONVERSATION</p><h2 id="wechat-dialog-title">WeChat Group</h2></div><button class="wechat-close" type="button" aria-label="Close WeChat QR code" autofocus>×</button></div>
+    <img class="wechat-qr" src="assets/images/wechat-group.png" width="540" height="849" alt="微信群：Embodied Playground 交流群的入群二维码" />
+    <a class="wechat-original" href="assets/images/wechat-group.png" target="_blank" rel="noopener noreferrer">Open full-size QR code ↗</a>
+  </dialog>
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-grid" aria-hidden="true"></div><div class="hero-noise" aria-hidden="true"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="live-dot"></span> FOUNDATION MODELS · ROBOTIC INTERACTION</p>
-        <h1 id="hero-title"><span class="hero-name">Embodied<br /><em>Playground</em><span class="sr-only">: </span></span><span class="hero-subtitle">Agentic Robotics Benchmark on Physics, Strategic and Spatial Reasoning</span></h1>
-        <p class="hero-lede">From reasoning to robot actions.<br /><strong>Plan, execute, and adapt</strong> in worlds where geometry, contact, and consequences matter.</p>
+        <h1 id="hero-title"><span class="hero-name">Embodied<br /><em>Playground</em><span class="sr-only">: </span></span><span class="hero-subtitle">A Long-Horizon Agentic Robotics Benchmark for Physical, Strategic, and Spatial Reasoning</span></h1>
+        <div class="hero-authors" aria-label="Authors and affiliations">
+          <div class="author-list">
+            <p class="author-row"><span>Feng Chen<sup>1,2,†,*</sup></span><span>Pei Zhou<sup>1,2,*</sup></span><span>Lixuan He<sup>3,*</sup></span><span>Yunchao Yao<sup>2,5,*</sup></span><span>Li Sun<sup>1,*</sup></span></p>
+            <p class="author-row"><span>Shenghua Gao<sup>1</sup></span><span>Mingyu Ding<sup>5</sup></span><span>Kaifeng Zhang<sup>2</sup></span><span>Kaichen Zhou<sup>4,6</sup></span><span>Yi Ma<sup>1</sup></span></p>
+          </div>
+          <div class="author-affiliations">
+            <p><span><sup>1</sup>HKU</span><span><sup>2</sup>Sharpa</span><span><sup>3</sup>Tsinghua University</span><span><sup>4</sup>Stanford University</span></p>
+            <p><span><sup>5</sup>University of North Carolina at Chapel Hill</span><span><sup>6</sup>MIT</span></p>
+          </div>
+          <p class="author-contributions"><span><sup>†</sup>Project Leader</span><span><sup>*</sup>Core Contributor</span></p>
+        </div>
         <div class="hero-actions"><a class="button button-primary" href="#ep100">Explore EP-100 ↓</a><a class="button button-quiet" href="#results">View results ↗</a></div>
+        <nav class="hero-resources" aria-label="Community and research links">
+          <button class="resource-link" type="button" disabled title="Tech Report link coming soon" aria-label="Tech Report — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H5v18h14V8l-5-5ZM14 3v5h5M8 12h8M8 16h6"/></svg><span>Tech Report</span></button>
+          <button class="resource-link" type="button" disabled title="arXiv link coming soon" aria-label="arXiv — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 18M5 21 19 3M9 3l10 13M5 8l10 13"/></svg><span>arXiv</span></button>
+          <a class="resource-link" href="https://github.com/Winniechen2002/Embodied-Playgroud" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="resource-icon--filled"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.8 1.1.8 2.2V22c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a class="resource-link resource-link--wechat" id="wechat-group-link" href="assets/images/wechat-group.png" aria-haspopup="dialog" aria-controls="wechat-dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 11.5c0 3-2.9 5.5-6.5 5.5a8 8 0 0 1-2.1-.3L2 18l1-3a5 5 0 0 1-2-3.5C1 8.5 3.9 6 7.5 6S14 8.5 14 11.5Z"/><path d="M12 10a7 7 0 0 1 4-.5c3.8 0 6.5 2.4 6.5 5.3 0 1.5-.7 2.7-2 3.7l.8 2.5-2.8-1.2c-.8.3-1.6.4-2.5.4-2.6 0-4.8-1.2-5.8-3"/><circle cx="5" cy="10.5" r=".8" fill="currentColor" stroke="none"/><circle cx="9.5" cy="10.5" r=".8" fill="currentColor" stroke="none"/><circle cx="14" cy="14" r=".8" fill="currentColor" stroke="none"/><circle cx="18.5" cy="14" r=".8" fill="currentColor" stroke="none"/></svg>
+            <span>WeChat Group</span>
+          </a>
+          <button class="resource-link" type="button" disabled title="X / Twitter link coming soon" aria-label="X / Twitter — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h4l12 18h-4L4 3ZM20 3l-7 8M4 21l7-8"/></svg><span>X</span></button>
+          <button class="resource-link" type="button" disabled title="小红书链接待补充" aria-label="小红书 — coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="m7 10-2 4m12-4 2 4M12 7v9q0 2-2 1"/></svg><span lang="zh-CN">小红书</span></button>
+        </nav>
       </div>
       <div class="hero-visual reveal delay-1">
         <div class="hero-stage hero-stage--film" aria-label="Embodied Playground">

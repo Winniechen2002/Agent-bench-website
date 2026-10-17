@@ -226,6 +226,23 @@
     if('IntersectionObserver' in window){const observer=new IntersectionObserver((entries)=>entries.forEach(({target,isIntersecting})=>{if(isIntersecting){target.classList.add('is-visible');observer.unobserve(target);}}),{threshold:.08});$$('.reveal').forEach((el)=>observer.observe(el));}else{$$('.reveal').forEach((el)=>el.classList.add('is-visible'));}
   }
 
+  function setupCommunityLinks() {
+    const dialog = $('#wechat-dialog');
+    $('#wechat-group-link').addEventListener('click', (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      dialog.showModal();
+      document.documentElement.classList.add('wechat-open');
+    });
+    $('.wechat-close', dialog).addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    });
+    dialog.addEventListener('close', () => document.documentElement.classList.remove('wechat-open'));
+  }
+
   function setupRobotPointer() {
     const mouse = window.matchMedia('(hover: hover) and (pointer: fine)');
     const robot = document.createElement('div');
@@ -325,7 +342,7 @@
   }
 
   async function init() {
-    setupChrome(); setupInteractions(); setupRobotPointer();
+    setupChrome(); setupInteractions(); setupCommunityLinks(); setupRobotPointer();
     const [tasks,media,results,index]=await Promise.allSettled([loadJSON('data/tasks.json'),loadJSON('data/media.json'),loadJSON('data/results.json'),loadJSON('data/ep100-index.json')]);
     if(media.status==='fulfilled'&&Array.isArray(media.value))state.media=media.value;
     if(tasks.status==='fulfilled'&&Array.isArray(tasks.value)){state.tasks=tasks.value;renderTasks();}else{$('#task-grid').innerHTML='<p class="empty-state">Task data could not be loaded. Please reload the page or open the task index.</p>';}
