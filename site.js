@@ -226,8 +226,106 @@
     if('IntersectionObserver' in window){const observer=new IntersectionObserver((entries)=>entries.forEach(({target,isIntersecting})=>{if(isIntersecting){target.classList.add('is-visible');observer.unobserve(target);}}),{threshold:.08});$$('.reveal').forEach((el)=>observer.observe(el));}else{$$('.reveal').forEach((el)=>el.classList.add('is-visible'));}
   }
 
+  function setupRobotPointer() {
+    const mouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const robot = document.createElement('div');
+    robot.className = 'robot-pointer';
+    robot.setAttribute('aria-hidden', 'true');
+    robot.innerHTML = `<svg viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="pointer-shell" x1="18" y1="12" x2="46" y2="59" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#fbfcf8"/><stop offset=".6" stop-color="#f6f8f5"/><stop offset="1" stop-color="#dce7dc"/>
+        </linearGradient>
+        <linearGradient id="pointer-screen" x1="20" y1="16" x2="43" y2="35" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#315958"/><stop offset=".55" stop-color="#172f32"/><stop offset="1" stop-color="#264546"/>
+        </linearGradient>
+        <linearGradient id="pointer-chest" x1="32" y1="43" x2="32" y2="55" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#a7cf79"/><stop offset="1" stop-color="#5c8d38"/>
+        </linearGradient>
+        <filter id="pointer-eye-glow" x="-150%" y="-80%" width="400%" height="260%">
+          <feGaussianBlur stdDeviation="1"/>
+        </filter>
+      </defs>
+      <ellipse cx="32" cy="67" rx="16" ry="2.3" fill="#668578" opacity=".16"/>
+      <g class="robot-pointer-body" stroke="#526b61" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+        <g class="robot-arm robot-arm-left">
+          <path d="M22 40C17 38 10 44 7 51C5 57 10 59 15 55C19 52 23 46 22 40Z" fill="url(#pointer-shell)"/>
+          <path d="M10 53q3-1 5-4" stroke="#dbe5d8" stroke-width="2.4"/>
+        </g>
+        <g class="robot-arm robot-arm-right">
+          <path d="M43 41C46 38 49 33 54 32C60 31 61 36 58 41C55 47 50 50 45 48Z" fill="url(#pointer-shell)"/>
+          <path d="M49 45q5-2 7-6" stroke="#dbe5d8" stroke-width="2.4"/>
+        </g>
+        <path d="M19 36C15 45 20 57 29 61C31 62 33 62 35 61C44 57 49 45 45 36Z" fill="url(#pointer-shell)"/>
+        <path d="M24 55q8 9 16-1" stroke="#d4dfd0" stroke-width="2"/>
+        <path d="M24 43Q32 40 40 43C43 48 39 54 32 55C25 54 21 48 24 43Z" fill="url(#pointer-chest)"/>
+        <path d="M26 44q6-2 12 0" stroke="#dfedcc" stroke-width="1.5"/>
+        <path d="M26 10V7C26 3 38 3 38 7V10" fill="#fbfcf8"/>
+        <rect x="8" y="19" width="6" height="14" rx="2.5" fill="#edf3e8"/>
+        <rect x="50" y="19" width="6" height="14" rx="2.5" fill="#edf3e8"/>
+        <path d="M13 15C14 8 24 8 32 8C40 8 50 8 51 15L52 31C52 39 43 41 32 41C21 41 12 39 12 31Z" fill="url(#pointer-shell)"/>
+        <path d="M19 13q12-5 25 0" stroke="#fbfcf8" stroke-width="2.5"/>
+        <path d="M18 19C18 14 24 13 32 13C40 13 46 14 46 19V30C46 35 40 37 32 37C24 37 18 35 18 30Z" fill="url(#pointer-screen)"/>
+        <path d="M21 20q0-4 7-4" stroke="#607e71" stroke-width="1.5"/>
+        <g stroke="none" fill="#b5d990" filter="url(#pointer-eye-glow)">
+          <ellipse cx="25" cy="24" rx="3" ry="5"/><ellipse cx="39" cy="24" rx="3" ry="5"/>
+        </g>
+        <g stroke="none">
+          <ellipse cx="25" cy="24" rx="2.2" ry="4.4" fill="#c2e49f"/>
+          <ellipse cx="39" cy="24" rx="2.2" ry="4.4" fill="#c2e49f"/>
+          <ellipse cx="24.5" cy="22.8" rx=".8" ry="1.6" fill="#f3f9e9"/>
+          <ellipse cx="38.5" cy="22.8" rx=".8" ry="1.6" fill="#f3f9e9"/>
+        </g>
+        <path d="M29 31q3 2 6 0" stroke="#9bbe89" stroke-width="1"/>
+      </g>
+    </svg>`;
+    document.body.append(robot);
+    const leftArm = $('.robot-arm-left', robot);
+    const rightArm = $('.robot-arm-right', robot);
+    let frame = 0;
+    let x = 0;
+    let y = 0;
+    let animations = [];
+    const enabled = () => mouse.matches && !reduced.matches;
+    const hide = () => {
+      cancelAnimationFrame(frame); frame = 0;
+      robot.classList.remove('is-visible');
+      animations.forEach((animation) => animation.cancel());
+      animations = [];
+    };
+    const move = (event) => {
+      if (event.pointerType !== 'mouse' || !enabled()) { hide(); return; }
+      x = event.clientX; y = event.clientY;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        // Keep the robot beside the click target and inside the viewport.
+        const left = x + 16 + 56 > innerWidth ? x - 72 : x + 16;
+        const top = y + 12 + 63 > innerHeight ? y - 75 : y + 12;
+        robot.style.transform = `translate3d(${Math.max(0, left)}px, ${Math.max(0, top)}px, 0)`;
+        robot.classList.add('is-visible');
+      });
+    };
+    window.addEventListener('pointermove', move, { passive: true });
+    window.addEventListener('pointerdown', (event) => {
+      move(event);
+      if (event.pointerType !== 'mouse' || event.button !== 0 || !enabled()) return;
+      animations.forEach((animation) => animation.cancel());
+      animations = [[leftArm, 1], [rightArm, -.45]].map(([arm, direction]) => arm.animate(
+        [0, 105, 65, 110, 65, 0].map((angle) => ({ transform: `rotate(${angle * direction}deg)` })),
+        { duration: 700, easing: 'ease-in-out' }
+      ));
+    }, { passive: true });
+    window.addEventListener('pointerout', (event) => { if (!event.relatedTarget) hide(); });
+    window.addEventListener('blur', hide);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) hide(); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Tab') hide(); });
+    mouse.addEventListener('change', hide);
+    reduced.addEventListener('change', hide);
+  }
+
   async function init() {
-    setupChrome(); setupInteractions();
+    setupChrome(); setupInteractions(); setupRobotPointer();
     const [tasks,media,results,index]=await Promise.allSettled([loadJSON('data/tasks.json'),loadJSON('data/media.json'),loadJSON('data/results.json'),loadJSON('data/ep100-index.json')]);
     if(media.status==='fulfilled'&&Array.isArray(media.value))state.media=media.value;
     if(tasks.status==='fulfilled'&&Array.isArray(tasks.value)){state.tasks=tasks.value;renderTasks();}else{$('#task-grid').innerHTML='<p class="empty-state">Task data could not be loaded. Please reload the page or open the task index.</p>';}

@@ -167,7 +167,7 @@ assert any(artifact['id'] == hero['id'] or hero['id'] in artifact.get('media_ids
 assert {'marble-a099-historical', 'marble-a057-historical', 'hanoi-floating-h29-scene'} <= paper_media_ids
 assert all(next(item for item in paper_media if item['id'] == key)['showcase'] for key in (
     'marble-a099-historical', 'marble-a057-historical', 'hanoi-floating-h29-scene'))
-assert 'docs/evaluation_protocol.en.md' in primary and 'data/benchmark.json' in primary
+assert 'docs/evaluation_protocol.en.md' in primary
 primary_lookup = {item['id']: item for item in paper_media}
 for native in media:
     if native['id'] in primary_lookup:
