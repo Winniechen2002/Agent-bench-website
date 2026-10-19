@@ -754,6 +754,251 @@
         "Complete provider token usage is unavailable, so no token efficiency metric is reported.",
         "Demonstration videos and scene previews illustrate tasks and reference behavior; they are not the scored Codex attempts and do not establish benchmark success."
       ]
+    },
+    {
+      "id": "claude-opus-5-5-extra-paper",
+      "title": "Reported Claude evaluation",
+      "model": "opus-5.5-extra",
+      "display_name": "Claude · Opus-5.5-extra",
+      "reasoning": "extra",
+      "status": "complete",
+      "result_basis": "reported_aggregates",
+      "source": {
+        "filename": "data/opus_experiments.json",
+        "sha256": "a6bbf444a17942acec11f68b358bda773f6264f33068e0c1b77a5dae7f35f3ab",
+        "source": "Run-owner-supplied tables, confirmed on 2026-10-18 as a complete empirical EP-100 run on a separate machine.",
+        "scope": "100 tasks, four conditions per task, 400 conditions; Home-Long is included with zero success.",
+        "aggregation": "Aggregate Pass@1/Pass@2 scores, integer condition outcomes, and successful-attempt time means are transcribed independently from the supplied tables. Do not reconstruct or replace the supplied aggregate scores from the condition counts.",
+        "audit_scope": "The local GPT-6-Astra audit does not cover this separately supplied run.",
+        "supporting_sources": [
+          {
+            "filename": "sections/experiments.tex",
+            "sha256": "23d5cf6ccb6dec50fe803596d671e857040345293a8827d1d434d8da52c3ccf2"
+          },
+          {
+            "filename": "tables/experiment_subsets.tex",
+            "sha256": "f6fb3a4126e65ca8f1cfe3f227f9a2fbf05a32cd9feab63b60e7079fd647c5d8"
+          },
+          {
+            "filename": "tables/experiment_suites.tex",
+            "sha256": "188fe476135a1db6a1cde73b77d4a33abcc626e745a41f31ee407982f2e4986b"
+          },
+          {
+            "filename": "tables/experiment_outcomes.tex",
+            "sha256": "97fb6a312652c933f133fe364b15fde8037a9e8d30fe2789d9fb6c28b8a5876b"
+          }
+        ]
+      },
+      "protocol": {
+        "token_budget": 30000000,
+        "token_budget_includes_cached_input": true,
+        "image_budget": 100,
+        "conditions_per_task": 4,
+        "base_seed": 0,
+        "launcher_mode": "loaded-only",
+        "attempt_selection": "First two valid attempts chronologically per condition, stopping at first success.",
+        "aggregation": "Published suite-balanced aggregates; scores are not reconstructed from integer condition outcomes.",
+        "agent_tools": [
+          "Python standard library",
+          "NumPy",
+          "Pillow",
+          "Public environment SDK"
+        ],
+        "auxiliary_tool_grants": [],
+        "pretrained_action_controllers": false,
+        "reference_solutions_provided": false
+      },
+      "subsets": {
+        "EP-100": {
+          "tasks": 100,
+          "conditions": 400,
+          "valid_attempts": 683,
+          "suite_balanced_pass_at_1": 0.2922,
+          "suite_balanced_pass_at_2": 0.35850000000000004,
+          "suites": {
+            "Launch": {
+              "tasks": 34,
+              "conditions": 136,
+              "pass_at_1": 0.1551,
+              "pass_at_2": 0.27699999999999997
+            },
+            "Tower": {
+              "tasks": 21,
+              "conditions": 84,
+              "pass_at_1": 0.6059,
+              "pass_at_2": 0.6614
+            },
+            "Lock": {
+              "tasks": 16,
+              "conditions": 64,
+              "pass_at_1": 0.3981,
+              "pass_at_2": 0.45630000000000004
+            },
+            "Cube": {
+              "tasks": 12,
+              "conditions": 48,
+              "pass_at_1": 0.0604,
+              "pass_at_2": 0.1072
+            },
+            "Home": {
+              "tasks": 17,
+              "conditions": 68,
+              "pass_at_1": 0.24170000000000003,
+              "pass_at_2": 0.29059999999999997
+            }
+          }
+        },
+        "EP-Easy": {
+          "tasks": 50,
+          "conditions": 200,
+          "valid_attempts": 332,
+          "suite_balanced_pass_at_1": 0.33990000000000004,
+          "suite_balanced_pass_at_2": 0.4288,
+          "suites": {
+            "Launch": {
+              "tasks": 17,
+              "conditions": 68,
+              "pass_at_1": 0.1521,
+              "pass_at_2": 0.326
+            },
+            "Tower": {
+              "tasks": 11,
+              "conditions": 44,
+              "pass_at_1": 0.7151000000000001,
+              "pass_at_2": 0.7981999999999999
+            },
+            "Lock": {
+              "tasks": 8,
+              "conditions": 32,
+              "pass_at_1": 0.5203,
+              "pass_at_2": 0.6056
+            },
+            "Cube": {
+              "tasks": 6,
+              "conditions": 24,
+              "pass_at_1": 0.0818,
+              "pass_at_2": 0.1503
+            },
+            "Home": {
+              "tasks": 8,
+              "conditions": 32,
+              "pass_at_1": 0.2303,
+              "pass_at_2": 0.2641
+            }
+          }
+        },
+        "EP-Hard": {
+          "tasks": 50,
+          "conditions": 200,
+          "valid_attempts": 351,
+          "suite_balanced_pass_at_1": 0.2421,
+          "suite_balanced_pass_at_2": 0.2848,
+          "suites": {
+            "Launch": {
+              "tasks": 17,
+              "conditions": 68,
+              "pass_at_1": 0.15810000000000002,
+              "pass_at_2": 0.2281
+            },
+            "Tower": {
+              "tasks": 10,
+              "conditions": 40,
+              "pass_at_1": 0.4858,
+              "pass_at_2": 0.5109
+            },
+            "Lock": {
+              "tasks": 8,
+              "conditions": 32,
+              "pass_at_1": 0.276,
+              "pass_at_2": 0.307
+            },
+            "Cube": {
+              "tasks": 6,
+              "conditions": 24,
+              "pass_at_1": 0.039,
+              "pass_at_2": 0.0641
+            },
+            "Home": {
+              "tasks": 9,
+              "conditions": 36,
+              "pass_at_1": 0.25170000000000003,
+              "pass_at_2": 0.3141
+            }
+          }
+        },
+        "EP-20": {
+          "tasks": 20,
+          "conditions": 80,
+          "valid_attempts": 137,
+          "suite_balanced_pass_at_1": 0.30579999999999996,
+          "suite_balanced_pass_at_2": 0.39130000000000004,
+          "suites": {
+            "Launch": {
+              "tasks": 6,
+              "conditions": 24,
+              "pass_at_1": 0.0565,
+              "pass_at_2": 0.1978
+            },
+            "Tower": {
+              "tasks": 4,
+              "conditions": 16,
+              "pass_at_1": 0.5,
+              "pass_at_2": 0.5625
+            },
+            "Lock": {
+              "tasks": 3,
+              "conditions": 12,
+              "pass_at_1": 0.3763,
+              "pass_at_2": 0.3763
+            },
+            "Cube": {
+              "tasks": 3,
+              "conditions": 12,
+              "pass_at_1": 0.1482,
+              "pass_at_2": 0.2741
+            },
+            "Home": {
+              "tasks": 4,
+              "conditions": 16,
+              "pass_at_1": 0.44799999999999995,
+              "pass_at_2": 0.5458
+            }
+          }
+        }
+      },
+      "suite_outcomes": {
+        "Launch": {
+          "conditions": 136,
+          "successful_conditions": 36,
+          "failed_conditions": 100,
+          "time_at_success_minutes": 6.2
+        },
+        "Tower": {
+          "conditions": 84,
+          "successful_conditions": 55,
+          "failed_conditions": 29,
+          "time_at_success_minutes": 38.5
+        },
+        "Lock": {
+          "conditions": 64,
+          "successful_conditions": 20,
+          "failed_conditions": 44,
+          "time_at_success_minutes": 37.0
+        },
+        "Cube": {
+          "conditions": 48,
+          "successful_conditions": 5,
+          "failed_conditions": 43,
+          "time_at_success_minutes": 32.5
+        },
+        "Home": {
+          "conditions": 68,
+          "successful_conditions": 17,
+          "failed_conditions": 51,
+          "time_at_success_minutes": 26.6
+        }
+      },
+      "time_at_success_note": "Mean wall-clock time of successful attempts only, in minutes; prior unsuccessful attempts are excluded."
     }
   ]
 }

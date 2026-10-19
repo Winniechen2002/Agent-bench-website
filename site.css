@@ -300,6 +300,8 @@ h1 { line-height: 1.08; letter-spacing: -.025em; }
 .index-table strong { font-weight: 500; }
 .task-index { margin-top: 45px; }
 .experiment-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 35px; }
+.result-model-control { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; color: var(--muted); font: 11px var(--mono); }
+.result-model-control select { max-width: 100%; padding: 10px 34px 10px 12px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 5px; font: 13px var(--sans); }
 .experiment-strip span { font: 9px/1.5 var(--mono); color: var(--cyan); border: 1px solid var(--line); border-radius: 4px; padding: 7px 10px; }
 .subset-tabs { margin-bottom: 25px; border: 1px solid var(--line); border-radius: 9px; width: max-content; max-width: 100%; background: var(--bg); }
 .result-highlights { margin-bottom: 40px; }

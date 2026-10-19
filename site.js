@@ -7,7 +7,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const canHover = window.matchMedia('(hover: hover)');
   const suites = ['Launch', 'Tower', 'Lock', 'Cube', 'Home'];
-  const state = { tasks: [], media: [], experiment: null, subset: 'EP-100', suite: 'all', embodiment: 'all', mediaSuite: 'all', mediaTask: 'all' };
+  const state = { tasks: [], media: [], experiments: [], experiment: null, subset: 'EP-100', suite: 'all', embodiment: 'all', mediaSuite: 'all', mediaTask: 'all' };
   const mediaById = (id) => state.media.find((item) => item.id === id);
   const isVideo = (item) => /\.(mp4|webm)(?:$|\?)/i.test(item?.path || '');
   const suiteFor = (item) => item.suite || ({marble:'Launch',hanoi:'Tower',kongming:'Lock',cube:'Cube',rubik:'Cube',tabletop:'Home',bookshelf:'Home',maniskill:'Home'}[item.family]) || '';
@@ -102,17 +102,37 @@
   function renderResults() {
     const experiment = state.experiment;
     const subset = experiment.subsets[state.subset];
+    const reported = experiment.result_basis === 'reported_aggregates';
     const cards = [['SUITE-BALANCED PASS@1', percent(subset.suite_balanced_pass_at_1), 'First valid opportunity'],['SUITE-BALANCED PASS@2',percent(subset.suite_balanced_pass_at_2),'Within two valid opportunities'],['TASKS / CONDITIONS',`${subset.tasks} / ${subset.conditions}`,'Four prescribed conditions per task'],['SCORED ATTEMPTS',String(subset.valid_attempts),'Stop at first success; at most two']];
     $('#result-highlights').innerHTML = cards.map(([label,value,note]) => `<article class="highlight-card"><span class="highlight-label">${label}</span><strong>${value}</strong><p>${note}</p></article>`).join('');
     $('#suite-chart').innerHTML = `<div class="chart-axis"><span>Suite / success rate</span><span>0</span><span>100%</span></div>${suites.map((name) => {
       const result = subset.suites[name];
-      return `<details class="suite-result"><summary><span class="suite-result-name">${name}<small>${result.tasks} tasks · ${result.conditions} conditions</small></span><span class="bar-pair"><span class="bar-track"><span class="bar-fill first" style="width:${result.pass_at_1*100}%"></span><span class="bar-number">${percent(result.pass_at_1)}<span class="sr-only"> Pass@1</span></span></span><span class="bar-track"><span class="bar-fill second" style="width:${result.pass_at_2*100}%"></span><span class="bar-number">${percent(result.pass_at_2)}<span class="sr-only"> Pass@2</span></span></span></span><span class="suite-expand" aria-hidden="true">+</span></summary><div class="suite-result-detail"><p><strong>${result.first_successes} / ${result.conditions}</strong> conditions succeed on attempt one; <strong>${result.within_two_successes} / ${result.conditions}</strong> succeed within two. ${result.valid_attempts} valid opportunities were used.</p><p>Tasks and their four conditions carry equal weight within ${name}. The headline ${state.subset} score then averages the five suites equally.</p></div></details>`;
+      const outcome = state.subset === 'EP-100' && experiment.suite_outcomes?.[name];
+      const detail = reported
+        ? `<p>Pass@1 and Pass@2 are the aggregate scores supplied with the paper.</p>${outcome ? `<p>Separately reported condition outcomes: <strong>${outcome.successful_conditions} successful</strong> and <strong>${outcome.failed_conditions} unsuccessful</strong>. Mean time per successful attempt: <strong>${outcome.time_at_success_minutes.toFixed(1)} minutes</strong>; prior unsuccessful attempts are excluded.</p>` : ''}`
+        : `<p><strong>${result.first_successes} / ${result.conditions}</strong> conditions succeed on attempt one; <strong>${result.within_two_successes} / ${result.conditions}</strong> succeed within two. ${result.valid_attempts} valid opportunities were used.</p><p>Tasks and their four conditions carry equal weight within ${name}. The headline ${state.subset} score then averages the five suites equally.</p>`;
+      return `<details class="suite-result"><summary><span class="suite-result-name">${name}<small>${result.tasks} tasks · ${result.conditions} conditions</small></span><span class="bar-pair"><span class="bar-track"><span class="bar-fill first" style="width:${result.pass_at_1*100}%"></span><span class="bar-number">${percent(result.pass_at_1)}<span class="sr-only"> Pass@1</span></span></span><span class="bar-track"><span class="bar-fill second" style="width:${result.pass_at_2*100}%"></span><span class="bar-number">${percent(result.pass_at_2)}<span class="sr-only"> Pass@2</span></span></span></span><span class="suite-expand" aria-hidden="true">+</span></summary><div class="suite-result-detail">${detail}</div></details>`;
     }).join('')}`;
-    $('#subset-detail').innerHTML = `<p><strong>${state.subset}</strong> · Pooled condition rates: ${percent(subset.pooled_pass_at_1)} Pass@1 (${subset.first_successes}/${subset.conditions}) and ${percent(subset.pooled_pass_at_2)} Pass@2 (${subset.within_two_successes}/${subset.conditions}). These pooled rates are not the suite-balanced headline scores.</p>${state.subset === 'EP-20' ? '<p>EP-20 reuses records from ten Easy and ten Hard tasks. Its pilot-informed selection supports compact diagnosis, not an unbiased estimate of full-set performance.</p>' : ''}`;
+    const subsetNote = reported
+      ? `<p><strong>${state.subset}</strong> · Paper-reported aggregate scores. Condition outcome counts are supplied separately and do not reproduce these percentages; the scores are preserved as reported.</p>`
+      : `<p><strong>${state.subset}</strong> · Pooled condition rates: ${percent(subset.pooled_pass_at_1)} Pass@1 (${subset.first_successes}/${subset.conditions}) and ${percent(subset.pooled_pass_at_2)} Pass@2 (${subset.within_two_successes}/${subset.conditions}). These pooled rates are not the suite-balanced headline scores.</p>`;
+    $('#subset-detail').innerHTML = `${subsetNote}${state.subset === 'EP-20' ? '<p>EP-20 reuses records from ten Easy and ten Hard tasks. Its pilot-informed selection supports compact diagnosis, not an unbiased estimate of full-set performance.</p>' : ''}`;
   }
 
   function renderAudit() {
     const ex = state.experiment;
+    const reported = ex.result_basis === 'reported_aggregates';
+    const badges = reported
+      ? [ex.display_name, `${ex.reasoning.toUpperCase()} REASONING`, 'NO AUXILIARY TOOL GRANTS', 'PAPER-REPORTED RESULTS']
+      : ['CODEX · GPT-6-ASTRA', 'L3 / HIGH', 'NO AUXILIARY TOOL GRANTS', 'AUDITED · 16 OCT 2026'];
+    $('#experiment-setting').innerHTML = badges.map((label) => `<span>${escape(label)}</span>`).join('');
+    $('#result-scope').textContent = reported
+      ? 'This complete EP-100 run includes Home-Long with zero success. Results were supplied separately for the paper; the GPT-6-Astra audit does not cover this run.'
+      : 'Completion under the implemented native contracts. Incomplete rule or threshold disclosure affected 574 of 645 scored failures; the audit retains those verdicts. The failure distribution cannot be attributed solely to agent reasoning or control.';
+    if (reported) {
+      $('#audit-content').innerHTML = `<div class="evaluation-summary"><section><h4>Setting</h4><p>${escape(ex.display_name)} · ${escape(ex.reasoning)} reasoning. The paper specifies the public SDK without auxiliary tool grants, reference solutions, or pretrained action controllers.</p><p>Each attempt allows ${(ex.protocol.token_budget/1e6).toFixed(0)}M tokens, including cached input, and ${ex.protocol.image_budget} images. The supplied results do not specify an observation access level.</p></section><section><h4>Scoring</h4><p>EP-100 covers 400 prescribed conditions and ${ex.subsets['EP-100'].valid_attempts} scored attempts. Pass@1 uses the first valid opportunity; Pass@2 uses the first two, stopping after success. Launch uses loaded initialization at base seed zero.</p></section><section><h4>Source and scope</h4><p>A complete run on a separate machine, confirmed by its owner on 18 October 2026. Aggregate scores, condition outcomes, and successful-attempt times are independently transcribed from the paper's supplied tables.</p><p>Per-task outcomes and a separate audit are not supplied. The GPT-6-Astra audit, exclusions, and failure diagnostics apply only to GPT-6-Astra.</p></section></div>`;
+      return;
+    }
     const audit = ex.audit_counts;
     $('#audit-content').innerHTML = `<div class="evaluation-summary"><section><h4>Setting</h4><p>Codex / ${escape(ex.model)} · ${escape(ex.reasoning)} reasoning · ${escape(ex.access_level)} access with privileged observations. The agent uses the public SDK without reference solutions or pretrained action controllers.</p><p>Each attempt allows ${(ex.protocol.token_budget/1e6).toFixed(0)}M tokens, including cached input, and ${ex.protocol.image_budget} images. These are budgets, not measured consumption; execution limits vary by task.</p></section><section><h4>Scoring</h4><p>EP-100 covers 400 prescribed conditions and ${audit.valid} scored attempts. Pass@1 uses the first valid opportunity; Pass@2 uses the first two, stopping after success. Ordinary failures and budget exhaustion count.</p><p>The audit excludes ${audit.excluded} confirmed infrastructure incidents; ${audit.superseded} extra attempts outside the scoring window are unscored.</p></section><section><h4>Scope</h4><p>One model and agent configuration. Attempts use separate agent sessions; complete simulator and host-cache isolation has not been certified. These results do not establish a model ranking or token-efficiency comparison.</p></section></div>`;
   }
@@ -163,6 +183,11 @@
       $$(`[data-filter-group="${group}"]`).forEach((other) => { const active = other === button; other.classList.toggle('active',active); other.setAttribute('aria-pressed',String(active)); }); renderTasks();
     }));
     $$('[data-suite-link]').forEach((link) => link.addEventListener('click', () => selectSuite(link.dataset.suiteLink)));
+    $('#result-model').addEventListener('change', (event) => {
+      const experiment = state.experiments.find((item) => item.id === event.target.value);
+      if (!experiment) return;
+      state.experiment = experiment; renderResults(); renderAudit();
+    });
     const tabs = $$('[data-subset]');
     const activate = (tab, focus = false) => {
       if (!state.experiment) return;
@@ -350,10 +375,17 @@
     if(media.status==='fulfilled')renderMedia();else $('#media-grid').innerHTML='<p class="empty-state">Video metadata could not be loaded. Please reload the page.</p>';
     try {
       if(results.status!=='fulfilled'||results.value.schema_version!==2)throw new Error('Result data unavailable');
+      if(!results.value.experiments?.length||!results.value.experiments.every((item)=>['EP-100','EP-Easy','EP-Hard','EP-20'].every((name)=>{
+        const subset=item.subsets?.[name];
+        return Number.isFinite(subset?.suite_balanced_pass_at_1)&&Number.isFinite(subset?.suite_balanced_pass_at_2)&&suites.every((suite)=>Number.isFinite(subset.suites?.[suite]?.pass_at_1)&&Number.isFinite(subset.suites?.[suite]?.pass_at_2));
+      })))throw new Error('Incomplete result data');
       const experiment=results.value.experiments.find((item)=>item.id===results.value.default_experiment);
-      if(!experiment||!['EP-100','EP-Easy','EP-Hard','EP-20'].every((name)=>Number.isFinite(experiment.subsets?.[name]?.suite_balanced_pass_at_1)&&Number.isFinite(experiment.subsets?.[name]?.suite_balanced_pass_at_2)))throw new Error('Incomplete result data');
-      state.experiment=experiment;renderResults();renderAudit();
-    } catch { state.experiment=null;$('#audited-results').hidden=true;const message=$('#results-unavailable');message.hidden=false;message.textContent='Audited result data could not be loaded. No scores are substituted. Reload the page or open the result JSON in Resources.'; }
+      if(!experiment)throw new Error('Default experiment unavailable');
+      state.experiments=results.value.experiments;state.experiment=experiment;
+      const modelSelect=$('#result-model');
+      modelSelect.innerHTML=state.experiments.map((item)=>`<option value="${escape(item.id)}">${escape(item.display_name || `Codex · ${item.model}`)}</option>`).join('');
+      modelSelect.value=experiment.id;modelSelect.disabled=false;renderResults();renderAudit();
+    } catch { state.experiment=null;$('#audited-results').hidden=true;const message=$('#results-unavailable');message.hidden=false;message.textContent='Result data could not be loaded. No scores are substituted. Reload the page or open the result JSON in Resources.'; }
     try { if(index.status!=='fulfilled')throw new Error('No index');renderIndex(index.value); } catch { $('#ep100-table').textContent='The task index could not be loaded. Please use the JSON download above.'; }
     setupHero();document.body.dataset.ready='true';
   }

@@ -51,7 +51,16 @@ python3 scripts/refresh-paper-data.py /path/to/manuscript
 python3 scripts/refresh-paper-data.py /path/to/manuscript --check
 ```
 
-This reads `data/codex_experiments.json` from the manuscript and writes only `data/results.json`, `data/ep100-index.json`, and `data/tasks.json`. It verifies membership, subset metrics, and source hashes. No local archive is required. Add future models as separate experiments with explicit observation/tool settings, protocols, and budgets; compare only compatible settings.
+This reads `data/codex_experiments.json` and `data/opus_experiments.json` from the manuscript and writes only `data/results.json`, `data/ep100-index.json`, and `data/tasks.json`. It verifies Codex membership and subset metrics and records source hashes for both experiments. Claude's published subset and suite percentages are preserved independently of its supplied condition counts; no per-task results or Codex audit coverage are inferred. No local archive is required.
+
+To update only the Claude experiment while preserving the existing Codex, task, and membership snapshots:
+
+```sh
+python3 scripts/refresh-paper-data.py /path/to/manuscript --only-claude
+python3 scripts/refresh-paper-data.py /path/to/manuscript --only-claude --check
+```
+
+Both refresh modes support `--check` without writing. Add future models as separate experiments with supported observation/tool settings, protocols, and budgets; compare only compatible settings.
 
 Native exports use the `data/environment-*.json` names and `data/benchmark.json`, so native sync cannot overwrite paper results:
 

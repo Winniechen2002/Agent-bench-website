@@ -194,5 +194,29 @@ for subset, subset_rows in (('EP-100', paper_rows), ('EP-20', [row for row in pa
         for metric in ('pass_at_1', 'pass_at_2'):
             assert abs(suite_summary[metric] - sum(row[metric] for row in rows) / len(rows)) < 1e-12
 assert 'legacy' not in results, 'Unfinished exploratory results belong in local archives, not published data'
+claude = next(item for item in results['experiments'] if item['id'] == 'claude-opus-5-5-extra-paper')
+assert claude['model'] == 'opus-5.5-extra' and claude['reasoning'] == 'extra'
+assert claude['status'] == 'complete' and claude['result_basis'] == 'reported_aggregates'
+assert claude['source']['filename'] == 'data/opus_experiments.json'
+assert re.fullmatch(r'[0-9a-f]{64}', claude['source']['sha256'])
+assert not {'access_level', 'audit_counts', 'task_results_file', 'failure_diagnostics'} & claude.keys()
+assert not {'access_level', 'observation_profile'} & claude['protocol'].keys()
+for subset, summary in claude['subsets'].items():
+    membership = experiment['subsets'][subset]
+    assert (summary['tasks'], summary['conditions']) == (membership['tasks'], membership['conditions'])
+    assert summary['conditions'] <= summary['valid_attempts'] <= summary['conditions'] * 2
+    assert not {'pooled_pass_at_1', 'pooled_pass_at_2', 'first_successes', 'within_two_successes'} & summary.keys()
+    for suite, scores in summary['suites'].items():
+        assert (scores['tasks'], scores['conditions']) == (membership['suites'][suite]['tasks'], membership['suites'][suite]['conditions'])
+        assert 0 <= scores['pass_at_1'] <= scores['pass_at_2'] <= 1
+        assert not {'first_successes', 'within_two_successes', 'valid_attempts'} & scores.keys()
+    for k in (1, 2):
+        macro = sum(scores[f'pass_at_{k}'] for scores in summary['suites'].values()) / 5
+        assert abs(macro - summary[f'suite_balanced_pass_at_{k}']) <= .0001
+for suite, outcome in claude['suite_outcomes'].items():
+    assert outcome['successful_conditions'] + outcome['failed_conditions'] == outcome['conditions']
+    assert outcome['conditions'] == claude['subsets']['EP-100']['suites'][suite]['conditions']
+    assert outcome['time_at_success_minutes'] > 0
+assert {'result-model', 'experiment-setting', 'result-scope'} <= hero_page.elements.keys()
 validate_media(ROOT)
 print('PASS: paper/native pages and links; 410 unique native tasks, 12 groups, 510 evaluation groups, 2040 planned episodes; budgets, native media provenance and 12/12 preview coverage; 16 paper types, EP-100/EP-20 membership, splits, media and audited result consistency.')

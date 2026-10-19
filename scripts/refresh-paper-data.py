@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Refresh public website data from the paper snapshot without repository operations.
 
-Usage: python3 scripts/refresh-paper-data.py PAPER_DIRECTORY [--check]
+Usage: python3 scripts/refresh-paper-data.py PAPER_DIRECTORY [--only-claude] [--check]
 Local archives are neither required nor modified.
-Only the three generated JSON files are written. --check compares without writing.
+Full refresh writes the three generated JSON files; --only-claude updates only
+the Claude experiment in results.json. --check compares without writing.
 """
 import argparse
 import collections
@@ -18,13 +19,106 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def claude_experiment(paper, codex):
+    """Project supplied aggregates without deriving trial-level evidence."""
+    source_path = paper / 'data/opus_experiments.json'
+    data = json.loads(source_path.read_text())
+    subsets = {}
+    for name, supplied in data['subsets'].items():
+        membership = codex['subsets'][name]
+        assert supplied['tasks'] == membership['tasks']
+        assert supplied['conditions'] == membership['conditions']
+        suites = {}
+        for suite, counts in membership['suites'].items():
+            first, second = data['suite_scores_percent'][suite][name]
+            assert 0 <= first <= second <= 100
+            suites[suite] = {
+                'tasks': counts['tasks'], 'conditions': counts['conditions'],
+                'pass_at_1': first / 100, 'pass_at_2': second / 100,
+            }
+        assert 0 <= supplied['pass_at_1_percent'] <= supplied['pass_at_2_percent'] <= 100
+        subsets[name] = {
+            'tasks': supplied['tasks'], 'conditions': supplied['conditions'],
+            'valid_attempts': supplied['attempts'],
+            'suite_balanced_pass_at_1': supplied['pass_at_1_percent'] / 100,
+            'suite_balanced_pass_at_2': supplied['pass_at_2_percent'] / 100,
+            'suites': suites,
+        }
+    outcomes = {}
+    for suite, supplied in data['suite_outcomes'].items():
+        assert supplied['conditions'] == subsets['EP-100']['suites'][suite]['conditions']
+        assert supplied['successful_conditions'] + supplied['failed_conditions'] == supplied['conditions']
+        outcomes[suite] = {key: supplied[key] for key in (
+            'conditions', 'successful_conditions', 'failed_conditions', 'time_at_success_minutes')}
+    return {
+        'id': 'claude-opus-5-5-extra-paper',
+        'title': 'Reported Claude evaluation',
+        'model': data['model'], 'display_name': 'Claude · ' + data['display_name'],
+        'reasoning': data['reasoning'], 'status': data['status'],
+        'result_basis': 'reported_aggregates',
+        'source': {
+            'filename': 'data/opus_experiments.json', 'sha256': sha(source_path),
+            **{key: data['provenance'][key] for key in ('source', 'scope', 'aggregation', 'audit_scope')},
+            'supporting_sources': [
+                {'filename': name, 'sha256': sha(paper / name)}
+                for name in ('sections/experiments.tex', 'tables/experiment_subsets.tex',
+                             'tables/experiment_suites.tex', 'tables/experiment_outcomes.tex')
+            ],
+        },
+        'protocol': {
+            'token_budget': 30000000, 'token_budget_includes_cached_input': True,
+            'image_budget': 100, 'conditions_per_task': 4, 'base_seed': 0,
+            'launcher_mode': 'loaded-only',
+            'attempt_selection': 'First two valid attempts chronologically per condition, stopping at first success.',
+            'aggregation': 'Published suite-balanced aggregates; scores are not reconstructed from integer condition outcomes.',
+            'agent_tools': ['Python standard library', 'NumPy', 'Pillow', 'Public environment SDK'],
+            'auxiliary_tool_grants': [], 'pretrained_action_controllers': False,
+            'reference_solutions_provided': False,
+        },
+        'subsets': subsets,
+        'suite_outcomes': outcomes,
+        'time_at_success_note': 'Mean wall-clock time of successful attempts only, in minutes; prior unsuccessful attempts are excluded.',
+    }
+
+
+def write_outputs(site, outputs, check):
+    for filename, value in outputs.items():
+        validate_document(value, filename)
+    for filename, value in outputs.items():
+        rendered = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+        assert not any(prefix in rendered for prefix in ['/Users/', '/home/', '/run/', '/private/'])
+        destination = site / 'data' / filename
+        if check:
+            assert destination.read_text() == rendered, f'Stale generated data: {filename}'
+        else:
+            destination.write_text(rendered)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('paper', type=Path)
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--only-claude', action='store_true',
+                        help='Update only the Claude experiment, preserving existing Codex and task snapshots.')
     args = parser.parse_args()
     site = Path(__file__).resolve().parents[1]
     paper = args.paper
+    if args.only_claude:
+        results = json.loads((site / 'data/results.json').read_text())
+        assert results['schema_version'] == 2
+        codex = next(ex for ex in results['experiments'] if ex['id'] == 'codex-gpt-6-astra-l3-paper')
+        claude = claude_experiment(paper, codex)
+        matches = [i for i, ex in enumerate(results['experiments']) if ex['id'] == claude['id']]
+        assert len(matches) <= 1, 'Duplicate Claude experiments'
+        if matches:
+            results['experiments'][matches[0]] = claude
+        else:
+            results['experiments'].append(claude)
+        write_outputs(site, {'results.json': results}, args.check)
+        print('Claude: four supplied subset aggregates, five suite profiles, and independent condition outcomes imported.')
+        print('Codex, default experiment, task membership, and task results preserved.')
+        print('Mode:', 'check (no writes)' if args.check else 'updated only Claude in results.json')
+        return
     source_path = paper / 'data/codex_experiments.json'
     data = json.loads(source_path.read_text())
     index_path = paper / 'appendices/ep100_index.tex'
@@ -155,7 +249,7 @@ def main():
         ],
     }
     results = {'schema_version': 2, 'default_experiment': experiment_id,
-               'experiments': [experiment]}
+               'experiments': [experiment, claude_experiment(paper, experiment)]}
     index = {'schema_version': 2, 'source': metadata, 'suite_counts': suite_counts,
              'split_counts': split_counts, 'ep20_count': 20, 'task_results': rows}
 
@@ -253,18 +347,10 @@ def main():
     assert sum(item['failed_attempts'] for item in data['failure_diagnostics']) == 645
     assert data['audit_counts']['retained'] == 736 + 69 + 41
     outputs = {'results.json': results, 'ep100-index.json': index, 'tasks.json': tasks}
-    for filename, value in outputs.items():
-        validate_document(value, filename)
-    for filename, value in outputs.items():
-        rendered = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
-        assert not any(prefix in rendered for prefix in ['/Users/', '/home/', '/run/', '/private/'])
-        destination = site / 'data' / filename
-        if args.check:
-            assert destination.read_text() == rendered, f'Stale generated data: {filename}'
-        else:
-            destination.write_text(rendered)
+    write_outputs(site, outputs, args.check)
     print('Validated 100 unique tasks; suites 34/21/16/12/17; 16 task types; Easy/Hard 50/50; EP-20 20 (10/10).')
-    print('All four subsets: precise pooled and suite-balanced Pass@1/2 independently match task rows; audit counts and source provenance verified.')
+    print('Codex: all four subsets match task rows; audit counts and source provenance verified.')
+    print('Claude: supplied subset and suite aggregates retained independently of condition outcomes; source hashes recorded.')
     print('Mode:', 'check (no writes)' if args.check else 'generated three JSON files')
 
 
