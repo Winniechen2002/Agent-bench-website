@@ -1788,27 +1788,27 @@
       "id": "embodied-playground-film",
       "claim_status": "promotional-overview",
       "source_video": {
-        "artifact_id": "source-1554200cd341c1e024e51f26",
-        "sha256": "d482443dd8f03fd7c5b5cd12e3812e1d9483e3b0fdbd26a78410de1903fc474d",
-        "size_bytes": 21388052
+        "artifact_id": "source-b719de9c7a2f1da1c35334b6",
+        "sha256": "c863bd6001eef01aad1f2e5f5cab96aae07e41542bc1bb95ad175b15247a5058",
+        "size_bytes": 29020634
       },
       "web_asset": {
-        "path": "assets/media/embodied-playground-film.mp4",
-        "sha256": "d482443dd8f03fd7c5b5cd12e3812e1d9483e3b0fdbd26a78410de1903fc474d",
-        "size_bytes": 21388052,
-        "duration_seconds": 180.0,
+        "path": "assets/media/embodied-playground-film-v2.mp4",
+        "sha256": "c863bd6001eef01aad1f2e5f5cab96aae07e41542bc1bb95ad175b15247a5058",
+        "size_bytes": 29020634,
+        "duration_seconds": 192.0,
         "width": 1920,
         "height": 1080,
         "poster": {
-          "path": "assets/posters/embodied-playground-film.jpg",
-          "sha256": "c6584c3e3e4cb6fbc5ba5cc03546a99fa9a266fe5e2d774b395d9b10dadd8caa",
-          "size_bytes": 97762
+          "path": "assets/posters/embodied-playground-film-v2.jpg",
+          "sha256": "708e6661d0a825c23cadaa83b476030922060ed34bf5a8649cfb0a2e78cc67ac",
+          "size_bytes": 157723
         }
       },
-      "web_derivative": "Original user-selected project film copied byte-for-byte, including AAC audio; H.264/yuv420p, 1920×1080, faststart. Poster extracted at 2 seconds.",
+      "web_derivative": "Original user-selected v2 project film copied byte-for-byte, including AAC audio; H.264/yuv420p, 1920×1080, faststart. Poster extracted at 2 seconds.",
       "presentation_transform": {
         "speed_multiplier": 1,
-        "coverage": "Complete original three-minute film with its original soundtrack."
+        "coverage": "Complete original 3-minute 12-second v2 film with its original soundtrack."
       },
       "notes": "Homepage overview film; separate from individual rollout demonstrations and their duration limits."
     }

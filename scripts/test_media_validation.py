@@ -99,14 +99,14 @@ class MediaValidationTests(unittest.TestCase):
 
     def add_promo(self, **changes):
         promo = dict(id='embodied-playground-film', path='assets/media/promo.mp4', media_kind='video',
-            media_usage='hero-promo', showcase=False, duration_seconds=180, playback_speed=1, playback_label='3:00')
+            media_usage='hero-promo', showcase=False, duration_seconds=192, playback_speed=1, playback_label='3:12')
         promo.update(changes)
         (self.root / promo['path']).write_bytes(b'promo fixture')
         write(self.root, 'data/media.json', [self.video, promo])
         return promo
 
     def test_hero_exception_is_limited_to_named_unassociated_original_timing_film(self):
-        for changes in (dict(id='another-film'), dict(duration_seconds=181), dict(playback_speed=2), dict(showcase=True)):
+        for changes in (dict(id='another-film'), dict(duration_seconds=193), dict(playback_speed=2), dict(showcase=True)):
             self.add_promo(**changes)
             with self.subTest(changes=changes), self.assertRaisesRegex(AssertionError, 'hero'):
                 self.validate(self.root)
@@ -120,9 +120,9 @@ class MediaValidationTests(unittest.TestCase):
             self.validate(self.root)
 
     @unittest.skipUnless(shutil.which('ffmpeg') and shutil.which('ffprobe'), 'real duration regression requires FFmpeg')
-    def test_actual_three_minute_film_passes_but_same_length_rollout_fails(self):
+    def test_actual_selected_film_passes_but_same_length_rollout_fails(self):
         promo = self.add_promo()
-        for name, duration in ((self.video['path'], 1), (promo['path'], 180)):
+        for name, duration in ((self.video['path'], 1), (promo['path'], 192)):
             subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'color=size=16x16:rate=1',
                 '-t', str(duration), '-c:v', 'libx264', '-preset', 'ultrafast', str(self.root / name)], check=True)
         self.video['duration_seconds'] = 1

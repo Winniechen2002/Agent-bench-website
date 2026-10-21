@@ -16,7 +16,7 @@ from build_site import source_file
 
 ROOT = Path(__file__).resolve().parents[1]
 HERO_PROMO_ID = 'embodied-playground-film'
-HERO_PROMO_LIMIT = 180.25
+HERO_PROMO_LIMIT = 192.25
 
 
 def read(root, name):
@@ -79,7 +79,7 @@ def validate_media(root, *, probe=False):
                 assert collection == 'media.json' and entry['id'] == HERO_PROMO_ID and entry.get('media_usage') == 'hero-promo', 'Only the selected homepage film may use the hero exception'
                 assert entry.get('media_kind') == 'video' and entry.get('showcase') is False and entry['id'] not in visible, 'The hero film must remain outside task and showcase media'
                 duration = entry.get('duration_seconds')
-                assert isinstance(duration, (float, int)) and math.isfinite(duration) and 0 < duration <= HERO_PROMO_LIMIT, 'Invalid hero film duration (180.25-second limit)'
+                assert isinstance(duration, (float, int)) and math.isfinite(duration) and 0 < duration <= HERO_PROMO_LIMIT, f'Invalid hero film duration ({HERO_PROMO_LIMIT}-second limit)'
                 assert entry.get('playback_speed') == 1, 'The hero film must preserve original playback timing'
                 promo_paths.add(entry['path'])
         for mid in visible:
@@ -132,7 +132,7 @@ def main():
     parser.add_argument('--probe', action='store_true')
     args = parser.parse_args()
     result = validate_media(args.root, probe=args.probe)
-    print(f'PASS: {result["visible_videos"]} visible videos; {result["videos"]} unique video files; {result["asset_bytes"] / 1e6:.2f} MB assets; rollouts ≤120 seconds; {result["hero_promos"]} selected hero film(s) ≤180.25 seconds.')
+    print(f'PASS: {result["visible_videos"]} visible videos; {result["videos"]} unique video files; {result["asset_bytes"] / 1e6:.2f} MB assets; rollouts ≤120 seconds; {result["hero_promos"]} selected hero film(s) ≤{HERO_PROMO_LIMIT} seconds.')
     if result['over_target']:
         print('Above preferred 60-second target: ' + ', '.join(result['over_target']))
 

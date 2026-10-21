@@ -923,19 +923,19 @@
     "id": "embodied-playground-film",
     "title": "Embodied Playground",
     "task": "project-overview",
-    "path": "assets/media/embodied-playground-film.mp4",
-    "poster": "assets/posters/embodied-playground-film.jpg",
-    "fallback": "assets/posters/embodied-playground-film.jpg",
-    "caption": "A three-minute introduction to the benchmark, its environments, and the agent interaction loop.",
+    "path": "assets/media/embodied-playground-film-v2.mp4",
+    "poster": "assets/posters/embodied-playground-film-v2.jpg",
+    "fallback": "assets/posters/embodied-playground-film-v2.jpg",
+    "caption": "An introduction to the benchmark, its environments, and the agent interaction loop.",
     "media_kind": "video",
     "media_usage": "hero-promo",
     "showcase": false,
     "source_type": "project-film",
     "claim_status": "promotional-overview",
-    "source_artifact_id": "source-1554200cd341c1e024e51f26",
-    "duration_seconds": 180.0,
+    "source_artifact_id": "source-b719de9c7a2f1da1c35334b6",
+    "duration_seconds": 192.0,
     "playback_speed": 1,
     "playback_basis": "original film timing",
-    "playback_label": "3:00"
+    "playback_label": "3:12"
   }
 ]

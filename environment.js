@@ -107,7 +107,7 @@
         <div class="task-body"><span class="task-family">${escapeHTML(task.family_label || task.family)}</span><h2>${escapeHTML(task.title)}</h2><span class="catalog-task-count">${entries.length} ${state.filters.embodiment === "all" ? "task entries" : "matching task entries"}</span><p>${escapeHTML(task.summary)}</p>
         <div class="task-meta">${(task.skills || []).map((skill) => `<span>${escapeHTML(skill.replaceAll("_", " "))}</span>`).join("")}</div>
         ${mediaSelector}<p class="catalog-media-caption">${mediaCaptionHTML(selected)}</p><a class="catalog-open-media" href="${escapeHTML(selected?.path || "#tasks")}" target="_blank" rel="noreferrer"${selected ? "" : " hidden"}>${isVideo(selected) ? "Open video" : "View full image"} ↗</a>
-        <div class="task-footer"><span class="task-embodiment">${escapeHTML(robots.join(" · "))}</span><a href="https://github.com/Winniechen2002/Embodied-Playgroud/blob/main/${escapeHTML(task.source)}" target="_blank" rel="noreferrer">Task protocol ↗</a></div>
+        <div class="task-footer"><span class="task-embodiment">${escapeHTML(robots.join(" · "))}</span><a href="https://github.com/Winniechen2002/Embodied-Playground/blob/main/${escapeHTML(task.source)}" target="_blank" rel="noreferrer">Task protocol ↗</a></div>
         <details class="catalog-entries"><summary>Browse ${entries.length} task entries</summary><div class="catalog-entry-list" tabindex="0" role="region" aria-label="${escapeHTML(task.title)} task entries">${entryHTML}</div></details></div>
       </article>`;
     }).join("");
